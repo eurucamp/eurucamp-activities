@@ -1,0 +1,24 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: utf8
+  host: localhost
+  port: 5432
+  pool: 5
+  username: your_name
+  password:
+
+development:
+  <<: *defaults
+  database: activities_development
+
+staging:
+  <<: *defaults
+  database: activities_staging
+
+test: &test
+  <<: *defaults
+  database: activities_test
+
+test: &test
+  <<: *defaults
+  database: activities_production
