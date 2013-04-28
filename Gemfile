@@ -22,6 +22,11 @@ group :development do
   gem 'foreman'
 end
 
+group :test do
+  gem 'turn',       require: false
+  gem 'simplecov',  require: false
+end
+
 group :assets do
   gem 'sass-rails',   '~> 4.0.0.beta1'
   gem 'coffee-rails', '~> 4.0.0.beta1'

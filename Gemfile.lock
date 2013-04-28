@@ -34,6 +34,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.33)
     addressable (2.3.4)
+    ansi (1.4.3)
     arel (4.0.0)
     atomic (1.1.8)
     builder (3.1.4)
@@ -127,6 +128,10 @@ GEM
       sprockets-rails (~> 2.0.0.rc0)
       tilt (~> 1.3)
     settingslogic (2.0.9)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sprockets (2.9.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -145,6 +150,8 @@ GEM
       polyglot (>= 0.3.1)
     turbolinks (1.1.1)
       coffee-rails
+    turn (0.9.6)
+      ansi
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -171,6 +178,8 @@ DEPENDENCIES
   rails (= 4.0.0.beta1)
   sass-rails (~> 4.0.0.beta1)
   settingslogic
+  simplecov
   turbolinks
+  turn
   uglifier (>= 1.0.3)
   unicorn
