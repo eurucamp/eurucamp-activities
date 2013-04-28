@@ -78,8 +78,8 @@ Activities::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.middleware.use ExceptionNotifier,
-                        :email_prefix => "[Eurucamp-activities::Exception] ",
-                        :sender_address => %{"Exception Notifier" <#{Settings.errors.from}>},
-                        :exception_recipients => Settings.errors.to
+  #config.middleware.use ExceptionNotifier,
+  #                      :email_prefix => "[Eurucamp-activities::Exception] ",
+  #                      :sender_address => %{"Exception Notifier" <#{Settings.errors.from}>},
+  #                      :exception_recipients => Settings.errors.to
 end

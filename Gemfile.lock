@@ -45,8 +45,6 @@ GEM
     debugger-ruby_core_source (1.2.0)
     dotenv (0.7.0)
     erubis (2.7.0)
-    exception_notification (3.0.1)
-      actionmailer (>= 3.0.4)
     excon (0.20.1)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -154,7 +152,6 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0.beta1)
   debugger (~> 1.5)
-  exception_notification
   foreman
   heroku_san (~> 3.0.2)
   jbuilder (~> 1.0.1)

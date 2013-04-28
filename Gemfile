@@ -29,6 +29,6 @@ group :assets do
 end
 
 group :production, :staging do
-  gem 'exception_notification', require: 'exception_notifier'
+  # gem 'exception_notification', require: 'exception_notifier'
   gem 'rack-robotz', '~> 0.0.3'
 end
