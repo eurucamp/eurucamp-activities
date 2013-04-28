@@ -20,3 +20,5 @@ module Activities
     # config.i18n.default_locale = :de
   end
 end
+
+require Rails.root + "app/models/settings"
