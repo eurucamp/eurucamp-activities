@@ -1,5 +1,4 @@
 Activities::Application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -78,8 +77,10 @@ Activities::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.middleware.insert_before(::ActionDispatch::Static, ::Rack::Robotz, "User-Agent" => "*", "Disallow" => "/")
+
   config.middleware.use ExceptionNotifier,
-                        :email_prefix => "[Eurucamp-activities::Exception] ",
+                        :email_prefix => "[Eurucamp-activities-staging::Exception] ",
                         :sender_address => %{"Exception Notifier" <#{Settings.errors.from}>},
                         :exception_recipients => Settings.errors.to
 end

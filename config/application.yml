@@ -1,4 +1,11 @@
 defaults: &defaults
+  mailers:
+    from: "activities@eurucamp.org"
+  errors:
+    from: "exception@eurucamp.org"
+    to:
+      - "piotr@gega.io"
+      - "florian@polarblau.com"
 
 development:
   <<: *defaults

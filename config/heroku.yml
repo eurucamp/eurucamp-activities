@@ -1,0 +1,11 @@
+production: 
+  stack: cedar
+  app:   eurucamp-activities-2013
+  config:
+    BUNDLE_WITHOUT: "development:test"
+
+staging:
+  stack: cedar
+  app:   eurucamp-activities-2013-dev
+  config: &default
+    BUNDLE_WITHOUT: "development:test"
