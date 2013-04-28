@@ -79,8 +79,8 @@ Activities::Application.configure do
 
   config.middleware.insert_before(::ActionDispatch::Static, ::Rack::Robotz, "User-Agent" => "*", "Disallow" => "/")
 
-  #config.middleware.use ExceptionNotifier,
-  #                      :email_prefix => "[Eurucamp-activities-staging::Exception] ",
-  #                      :sender_address => %{"Exception Notifier" <#{Settings.errors.from}>},
-  #                      :exception_recipients => Settings.errors.to
+  config.middleware.use ExceptionNotifier,
+                        :email_prefix => "[Eurucamp-activities-staging::Exception] ",
+                        :sender_address => %{"Exception Notifier" <#{Settings.errors.from}>},
+                        :exception_recipients => Settings.errors.to
 end

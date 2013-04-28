@@ -29,6 +29,7 @@ group :assets do
 end
 
 group :production, :staging do
-  # gem 'exception_notification', require: 'exception_notifier'
+  # git version for rails-4.x compatibility
+  gem 'exception_notification', require: 'exception_notifier', git: 'git://github.com/smartinez87/exception_notification.git'
   gem 'rack-robotz', '~> 0.0.3'
 end
