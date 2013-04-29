@@ -9,3 +9,8 @@
       %li
         %a(href="#" title="#{t("user_nav.logout.title")}")
           = t("user_nav.logout.label")
+
+  -# the logo, link home
+  %h1
+    = link_to "/" do
+      = image_tag "header/logo_small.png", :alt => "Eurucamp Activities"
