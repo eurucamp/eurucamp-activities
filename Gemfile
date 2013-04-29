@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 1.0.1'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'bourbon'
 gem 'neat'
+gem 'haml-rails'
 
 group :development do
   gem 'debugger',       '~> 1.5'

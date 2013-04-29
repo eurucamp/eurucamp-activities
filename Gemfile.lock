@@ -70,6 +70,13 @@ GEM
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
+    haml (4.0.2)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     heroku (2.39.2)
       heroku-api (~> 0.3.7)
       launchy (>= 0.3.2)
@@ -185,6 +192,7 @@ DEPENDENCIES
   debugger (~> 1.5)
   exception_notification!
   foreman
+  haml-rails
   heroku_san (~> 3.0.2)
   jbuilder (~> 1.0.1)
   jquery-rails
