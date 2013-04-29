@@ -1,2 +1,52 @@
 %clearfix
   +clearfix
+
+%smaller-text
+  font-size: 0.825em
+
+=ornamental-divider
+  content: "."
+  text-indent: -999em
+  display: block
+  margin: 0.5em auto 1.5em
+  width: 100%
+  height: 1px
+  border-bottom: 1px solid $light-gray
+
+  +media($mid-range)
+    width: 200px
+
+  +media($smartphone-portrait)
+    width: 280px
+
+%ornamental-divider-after
+  &:after
+    +ornamental-divider
+
+%ornamental-divider-before
+  &:before
+    +ornamental-divider
+
+%inline-nav-list
+  +unlisted
+
+  li
+    display: inline-block
+    @extend %smaller-text
+
+    &:after
+      content: "•"
+      color: $light-gray
+      padding: 0 1em
+
+    &:last-child:after
+      content: none
+
+    a
+      color: $light-gray
+      border: none
+      text-transform: uppercase
+      +custom-sans(bold)
+
+      &:hover
+        color: $blue
