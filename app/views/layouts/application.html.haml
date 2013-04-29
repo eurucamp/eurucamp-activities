@@ -1,10 +1,11 @@
 !!!
 - html_tag :class => "no-js" do
   %head
-    %title TITLE
+    %title= title("Eurucamp Activities")
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
+
   %body
     = render "partials/chrome_frame"
 
