@@ -1,0 +1,11 @@
+%header#header
+
+  -# user navigation, don't show unless logged-in
+  %nav.user-nav
+    %ul
+      %li
+        %a(href="#" title="#{t("user_nav.account.title")}")
+          = t("user_nav.account.label")
+      %li
+        %a(href="#" title="#{t("user_nav.logout.title")}")
+          = t("user_nav.logout.label")
