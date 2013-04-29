@@ -68,12 +68,12 @@ $.fn.extend
     render = (percentage) ->
       context.clearRect(0, 0, canvasSize, canvasSize)
       context.beginPath()
-      context.arc(canvasSize / 2,                        # origin x
-              canvasSize / 2,                            # origin y
-              canvasSize / 2 - settings.strokeWidth / 2, # radius
-              percentageToRadians(percentage),           # start angle
-              1.5 * Math.PI,                             # end angle
-              false)
+      context.arc(canvasSize / 2,                            # origin x
+                  canvasSize / 2,                            # origin y
+                  canvasSize / 2 - settings.strokeWidth / 2, # radius
+                  percentageToRadians(percentage),           # start angle
+                  1.5 * Math.PI,                             # end angle
+                  false)
       context.strokeStyle = color
       context.lineCap     = 'round'
       context.lineWidth   = settings.strokeWidth
