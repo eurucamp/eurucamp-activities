@@ -11,7 +11,9 @@
 
   %body(class=body_class)
     = render "partials/chrome_frame"
-
-    = yield
-
+    #container
+      = render "partials/header"
+      #main(role="main")
+        = yield
+      = render "partials/footer"
     = javascript_include_tag "application"
