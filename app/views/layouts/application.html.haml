@@ -3,7 +3,7 @@
   %head
     %title= title("Eurucamp Activities")
     = stylesheet_link_tag    "application"
-    = javascript_include_tag "application"
+    = javascript_include_tag "modernizr.min"
 
     = javascript_include_tag "//use.typekit.net/vor5lqb.js"
     :javascript
@@ -13,3 +13,5 @@
     = render "partials/chrome_frame"
 
     = yield
+
+    = javascript_include_tag "application"
