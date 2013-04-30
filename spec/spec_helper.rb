@@ -20,6 +20,31 @@ end
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+OmniAuth.config.test_mode = true
+
+OmniAuth.config.add_mock(:github, {
+    uid:      'xc8b12448990eaef0b420f7153ec8d58',
+    nickname: 'rockstar',
+    email:    'user@99cookies.com',
+    image:    'rockstar.jpg'
+})
+OmniAuth.config.add_mock(:twitter,  {
+    uid:      'xc8b12448990eaef0b420f7153ec8d58',
+    nickname: 'rockstar'
+})
+
+Devise.stretches   = 1
+Rails.logger.level = 4
+
+class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+
+  def self.connection
+    @@shared_connection || retrieve_connection
+  end
+end
+
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
