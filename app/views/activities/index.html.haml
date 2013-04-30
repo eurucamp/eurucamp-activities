@@ -1,1 +1,28 @@
+%form.filters(action=activities_path method="GET")
+  %label>
+    %span
+      %input(type="radio" name="filter" value="today")
+      Today
+    %strong
+      5
+  %label.selected>
+    %span
+      %input(type="radio" name="filter" value="all")
+      All
+    %strong
+      267
+  %label>
+    %span
+      %input(type="radio" name="filter" value="mine")
+      My activities
+    %strong
+      2
+  %label.by-me>
+    %span
+      %input(type="radio" name="filter" value="by_me")
+      Created by me
+    %strong
+      0
+  %button(type="submit") Filter
+
 Activities!
