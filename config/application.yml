@@ -1,4 +1,5 @@
 defaults: &defaults
+  host: "activities.eurucamp.org"
   mailers:
     from: "activities@eurucamp.org"
   errors:
@@ -9,12 +10,14 @@ defaults: &defaults
 
 development:
   <<: *defaults
+  host: "localhost:3000"
 
 test:
   <<: *defaults
 
 staging:
   <<: *defaults
+  host: "activities-staging.eurucamp.org"
 
 production:
   <<: *defaults

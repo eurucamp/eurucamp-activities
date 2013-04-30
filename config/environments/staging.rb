@@ -77,6 +77,8 @@ Activities::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.action_mailer.default_url_options = { :host => Settings.host }
+
   config.middleware.insert_before(::ActionDispatch::Static, ::Rack::Robotz, "User-Agent" => "*", "Disallow" => "/")
 
   config.middleware.use ExceptionNotifier,
