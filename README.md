@@ -2,6 +2,8 @@
 
 ## Development
 
+### Basic setup
+
 * `cp .env.sample .env`
 * `cp config/database.yml.sample config/database.yml`
 * update config files: `config/application.yml`, `.env` (see ENV variables listed below)
@@ -11,12 +13,12 @@
 
 ## Deployment
 
-How to deploy app?
+### How to deploy app?
 
 * `bundle exec rake staging deploy`
 * `bundle exec rake production deploy`
 
-**ENV** variables:
+### **ENV** variables:
 
 * `DISABLE_ROBOTS` - set to `true` if you want to block robots from tracking content (via `robots.txt`)
 * `GITHUB_KEY`
