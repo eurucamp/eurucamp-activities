@@ -18,6 +18,7 @@ gem 'jbuilder', '~> 1.0.1'
 gem 'bourbon'
 gem 'neat'
 gem 'haml-rails'
+gem 'rails_html_helpers', :git => 'https://github.com/polarblau/rails_html_helpers.git'
 
 group :development do
   gem 'debugger',       '~> 1.5'
