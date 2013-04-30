@@ -9,36 +9,23 @@ form.filters
     +custom-sans(medium)
     border: none
     display: block
-    overflow: hidden
-
-    span
-      padding: 0.75em
-      display: block
-      float: left
+    padding: 0.75em 1em
+    +transition(all 0.5s)
 
     strong
-      +custom-sans(bold)
-      display: block
+      +custom-sans(light)
       float: right
-      padding: 0.75em
+      margin: 0 0 0 0.75em
 
     &:hover
       color: $white
       background: $blue
       cursor: pointer
-
-    &.by-me
-      background: $yellow
-
-      &:hover
-        background: $blue
+      +transition(all 0.15s)
 
     &.selected
       color: $white
       background: $medium-gray
-
-      strong
-        background: $darker-gray
 
   input
     margin: 0 0.75em 0 0
@@ -51,6 +38,13 @@ form.filters
     margin: 1em auto
     padding: 0.45em 2em
     display: block
+    +transition(all 0.15s)
+
+    &:hover
+      +transition(all 0.15s)
+      color: $white
+      background: $blue
+
 
   button, input
     html.js &
@@ -58,8 +52,11 @@ form.filters
 
   +media($tablet-lite)
     label
-      float: left
+      display: inline-block
       margin-right: 1px
+
+      strong
+        float: none
 
       &:last-of-type
         border-radius: 0 3px 3px 0
