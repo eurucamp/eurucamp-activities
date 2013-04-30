@@ -1,5 +1,7 @@
 form.filters
   @extend %clearfix
+  border-radius: 3px
+  overflow: hidden
 
   label
     background: $light-gray
@@ -51,6 +53,9 @@ form.filters
       display: none
 
   +media($tablet-lite)
+    border-radius: none
+    overflow: auto
+
     label
       display: inline-block
       margin-right: 1px
