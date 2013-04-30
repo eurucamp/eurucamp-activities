@@ -24,4 +24,4 @@ module Activities
   end
 end
 
-require Rails.root + "app/models/settings"
+require Rails.root + "lib/settings"

@@ -27,6 +27,10 @@ group :development do
   gem 'binding_of_caller'
 end
 
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+end
+
 group :test do
   gem 'turn',       require: false
   gem 'simplecov',  require: false
