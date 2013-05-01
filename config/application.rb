@@ -21,7 +21,9 @@ module Activities
 
     # don't generate any assets
     config.generators.assets = false
+
+    config.assets.initialize_on_precompile = false
   end
 end
 
-require Rails.root + "app/models/settings"
+require Rails.root + "lib/settings"
