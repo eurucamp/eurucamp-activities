@@ -6,13 +6,6 @@ GIT
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
 
-GIT
-  remote: https://github.com/polarblau/rails_html_helpers.git
-  revision: c0a2ad5413cf74d2e128bb8650b789581470e1ec
-  specs:
-    rails_html_helpers (0.0.1)
-      railties (>= 3.2)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -135,6 +128,8 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0.beta1)
       sprockets-rails (~> 2.0.0.rc3)
+    rails_html_helpers (0.0.1)
+      railties (>= 3.2)
     railties (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
       activesupport (= 4.0.0.beta1)
@@ -208,7 +203,7 @@ DEPENDENCIES
   pg
   rack-robotz (~> 0.0.3)
   rails (= 4.0.0.beta1)
-  rails_html_helpers!
+  rails_html_helpers
   sass-rails (~> 4.0.0.beta1)
   settingslogic
   simplecov
