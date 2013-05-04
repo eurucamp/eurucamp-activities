@@ -15,12 +15,4 @@
 //= require turbolinks
 //= require jquery.easing.min
 //= require jquery.progress
-//= require_tree .
-
-$(function() {
-  $('#activities img.progress').each(function() {
-    setTimeout(function(img) {
-      $(img).progress();
-    }, Math.random() * 1000 + 500, this);
-  });
-});
+//= require initializers
