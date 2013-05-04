@@ -150,6 +150,10 @@ a#new-activity
             margin: 0 auto 0.75em
             background: transparent image-url("shared/buttons_big.png") no-repeat 0 0
 
+          &:hover
+            span
+              background-position: -96px 0
+
       &:hover
         cursor: pointer
         z-index: 2000
@@ -206,6 +210,10 @@ a#new-activity
 
             span
               background-position: 0 -96px * $xpos
+
+            &:hover
+              span
+                background-position: -96px -96px * $xpos
 
     img.progress
       width: 150px
