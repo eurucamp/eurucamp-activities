@@ -1,8 +1,12 @@
+#main
+  position: relative
+
 form.filters
   @extend %clearfix
   border-radius: 3px
   overflow: hidden
   float: left
+  padding: 0 0 4.5em 0
 
   label
     background: $light-gray
@@ -30,6 +34,33 @@ form.filters
     &.owner:before
       color: $yellow
 
+    &.search
+      background: none
+      position: absolute
+      top: 4em
+      left: 0
+      padding: 0
+      width: 100%
+
+      &:hover
+        background: none
+
+      a
+        position: absolute
+        right: 0
+        top: 1em
+      input
+        width: 100%
+        padding: 0.75em 15px 1em
+        margin: 0 0 2px 0
+        font-size: 1.25em
+        border: none
+        outline: none
+        +custom-sans(light)
+
+        &:focus
+          box-shadow: 0 0 7px transparentize($black, 0.9)
+
     strong
       +custom-sans(light)
       float: right
@@ -46,7 +77,8 @@ form.filters
       background: $medium-gray
 
   input
-    margin: 0 0.75em 0 0
+    &[type=radio]
+      margin: 0 0.75em 0 0
 
   button
     background: $medium-gray
@@ -63,7 +95,7 @@ form.filters
       color: $white
       background: $blue
 
-  button, input
+  button, input[type=radio]
     html.js &
       display: none
 

@@ -5,23 +5,40 @@ $ ->
     setTimeout showProgress, Math.random() * 1000 + 500, @
 
   # filters
-  $filters    = $('form.filters label')
+  $filters    = $('form.filters label:not(.search)')
+  $search     = $('form.filters label.search input')
   $activities = $('#activities li')
 
   $filters.attr('unselectable', 'on')
           .css('user-select', 'none')
           .on('selectstart', false)
 
+  filterActivities = ->
+    $activities.show()
+    # the filter tabs
+    values = $filters.filter('.selected')
+                     .find('input[type=radio]')
+                     .map(-> return $(@).val()).get()
+    unless 'all' in values
+      $activities.not(".#{values.join(',.')}").hide()
+    # use search input to filter further
+    if query = $search.val()
+      $activities
+        .filter(':visible')
+        .filter(-> !(new RegExp(query, 'i')).test $(@).find("h4").text())
+        .hide()
+
   $filters.on 'click', (e)->
     e.preventDefault()
     if !e.shiftKey || (e.shiftKey && $(@).find('input').val() == 'all')
       $filters.removeClass 'selected'
-
     $(@).addClass('selected')
+    filterActivities()
 
-    values = $filters.filter('.selected')
-                     .find('input[type=radio]')
-                     .map(-> return $(@).val()).get()
-    $activities.show()
-    unless 'all' in values
-      $activities.not(".#{values.join(',.')}").hide()
+  # search
+  # TODO: debounce
+  $search.on 'keyup', filterActivities
+
+  $search.next('a.clear').on 'click', (e)->
+    e.preventDefault()
+    $search.val('').trigger 'keyup'
