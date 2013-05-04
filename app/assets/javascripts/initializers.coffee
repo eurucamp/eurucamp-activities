@@ -8,10 +8,20 @@ $ ->
   $filters    = $('form.filters label')
   $activities = $('#activities li')
 
+  $filters.attr('unselectable', 'on')
+          .css('user-select', 'none')
+          .on('selectstart', false)
+
   $filters.on 'click', (e)->
     e.preventDefault()
-    $filters.removeClass 'selected'
-    $filter = $(@).addClass 'selected'
-    value   = $filter.find('input').prop('checked', true).val()
+    if !e.shiftKey || (e.shiftKey && $(@).find('input').val() == 'all')
+      $filters.removeClass 'selected'
+
+    $(@).addClass('selected')
+
+    values = $filters.filter('.selected')
+                     .find('input[type=radio]')
+                     .map(-> return $(@).val()).get()
     $activities.show()
-    $activities.not(".#{value}").hide() unless value is 'all'
+    unless 'all' in values
+      $activities.not(".#{values.join(',.')}").hide()
