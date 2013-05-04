@@ -65,7 +65,7 @@ a#new-activity
           padding: 0.25em 1.5em
           text-transform: uppercase
           border-radius: 3px
-          margin: 21em 0 0
+          margin: 19em 0 0
           opacity: 0
           +transition(all 0.35s ease-in-out)
           +custom-sans(medium)
@@ -88,6 +88,7 @@ a#new-activity
           margin: 0
           padding: 0 0.727272em
 
+          &:before,
           &:after
             content: "."
             text-indent: -999em
@@ -96,6 +97,9 @@ a#new-activity
             width: 20px
             height: 1px
             border-bottom: 1px solid $light-gray
+          &:before
+            width: 0
+            margin: 0 auto 0.5em
 
         p
           &.creator
@@ -127,7 +131,7 @@ a#new-activity
         position: absolute
         left: 0
         right: 0
-        top: 7em
+        top: 5em
         z-index: 1001
         +transform(scale(0.9))
         +transition(all 0.35s ease-in-out 0)
@@ -153,7 +157,7 @@ a#new-activity
         box-shadow: 0 0 30px transparentize($black, 0.9)
 
         span.icon
-          opacity: 0.25
+          opacity: 0
           +transition(opacity 0.25s)
 
         a.details
@@ -164,13 +168,17 @@ a#new-activity
         .wrapper
           +transition(all 0.15s ease-out)
           +transform(translate(0, -9em))
-          opacity: 0.15
+          opacity: 0
 
         .labels
           h4
             +transition(all 0.15s ease-out)
-            +transform(translate(0, 4em))
-            opacity: 0.25
+            +transform(translate(0, 2.5em))
+
+            &:before
+              width: 50%
+            &:after
+              width: 0
 
           p
             +transition(opacity 0.1s)
