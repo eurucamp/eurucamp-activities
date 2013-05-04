@@ -4,7 +4,7 @@
     Today
     %strong
       5
-  %label.selected>
+  %label.all.selected>
     %input(type="radio" name="filter" value="all")
       All
     %strong
@@ -19,6 +19,9 @@
     Created by me
     %strong
       0
+  %label.search
+    %input(type="text" name="search" placeholder="Search for an activity")
+    %a.clear(href="#" title="Reset") Clear
   %button(type="submit") Filter
 
 %a#new-activity(href="#" title="Create a new activity")
@@ -54,7 +57,7 @@
           - when "participant"
             %a(href="#" title="Cancel your participation")
               %span
-              Don’t participate
+              Don’t participate?
           - else
             %a(href="#" title="Sign-up as participant")
               %span
