@@ -1,28 +1,66 @@
 %form.filters(action=activities_path method="GET")
   %label>
-    %span
-      %input(type="radio" name="filter" value="today")
-      Today
+    %input(type="radio" name="filter" value="today")
+    Today
     %strong
       5
   %label.selected>
-    %span
-      %input(type="radio" name="filter" value="all")
+    %input(type="radio" name="filter" value="all")
       All
     %strong
       267
-  %label>
-    %span
-      %input(type="radio" name="filter" value="mine")
-      My activities
+  %label.participant>
+    %input(type="radio" name="filter" value="mine")
+    My activities
     %strong
       2
-  %label.by-me>
-    %span
-      %input(type="radio" name="filter" value="by_me")
-      Created by me
+  %label.owner>
+    %input(type="radio" name="filter" value="by_me")
+    Created by me
     %strong
       0
   %button(type="submit") Filter
 
-Activities!
+%a#new-activity(href="#" title="Create a new activity")
+  Create an activity
+  %span
+
+%ul#activities
+  -# just render a collection and move
+  -# card into partial
+  - date_type = %w(upcoming today archive).sample
+  - 8.times do |i|
+    - type = rand > 0.6 ? %w(owner participant).sample : 'default'
+
+    %li(id="activity-#{i}" class="#{ type unless type == 'default' } #{date_type}")
+      .container
+
+        = image_tag "dummies/activity.jpg", :alt => "Activity title", :class => "progress", :data => { :progress => rand(100) }
+
+        .labels
+          %h4
+            = ["Title", "A medium title", "A rather long title, just to see how it looks"].sample
+          %p.creator
+            = ["Alex Coles", "Piotr Gega", "Florian Plank"].sample
+          %p.time
+            = ["Monday, 12.8 / 16:30 – 18:00", "Anytime"].sample
+
+        .action
+          - case type
+          - when "owner"
+            %a(href="#" title="Edit the activity details")
+              %span
+              Edit
+          - when "participant"
+            %a(href="#" title="Cancel your participation")
+              %span
+              Don’t participate
+          - else
+            %a(href="#" title="Sign-up as participant")
+              %span
+              Join
+
+        %a.details(href="#" title="Learn more about this activity")
+          %span More Info
+        - unless type == 'default'
+          %span.icon

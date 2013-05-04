@@ -4,6 +4,28 @@
 %smaller-text
   font-size: 0.825em
 
+%small-text
+  font-size: 0.75em
+
+%button
+  background: image-url("shared/buttons_small.png") no-repeat 0 0
+  width: 40px
+  height: 40px
+
+  &:hover
+    background-position: -40px 0
+
+$button-types: ok, add, remove, edit
+$ypos        : 0
+@each $type in $button-types
+  %button-#{$type}
+    @extend %button
+    background-position: 0 -40px * $ypos
+
+    &:hover
+      background-position: -40px -40px * $ypos
+  $ypos: $ypos + 1
+
 =ornamental-divider
   content: "."
   text-indent: -999em

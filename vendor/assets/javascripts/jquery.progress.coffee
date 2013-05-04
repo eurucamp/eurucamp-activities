@@ -20,8 +20,6 @@ $.fn.extend
 
     settings   = $.extend settings, options
     # we don't want to pass these around with every call to .render
-    context    = null
-    canvasSize = 0
     color      = settings.strokeColor
 
     init = ->
@@ -38,7 +36,7 @@ $.fn.extend
       # wrap image
       $wrapper   = $('<div/>', class: 'wrapper').css
         position: 'relative'
-        padding : settings.strokeWidth
+        # padding : settings.strokeWidth
       $el.wrap($wrapper)
 
       # generate canvas
@@ -59,13 +57,14 @@ $.fn.extend
         duration  : settings.duration
         queue     : false
         easing    : settings.easing
-        step      : render
+        step      : (percentage) -> render(percentage, context)
       })
 
     percentageToRadians = (percentage) ->
       (1.5 - (percentage * 2 / 100)) * Math.PI
 
-    render = (percentage) ->
+    render = (percentage, context) ->
+      canvasSize = context.canvas.width
       context.clearRect(0, 0, canvasSize, canvasSize)
       context.beginPath()
       context.arc(canvasSize / 2,                            # origin x
@@ -81,4 +80,4 @@ $.fn.extend
 
     @each ->
       # ensure that the image is really loaded
-      $(@).load init
+      if @complete then init.call(@) else $(@).load(=> init.call(@))
