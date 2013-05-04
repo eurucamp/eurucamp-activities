@@ -78,120 +78,121 @@ a#new-activity
       position: relative
       overflow: hidden
 
+    .labels
+      margin: 1.5em 0 0 0
+      color: $extra-dark-gray
+
+      h4
+        +custom-sans(light)
+        font-size: 1.375em
+        margin: 0
+        padding: 0 0.727272em
+
+        &:before,
+        &:after
+          content: "."
+          text-indent: -999em
+          display: block
+          margin: 0.2em auto
+          width: 20px
+          height: 1px
+          border-bottom: 1px solid $light-gray
+        &:before
+          width: 0
+          margin: 0 auto
+
+      p
+        &.creator
+          text-transform: uppercase
+          +custom-sans(medium)
+          @extend %smaller-text
+          margin: 0.5em 0
+
+        &.time
+          position: absolute
+          right: 1em
+          bottom: 0
+          left: 1em
+          +custom-serif(bold)
+          border-top: 1px solid $light-gray
+          padding: 0.75em 0 0
+
+    .wrapper,
+    .labels h4
+      +transition(all 0.15s ease-out)
+
+    .labels p
+      opacity: 1
+      +transition(opacity 0.1s)
+
+    // the big button appearing on hover
+    .action
+      opacity: 0
+      position: absolute
+      left: 0
+      right: 0
+      top: 5em
+      z-index: 1001
+      +transform(scale(0.9))
+      +transition(all 0.35s ease-in-out 0)
+
+      a
+        +custom-sans(bold)
+        @extend %smaller-text
+        text-transform: uppercase
+        color: $green
+        display: inline-block
+
+        span
+          display: block
+          width: 96px
+          height: 96px
+          margin: 0 auto 0.75em
+          background: transparent image-url("shared/buttons_big.png") no-repeat 0 0
+
+        &:hover
+          span
+            background-position: -96px 0
+
+    &:hover
+      cursor: pointer
+      z-index: 2000
+      +transition(box-shadow 0.25s ease-in-out)
+      box-shadow: 0 0 30px transparentize($black, 0.9)
+
+      span.icon
+        opacity: 0
+        +transition(opacity 0.25s)
+
+      a.details
+        span
+          opacity: 1
+          +transition(all 0.25s ease-in-out)
+
+      .wrapper
+        +transition(all 0.15s ease-out)
+        +transform(translate(0, -9em))
+        opacity: 0
+
       .labels
-        margin: 1.5em 0 0 0
-        color: $extra-dark-gray
-
         h4
-          +custom-sans(light)
-          font-size: 1.375em
-          margin: 0
-          padding: 0 0.727272em
+          +transition(all 0.15s ease-out)
+          +transform(translate(0, 2.5em))
 
-          &:before,
-          &:after
-            content: "."
-            text-indent: -999em
-            display: block
-            margin: 0.2em auto
-            width: 20px
-            height: 1px
-            border-bottom: 1px solid $light-gray
           &:before
-            width: 0
+            width: 50%
             margin: 0 auto 0.5em
+          &:after
+            width: 0
 
         p
-          &.creator
-            text-transform: uppercase
-            +custom-sans(medium)
-            @extend %smaller-text
-            margin: 0.5em 0
+          +transition(opacity 0.1s)
+          opacity: 0
 
-          &.time
-            position: absolute
-            right: 1em
-            bottom: 0
-            left: 1em
-            +custom-serif(bold)
-            border-top: 1px solid $light-gray
-            padding: 0.75em 0 0
-
-      .wrapper,
-      .labels h4
-        +transition(all 0.15s ease-out)
-
-      .labels p
-        opacity: 1
-        +transition(opacity 0.1s)
-
-      // the big button appearing on hover
       .action
-        opacity: 0
-        position: absolute
-        left: 0
-        right: 0
-        top: 5em
-        z-index: 1001
-        +transform(scale(0.9))
-        +transition(all 0.35s ease-in-out 0)
-
-        a
-          +custom-sans(bold)
-          @extend %smaller-text
-          text-transform: uppercase
-          color: $green
-          display: inline-block
-
-          span
-            display: block
-            width: 96px
-            height: 96px
-            margin: 0 auto 0.75em
-            background: transparent image-url("shared/buttons_big.png") no-repeat 0 0
-
-          &:hover
-            span
-              background-position: -96px 0
-
-      &:hover
-        cursor: pointer
-        z-index: 2000
-        +transition(box-shadow 0.25s ease-in-out)
-        box-shadow: 0 0 30px transparentize($black, 0.9)
-
-        span.icon
-          opacity: 0
-          +transition(opacity 0.25s)
-
-        a.details
-          span
-            opacity: 1
-            +transition(all 0.25s ease-in-out)
-
-        .wrapper
-          +transition(all 0.15s ease-out)
-          +transform(translate(0, -9em))
-          opacity: 0
-
-        .labels
-          h4
-            +transition(all 0.15s ease-out)
-            +transform(translate(0, 2.5em))
-
-            &:before
-              width: 50%
-            &:after
-              width: 0
-
-          p
-            +transition(opacity 0.1s)
-            opacity: 0
-
-        .action
-          opacity: 1
-          +transform(scale(1))
-          +transition(all 0.15s ease-out 0.15s)
+        opacity: 1
+        +transform(scale(1))
+        +transition(all 0.15s ease-out 0.15s)
 
     // variations
     $types: participant $red ok, owner $yellow edit
