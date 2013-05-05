@@ -12,16 +12,7 @@ a#new-activity
   height: 40px
   vertical-align: top
   +custom-sans(bold)
-
-  span
-    display: inline-block
-    @extend %button
-    @extend %button-add
-    margin: 0 0 0 15px
-
-  &:hover
-    span
-      background-position: -40px -40px
+  @extend %icon-button-add
 
 #activities
   clear: both
@@ -37,7 +28,6 @@ a#new-activity
     +transition(box-shadow 0.25s ease-in-out)
 
     span.icon
-      //@extend %button
       position: absolute
       top: 15px
       right: 15px
@@ -203,7 +193,7 @@ a#new-activity
 
       &.#{nth($type, 1)}
         span.icon
-          @extend %button-#{nth($type, 3)}
+          @extend %icon-#{nth($type, 3)}
 
         .action
           a
