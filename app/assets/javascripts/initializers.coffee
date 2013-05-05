@@ -25,15 +25,19 @@ $ ->
     if query = $search.val()
       $activities
         .filter(':visible')
-        .filter(-> !(new RegExp(query, 'i')).test $(@).find("h4").text())
+        .filter(-> !(new RegExp(query, 'i')).test $(@).find('h4').text())
         .hide()
 
   $filters.on 'click', (e)->
     e.preventDefault()
-    if !e.shiftKey || (e.shiftKey && $(@).find('input').val() == 'all')
-      $filters.removeClass 'selected'
-    $(@).addClass('selected')
-    filterActivities()
+    $filter = $(@)
+    if $filter.hasClass('selected')
+      $filters.filter('.all').trigger('click')
+    else
+      if !e.shiftKey || (e.shiftKey && $filter.find('input').val() == 'all')
+        $filters.removeClass 'selected'
+      $filter.addClass('selected')
+      filterActivities()
 
   # search
   # TODO: debounce
