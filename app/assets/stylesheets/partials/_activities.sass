@@ -1,17 +1,7 @@
 @import "activities/filters"
 
 a#new-activity
-  // TODO: extract into button label placeholder
-  color: $green
-  text-transform: uppercase
-  @extend %smaller-text
-  line-height: 40px
   float: right
-  border: none
-  display: inline-block
-  height: 40px
-  vertical-align: top
-  +custom-sans(bold)
   @extend %icon-button-add
 
 #activities
@@ -25,7 +15,6 @@ a#new-activity
     +span-columns(2)
     margin: 0 0 1em 0
     text-align: center
-    +transition(box-shadow 0.25s ease-in-out)
 
     span.icon
       position: absolute
@@ -67,6 +56,7 @@ a#new-activity
       margin: 0 1px
       position: relative
       overflow: hidden
+      +transition(box-shadow 0.25s ease-in-out)
 
     .labels
       margin: 1.5em 0 0 0
@@ -146,9 +136,11 @@ a#new-activity
 
     &:hover
       cursor: pointer
-      z-index: 2000
-      +transition(box-shadow 0.25s ease-in-out)
-      box-shadow: 0 0 30px transparentize($black, 0.9)
+
+      .container
+        z-index: 9001
+        +transition(box-shadow 0.25s ease-in-out)
+        box-shadow: 0 0 20px transparentize($black, 0.9)
 
       span.icon
         opacity: 0

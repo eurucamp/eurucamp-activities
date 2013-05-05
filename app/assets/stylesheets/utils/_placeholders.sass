@@ -7,10 +7,20 @@
 %small-text
   font-size: 0.75em
 
-$icon-types: ok, add, remove, edit
+$icon-types: ok $green, add $green, remove $red, edit $yellow
 $ypos      : 0
 @each $type in $icon-types
-  %icon-button-#{$type}
+  %icon-button-#{nth($type, 1)}
+    color: nth($type, 2)
+    @extend %smaller-text
+    line-height: 40px
+    text-transform: uppercase
+    border: none
+    display: inline-block
+    height: 40px
+    vertical-align: top
+    +custom-sans(bold)
+
     span
       width: 40px
       height: 40px
@@ -23,7 +33,7 @@ $ypos      : 0
       span
         background-position: -40px -40px * $ypos
 
-  %icon-#{$type}
+  %icon-#{nth($type, 1)}
     width: 40px
     height: 40px
     display: inline-block
