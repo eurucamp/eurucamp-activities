@@ -38,6 +38,7 @@ group :test do
   gem 'simplecov',        require: false
   gem 'capybara',         '~> 2.1'
   gem 'capybara-webkit',  '~> 0.14'
+  gem 'accept_values_for'
 end
 
 group :assets do
