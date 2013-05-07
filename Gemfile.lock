@@ -1,15 +1,4 @@
 GIT
-  remote: git://github.com/plataformatec/devise.git
-  revision: c6189696772925ae0c608fdd8d535f735e8e114e
-  branch: rails4
-  specs:
-    devise (2.2.3)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (~> 4.0.0.beta)
-      warden (~> 1.2.1)
-
-GIT
   remote: git://github.com/smartinez87/exception_notification.git
   revision: 11d61df3cb435381929757b8d7e47209b5ab2b14
   specs:
@@ -82,6 +71,11 @@ GEM
       debugger-ruby_core_source (~> 1.2.0)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.0)
+    devise (3.0.0.rc)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      warden (~> 1.2.1)
     diff-lcs (1.2.4)
     dotenv (0.7.0)
     erubis (2.7.0)
@@ -262,7 +256,7 @@ DEPENDENCIES
   capybara-webkit (~> 0.14)
   coffee-rails (~> 4.0.0.beta1)
   debugger (~> 1.5)
-  devise!
+  devise (= 3.0.0.rc)
   exception_notification!
   factory_girl_rails (~> 4.2)
   foreman
