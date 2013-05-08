@@ -10,7 +10,7 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  host: "localhost:3000"
+  host: "activities.dev:3000"
 
 test:
   <<: *defaults
