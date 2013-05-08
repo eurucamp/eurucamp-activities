@@ -2,7 +2,7 @@ class AuthenticationsController < ApplicationController
   skip_before_filter :authenticate
 
   rescue_from ActionController::RedirectBackError do |exception|
-    redirect_to profile_url
+    redirect_to edit_user_registration_path
   end
 
   def create
