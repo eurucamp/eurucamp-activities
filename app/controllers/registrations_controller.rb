@@ -8,15 +8,17 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
   def build_resource(*args)
-    super
-    if session[:omniauth]
-      @user.apply_omniauth(session[:omniauth])
-      @user.valid?
+    super.tap do |user|
+      if user && session[:omniauth]
+        user.apply_omniauth(session[:omniauth])
+        user.valid?
+      end
     end
   end
 
   def resource_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+
 
 end

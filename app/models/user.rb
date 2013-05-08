@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications
 
-  validates :name, presence: true
+  #validates :name, presence: true
   validates :email, presence: true
 
   # TODO: extract to module and then to a gem / engine
