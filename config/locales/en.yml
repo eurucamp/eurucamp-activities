@@ -6,6 +6,9 @@ en:
     logout:
       label: Logout
       title: Leave now
+    register:
+      label: Register
+      title: Register new account
 
 
   footer_nav:
