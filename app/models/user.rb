@@ -36,11 +36,11 @@ class User < ActiveRecord::Base
   end
 
   def connected_with_twitter?
-    authentications.where(provider: 'twitter').first
+    authentications.where(provider: 'twitter').any?
   end
 
   def connected_with_github?
-    authentications.where(provider: 'github').first
+    authentications.where(provider: 'github').any?
   end
 
 end
