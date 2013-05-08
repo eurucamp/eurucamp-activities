@@ -4,12 +4,14 @@
 
 ### Basic setup
 
+* `echo 'activities.dev localhost' > /etc/hosts`
 * `cp .env.sample .env`
 * `cp config/database.yml.sample config/database.yml`
 * update config files: `config/application.yml`, `.env` (see ENV variables listed below)
 * run migration scripts
 * `bundle exec foreman start`
 * `tail -f log/development.log`
+* `open http://activities.dev:3000`
 
 ## Deployment
 
