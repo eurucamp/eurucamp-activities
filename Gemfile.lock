@@ -274,7 +274,6 @@ DEPENDENCIES
   jquery-rails
   neat
   newrelic_rpm
-  omniauth
   omniauth-github
   omniauth-twitter
   pg
