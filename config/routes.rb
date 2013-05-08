@@ -1,4 +1,5 @@
 Activities::Application.routes.draw do
+  resources  :authentications
   get '/auth/:provider/callback' => 'authentications#create'
 
   devise_for :users, controllers: {
