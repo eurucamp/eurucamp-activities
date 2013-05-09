@@ -1,0 +1,19 @@
+.auth
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    = f.error_notification
+    .inputs
+      = f.input :email, required: true, autofocus: true
+      = f.input :password, required: true
+    .actions
+      = f.button :submit, "Sign in", class: 'btn btn-success'
+
+  = link_to "Sign in with Github", "/auth/github", class: "btn-auth btn-github  large"
+  = link_to "Sign in with Twitter", "/auth/twitter", class: "btn-auth btn-twitter  large"
+
+%p.hint
+  You can also
+  = link_to 'sign up', new_registration_path(:user)
+  if you don't have account yet,
+  = link_to 'reset lost password', new_password_path(:user)
+
+
