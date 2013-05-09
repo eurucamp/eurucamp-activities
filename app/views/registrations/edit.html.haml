@@ -5,6 +5,9 @@
     = f.error_notification
     = devise_error_messages!
 
+    .avatar
+      = image_tag(avatar_url(@user, 64))
+
     .inputs
       = f.input :name, :hint => "Your name or nick"
       = f.input :email
@@ -13,6 +16,16 @@
         = f.input :password, :required => true
         = f.input :password_confirmation, :required => true
         = f.input :current_password, :required => true
+
+      - if @user.connected_with_github?
+        = github_link(@user)
+      - else
+        = link_to "connect with Github", "/auth/github", class: "btn-auth btn-github"
+
+      - if @user.connected_with_twitter?
+        = twitter_link(@user)
+      - else
+        = link_to "connect with Twitter", "/auth/twitter", class: "btn-auth btn-github"
 
     .actions
       = f.button :submit, class: 'btn btn-info'
