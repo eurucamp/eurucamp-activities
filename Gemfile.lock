@@ -276,8 +276,9 @@ DEPENDENCIES
   jquery-rails
   neat
   newrelic_rpm
-  omniauth-github
-  omniauth-twitter
+  omniauth (~> 1.1.4)
+  omniauth-github (~> 1.1.0)
+  omniauth-twitter (~> 0.0.16)
   pg
   rack-robotz (~> 0.0.3)
   rails (= 4.0.0.rc1)
