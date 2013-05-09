@@ -11,6 +11,8 @@
     %nav.user-nav
       %ul
         %li
+          = link_to t("user_nav.login.label"), new_user_session_path, title: t("user_nav.login.title")
+        %li
           = link_to t("user_nav.register.label"), new_user_registration_path, title: t("user_nav.register.title")
 
   -# the logo, link home

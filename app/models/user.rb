@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     (authentications.empty? || password.present?) && super
   end
 
+  def oauth_only?
+    encrypted_password.blank? && any_oauth?
+  end
+
   def connected_with_twitter?
     authentications.where(provider: 'twitter').any?
   end
@@ -42,5 +46,11 @@ class User < ActiveRecord::Base
   def connected_with_github?
     authentications.where(provider: 'github').any?
   end
+
+  private
+
+    def any_oauth?
+      connected_with_github? || connected_with_twitter?
+    end
 
 end

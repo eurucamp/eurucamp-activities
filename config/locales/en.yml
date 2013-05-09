@@ -3,6 +3,9 @@ en:
     account:
       label: My Account
       title: Edit your account details
+    login:
+      label: Login
+      title: Login into app!
     logout:
       label: Logout
       title: Leave now
