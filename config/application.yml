@@ -1,4 +1,6 @@
 defaults: &defaults
+  event:
+    name: "Eurucamp 2013"
   host: "activities.eurucamp.org"
   mailers:
     from: "activities@eurucamp.org"
