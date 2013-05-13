@@ -32,7 +32,7 @@ describe Activity do
 
     it { should     accept_values_for(:description, nil, "", "Wear some solid boots!")}
 
-    it { should     accept_values_for(:place, "football itch" ) }
+    it { should     accept_values_for(:place, "football pitch" ) }
     it { should_not accept_values_for(:place, "", nil) }
 
     it { should     accept_values_for(:start_at, Time.now) }
