@@ -1,0 +1,1 @@
+EVENT = Event.new(Settings.event.name)
