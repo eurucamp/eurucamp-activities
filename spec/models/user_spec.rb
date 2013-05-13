@@ -16,12 +16,4 @@ describe User do
 
   end
 
-  describe "methods" do
-
-    subject { FactoryGirl.create(:user) }
-
-    it { should respond_to :activities }
-
-  end
-
 end
