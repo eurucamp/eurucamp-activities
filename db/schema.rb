@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130508093327) do
+ActiveRecord::Schema.define(version: 20130513115254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: true do |t|
+    t.string   "name",                  default: "", null: false
+    t.text     "description"
+    t.string   "place"
+    t.datetime "start_at",                           null: false
+    t.integer  "time_frame"
+    t.integer  "limit_of_participants"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "activities", ["name"], name: "index_activities_on_name", unique: true, using: :btree
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
