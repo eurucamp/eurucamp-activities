@@ -2,6 +2,8 @@ class ActivitiesController < ApplicationController
   respond_to :json, :html, :only => :index
   respond_to :json
 
+  skip_before_filter :authenticate_user!, :only => :index
+
   def index
     @activities = current_event.activities.decorate
     respond_with(@activities)
@@ -16,6 +18,12 @@ class ActivitiesController < ApplicationController
   def update
     @activity = current_event.activity(params[:id])
     @activity.update_attributes(sanitized_params)
+    respond_with(@activity)
+  end
+
+  def destroy
+    @activity = current_event.activity(params[:id])
+    @activity.destroy if @activity && @activity.creator == current_user #TODO
     respond_with(@activity)
   end
 
