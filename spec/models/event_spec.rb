@@ -9,9 +9,10 @@ describe Event do
   end
 
   describe "#new_activity" do
+    let(:user) { mock_model(User) }
     let(:new_activity) { OpenStruct.new }
     let(:args) { {} }
-    subject { event.new_activity(args) }
+    subject { event.new_activity(user, args) }
 
     before do
       event.activity_source = ->(x){ new_activity }
