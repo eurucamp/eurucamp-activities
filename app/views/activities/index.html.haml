@@ -31,22 +31,21 @@
 %ul#activities
   -# just render a collection and move
   -# card into partial
-  - date_type = %w(upcoming today archive).sample
-  - @activities.each_with_index do |activity, i|
-    - type = rand > 0.6 ? %w(owner participant).sample : 'default'
+  - @activities.each do |activity|
+    - type = activity.relation_ship_with(current_user)
 
-    %li(id="activity-#{i}" class="#{ type unless type == 'default' } #{date_type}")
+    %li(id="activity-#{activity.id}" class="#{type} #{activity.status}")
       .container
 
-        = image_tag "dummies/activity.jpg", :alt => "Activity title", :class => "progress", :data => { :progress => rand(100) }
+        = image_tag "dummies/activity.jpg", alt: activity.name, class: "progress", data: { progress: activity.full_by }
 
         .labels
           %h4
-            = ["Title", "A medium title", "A rather long title, just to see how it looks"].sample
+            = activity.name
           %p.creator
-            = ["Alex Coles", "Piotr Gega", "Florian Plank"].sample
+            = activity.creator_name
           %p.time
-            = ["Monday, 12.8 / 16:30 – 18:00", "Anytime"].sample
+            = activity.time.html_safe
 
         .action
           - case type

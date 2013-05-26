@@ -81,6 +81,10 @@ GEM
       warden (~> 1.2.1)
     diff-lcs (1.2.4)
     dotenv (0.7.0)
+    draper (1.2.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0.3)
     erubis (2.7.0)
     excon (0.20.1)
     execjs (1.4.0)
@@ -194,6 +198,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     raindrops (0.11.0)
     rake (10.0.4)
+    request_store (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.13.0)
@@ -270,6 +275,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0.beta1)
   debugger (~> 1.5)
   devise (~> 3.0.0.rc)
+  draper
   exception_notification!
   factory_girl_rails (~> 4.2)
   foreman

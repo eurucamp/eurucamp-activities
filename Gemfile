@@ -20,6 +20,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'haml-rails'
 gem 'rails_html_helpers'
+gem 'draper'
 
 group :development do
   gem 'debugger',         '~> 1.5'
