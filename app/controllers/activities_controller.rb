@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   respond_to :json, :only => [:create]
 
   def index
-    @activities = current_event.activities
+    @activities = current_event.activities.decorate
     respond_with(@activities)
   end
 
