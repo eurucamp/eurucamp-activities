@@ -3,6 +3,8 @@ class Activity < ActiveRecord::Base
 
   attr_accessor :event
 
+  belongs_to :creator, class_name: "User"
+
   validates :start_at, presence: true, allow_blank: false
   validates :name, presence: true, allow_blank: false, uniqueness: true
   validates :place, presence: true, allow_blank: false

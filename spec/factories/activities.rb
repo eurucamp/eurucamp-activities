@@ -6,5 +6,6 @@ FactoryGirl.define do
     start_at "2013/12/12"
     place "Ballroom"
     time_frame 4*60
+    creator { FactoryGirl.create(:user) }
   end
 end
