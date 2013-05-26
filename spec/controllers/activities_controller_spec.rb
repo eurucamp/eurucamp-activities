@@ -11,9 +11,10 @@ describe ActivitiesController do
   describe "#create" do
     context "format :json" do
       subject { post :create, params.merge({format: :json}) }
+      let(:user) { FactoryGirl.create(:user) }
 
       before do
-        sign_in(FactoryGirl.create(:user))
+        sign_in(user)
       end
 
       context "valid parameters" do

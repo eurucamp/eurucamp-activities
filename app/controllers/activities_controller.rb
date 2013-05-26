@@ -9,8 +9,7 @@ class ActivitiesController < ApplicationController
 
   def create
     sanitized_params = params.require(:activity).permit(:start_at, :name, :place, :limit_of_participants, :time_frame)
-    @activity = current_event.new_activity(sanitized_params)
-    @activity.creator = current_user
+    @activity = current_event.new_activity(current_user, sanitized_params)
     @activity.save
     respond_with(@activity)
   end
