@@ -14,6 +14,10 @@ class Event
     end
   end
 
+  def activity(activity_id)
+    activities.where(:id => activity_id).first
+  end
+
   def activities
     fetch
   end
