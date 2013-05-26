@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Activity do
 
   let(:event) { mock(:event) }
+  let(:creator) { User.new }
   subject(:activity) { Activity.new }
 
   describe "#creator" do
