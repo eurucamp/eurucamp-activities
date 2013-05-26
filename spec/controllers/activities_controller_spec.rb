@@ -51,6 +51,17 @@ describe ActivitiesController do
     end
   end
 
-  describe "#destroy"
+  describe "#destroy" do
+    context "format :json" do
+      subject { delete :destroy, {id: activity.id, format: :json} }
+      let!(:activity) { FactoryGirl.create(:activity, creator: user) }
+
+      before do
+        sign_in(user)
+      end
+
+      its(:status) { should == 204 }
+    end
+  end
 
 end
