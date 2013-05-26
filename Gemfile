@@ -39,6 +39,7 @@ group :test do
   gem 'capybara',         '~> 2.1'
   gem 'capybara-webkit',  '~> 0.14'
   gem 'accept_values_for'
+  gem 'json_spec'
 end
 
 group :assets do
