@@ -5,6 +5,14 @@ describe Activity do
   let(:event) { mock(:event) }
   subject(:activity) { Activity.new }
 
+  describe "#creator" do
+    before do
+      activity.creator = creator
+    end
+
+    its(:creator) { should == creator }
+  end
+
   describe "#event" do
     before do
       activity.event = event
