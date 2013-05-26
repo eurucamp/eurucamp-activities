@@ -32,7 +32,7 @@
   -# just render a collection and move
   -# card into partial
   - date_type = %w(upcoming today archive).sample
-  - 8.times do |i|
+  - @activities.each_with_index do |activity, i|
     - type = rand > 0.6 ? %w(owner participant).sample : 'default'
 
     %li(id="activity-#{i}" class="#{ type unless type == 'default' } #{date_type}")
