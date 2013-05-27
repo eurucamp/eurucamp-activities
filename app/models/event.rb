@@ -7,10 +7,15 @@ class Event
     @fetcher = fetcher
   end
 
-  def new_activity(*args)
+  def new_activity(author, *args)
     activity_source.call(*args).tap do |activity|
       activity.event = self
+      activity.creator = author
     end
+  end
+
+  def activity(activity_id)
+    activities.where(:id => activity_id).first
   end
 
   def activities

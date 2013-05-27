@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-  skip_before_filter :authenticate, only: :create
+  skip_before_filter :authenticate_user!, only: create
 
   def create
     super
