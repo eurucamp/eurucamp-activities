@@ -24,7 +24,7 @@ class ActivityDecorator < Draper::Decorator
   def time
     # Case for "Anytime" needed
     object.start_at.strftime("%A, %-d.%-m / %k:%M &ndash; ") +
-      (object.start_at + object.time_frame.minutes).strftime("%k:%M").html_safe
+      (object.start_at + object.time_frame.minutes).strftime("%k:%M")
   end
 
 end
