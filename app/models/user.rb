@@ -15,8 +15,10 @@ class User < ActiveRecord::Base
   # TODO: extract to module and then to a gem / engine
   def apply_omniauth(omniauth)
     provider, uid, info = omniauth.values_at('provider', 'uid', 'info')
-    self.email = info['email'] if email.blank?
-    self.name  = info['name']  if name.blank?
+    unless info.blank?
+      self.email = info['email'] if email.blank?
+      self.name  = info['name']  if name.blank?
+    end
 
     apply_provider_handle(omniauth)
     authentications.build(provider: provider, uid: uid)
