@@ -21,10 +21,6 @@ class ActivityDecorator < Draper::Decorator
     end
   end
 
-  def full_by
-    rand(100)
-  end
-
   def time
     # Case for "Anytime" needed
     object.start_at.strftime("%A, %-d.%-m / %k:%M &ndash; ") +
