@@ -1,5 +1,5 @@
 class AuthenticationsController < ApplicationController
-  skip_before_filter :authenticate
+  skip_before_filter :authenticate_user!
 
   rescue_from ActionController::RedirectBackError do |exception|
     redirect_to edit_user_registration_path
