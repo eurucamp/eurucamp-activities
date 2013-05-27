@@ -15,7 +15,7 @@ describe AuthenticationsController do
 
     context "no authentication" do
       let(:omniauth_data) { { provider: 'none',  uuid: 'none', info: { email: 'test@john.com', name: 'test'} } }
-      it { should redirect_to "/" }
+      it { should redirect_to new_user_registration_url }
     end
 
     context "no authentication or incorrect details" do
@@ -56,7 +56,7 @@ describe AuthenticationsController do
     it { should redirect_to authentications_path }
 
     specify do
-      expect { logout_action }.to change(Authentication.count).by(-1)
+      expect { logout_action }.to change(Authentication, :count).by(-1)
     end
   end
 
