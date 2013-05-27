@@ -4,6 +4,8 @@ class Activity < ActiveRecord::Base
   attr_accessor :event
 
   belongs_to :creator, class_name: "User"
+  has_many :participations, :dependent => :destroy
+  has_many :participants, through: :participations, class_name: "User"
 
   validates :start_at, presence: true, allow_blank: false
   validates :name, presence: true, allow_blank: false, uniqueness: true
@@ -13,6 +15,10 @@ class Activity < ActiveRecord::Base
 
   def self.recent(limit = DEFAULT_LIMIT)
     where("start_at >= :t", t: 1.month.ago).limit(limit)
+  end
+
+  def full_by
+    participations_count.to_f / limit_of_participants.to_f * 100
   end
 
 end
