@@ -18,7 +18,7 @@ class Activity < ActiveRecord::Base
   end
 
   def full_by
-    participations_count.to_f / limit_of_participants.to_f * 100
+    limit_of_participants.nil? ? 0 : [100.0 * participations_count / limit_of_participants.to_f, 100.0].min
   end
 
 end

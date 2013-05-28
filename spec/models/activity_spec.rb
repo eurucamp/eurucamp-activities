@@ -33,6 +33,28 @@ describe Activity do
     it { should == recent_activities }
   end
 
+  describe "#full_by" do
+    subject { activity.full_by }
+
+    context "limit of participants is not set" do
+      before do
+        activity.stub!(:limit_of_participants).and_return(nil)
+      end
+
+      it { should == 0 }
+    end
+
+    context "limit of participants is set" do
+      before do
+        activity.stub!(:limit_of_participants).and_return(10)
+        activity.stub!(:participations_count).and_return(8)
+      end
+
+      it { should == 80 }
+    end
+
+  end
+
   describe "validations" do
 
     it { should     accept_values_for(:name, "Football game" ) }
