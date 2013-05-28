@@ -6,6 +6,21 @@ describe Activity do
   let(:creator) { User.new }
   subject(:activity) { Activity.new }
 
+  describe "#new_participation" do
+    let(:user) { mock_model(User) }
+    let(:new_participation) { OpenStruct.new }
+    let(:args) { {} }
+    subject { activity.new_participation(user) }
+
+    before do
+      activity.participation_source = ->{ new_participation }
+    end
+
+    its(:participant) { should == user }
+    its(:activity) { should == activity }
+    it { should == new_participation }
+  end
+
   describe "#creator" do
     before do
       activity.creator = creator
