@@ -6,6 +6,21 @@ describe Activity do
   let(:creator) { User.new }
   subject(:activity) { Activity.new }
 
+  describe "#new_participation" do
+    let(:user) { mock_model(User) }
+    let(:new_participation) { OpenStruct.new }
+    let(:args) { {} }
+    subject { activity.new_participation(user) }
+
+    before do
+      activity.participation_source = ->{ new_participation }
+    end
+
+    its(:participant) { should == user }
+    its(:activity) { should == activity }
+    it { should == new_participation }
+  end
+
   describe "#creator" do
     before do
       activity.creator = creator
@@ -31,6 +46,28 @@ describe Activity do
     end
 
     it { should == recent_activities }
+  end
+
+  describe "#full_by" do
+    subject { activity.full_by }
+
+    context "limit of participants is not set" do
+      before do
+        activity.stub!(:limit_of_participants).and_return(nil)
+      end
+
+      it { should == 0 }
+    end
+
+    context "limit of participants is set" do
+      before do
+        activity.stub!(:limit_of_participants).and_return(10)
+        activity.stub!(:participations_count).and_return(8)
+      end
+
+      it { should == 80 }
+    end
+
   end
 
   describe "validations" do

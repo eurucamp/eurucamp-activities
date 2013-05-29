@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :participation do
-    user_id 1
-    activity_id 1
+    participant{ FactoryGirl.create(:user) }
+    activity
   end
 end

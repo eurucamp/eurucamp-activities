@@ -2,6 +2,7 @@ class Activity < ActiveRecord::Base
   DEFAULT_LIMIT = 100
 
   attr_accessor :event
+  attr_writer :participation_source # DI
 
   belongs_to :creator, class_name: "User"
   has_many :participations, :dependent => :destroy
@@ -18,7 +19,20 @@ class Activity < ActiveRecord::Base
   end
 
   def full_by
-    participations_count.to_f / limit_of_participants.to_f * 100
+    limit_of_participants.nil? ? 0 : [100.0 * participations_count / limit_of_participants.to_f, 100.0].min
   end
+
+  def new_participation(user)
+    participation_source.call.tap do |participation|
+      participation.activity = self
+      participation.participant = user
+    end
+  end
+
+  private
+
+    def participation_source
+      @participation_source ||= Participation.public_method(:new)
+    end
 
 end
