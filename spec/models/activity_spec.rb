@@ -68,6 +68,14 @@ describe Activity do
       it { should == 80 }
     end
 
+    context "no participants" do
+      before do
+        activity.stub!(:limit_of_participants).and_return(10)
+        activity.stub!(:participations_count).and_return(0)
+      end
+
+      it { should == 0 }
+    end
   end
 
   describe "validations" do
