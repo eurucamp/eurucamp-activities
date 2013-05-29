@@ -1,4 +1,8 @@
 $ ->
+  $(document).ajaxError (e, xhr) ->
+    console.error "AJAX ERRPR!"
+    window.location.replace(App.paths.login) if xhr.status == 401
+
   # show how "full" an activity is
   showProgress = (img)-> $(img).progress()
   $('#activities img.progress').each ->
