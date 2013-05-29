@@ -10,26 +10,25 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = current_event.activity(params.require(:id))
-    respond_with(@activity)
+    respond_with(current_event.activity(params[:id]))
   end
 
   def create
-    @activity = current_event.new_activity(current_user, sanitized_params)
-    @activity.save
-    respond_with(@activity)
+    activity = current_event.new_activity(current_user, sanitized_params)
+    activity.save
+    respond_with(activity)
   end
 
   def update
-    @activity = current_event.activity(params[:id])
-    @activity.update_attributes(sanitized_params)
-    respond_with(@activity)
+    activity = current_event.activity(params[:id])
+    activity.update_attributes(sanitized_params)
+    respond_with(activity)
   end
 
   def destroy
-    @activity = current_event.activity(params[:id])
-    @activity.destroy if @activity && @activity.creator == current_user #TODO
-    respond_with(@activity)
+    activity = current_event.activity(params[:id])
+    activity.destroy if activity && activity.creator == current_user #TODO
+    respond_with(activity)
   end
 
   private
