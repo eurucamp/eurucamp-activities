@@ -1,31 +1,33 @@
 %form.filters(action=activities_path method="GET")
   %label>
     %input(type="radio" name="filter" value="today")
-    Today
+    = t("activities.filters.today")
     %strong
       5
   %label.all.selected>
     %input(type="radio" name="filter" value="all")
-      All
+      = t("activities.filters.all")
     %strong
       267
   %label.participant>
     %input(type="radio" name="filter" value="participant")
-    My activities
+    = t("activities.filters.participant")
     %strong
       2
   %label.owner>
     %input(type="radio" name="filter" value="owner")
-    Created by me
+    = t("activities.filters.owner")
     %strong
       0
   %label.search
-    %input(type="text" name="search" placeholder="Search for an activity")
-    %a.clear(href="#" title="Reset") Clear
-  %button(type="submit") Filter
+    %input(type="text" name="search" placeholder="#{ t("activities.search.placeholder") }")
+    %a.clear(href="#" title="Reset")
+      = t("activities.search.clear")
+  %button(type="submit")
+    = t("activities.filters.submit")
 
-%a#new-activity(href="#" title="Create a new activity")
-  Create an activity
+%a#new-activity(href="#" title="#{ t("activities.new.title") }")
+  = t("activities.new.label")
   %span
 
 %ul#activities

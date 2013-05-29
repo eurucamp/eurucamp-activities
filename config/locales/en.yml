@@ -14,6 +14,18 @@ en:
       title: Register new account
 
   activities:
+    new:
+      label: Create an activity
+      title: Create a new activity
+    filters:
+      today: Today
+      all: All
+      owner: Created by me
+      participant: My activities
+      submit: Filter
+    search:
+      placeholder: Search for an activity
+      clear: Clear
     join:
       label: Join
       title: Sign-up as participant
