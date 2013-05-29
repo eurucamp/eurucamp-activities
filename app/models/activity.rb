@@ -18,8 +18,18 @@ class Activity < ActiveRecord::Base
     where("start_at >= :t", t: 1.month.ago).limit(limit)
   end
 
+  def raw_start_date
+    start_at ? start_at.strftime('%a, %-d.%-m') : ''
+  end
 
+  def raw_start_time
+    start_at ? start_at.strftime('%k:%M') : ''
+  end
 
+  def raw_end_time
+    # TODO: move into method, not safe for
+    start_at && time_frame ? (start_at + time_frame.minutes).strftime('%k:%M') : ''
+  end
 
   def full_by
     limit_of_participants.nil? ? 0 : [100.0 * participations_count / limit_of_participants.to_f, 100.0].min
