@@ -2,6 +2,11 @@
   Organize an activity
 
 = form_for @activity, id: "new-activity" do |f|
+  - if @activity.errors.any?
+    %ul.errors
+      - @activity.errors.full_messages.each do |error|
+        %li= error
+
   = f.text_field :name, placeholder: "Give your activity a name", class: "title"
   %hr
   = f.datetime_select :start_time
@@ -11,6 +16,7 @@
   %label
     = f.check_box :anytime
     Without a specific date/time
+  = f.text_field :place, placeholder: "Location, where to meet …"
   = f.text_area :requirements, placeholder: "Requirements, what to bring …"
   = f.text_area :description, placeholder: "Description,"
 
