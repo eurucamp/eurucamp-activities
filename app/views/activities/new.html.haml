@@ -4,7 +4,15 @@
 = form_for @activity, id: "new-activity" do |f|
   = f.text_field :name, placeholder: "Give your activity a name", class: "title"
   %hr
-  = f.text_field :start_at, placeholder: Date.current.strftime("%a, %-d.%-m"), class: "date"
+  = f.text_field :raw_start_date, placeholder: Date.current.strftime("%a, %-d.%-m"), class: "date"
+  = f.text_field :raw_start_time, placeholder: Date.current.strftime("%k:%M"), class: "time"
+  &ndash;
+  = f.text_field :raw_end_time, placeholder: Date.current.strftime("%k:%M"), class: "time"
+  %span or
+  %label
+    = f.check_box :anytime
+    Without a specific date/time
+
 
 
   %button(type="submit") Save
