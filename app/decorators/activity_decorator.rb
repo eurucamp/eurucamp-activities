@@ -8,7 +8,7 @@ class ActivityDecorator < Draper::Decorator
   def relation_ship_with(user)
     if user.nil?                            then "default"
     elsif object.creator == user            then "owner"
-    #elsif object.participants.include? user then "participant"
+    elsif object.participants.include? user then "participant"
     else                                         "default"
     end
   end

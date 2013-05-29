@@ -116,7 +116,9 @@ a#new-activity
       +transform(scale(0.9))
       +transition(all 0.35s ease-in-out 0)
 
-      a
+      a, button
+        border: none
+        background: none
         +custom-sans(bold)
         @extend %smaller-text
         text-transform: uppercase
@@ -188,7 +190,7 @@ a#new-activity
           @extend %icon-#{nth($type, 3)}
 
         .action
-          a
+          a, button
             color: nth($type, 2)
 
             span
