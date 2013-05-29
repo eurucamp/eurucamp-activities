@@ -2,11 +2,16 @@ class ActivitiesController < ApplicationController
   respond_to :json, :html, :only => :index
   respond_to :json
 
-  skip_before_filter :authenticate_user!, :only => :index
+  skip_before_filter :authenticate_user!, :only => [:index, :show]
 
   def index
     @activities = current_event.activities.decorate
     respond_with(@activities)
+  end
+
+  def show
+    @activity = current_event.activity(params.require(:id))
+    respond_with(@activity)
   end
 
   def create

@@ -2,11 +2,18 @@ require 'spec_helper'
 
 describe ActivitiesController do
   let(:user) { FactoryGirl.create(:user) }
+  let(:activity) { FactoryGirl.create(:activity) }
 
   describe "#index" do
     subject { get :index }
 
     it { should render_template(:index) }
+    its(:status){ should == 200 }
+  end
+
+  describe "#show" do
+    subject { get :show, {id: activity.id, format: :json} }
+
     its(:status){ should == 200 }
   end
 
