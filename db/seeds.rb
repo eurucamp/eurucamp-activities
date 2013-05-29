@@ -17,7 +17,8 @@ User.transaction do |tx|
 
   activity = EVENT.new_activity(creator,
     name: "Party!",
-    start_at: 1.day.from_now.to_time,
+    start_time: 1.day.from_now.to_time,
+    end_time: 1.day.from_now.to_time + 4.hours,
     place: "Pool",
     time_frame: 200,
     limit_of_participants: 2
