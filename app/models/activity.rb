@@ -8,27 +8,14 @@ class Activity < ActiveRecord::Base
   has_many :participations, :dependent => :destroy
   has_many :participants, through: :participations, class_name: "User"
 
-  validates :start_at, presence: true, allow_blank: false
+  validates :start_time, presence: true, allow_blank: false
+  validates :end_time, presence: true, allow_blank: false
   validates :name, presence: true, allow_blank: false, uniqueness: true
   validates :place, presence: true, allow_blank: false
   validates :limit_of_participants, numericality: {greater_than: 0}, allow_nil: true
-  validates :time_frame, numericality: {greater_than: 0}
 
   def self.recent(limit = DEFAULT_LIMIT)
-    where("start_at >= :t", t: 1.month.ago).limit(limit)
-  end
-
-  def raw_start_date
-    start_at ? start_at.strftime('%a, %-d.%-m') : ''
-  end
-
-  def raw_start_time
-    start_at ? start_at.strftime('%k:%M') : ''
-  end
-
-  def raw_end_time
-    # TODO: move into method, not safe for
-    start_at && time_frame ? (start_at + time_frame.minutes).strftime('%k:%M') : ''
+    where("start_time >= :t", t: 1.month.ago).limit(limit)
   end
 
   def full_by
