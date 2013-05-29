@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130529174513) do
+ActiveRecord::Schema.define(version: 20130529182104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,8 +20,7 @@ ActiveRecord::Schema.define(version: 20130529174513) do
     t.string   "name",                  default: "",    null: false
     t.text     "description"
     t.string   "place"
-    t.datetime "start_at",                              null: false
-    t.integer  "time_frame"
+    t.datetime "start_time"
     t.integer  "limit_of_participants"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -29,6 +28,7 @@ ActiveRecord::Schema.define(version: 20130529174513) do
     t.integer  "participations_count",  default: 0
     t.boolean  "anytime",               default: false
     t.text     "requirements"
+    t.datetime "end_time"
   end
 
   add_index "activities", ["name"], name: "index_activities_on_name", unique: true, using: :btree
