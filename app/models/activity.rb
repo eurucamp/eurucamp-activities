@@ -29,6 +29,10 @@ class Activity < ActiveRecord::Base
     end
   end
 
+  def participation(user)
+    participations.find_by(user_id: user)
+  end
+
   private
 
     def participation_source
