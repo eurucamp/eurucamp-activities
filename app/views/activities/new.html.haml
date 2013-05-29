@@ -1,0 +1,10 @@
+%h2
+  Organize an activity
+
+= form_for @activity, id: "new-activity" do |f|
+  = f.text_field :name, placeholder: "Give your activity a name", class: "title"
+  %hr
+  = f.text_field :start_at, placeholder: Date.current.strftime("%a, %-d.%-m"), class: "date"
+
+
+  %button(type="submit") Save
