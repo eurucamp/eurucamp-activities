@@ -3,9 +3,9 @@
 FactoryGirl.define do
   factory :activity do
     name "Party!"
-    start_at "2013/12/12"
+    start_time "2013/12/12 18:00"
+    end_time "2013/12/13 03:00"
     place "Ballroom"
-    time_frame 4*60
     creator { FactoryGirl.create(:user) }
   end
 end
