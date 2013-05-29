@@ -1,0 +1,5 @@
+$('#activity-<%= @current_activity.id %>')
+  .replaceWith('<%= escape_javascript(render partial: 'activities/activity', locals: { activity: @current_activity }) %>');
+$('#activity-<%= @current_activity.id %>')
+  .find('img.progress')
+  .progress();

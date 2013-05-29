@@ -1,6 +1,6 @@
 $ ->
   $(document).ajaxError (e, xhr) ->
-    console.error "AJAX ERRPR!"
+    console.error "AJAX ERRPR!", arguments
     window.location.replace(App.paths.login) if xhr.status == 401
 
   # show how "full" an activity is
