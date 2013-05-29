@@ -16,19 +16,20 @@
     .action
       - case type
       - when "owner"
-        = link_to edit_activity_path(activity), title: "Edit the activity details" do
+        = link_to edit_activity_path(activity), title: t("activities.edit.title") do
           %span
-          Edit
+          = t("activities.edit.label")
       - when "participant"
-        = button_to activity_participation_path(activity), method: :delete, remote: true, title: "Cancel your participation" do
+        = button_to activity_participation_path(activity), method: :delete, remote: true, title: t("activities.leave.title") do
           %span
-          Don’t participate?
+          = t("activities.leave.label")
       - else
-        = button_to activity_participation_path(activity), method: :post, remote: true, title: "Sign-up as participant" do
+        = button_to activity_participation_path(activity), method: :post, remote: true, title: t("activities.join.title") do
           %span
-          Join
+          = t("activities.join.label")
 
-    %a.details(href="#" title="Learn more about this activity")
-      %span More Info
+    %a.details(href="#" title="#{ t("activities.more_info.title") }")
+      %span
+        = t("activities.more_info.label")
     - unless type == 'default'
       %span.icon

@@ -13,6 +13,19 @@ en:
       label: Register
       title: Register new account
 
+  activities:
+    join:
+      label: Join
+      title: Sign-up as participant
+    edit:
+      label: Edit
+      title: Edit the activity details
+    leave:
+      label: Cancel
+      title: Cancel your participation
+    more_info:
+      label: More info
+      title: Learn more about this activity
 
   footer_nav:
     about:
