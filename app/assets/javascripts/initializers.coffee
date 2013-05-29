@@ -22,7 +22,7 @@ $ ->
     # the filter tabs
     values = $filters.filter('.selected')
                      .find('input[type=radio]')
-                     .map(-> return $(@).val()).get()
+                     .map(-> $(@).val()).get()
     unless 'all' in values
       $activities.not(".#{values.join(',.')}").hide()
     # use search input to filter further
