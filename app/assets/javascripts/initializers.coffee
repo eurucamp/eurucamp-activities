@@ -8,6 +8,25 @@ $ ->
   $('#activities img.progress').each ->
     setTimeout showProgress, Math.random() * 1000 + 500, @
 
+
+  $('.date-capture').pickadate
+    onSet: (e)->
+      date               = new Date(e.select)
+      target             = @$node.data 'target'
+      [day, month, year] = [date.getDate(), date.getMonth() + 1, date.getFullYear()]
+      console.log day, month, year
+      $("#activity_#{target}_1i").val(year)
+      $("#activity_#{target}_2i").val(month)
+      $("#activity_#{target}_3i").val(day)
+
+  $('.time-capture').pickatime
+    onSet: (e)->
+      target             = @$node.data 'target'
+      [hours, minutes]   = [parseInt((e.select / 60), 10), e.select % 60]
+      $("#activity_#{target}_4i").val(if hours < 10 then "0#{hours}" else hours)
+      $("#activity_#{target}_5i").val(minutes)
+
+
   # filters
   $filters    = $('form.filters label:not(.search)')
   $search     = $('form.filters label.search input')
