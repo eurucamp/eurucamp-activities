@@ -58,7 +58,8 @@
               %span
               Don’t participate?
           - else
-            %a(href="#" title="Sign-up as participant")
+            -# %a(href="#" title="Sign-up as participant")
+            = button_to activity_participation_path(activity), :method => :post, :disable_with => 'loading...', :remote => true do
               %span
               Join
 
