@@ -11,7 +11,7 @@
       %p.creator
         = activity.creator_name
       %p.time
-        = activity.time
+        = activity.time.html_safe
 
     .action
       - case type
