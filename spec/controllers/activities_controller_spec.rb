@@ -12,63 +12,57 @@ describe ActivitiesController do
   end
 
   describe "#show" do
-    subject { get :show, {id: activity.id, format: :json} }
+    subject { get :show, {id: activity.id} }
 
     its(:status){ should == 200 }
   end
 
   describe "#create" do
-    context "format :json" do
-      subject { post :create, params.merge({format: :json}) }
+    subject { post :create, params }
 
-      before do
-        sign_in(user)
-      end
+    before do
+      sign_in(user)
+    end
 
-      context "valid parameters" do
-        let(:params) { {activity: {name: "Pool party", start_at: 2.days.from_now.to_s, place: "Pool", time_frame: 120 }} }
-        its(:status) { should == 201 }
-      end
+    context "valid parameters" do
+      let(:params) { {activity: {name: "Pool party", start_time: 2.days.from_now.to_s, end_time: 2.days.from_now.to_s, place: "Pool" }} }
+      its(:status) { should == 201 }
+    end
 
-      context "invalid parameters" do
-        let(:params) { {activity: {x: 10}} }
-        its(:status) { should == 422 }
-      end
+    context "invalid parameters" do
+      let(:params) { {activity: {x: 10}} }
+      its(:status) { should == 422 }
     end
   end
 
   describe "#update" do
-    context "format :json" do
-      subject { put :update, params.merge({format: :json}) }
-      let!(:activity) { FactoryGirl.create(:activity, creator: user) }
+    subject { put :update, params }
+    let!(:activity) { FactoryGirl.create(:activity, creator: user) }
 
-      before do
-        sign_in(user)
-      end
+    before do
+      sign_in(user)
+    end
 
-      context "valid parameters" do
-        let(:params) { {id: activity.id, activity: {name: "Pool party", start_at: 2.days.from_now.to_s, place: "Pool", time_frame: 120 }} }
-        its(:status) { should == 204 }
-      end
+    context "valid parameters" do
+      let(:params) { {id: activity.id, activity: {name: "Pool party", start_time: 2.days.from_now.to_s, end_time: 3.days.from_now.to_s, place: "Pool" }} }
+      its(:status) { should == 204 }
+    end
 
-      context "invalid parameters" do
-        let(:params) { {id: activity.id, activity: {start_at: ""}} }
-        its(:status) { should == 422 }
-      end
+    context "invalid parameters" do
+      let(:params) { {id: activity.id, activity: {start_time: ""}} }
+      its(:status) { should == 422 }
     end
   end
 
   describe "#destroy" do
-    context "format :json" do
-      subject { delete :destroy, {id: activity.id, format: :json} }
-      let!(:activity) { FactoryGirl.create(:activity, creator: user) }
+    subject { delete :destroy, {id: activity.id} }
+    let!(:activity) { FactoryGirl.create(:activity, creator: user) }
 
-      before do
-        sign_in(user)
-      end
-
-      its(:status) { should == 204 }
+    before do
+      sign_in(user)
     end
+
+    its(:status) { should == 204 }
   end
 
 end

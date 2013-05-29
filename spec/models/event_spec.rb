@@ -2,10 +2,12 @@ require 'spec_helper'
 
 describe Event do
 
-  subject(:event) { Event.new("Eurucamp") }
+  subject(:event) { Event.new("Eurucamp", Date.parse("2012-10-10"), Date.parse("2012-12-12")) }
 
   describe "#new" do
     its(:name) { should == "Eurucamp" }
+    its(:start_time) { should == Date.parse("2012-10-10") }
+    its(:end_time) { should == Date.parse("2012-12-12") }
   end
 
   describe "#new_activity" do

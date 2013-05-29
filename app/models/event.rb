@@ -1,9 +1,9 @@
 class Event
   attr_writer :activity_source # DI
-  attr_reader :name
+  attr_reader :name, :start_time, :end_time
 
-  def initialize(name, fetcher = ->{ Activity.recent })
-    @name = name
+  def initialize(name, start_time, end_time, fetcher = ->{ Activity.recent })
+    @name, @start_time, @end_time = name, start_time, end_time
     @fetcher = fetcher
   end
 

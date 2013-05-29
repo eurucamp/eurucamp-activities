@@ -89,12 +89,11 @@ describe Activity do
     it { should     accept_values_for(:place, "football pitch" ) }
     it { should_not accept_values_for(:place, "", nil) }
 
-    it { should     accept_values_for(:start_at, Time.now) }
-    it { should_not accept_values_for(:start_at, "", nil) }
+    it { should     accept_values_for(:start_time, Time.now, nil) }
+    it { should_not accept_values_for(:start_time, "") }
 
-    # whole day activity?
-    it { should     accept_values_for(:time_frame, 15, 30, 60, 120, 360 ) } # minutes
-    it { should_not accept_values_for(:time_frame, "", nil, 0, -10) }
+    it { should     accept_values_for(:end_time, Time.now, nil) }
+    it { should_not accept_values_for(:end_time, "") }
 
     it { should     accept_values_for(:limit_of_participants, nil, 12, 100) }
     it { should_not accept_values_for(:limit_of_participants, -1, 0) }
