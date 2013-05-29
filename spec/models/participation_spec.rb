@@ -1,5 +1,17 @@
 require 'spec_helper'
 
 describe Participation do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "validations" do
+
+    it { should     accept_values_for(:user_id, 1 ) }
+    it { should_not accept_values_for(:user_id, "", nil) }
+
+    it { should     accept_values_for(:activity_id, 1 ) }
+    it { should_not accept_values_for(:activity_id, "", nil) }
+
+    specify { FactoryGirl.create(:participation).clone.save! }.to raise(ActiveRecord::RecordInvalid)
+
+  end
+
 end
