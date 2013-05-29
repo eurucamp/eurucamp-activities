@@ -10,8 +10,13 @@
   = f.text_field :name, placeholder: "Give your activity a name", class: "title"
   %hr
   = f.datetime_select :start_time
+  %input.date-capture(data-target="start_time" type="text")
+  %input.time-capture(data-target="start_time" type="text")
   &ndash;
   = f.datetime_select :end_time
+  %input.date-capture(data-target="end_time" type="text")
+  %input.time-capture(data-target="end_time" type="text")
+
   %span or
   %label
     = f.check_box :anytime
