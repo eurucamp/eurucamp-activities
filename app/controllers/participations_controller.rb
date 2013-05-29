@@ -1,5 +1,5 @@
 class ParticipationsController < ApplicationController
-  respond_to :json, :html
+  respond_to :js, :html
 
   def create
     participation = current_activity.new_participation(current_user)

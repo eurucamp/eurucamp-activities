@@ -1,6 +1,5 @@
 class ActivitiesController < ApplicationController
-  respond_to :html, only: [:new, :edit]
-  respond_to :json, :html
+  respond_to :html
 
   skip_before_filter :authenticate_user!, :only => [:index, :show]
 
