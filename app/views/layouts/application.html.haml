@@ -17,6 +17,11 @@
     :javascript
       try{Typekit.load();}catch(e){}
 
+      var App = {
+        paths: {
+          login: '#{new_user_session_path}'
+        }
+      };
   %body(class=body_class)
     = render "partials/chrome_frame"
     #container
