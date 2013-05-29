@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
-  respond_to :json, :html, :only => :index
-  respond_to :json
+  respond_to :html, only: [:new, :edit]
+  respond_to :json, :html
 
   skip_before_filter :authenticate_user!, :only => [:index, :show]
 
@@ -10,25 +10,36 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    respond_with(current_event.activity(params[:id]))
+    @activity = current_event.activity(params[:id])
+    respond_with(@activity)
+  end
+
+  def new
+    @activity = current_event.new_activity(current_user, {})
+    respond_with(@activity)
+  end
+
+  def edit
+    @activity = current_event.activity(params[:id])
+    respond_with(@activity)
   end
 
   def create
-    activity = current_event.new_activity(current_user, sanitized_params)
-    activity.save
-    respond_with(activity)
+    @activity = current_event.new_activity(current_user, sanitized_params)
+    @activity.save
+    respond_with(@activity)
   end
 
   def update
-    activity = current_event.activity(params[:id])
-    activity.update_attributes(sanitized_params)
-    respond_with(activity)
+    @activity = current_event.activity(params[:id])
+    @activity.update_attributes(sanitized_params)
+    respond_with(@activity)
   end
 
   def destroy
-    activity = current_event.activity(params[:id])
-    activity.destroy if activity && activity.creator == current_user #TODO
-    respond_with(activity)
+    @activity = current_event.activity(params[:id])
+    @activity.destroy if @activity && @activity.creator == current_user #TODO
+    respond_with(@activity)
   end
 
   private
