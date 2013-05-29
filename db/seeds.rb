@@ -1,4 +1,5 @@
 User.transaction do |tx|
+  EVENT = Event.new(Settings.event.name)
   ultra_secure_password = "qweqweqwe"
 
   creator = User.new(
@@ -20,7 +21,6 @@ User.transaction do |tx|
     start_time: 1.day.from_now.to_time,
     end_time: 1.day.from_now.to_time + 4.hours,
     place: "Pool",
-    time_frame: 200,
     limit_of_participants: 2
   )
   activity.save!
