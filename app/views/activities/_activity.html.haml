@@ -1,0 +1,34 @@
+- type = activity.relation_ship_with(current_user)
+
+%li(id="activity-#{activity.id}" class="#{type} #{activity.status}")
+  .container
+
+    = image_tag "dummies/activity.jpg", alt: activity.name, class: "progress", data: { progress: activity.full_by }
+
+    .labels
+      %h4
+        = activity.name
+      %p.creator
+        = activity.creator_name
+      %p.time
+        = activity.time
+
+    .action
+      - case type
+      - when "owner"
+        = link_to edit_activity_path(activity), title: "Edit the activity details" do
+          %span
+          Edit
+      - when "participant"
+        = button_to activity_participation_path(activity), method: :delete, remote: true, title: "Cancel your participation" do
+          %span
+          Don’t participate?
+      - else
+        = button_to activity_participation_path(activity), method: :post, remote: true, title: "Sign-up as participant" do
+          %span
+          Join
+
+    %a.details(href="#" title="Learn more about this activity")
+      %span More Info
+    - unless type == 'default'
+      %span.icon
