@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
-  respond_to :json, :html, :only => :index
-  respond_to :json
+  respond_to :html, only: [:new, :edit]
+  respond_to :json, :html
 
   skip_before_filter :authenticate_user!, :only => [:index, :show]
 
@@ -10,7 +10,17 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = current_event.activity(params.require(:id))
+    @activity = current_event.activity(params[:id])
+    respond_with(@activity)
+  end
+
+  def new
+    @activity = current_event.new_activity(current_user, {})
+    respond_with(@activity)
+  end
+
+  def edit
+    @activity = current_event.activity(params[:id])
     respond_with(@activity)
   end
 

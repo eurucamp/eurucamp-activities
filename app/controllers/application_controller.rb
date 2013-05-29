@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   def current_event
-    EVENT
+    @current_event ||= Event.new(Settings.event.name)
   end
 end

@@ -1,1 +1,1 @@
-EVENT = Event.new(Settings.event.name)
+#EVENT = Event.new(Settings.event.name)
