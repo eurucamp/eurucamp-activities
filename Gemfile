@@ -21,6 +21,7 @@ gem 'neat'
 gem 'haml-rails'
 gem 'rails_html_helpers'
 gem 'draper'
+gem 'cancan'
 
 group :development do
   gem 'debugger',         '~> 1.5'
