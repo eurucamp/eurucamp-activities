@@ -30,11 +30,11 @@ class Activity < ActiveRecord::Base
     end
 
     def created_by(user)
-      where(creator: user)
+      where(creator_id: user)
     end
 
     def participated_by(user)
-      includes(:participations).where(participations: { participant: user })
+      includes(:participations).where(participations: { user_id: user })
     end
   end
 
