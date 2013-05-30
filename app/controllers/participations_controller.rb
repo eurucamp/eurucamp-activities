@@ -9,7 +9,8 @@ class ParticipationsController < ApplicationController
 
   def destroy
     participation = current_activity.participation(current_user)
-    participation.destroy if participation && participation.participant == current_user #TODO
+    authorize!(:destroy, participation)
+    participation.destroy
     respond_with(current_activity.reload, participation, location: activities_path)
   end
 

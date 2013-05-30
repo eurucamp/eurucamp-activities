@@ -20,6 +20,7 @@ class ActivitiesController < ApplicationController
 
   def edit
     @activity = current_event.activity(params[:id])
+    authorize!(:edit, @activity)
     respond_with(@activity)
   end
 
@@ -31,13 +32,15 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity = current_event.activity(params[:id])
+    authorize!(:update, @activity)
     @activity.update_attributes(sanitized_params)
     respond_with(@activity)
   end
 
   def destroy
     @activity = current_event.activity(params[:id])
-    @activity.destroy if @activity && @activity.creator == current_user #TODO
+    authorize!(:destroy, @activity)
+    @activity.destroy
     respond_with(@activity)
   end
 
