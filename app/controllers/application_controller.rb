@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   def current_event
-    @current_event ||= Event.new(Settings.event.name, Settings.event.start_time, Settings.event.end_time)
+    @current_event ||= begin
+      Rails.env.production? ? EVENT : Event.new(Settings.event.name, Settings.event.start_time, Settings.event.end_time)
+    end
   end
 end
