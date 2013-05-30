@@ -3,3 +3,4 @@ $('#activity-<%= @current_activity.id %>')
 $('#activity-<%= @current_activity.id %>')
   .find('img.progress')
   .progress();
+$('#activities-filter .participant strong').text('<%= Activity.participated_by(current_user).count %>')
