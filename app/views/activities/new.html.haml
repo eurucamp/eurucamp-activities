@@ -1,7 +1,7 @@
 %h2
   Organize an activity
 
-= form_for @activity, id: "new-activity" do |f|
+= form_for @activity, html: { id: "new-activity" } do |f|
   - if @activity.errors.any?
     %ul.errors
       - @activity.errors.full_messages.each do |error|
@@ -9,20 +9,24 @@
 
   = f.text_field :name, placeholder: "Give your activity a name", class: "title"
   %hr
-  = f.datetime_select :start_time
-  %input.date-capture(data-target="start_time" type="text")
-  %input.time-capture(data-target="start_time" type="text")
-  &ndash;
-  = f.datetime_select :end_time
-  %input.date-capture(data-target="end_time" type="text")
-  %input.time-capture(data-target="end_time" type="text")
+  .select
+    = f.datetime_select :start_time
+  %input.date-capture(data-target="start_time" type="text" placeholder="Sat, 17.8")
+  %input.time-capture(data-target="start_time" type="text" placeholder="15:00")
+  %span &ndash;
+  .select
+    = f.datetime_select :end_time
+  %input.date-capture(data-target="end_time" type="text" placeholder="Sat, 17.8")
+  %input.time-capture(data-target="end_time" type="text" placeholder="16:30")
 
-  %span or
-  %label
+  %span.between or
+  %label.inline
     = f.check_box :anytime
     Without a specific date/time
+  = content_tag :div, ""
   = f.text_field :place, placeholder: "Location, where to meet …"
   = f.text_area :requirements, placeholder: "Requirements, what to bring …"
-  = f.text_area :description, placeholder: "Description,"
+  = f.text_area :description, placeholder: "Description, background information, links, etc."
+  = "###{@activity.description.to_s.html_safe}##"
 
   %button(type="submit") Save
