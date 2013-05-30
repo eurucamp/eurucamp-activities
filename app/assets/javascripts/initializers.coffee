@@ -10,6 +10,8 @@ $ ->
 
 
   $('.date-capture').pickadate
+    min: new Date(App.event.startTime)
+    max: new Date(App.event.endTime)
     format: 'ddd, d.m.'
     onSet: (e)->
       date               = new Date(e.select)
