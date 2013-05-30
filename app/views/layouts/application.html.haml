@@ -16,10 +16,14 @@
     = javascript_include_tag "//use.typekit.net/vor5lqb.js"
     :javascript
       try{Typekit.load();}catch(e){}
-
+      // TODO: partial
       var App = {
         paths: {
           login: '#{new_user_session_path}'
+        },
+        event: {
+          startTime: #{Settings.event.start_time.to_i * 1000},
+          endTime: #{Settings.event.end_time.to_i * 1000}
         }
       };
 
