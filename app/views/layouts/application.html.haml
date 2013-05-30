@@ -22,8 +22,9 @@
           login: '#{new_user_session_path}'
         },
         event: {
-          startTime: #{Settings.event.start_time.to_i * 1000},
-          endTime: #{Settings.event.end_time.to_i * 1000}
+          name: '#{current_event.name}',
+          startTime: #{current_event.start_time.to_i * 1000},
+          endTime: #{current_event.end_time.to_i * 1000}
         }
       };
 
