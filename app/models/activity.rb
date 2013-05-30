@@ -8,8 +8,8 @@ class Activity < ActiveRecord::Base
   has_many :participations, :dependent => :destroy
   has_many :participants, through: :participations, class_name: "User"
 
-  validates :start_time, presence: true, allow_blank: false
-  validates :end_time, presence: true, allow_blank: false
+  validates :start_time, presence: true, allow_blank: false, allow_nil: true
+  validates :end_time, presence: true, allow_blank: false, allow_nil: true
   validates :name, presence: true, allow_blank: false, uniqueness: true
   validates :place, presence: true, allow_blank: false
   validates :limit_of_participants, numericality: {greater_than: 0}, allow_nil: true
