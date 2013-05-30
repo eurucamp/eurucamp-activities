@@ -10,16 +10,17 @@ $ ->
 
 
   $('.date-capture').pickadate
+    format: 'ddd, d.m.'
     onSet: (e)->
       date               = new Date(e.select)
       target             = @$node.data 'target'
       [day, month, year] = [date.getDate(), date.getMonth() + 1, date.getFullYear()]
-      console.log day, month, year
       $("#activity_#{target}_1i").val(year)
       $("#activity_#{target}_2i").val(month)
       $("#activity_#{target}_3i").val(day)
 
   $('.time-capture').pickatime
+    format: 'h:i'
     onSet: (e)->
       target             = @$node.data 'target'
       [hours, minutes]   = [parseInt((e.select / 60), 10), e.select % 60]

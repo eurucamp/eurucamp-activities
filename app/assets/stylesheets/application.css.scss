@@ -5,12 +5,13 @@
 @import "utils";
 @import "base";
 
+@import "pickadate/default";
+@import "pickadate/default.date";
+@import "pickadate/default.time";
+
 @import "partials/layout";
 @import "partials/header";
 @import "partials/footer";
 
 @import "partials/activities";
-
-@import "pickadate/default";
-@import "pickadate/default.date";
-@import "pickadate/default.time";
+@import "partials/activities/new";

@@ -1,0 +1,34 @@
+form
+  input, textarea
+    width: 100%
+    padding: 0.75em 15px 1em
+    margin: 0 0 2px 0
+    font-size: 1.25em
+    border: none
+    outline: none
+    +custom-sans(light)
+
+    &.date-capture
+      width: 10em
+
+    &.time-capture
+      width: 4em
+      text-align: center
+
+    &:focus
+      box-shadow: 0 0 7px transparentize($black, 0.9)
+
+  span.between
+    display: inline-block
+    margin: 0 2em
+    +custom-sans(bold)
+    text-transform: uppercase
+
+  label.inline
+    display: inline
+
+    input
+      display: inline
+      width: auto
+      margin: 0 0.25em 0 0
+      vertical-align: baseline
