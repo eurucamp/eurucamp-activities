@@ -20,7 +20,7 @@ User.transaction do |tx|
     name: "Party!",
     start_time: 1.day.from_now.to_time,
     end_time: 1.day.from_now.to_time + 4.hours,
-    place: "Pool",
+    location: "Pool",
     limit_of_participants: 2
   )
   activity.save!
