@@ -1,7 +1,9 @@
 class ActivitiesController < ApplicationController
   respond_to :html
 
-  skip_before_filter :authenticate_user!, :only => [:index, :show]
+  skip_before_filter :authenticate_user!, only: [:index, :show]
+  before_filter :load_resource, only: [:show, :edit, :update, :destroy]
+  authorize_resource only: [:show, :edit, :update, :destroy]
 
   def index
     @activities = current_event.activities
@@ -9,7 +11,6 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @activity = current_event.activity(params[:id])
     respond_with(@activity)
   end
 
@@ -19,8 +20,6 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-    @activity = current_event.activity(params[:id])
-    authorize!(:edit, @activity)
     respond_with(@activity)
   end
 
@@ -31,20 +30,20 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-    @activity = current_event.activity(params[:id])
-    authorize!(:update, @activity)
     @activity.update_attributes(sanitized_params)
     respond_with(@activity)
   end
 
   def destroy
-    @activity = current_event.activity(params[:id])
-    authorize!(:destroy, @activity)
     @activity.destroy
     respond_with(@activity)
   end
 
   private
+
+    def load_resource
+      @activity = current_event.activity(params[:id])
+    end
 
     def sanitized_params
       params.require(:activity)
