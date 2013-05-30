@@ -44,7 +44,15 @@ class ActivitiesController < ApplicationController
   private
 
     def sanitized_params
-      params.require(:activity).permit(:start_time, :end_time, :name, :place, :limit_of_participants)
+      params.require(:activity)
+            .permit(:start_time,
+                    :end_time,
+                    :name,
+                    :place,
+                    :description,
+                    :limit_of_participants,
+                    :anytime,
+                    :image_url)
     end
 
 end
