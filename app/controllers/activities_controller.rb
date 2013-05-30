@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:index, :show]
 
   def index
-    @activities = current_event.activities.decorate
+    @activities = current_event.activities
     respond_with(@activities)
   end
 

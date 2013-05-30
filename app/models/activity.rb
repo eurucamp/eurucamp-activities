@@ -14,8 +14,22 @@ class Activity < ActiveRecord::Base
   validates :place, presence: true, allow_blank: false
   validates :limit_of_participants, numericality: {greater_than: 0}, allow_nil: true
 
-  def self.recent(limit = DEFAULT_LIMIT)
-    where("start_time >= :t", t: 1.month.ago).limit(limit)
+  class << self
+    def recent(limit = DEFAULT_LIMIT)
+      where("start_time >= :t", t: 1.month.ago).limit(limit)
+    end
+
+    def today
+      where("created_at >= :t", t: Time.zone.now.beginning_of_day)
+    end
+
+    def created_by(user)
+      where(creator: user)
+    end
+
+    def participated_by(user)
+      includes(:participations).where(participations: { participant: user })
+    end
   end
 
   def full_by
