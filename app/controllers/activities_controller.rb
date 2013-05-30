@@ -26,7 +26,7 @@ class ActivitiesController < ApplicationController
   def create
     @activity = current_event.new_activity(current_user, sanitized_params)
     @activity.save
-    respond_with(@activity)
+    respond_with(@activity, location: activities_path)
   end
 
   def update
