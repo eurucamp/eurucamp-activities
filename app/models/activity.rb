@@ -10,13 +10,19 @@ class Activity < ActiveRecord::Base
 
   validates :start_time, presence: true, allow_blank: false, allow_nil: true
   validates :end_time, presence: true, allow_blank: false, allow_nil: true
+  validates :anytime, inclusion: {in: [true, false]}
   validates :name, presence: true, allow_blank: false, uniqueness: true
   validates :place, presence: true, allow_blank: false
   validates :limit_of_participants, numericality: {greater_than: 0}, allow_nil: true
+  validate  :time_frame_order, if: ->{ !anytime && event && start_time.present? && end_time.present? }
+  validate  :during_the_event, if: ->{ !anytime && event && start_time.present? && end_time.present? }
+  validates :event, presence: true
+
+  before_validation :clear_time_frame, if: ->{ anytime }
 
   class << self
     def recent(limit = DEFAULT_LIMIT)
-      where("start_time >= :t", t: 1.month.ago).limit(limit)
+      where("start_time >= :t OR anytime = true", t: 1.month.ago).limit(limit)
     end
 
     def today
@@ -51,6 +57,19 @@ class Activity < ActiveRecord::Base
 
     def participation_source
       @participation_source ||= Participation.public_method(:new)
+    end
+
+    def clear_time_frame
+      self.start_time, self.end_time = nil, nil
+    end
+
+    def time_frame_order
+      errors.add(:end_time, "in wrong order") if end_time < start_time
+    end
+
+    def during_the_event
+      errors.add(:start_time, "too early") if start_time < event.start_time
+      errors.add(:end_time, "too late") if end_time > event.end_time
     end
 
 end

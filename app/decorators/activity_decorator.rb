@@ -15,16 +15,20 @@ class ActivityDecorator < Draper::Decorator
 
   def status
     today = Date.current
-    if object.start_time > today              then "upcoming"
+    if object.anytime?                        then ""
+    elsif object.start_time > today           then "upcoming"
     elsif object.start_time.to_date == today  then "today"
-    else                                         "archive"
+    else                                           "archive"
     end
   end
 
   def time
-    # Case for "Anytime" needed
-    object.start_time.strftime("%A, %-d.%-m / %k:%M &ndash; ") +
-      object.end_time.strftime("%k:%M")
+    if object.anytime?
+      ""
+    else
+      object.start_time.strftime("%A, %-d.%-m / %k:%M &ndash; ") +
+          object.end_time.strftime("%A, %-d.%-m / %k:%M &ndash; ")
+    end
   end
 
 end
