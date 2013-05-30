@@ -23,10 +23,10 @@
   %label.inline
     = f.check_box :anytime
     Without a specific date/time
-  = content_tag :div, ""
   = f.text_field :place, placeholder: "Location, where to meet …"
+  = f.number_field :limit_of_participants, placeholder: "5"
   = f.text_area :requirements, placeholder: "Requirements, what to bring …"
   = f.text_area :description, placeholder: "Description, background information, links, etc."
-  = "###{@activity.description.to_s.html_safe}##"
+  = f.url_field :image_url, placeholder: "URL for an image"
 
   %button(type="submit") Save
