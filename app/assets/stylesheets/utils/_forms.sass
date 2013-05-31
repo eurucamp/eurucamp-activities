@@ -8,6 +8,8 @@ form
     border: none
     outline: none
     +custom-sans(light)
+    z-index: 1
+    position: relative
 
     +placeholder
       color: darken($light-gray, 10)
@@ -16,14 +18,8 @@ form
       font-size: 1.35em
       +custom-sans(medium)
 
-    &.date-capture
-      width: 10em
-
-    &.time-capture
-      width: 4em
-      text-align: center
-
     &:focus
+      z-index: 1000
       box-shadow: 0 0 7px transparentize($black, 0.9)
 
   fieldset
@@ -45,15 +41,8 @@ form
     text-align: center
     width: 50%
 
-  span.between
-    display: inline-block
-    margin: 0 2em
-    +custom-sans(bold)
-    text-transform: uppercase
-
   span.divider
     display: inline-block
-    margin: 0 1em
 
   label.inline
     display: inline
@@ -63,3 +52,10 @@ form
       width: auto
       margin: 0 0.25em 0 0
       vertical-align: baseline
+
+  small
+    font-size: 0.85em
+    text-align: right
+    display: block
+    color: $medium-gray
+    padding: 0.5em 15px
