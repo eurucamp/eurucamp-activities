@@ -1,0 +1,48 @@
+= form_for @activity, html: { id: "new-activity" } do |f|
+  - if @activity.errors.any?
+    %ul.errors
+      - @activity.errors.full_messages.each do |error|
+        %li= error
+
+  %label.name
+    = f.text_field :name, placeholder: "Give your activity a name", class: "title"
+
+  %hr
+
+  %fieldset.start-time
+    .select
+      = f.datetime_select :start_time
+    %input.date-capture(data-target="start_time" type="text" placeholder="#{ current_event.start_time.strftime(t("activities.date_format")) }")
+    %input.time-capture(data-target="start_time" type="text" placeholder="15:00")
+
+  %span.divider
+    &ndash;
+
+  %fieldset.end-time
+    .select
+      = f.datetime_select :end_time
+    %input.date-capture(data-target="end_time" type="text" placeholder="#{ current_event.end_time.strftime(t("activities.date_format")) }")
+    %input.time-capture(data-target="end_time" type="text" placeholder="16:30")
+
+  %fieldset.anytime
+    %span.between or
+    %label.inline
+      = f.check_box :anytime
+      Without a specific date/time
+
+  %label.location
+    = f.text_field :location, placeholder: "Location, where to meet …"
+
+  %label.limit-of-participants
+    = f.number_field :limit_of_participants, placeholder: "5"
+
+  %label.requirements
+    = f.text_area :requirements, placeholder: "Requirements, what to bring …"
+
+  %label.description
+    = f.text_area :description, placeholder: "Description, background information, links, etc."
+
+  %label.image-url
+    = f.url_field :image_url, placeholder: "URL for an image"
+
+  %button(type="submit") Save
