@@ -25,7 +25,7 @@ describe ActivitiesController do
     end
 
     context "valid parameters" do
-      let(:params) { {activity: {name: "Pool party", start_time: 2.days.from_now.to_s, end_time: 2.days.from_now.to_s, place: "Pool" }} }
+      let(:params) { {activity: {name: "Pool party", start_time: 2.days.from_now.to_s, end_time: 2.days.from_now.to_s, location: "Pool" }} }
       its(:status) { should == 201 }
     end
 
@@ -44,7 +44,7 @@ describe ActivitiesController do
     end
 
     context "valid parameters" do
-      let(:params) { {id: activity.id, activity: {name: "Pool party", start_time: 2.days.from_now.to_s, end_time: 3.days.from_now.to_s, place: "Pool" }} }
+      let(:params) { {id: activity.id, activity: {name: "Pool party", start_time: 2.days.from_now.to_s, end_time: 3.days.from_now.to_s, location: "Pool" }} }
       its(:status) { should == 204 }
     end
 

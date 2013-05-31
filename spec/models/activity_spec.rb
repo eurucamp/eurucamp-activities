@@ -88,8 +88,8 @@ describe Activity do
 
     it { should_not accept_values_for(:event, nil) }
 
-    it { should     accept_values_for(:place, "football pitch" ) }
-    it { should_not accept_values_for(:place, "", nil) }
+    it { should     accept_values_for(:location, "football pitch" ) }
+    it { should_not accept_values_for(:location, "", nil) }
 
     it { should     accept_values_for(:start_time, Time.now, nil) }
     it { should_not accept_values_for(:start_time, "") }
