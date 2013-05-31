@@ -23,7 +23,7 @@ class ActivityDecorator < Draper::Decorator
 
   def time
     if object.anytime?
-      "Anytime"
+      I18n.t("activities.anytime")
     else
       alpha, omega, out = object.start_time, object.end_time, ""
 
