@@ -1,0 +1,212 @@
+a#new-activity
+  float: right
+  @extend %icon-button-add
+
+#activities
+  clear: both
+  @extend %clearfix
+  +unlisted
+  padding: 1em 0 0 0
+
+  li
+    display: block
+    +span-columns(2)
+    margin: 0 0 1em 0
+    text-align: center
+
+    span.icon
+      position: absolute
+      top: 15px
+      right: 15px
+      opacity: 1
+      +transition(opacity 0.25s)
+
+    a
+      border: none
+
+      &.details
+        display: block
+        position: absolute
+        z-index: 100
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+
+        span
+          display: inline-block
+          background: $medium-gray
+          color: $white
+          text-shadow: 0 1px 0 $gray
+          @extend %small-text
+          padding: 0.25em 1.5em
+          text-transform: uppercase
+          border-radius: 3px
+          margin: 19em 0 0
+          opacity: 0
+          +transition(all 0.35s ease-in-out)
+          +custom-sans(medium)
+
+    .container
+      background: $white
+      height: 25em
+      padding: 2.5em 1em 1em 1em
+      margin: 0 1px
+      position: relative
+      overflow: hidden
+      +transition(box-shadow 0.25s ease-in-out)
+
+    .labels
+      margin: 1.5em 0 0 0
+      color: $extra-dark-gray
+
+      h4
+        +custom-sans(light)
+        font-size: 1.375em
+        margin: 0
+        padding: 0 0.727272em
+
+        &:before,
+        &:after
+          content: "."
+          text-indent: -999em
+          display: block
+          margin: 0.2em auto
+          width: 20px
+          height: 1px
+          border-bottom: 1px solid $light-gray
+        &:before
+          width: 0
+          margin: 0 auto
+
+      p
+        &.creator
+          text-transform: uppercase
+          +custom-sans(medium)
+          @extend %smaller-text
+          margin: 0.5em 0
+
+        &.time
+          position: absolute
+          right: 1em
+          bottom: 0
+          left: 1em
+          +custom-serif(bold)
+          border-top: 1px solid $light-gray
+          padding: 0.75em 0 0
+
+    .wrapper,
+    .labels h4
+      +transition(all 0.15s ease-out)
+
+    .labels p
+      opacity: 1
+      +transition(opacity 0.1s)
+
+    // the big button appearing on hover
+    .action
+      opacity: 0
+      position: absolute
+      left: 0
+      right: 0
+      top: 5em
+      z-index: 1001
+      +transform(scale(0.9))
+      +transition(all 0.35s ease-in-out 0)
+
+      a, button
+        border: none
+        background: none
+        +custom-sans(bold)
+        @extend %smaller-text
+        text-transform: uppercase
+        color: $green
+        display: inline-block
+
+        span
+          display: block
+          width: 96px
+          height: 96px
+          margin: 0 auto 0.75em
+          background: transparent image-url("shared/buttons_big.png") no-repeat 0 0
+
+        &:hover
+          span
+            background-position: -96px 0
+
+    &:hover
+      cursor: pointer
+
+      .container
+        z-index: 9001
+        +transition(box-shadow 0.25s ease-in-out)
+        box-shadow: 0 0 20px transparentize($black, 0.9)
+
+      span.icon
+        opacity: 0
+        +transition(opacity 0.25s)
+
+      a.details
+        span
+          opacity: 1
+          +transition(all 0.25s ease-in-out)
+
+      .wrapper
+        +transition(all 0.15s ease-out)
+        +transform(translate(0, -9em))
+        opacity: 0
+
+      .labels
+        h4
+          +transition(all 0.15s ease-out)
+          +transform(translate(0, 2.5em))
+
+          &:before
+            width: 50%
+            margin: 0 auto 0.5em
+          &:after
+            width: 0
+
+        p
+          +transition(opacity 0.1s)
+          opacity: 0
+
+      .action
+        opacity: 1
+        +transform(scale(1))
+        +transition(all 0.15s ease-out 0.15s)
+
+    // variations
+    $types: participant $red ok, owner $yellow edit
+    $xpos : 0
+
+    @each $type in $types
+      $xpos: $xpos + 1
+
+      &.#{nth($type, 1)}
+        span.icon
+          @extend %icon-#{nth($type, 3)}
+
+        .action
+          a, button
+            color: nth($type, 2)
+
+            span
+              background-position: 0 -96px * $xpos
+
+            &:hover
+              span
+                background-position: -96px -96px * $xpos
+
+    img.progress
+      width: 150px
+      height: 150px
+      border-radius: 75px
+      margin: 6px
+
+    .wrapper
+      width: 162px
+      margin: 0 auto
+
+      canvas
+        z-index: 99 !important

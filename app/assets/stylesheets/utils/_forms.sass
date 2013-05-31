@@ -1,4 +1,5 @@
 form
+
   input, textarea
     width: 100%
     padding: 0.75em 15px 1em
@@ -7,6 +8,13 @@ form
     border: none
     outline: none
     +custom-sans(light)
+
+    +placeholder
+      color: darken($light-gray, 10)
+
+    &.title
+      font-size: 1.35em
+      +custom-sans(medium)
 
     &.date-capture
       width: 10em
@@ -18,11 +26,34 @@ form
     &:focus
       box-shadow: 0 0 7px transparentize($black, 0.9)
 
+  fieldset
+    border: none
+    padding: 0
+
+  fieldset,
+  label
+    display: block
+    margin: 0 0 1.25em
+
+  hr
+    background-color: $light-gray
+    border-width: 0
+    color: $light-gray
+    height: 1px
+    line-height: 1em
+    margin: 1.25em auto
+    text-align: center
+    width: 50%
+
   span.between
     display: inline-block
     margin: 0 2em
     +custom-sans(bold)
     text-transform: uppercase
+
+  span.divider
+    display: inline-block
+    margin: 0 1em
 
   label.inline
     display: inline

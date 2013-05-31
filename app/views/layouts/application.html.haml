@@ -28,7 +28,7 @@
         }
       };
 
-  %body(class=body_class)
+  %body(class="#{ body_class(controller.action_name) }")
     = render "partials/chrome_frame"
     #container
       = render "partials/header"
