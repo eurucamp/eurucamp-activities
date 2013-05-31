@@ -1,4 +1,9 @@
 en:
+  time:
+    formats:
+      time_only: "%k:%M"
+      long: "%a, %-d.%-m"
+
   user_nav:
     account:
       label: My Account
@@ -39,8 +44,6 @@ en:
       label: More info
       title: Learn more about this activity
     anytime: Anytime
-    date_format: "%a, %-d.%-m"
-    time_format: "%k:%M"
 
   footer_nav:
     about:
