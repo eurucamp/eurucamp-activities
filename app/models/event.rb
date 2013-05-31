@@ -15,7 +15,9 @@ class Event
   end
 
   def activity(activity_id)
-    activities.where(:id => activity_id).first
+    activities.where(:id => activity_id).first.tap do |activity|
+      activity.event = self
+    end
   end
 
   def activities

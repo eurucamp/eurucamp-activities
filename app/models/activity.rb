@@ -26,7 +26,7 @@ class Activity < ActiveRecord::Base
     end
 
     def today
-      where("created_at >= :t", t: Time.zone.now.beginning_of_day)
+      where(":t between start_time and end_time", t: Date.current)
     end
 
     def created_by(user)
@@ -40,6 +40,15 @@ class Activity < ActiveRecord::Base
 
   def full_by
     limit_of_participants.nil? ? 0 : [100.0 * participations_count / limit_of_participants.to_f, 100.0].min
+  end
+
+  def today?
+    t = Time.now.end_of_day
+    t > start_time && t < end_time
+  end
+
+  def upcoming?
+    start_time > Time.now.end_of_day
   end
 
   def new_participation(user)
