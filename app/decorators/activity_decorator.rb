@@ -23,10 +23,19 @@ class ActivityDecorator < Draper::Decorator
 
   def time
     if object.anytime?
-      ""
+      "Anytime"
     else
-      object.start_time.strftime("%A, %-d.%-m / %k:%M &ndash; ") +
-          object.end_time.strftime("%A, %-d.%-m / %k:%M &ndash; ")
+      alpha, omega, out = object.start_time, object.end_time, ""
+
+      out << alpha.strftime(I18n.t("activities.date_format"))
+      out << " / "
+      out << alpha.strftime(I18n.t("activities.time_format"))
+      out << " &ndash; "
+      unless alpha.to_date == omega.to_date
+        out << omega.strftime(I18n.t("activities.date_format"))
+        out << " / "
+      end
+      out << omega.strftime(I18n.t("activities.time_format"))
     end
   end
 

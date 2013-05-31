@@ -15,7 +15,7 @@
   %fieldset.start-time
     .select
       = f.datetime_select :start_time
-    %input.date-capture(data-target="start_time" type="text" placeholder="#{ current_event.start_time.strftime("%a, %e.%-m.") }")
+    %input.date-capture(data-target="start_time" type="text" placeholder="#{ current_event.start_time.strftime(t("activities.date_format")) }")
     %input.time-capture(data-target="start_time" type="text" placeholder="15:00")
 
   %span.divider
@@ -24,7 +24,7 @@
   %fieldset.end-time
     .select
       = f.datetime_select :end_time
-    %input.date-capture(data-target="end_time" type="text" placeholder="#{ current_event.end_time.strftime("%a, %e.%-m.") }")
+    %input.date-capture(data-target="end_time" type="text" placeholder="#{ current_event.end_time.strftime(t("activities.date_format")) }")
     %input.time-capture(data-target="end_time" type="text" placeholder="16:30")
 
   %fieldset.anytime
