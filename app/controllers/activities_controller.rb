@@ -31,7 +31,7 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity.update_attributes(sanitized_params)
-    respond_with(@activity)
+    respond_with(@activity, location: edit_activity_path(@activity))
   end
 
   def destroy
