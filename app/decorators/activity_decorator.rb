@@ -14,11 +14,10 @@ class ActivityDecorator < Draper::Decorator
   end
 
   def status
-    today = Date.current
-    if object.anytime?                        then ""
-    elsif object.start_time > today           then "upcoming"
-    elsif object.start_time.to_date == today  then "today"
-    else                                           "archive"
+    if object.anytime?      then ""
+    elsif object.today?     then "today"
+    elsif object.upcoming?  then "upcoming"
+    else                    "archive"
     end
   end
 
