@@ -1,5 +1,4 @@
 = form_for @activity, html: { id: "new-activity" } do |f|
-  = render partial: "partials/errors", locals: { resource: @activity }
 
   %label.name
     = f.text_field :name, placeholder: "Give your activity a name", class: "title"
@@ -9,8 +8,8 @@
   %fieldset.start-time
     .select
       = f.datetime_select :start_time, include_blank: true
-    %input.date-capture(data-target="start_time" data-value="#{ l(@activity.start_time, format: :date_only) rescue nil }" type="text" placeholder="#{ l(current_event.start_time, format: :long) }")>
-    %input.time-capture(data-target="start_time" data-value="#{ l(@activity.start_time, format: :time_only) rescue nil }" type="text" placeholder="15:00")>
+    %input.date-capture(data-target="start_time" data-value="#{ l(@activity.start_time, format: :date_only) rescue nil }" type="text" placeholder="#{ l(current_event.start_time, format: :long) }" class="#{ "validation-error" if @activity.errors[:start_time].any? }")>
+    %input.time-capture(data-target="start_time" data-value="#{ l(@activity.start_time, format: :time_only) rescue nil }" type="text" placeholder="15:00" class="#{ "validation-error" if @activity.errors[:start_time].any? }")>
 
   %span.divider>
     &ndash;
@@ -18,8 +17,8 @@
   %fieldset.end-time
     .select
       = f.datetime_select :end_time, include_blank: true
-    %input.date-capture(data-target="end_time" data-value="#{ l(@activity.end_time, format: :date_only) rescue nil }" type="text" placeholder="#{ l(current_event.end_time, format: :long) }")>
-    %input.time-capture(data-target="end_time" data-value="#{ l(@activity.end_time, format: :time_only) rescue nil }" type="text" placeholder="16:30")>
+    %input.date-capture(data-target="end_time" data-value="#{ l(@activity.end_time, format: :date_only) rescue nil }" type="text" placeholder="#{ l(current_event.end_time, format: :long) }" class="#{ "validation-error" if @activity.errors[:end_time].any? }")>
+    %input.time-capture(data-target="end_time" data-value="#{ l(@activity.end_time, format: :time_only) rescue nil }" type="text" placeholder="16:30" class="#{ "validation-error" if @activity.errors[:end_time].any? }")>
 
   %fieldset.anytime
     %span.between or
