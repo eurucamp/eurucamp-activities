@@ -13,6 +13,7 @@ $ ->
     min: new Date(App.event.startTime)
     max: new Date(App.event.endTime)
     format: 'ddd, d.m.'
+    formatSubmit: 'dd-mm-yyyy'
     onSet: (e)->
       date               = new Date(e.select)
       target             = @$node.data 'target'
@@ -23,6 +24,7 @@ $ ->
 
   $('.time-capture').pickatime
     format: 'h:i'
+    formatSubmit: 'h:i'
     onSet: (e)->
       target             = @$node.data 'target'
       [hours, minutes]   = [parseInt((e.select / 60), 10), e.select % 60]

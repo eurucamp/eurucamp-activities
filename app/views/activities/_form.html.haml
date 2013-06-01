@@ -12,8 +12,8 @@
   %fieldset.start-time
     .select
       = f.datetime_select :start_time, include_blank: true
-    %input.date-capture(data-target="start_time" type="text" placeholder="#{ l(current_event.start_time, format: :long) }")>
-    %input.time-capture(data-target="start_time" type="text" placeholder="15:00")>
+    %input.date-capture(data-target="start_time" data-value="#{ l(@activity.start_time, format: :date_only) rescue nil }" type="text" placeholder="#{ l(current_event.start_time, format: :long) }")>
+    %input.time-capture(data-target="start_time" data-value="#{ l(@activity.start_time, format: :time_only) rescue nil }" type="text" placeholder="15:00")>
 
   %span.divider>
     &ndash;
@@ -21,8 +21,8 @@
   %fieldset.end-time
     .select
       = f.datetime_select :end_time, include_blank: true
-    %input.date-capture(data-target="end_time" type="text" placeholder="#{ l(current_event.end_time, format: :long) }")>
-    %input.time-capture(data-target="end_time" type="text" placeholder="16:30")>
+    %input.date-capture(data-target="end_time" data-value="#{ l(@activity.end_time, format: :date_only) rescue nil }" type="text" placeholder="#{ l(current_event.end_time, format: :long) }")>
+    %input.time-capture(data-target="end_time" data-value="#{ l(@activity.end_time, format: :time_only) rescue nil }" type="text" placeholder="16:30")>
 
   %fieldset.anytime
     %span.between or
