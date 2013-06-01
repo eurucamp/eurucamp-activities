@@ -3,6 +3,8 @@ form
   input, textarea
     width: 100%
     padding: 0.75em 15px 1em
+    background: $white
+    border-bottom: 1px solid $white
     margin: 0 0 2px 0
     font-size: 1.25em
     border: none
@@ -18,6 +20,12 @@ form
       font-size: 1.35em
       +custom-sans(medium)
 
+    &.validation-error
+      border-bottom: 1px solid $red
+
+      +placeholder
+        color: lighten($red, 30)
+
     &:focus
       z-index: 1000
       box-shadow: 0 0 7px transparentize($black, 0.9)
@@ -30,6 +38,15 @@ form
   label
     display: block
     margin: 0 0 1.25em
+    position: relative
+
+    span.validation-error-message
+      position: absolute
+      right: 15px
+      top: 0
+      color: $red
+      z-index: 1000
+      line-height: 4.25em
 
   hr
     background-color: $light-gray
