@@ -1,8 +1,5 @@
 = form_for @activity, html: { id: "new-activity" } do |f|
-  - if @activity.errors.any?
-    %ul.errors
-      - @activity.errors.full_messages.each do |error|
-        %li= error
+  = render partial: "partials/errors", locals: { resource: @activity }
 
   %label.name
     = f.text_field :name, placeholder: "Give your activity a name", class: "title"
