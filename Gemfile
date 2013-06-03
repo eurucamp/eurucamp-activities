@@ -24,7 +24,7 @@ gem 'draper'
 gem 'cancan'
 
 group :development do
-  gem 'debugger',         '~> 1.5'
+  gem 'debugger',         '~> 1.6'
   gem 'heroku_san',       '~> 3.0.2'
   gem 'foreman'
   gem 'better_errors'
