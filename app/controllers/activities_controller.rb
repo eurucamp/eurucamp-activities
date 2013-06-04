@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
 
   skip_before_filter :authenticate_user!, only: [:index, :show]
   before_filter :load_resource, only: [:show, :edit, :update, :destroy]
-  authorize_resource only: [:show, :edit, :update, :destroy]
+  authorize_resource only: [:edit, :update, :destroy]
 
   def index
     @activities = current_event.activities
