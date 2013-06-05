@@ -25,6 +25,10 @@ class Activity < ActiveRecord::Base
       where("start_time >= :t OR anytime = true", t: 1.month.ago).limit(limit)
     end
 
+    def all_activities(limit = DEFAULT_LIMIT)
+      limit(limit)
+    end
+
     def today
       where(":t between start_time and end_time", t: Date.current)
     end
