@@ -2,7 +2,8 @@ en:
   time:
     formats:
       time_only: "%k:%M"
-      date_only: "%d-%m-%Y"
+      #date_only: "%d-%m-%Y"
+      date_only: "%a, %-d.%-m"
       long: "%a, %-d.%-m"
 
   user_nav:

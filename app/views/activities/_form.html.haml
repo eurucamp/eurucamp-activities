@@ -5,20 +5,26 @@
 
   %hr
 
-  %fieldset.start-time
-    .select
-      = f.datetime_select :start_time, include_blank: true
-    %input.date-capture(data-target="start_time" data-value="#{ l(@activity.start_time, format: :date_only) rescue nil }" type="text" placeholder="#{ l(current_event.start_time, format: :long) }" class="#{ "validation-error" if @activity.errors[:start_time].any? }")>
-    %input.time-capture(data-target="start_time" data-value="#{ l(@activity.start_time, format: :time_only) rescue nil }" type="text" placeholder="15:00" class="#{ "validation-error" if @activity.errors[:start_time].any? }")>
+  -#
+    %fieldset.start-time
+      .select
+        = f.datetime_select :start_time, include_blank: true
+      %input.date-capture(data-target="start_time" data-update="end-time" data-value="#{ l(@activity.start_time, format: :date_only) rescue nil }" type="text" placeholder="#{ l(current_event.start_time, format: :long) }" class="#{ "validation-error" if @activity.errors[:start_time].any? }")>
+      %input.time-capture(data-target="start_time" data-update="end-time" data-value="#{ l(@activity.start_time, format: :time_only) rescue nil }" type="text" placeholder="15:00" class="#{ "validation-error" if @activity.errors[:start_time].any? }")>
+
+  - fancy_datime_select f, :start_time, @activity
 
   %span.divider>
     &ndash;
 
-  %fieldset.end-time
-    .select
-      = f.datetime_select :end_time, include_blank: true
-    %input.date-capture(data-target="end_time" data-value="#{ l(@activity.end_time, format: :date_only) rescue nil }" type="text" placeholder="#{ l(current_event.end_time, format: :long) }" class="#{ "validation-error" if @activity.errors[:end_time].any? }")>
-    %input.time-capture(data-target="end_time" data-value="#{ l(@activity.end_time, format: :time_only) rescue nil }" type="text" placeholder="16:30" class="#{ "validation-error" if @activity.errors[:end_time].any? }")>
+  -#
+    %fieldset.end-time
+      .select
+        = f.datetime_select :end_time, include_blank: true
+      %input.date-capture(data-target="end_time" data-update="start-time" data-value="#{ l(@activity.end_time, format: :date_only) rescue nil }" type="text" placeholder="#{ l(current_event.end_time, format: :long) }" class="#{ "validation-error" if @activity.errors[:end_time].any? }")>
+      %input.time-capture(data-target="end_time" data-update="start-time" data-value="#{ l(@activity.end_time, format: :time_only) rescue nil }" type="text" placeholder="16:30" class="#{ "validation-error" if @activity.errors[:end_time].any? }")>
+
+  - fancy_datime_select f, :end_time, @activity
 
   %fieldset.anytime
     %span.between or
@@ -35,11 +41,11 @@
     %small Max. participants
 
   %label.requirements
-    = f.text_area :requirements, placeholder: "Requirements"
+    = f.text_area :requirements, placeholder: "Requirements", rows: 6, class: "markdown"
     %small What to bring, to wear etc.
 
   %label.description
-    = f.text_area :description, placeholder: "Description"
+    = f.text_area :description, placeholder: "Description", rows: 8, class: "markdown"
     %small Background information, links, etc.
 
   %label.image-url
