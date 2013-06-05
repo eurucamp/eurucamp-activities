@@ -28,7 +28,7 @@
           %span
           = t("activities.join.label")
 
-    %a.details(href="#" title="#{ t("activities.more_info.title") }")
+    %a.details(href="#{activity_path(activity)}" title="#{ t("activities.more_info.title") }")
       %span
         = t("activities.more_info.label")
     - unless type == 'default'
