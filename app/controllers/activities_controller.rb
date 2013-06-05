@@ -1,4 +1,4 @@
-class ActivitiesController < ApplicationController
+class ActivitiesController < ApiController
   respond_to :html
 
   skip_before_filter :authenticate_user!, only: [:index, :show]
@@ -20,7 +20,7 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-    respond_with(@activity)
+    respond_with(@activity, status: :not_found)
   end
 
   def create
