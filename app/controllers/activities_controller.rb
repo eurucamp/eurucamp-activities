@@ -42,7 +42,7 @@ class ActivitiesController < ApiController
   private
 
     def load_resource
-      @activity = current_event.activity(params[:id])
+      @activity = current_event.activity(params[:id]).decorate
     end
 
     def sanitized_params
