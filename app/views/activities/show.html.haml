@@ -1,0 +1,45 @@
+%article
+  %header
+    %h2
+      = @activity.name
+    %p
+      Organized by
+      = @activity.creator_name
+
+  %section.description
+    = @activity.description_markdown
+
+  %section.overview
+    %figure
+      = image_tag "dummies/activity.jpg", alt: @activity.name, class: "progress", data: { progress: @activity.full_by }
+    %p
+      = @activity.room_left
+      %a.participants(href="#" title="")
+        %span
+          Participants
+
+  %section.details
+    %dl
+      - if @activity.anytime?
+        %dt
+          Time &amp; Date
+        %dd
+          Anytime
+      - else
+        %dt
+          Start
+        %dd
+          = l(@activity.start_time, format: :long)
+        %dt
+          End
+        %dd
+          = l(@activity.end_time, format: :long)
+      %dt
+        Location
+      %dd
+        = @activity.location
+      %dt
+        Required
+      %dd
+        = @activity.requirements
+
