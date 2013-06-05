@@ -32,6 +32,7 @@ class Event
   def all_activities
     fetch_all_activities
   end
+  alias_method :activities, :all_activities
 
   private
 

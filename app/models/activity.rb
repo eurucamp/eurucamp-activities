@@ -8,9 +8,9 @@ class Activity < ActiveRecord::Base
   has_many :participations, :dependent => :destroy
   has_many :participants, through: :participations, class_name: "User"
 
-  validates :start_time, presence: true, allow_blank: false, allow_nil: true
-  validates :end_time, presence: true, allow_blank: false, allow_nil: true
-  validates :anytime, inclusion: {in: [true, false]}
+  validates :start_time, presence: true, allow_blank: false, if: ->{ !anytime? }
+  validates :end_time, presence: true, allow_blank: false, if: ->{ !anytime? }
+  validates :anytime, presence: true, allow_blank: false, allow_nil: false, if: ->{ start_time.blank? && end_time.blank? }
   validates :name, presence: true, allow_blank: false, uniqueness: true
   validates :location, presence: true, allow_blank: false
   validates :limit_of_participants, numericality: {greater_than: 0}, allow_nil: true
@@ -49,6 +49,7 @@ class Activity < ActiveRecord::Base
   end
 
   def today?
+    return true if anytime?
     t = Time.now.end_of_day
     t > start_time && t < end_time
   end
