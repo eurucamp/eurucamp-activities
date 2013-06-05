@@ -15,23 +15,28 @@ module ActivityFormHelper
 
     def capture_attributes(field, model, type = 'date')
       field = field.to_sym
+      format = "#{type}_only".to_sym
 
       attributes = {
         type:        'text',
         class:       "#{type}-capture",
-        placeholder: l(current_event.send(field), format: "#{type}_only".to_sym),
-        data:        { target: field }
+        placeholder: l(current_event.send(field), format: format),
+        data:        { target: field, value: parse_date(model.send(field), format) }
       }
 
-      if (value = model.send(field))
-        attributes[:value] = l(value, format: "#{type}_only".to_sym)
-      end
+      #if (value = model.send(field))
+      #  attributes[:value] = l(value, format: "#{type}_only".to_sym)
+      #end
 
       if model.errors[field].any?
         attributes[:class] << ' validation-error'
       end
 
       attributes
+    end
+
+    def parse_date(d, format)
+      l(d, format: format) rescue nil
     end
 
 end
