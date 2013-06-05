@@ -29,6 +29,17 @@ class ActivityDecorator < Draper::Decorator
     object.requirements ? markdown(object.requirements) : ''
   end
 
+  def room_left
+    left = object.limit_of_participants - object.participations_count
+    if left == 1
+      "Quick, only one place left."
+    elsif left > 0
+      "Still room for #{left} people"
+    else
+      "Sorry. All places are gone."
+    end
+  end
+
   def time
     if object.anytime?
       I18n.t("activities.anytime")
