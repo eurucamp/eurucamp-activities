@@ -18,6 +18,8 @@
       = f.check_box :anytime
       Without a specific date/time
 
+  %hr
+
   %label.location>
     = f.text_field :location, placeholder: "Location"
     %small Where does your activity take place, where to meet, …
@@ -27,11 +29,11 @@
     %small Max. participants
 
   %label.requirements
-    = f.text_area :requirements, placeholder: "Requirements", rows: 6, class: "markdown"
+    = f.text_area :requirements, placeholder: "Requirements", rows: 6, class: "markdown", title: "You can use markdown here!"
     %small What to bring, to wear etc.
 
   %label.description
-    = f.text_area :description, placeholder: "Description", rows: 8, class: "markdown"
+    = f.text_area :description, placeholder: "Description", rows: 8, class: "markdown", title: "You can use markdown here!"
     %small Background information, links, etc.
 
   %label.image-url
