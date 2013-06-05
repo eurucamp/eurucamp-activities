@@ -22,7 +22,9 @@ class Activity < ActiveRecord::Base
 
   class << self
     def recent(limit = DEFAULT_LIMIT)
-      where("start_time >= :t OR anytime = true", t: 1.month.ago).limit(limit)
+      where("start_time >= :t OR anytime = true", t: 1.month.ago)
+        .limit(limit)
+        .order("anytime DESC, start_time ASC")
     end
 
     def all_activities(limit = DEFAULT_LIMIT)
