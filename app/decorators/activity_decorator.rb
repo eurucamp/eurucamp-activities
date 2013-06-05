@@ -21,6 +21,14 @@ class ActivityDecorator < Draper::Decorator
     end
   end
 
+  def description_markdown
+    object.description ? markdown(object.description) : ''
+  end
+
+  def requirements_markdown
+    object.requirements ? markdown(object.requirements) : ''
+  end
+
   def time
     if object.anytime?
       I18n.t("activities.anytime")
@@ -38,5 +46,14 @@ class ActivityDecorator < Draper::Decorator
       out << I18n.localize(omega, format: :time_only)
     end
   end
+
+  private
+
+    def markdown(text)
+      options = %i(hard_wrap filter_html autolink no_intraemphasis fenced_code_blocks)
+      options = options.zip Array.new(options.size) { true }
+      markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, Hash[*options.flatten])
+      markdown.render(text).html_safe
+    end
 
 end
