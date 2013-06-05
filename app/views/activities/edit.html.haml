@@ -2,6 +2,9 @@
   Edit your activity
 
   %small
-    = link_to "View activity page", @activity
+    = link_to "View the activity page", @activity
+    %strong or
+    = link_to "create a new activity", new_activity_path
+
 
 = render "form"
