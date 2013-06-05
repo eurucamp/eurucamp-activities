@@ -48,6 +48,10 @@ class Activity < ActiveRecord::Base
     limit_of_participants.nil? ? 0 : [100.0 * participations_count / limit_of_participants.to_f, 100.0].min
   end
 
+  def anybody_can_join?
+    limit_of_participants.nil?
+  end
+
   def today?
     return true if anytime?
     t = Time.now.end_of_day
