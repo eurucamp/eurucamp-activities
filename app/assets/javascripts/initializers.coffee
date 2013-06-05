@@ -23,8 +23,8 @@ $ ->
       $("#activity_#{target}_3i").val(day)
 
   $('.time-capture').pickatime
-    format: 'h:i'
-    formatSubmit: 'h:i'
+    format: 'HH:i'
+    formatSubmit: 'HH:i'
     onSet: (e)->
       target             = @$node.data 'target'
       [hours, minutes]   = [parseInt((e.select / 60), 10), e.select % 60]
