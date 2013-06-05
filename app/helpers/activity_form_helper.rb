@@ -24,10 +24,6 @@ module ActivityFormHelper
         data:        { target: field, value: parse_date(model.send(field), format) }
       }
 
-      #if (value = model.send(field))
-      #  attributes[:value] = l(value, format: "#{type}_only".to_sym)
-      #end
-
       if model.errors[field].any?
         attributes[:class] << ' validation-error'
       end
