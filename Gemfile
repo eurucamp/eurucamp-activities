@@ -22,6 +22,7 @@ gem 'haml-rails'
 gem 'rails_html_helpers'
 gem 'draper'
 gem 'cancan'
+gem 'redcarpet'
 
 group :development do
   gem 'debugger',         '~> 1.6'
