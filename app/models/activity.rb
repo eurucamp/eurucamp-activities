@@ -84,12 +84,12 @@ class Activity < ActiveRecord::Base
     end
 
     def time_frame_order
-      errors.add(:end_time, "in wrong order") if end_time < start_time
+      errors.add(:end_time, I18n.t("activities.errors.end_time.before_start")) if end_time < start_time
     end
 
     def during_the_event
-      errors.add(:start_time, "too early") if start_time < event.start_time
-      errors.add(:end_time, "too late") if end_time > event.end_time
+      errors.add(:start_time, I18n.t("activities.errors.end_time.too_early")) if start_time < event.start_time
+      errors.add(:end_time, I18n.t("activities.errors.end_time.too_late")) if end_time > event.end_time
     end
 
 end
