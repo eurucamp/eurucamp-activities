@@ -46,4 +46,4 @@
 
   %button(type="submit")>
     %span>
-    = t("common.submit.#{controller.action_name}")
+    = t("common.submit.#{ @activity.new_record? ? "save" : "edit" }")
