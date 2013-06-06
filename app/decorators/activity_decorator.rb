@@ -32,7 +32,7 @@ class ActivityDecorator < Draper::Decorator
   def room_left
     if object.anybody_can_join? then ""
     else
-      left = object.limit_of_participants - object.participations_count
+      left = [[object.limit_of_participants - object.participations_count, object.participations_count].min, 0].max
       if    left == 1 then "Quick, only one place left."
       elsif left >  0 then "Still room for #{left} people"
       else                 "Sorry. All places are gone."
