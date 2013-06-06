@@ -57,6 +57,23 @@ form#new-activity
       input
         width: 85%
 
+    &.image-url
+      .preview
+        position: absolute
+        right: 0.5em
+        top: 0.5em
+        z-index: 1000
+        height: 3em
+        width: 3em
+        border-radius: 1.5em
+        background-position: center
+        background-size: cover
+
+        &.checking
+          background-size: auto !important
+          background-repeat: no-repeat !important
+          background-image: image-url('shared/checking.gif') !important
+
   button
     border: none
     background: none
