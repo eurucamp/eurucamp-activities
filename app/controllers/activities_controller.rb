@@ -58,4 +58,8 @@ class ActivitiesController < ApiController
                     :image_url)
     end
 
+    def query_params
+      params.permit(:search, :filter)
+    end
+
 end
