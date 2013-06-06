@@ -5,7 +5,7 @@ a#new-activity
 #activities
   clear: both
   @extend %clearfix
-  +unlisted
+  @extend %unlisted
   padding: 1em 0 0 0
 
   // card variations
@@ -51,6 +51,7 @@ a#new-activity
         span
           @extend %secondary-button
 
+    // card background and wrapper
     .container
       background: $white
       height: 25em
@@ -64,7 +65,7 @@ a#new-activity
     .wrapper
       width: 162px
       margin: 0 auto
-      +transition(all 0.15s ease-out)
+      @extend %transition-all-15s-ease-out
 
       canvas
         z-index: 99 !important
@@ -87,7 +88,7 @@ a#new-activity
         font-size: 1.375em
         margin: 0
         padding: 0 0.727272em
-        +transition(all 0.15s ease-out)
+        @extend %transition-all-15s-ease-out
         @extend %ornamental-divider-before
         @extend %ornamental-divider-after
 
@@ -157,13 +158,13 @@ a#new-activity
           +transition(all 0.25s ease-in-out)
 
       .wrapper
-        +transition(all 0.15s ease-out)
+        @extend %transition-all-15s-ease-out
         +transform(translate(0, -9em))
         opacity: 0
 
       .labels
         h4
-          +transition(all 0.15s ease-out)
+          @extend %transition-all-15s-ease-out
           +transform(translate(0, 2.5em))
 
           &:before

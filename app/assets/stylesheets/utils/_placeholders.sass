@@ -30,6 +30,11 @@
   &:before
     +ornamental-divider
 
+%unlisted
+  list-style: none
+  margin: 0
+  padding: 0
+
 %inline-nav-list
   +unlisted
 
@@ -53,3 +58,6 @@
 
       &:hover
         color: $blue
+
+%transition-all-15s-ease-out
+  +transition(all 0.15s ease-out)
