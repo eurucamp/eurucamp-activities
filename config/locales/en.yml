@@ -98,6 +98,7 @@ en:
       label: Requirements
       hint:  "What to bring, to wear etc."
     image_url:
+      label: URL for an image
       hint: Upload an image to e.g. imgur.com and link it here
 
   footer_nav:
