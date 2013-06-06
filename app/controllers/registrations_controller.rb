@@ -20,7 +20,7 @@ class RegistrationsController < Devise::RegistrationsController
       respond_with resource, :location => after_update_path_for(resource)
     else
       clean_up_passwords resource
-      respond_with(resource, location: edit_user_registration_path)
+      respond_with resource
     end
   end
 
