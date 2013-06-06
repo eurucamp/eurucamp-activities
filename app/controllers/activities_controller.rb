@@ -7,6 +7,12 @@ class ActivitiesController < ApiController
 
   def index
     @activities = current_event.search_activities(current_user, query_params[:search], query_params[:filter])
+    @counters = {
+      today: Activity.today.count,
+      all: Activity.count,
+      participant: Activity.participated_by(current_user).count,
+      owner: Activity.created_by(current_user).count
+    }
     respond_with(@activities)
   end
 

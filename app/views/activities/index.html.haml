@@ -3,22 +3,22 @@
     %input(type="radio" name="filter" value="today")
     = t("activities.filters.today")
     %strong
-      = @activities.today.count
+      = @counters[:today]
   %label.all.selected>
     %input(type="radio" name="filter" value="all")
       = t("activities.filters.all")
     %strong
-      = @activities.count
+      = @counters[:all]
   %label.participant>
     %input(type="radio" name="filter" value="participant")
     = t("activities.filters.participant")
     %strong
-      = @activities.participated_by(current_user).count
+      = @counters[:participant]
   %label.owner>
     %input(type="radio" name="filter" value="owner")
     = t("activities.filters.owner")
     %strong
-      = @activities.created_by(current_user).count
+      = @counters[:owner]
   %label.search
     %input(type="text" name="search" placeholder="#{ t("activities.search.placeholder") }")
     %a.clear(href="#" title="Reset")
