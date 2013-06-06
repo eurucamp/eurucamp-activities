@@ -82,7 +82,7 @@ describe Activity do
 
     it { should     accept_values_for(:name, "Football game" ) }
     it { should_not accept_values_for(:name, "", nil) }
-    #specify { FactoryGirl.create(:activity).clone.save! }.to raise(ActiveRecord::RecordInvalid)
+    specify { expect { FactoryGirl.create(:activity).clone.save! }.to raise_exception(ActiveRecord::RecordInvalid) }
 
     it { should     accept_values_for(:description, nil, "", "Wear some solid boots!")}
 
@@ -92,10 +92,8 @@ describe Activity do
     it { should_not accept_values_for(:location, "", nil) }
 
     it { should     accept_values_for(:start_time, Time.now, nil) }
-    it { should_not accept_values_for(:start_time, "") }
 
     it { should     accept_values_for(:end_time, Time.now, nil) }
-    it { should_not accept_values_for(:end_time, "") }
 
     it { should     accept_values_for(:limit_of_participants, nil, 12, 100) }
     it { should_not accept_values_for(:limit_of_participants, -1, 0) }
