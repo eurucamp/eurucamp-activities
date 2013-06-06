@@ -1,10 +1,10 @@
 %h2
-  Edit your activity
+  = t("edit_activity.title")
 
   %small
-    = link_to "View the activity page", @activity
-    %strong or
-    = link_to "create a new activity", new_activity_path
-
+    = link_to t("activities.more_info.label_long"), @activity
+    %strong 
+      = t("common.or").downcase
+    = link_to t("activities.new.label").downcase, new_activity_path
 
 = render "form"

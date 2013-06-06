@@ -13,7 +13,7 @@
       %p.time
         = activity.time.html_safe
 
-    = render "action", :activity => @activity, :type => type
+    = render "action", :activity => activity, :type => type
 
     %a.details(href="#{activity_path(activity)}" title="#{ t("activities.more_info.title") }")
       %span

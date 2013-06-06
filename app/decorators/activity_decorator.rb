@@ -33,9 +33,9 @@ class ActivityDecorator < Draper::Decorator
     if object.anybody_can_join? then ""
     else
       left = [[object.limit_of_participants - object.participations_count, object.participations_count].min, 0].max
-      if    left == 1 then "Quick, only one place left."
-      elsif left >  0 then "Still room for #{left} people"
-      else                 "Sorry. All places are gone."
+      if    left == 1 then I18n.t("activities.room_left.one")
+      elsif left >  0 then I18n.t("activities.room_left.none")
+      else                 I18n.t("activities.room_left.one")
       end
     end
   end
@@ -46,15 +46,15 @@ class ActivityDecorator < Draper::Decorator
     else
       alpha, omega, out = object.start_time, object.end_time, ""
 
-      out << I18n.localize(alpha, format: :long)
+      out << I18n.l(alpha, format: :long)
       out << " / "
-      out << I18n.localize(alpha, format: :time_only)
+      out << I18n.l(alpha, format: :time_only)
       out << " &ndash; "
       unless alpha.to_date == omega.to_date
-        out << I18n.localize(omega, format: :long)
+        out << I18n.l(omega, format: :long)
         out << " / "
       end
-      out << I18n.localize(omega, format: :time_only)
+      out << I18n.l(omega, format: :time_only)
     end
   end
 

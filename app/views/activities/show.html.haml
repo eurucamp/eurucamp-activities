@@ -3,8 +3,7 @@
     %h2
       = @activity.name
     %p
-      Organized by
-      %strong= @activity.creator_name
+      = t("activities.organized_by", name: @activity.creator_name).html_safe
 
     = render "action", :activity => @activity, :type => @activity.relation_ship_with(current_user)
 
@@ -19,30 +18,30 @@
       = @activity.room_left
       %a.participants(href="#" title="")
         %span
-          Participants
+          = t("activities.participants")
 
   %section.details
     %dl.wrapper
       - if @activity.anytime?
         %dt
-          Time &amp; Date
+          = t("activities.time_and_date")
         %dd
-          Anytime
+          = t("activities.anytime")
       - else
         %dt
-          Start
+          = t("activities.start.label_short")
         %dd
           = l(@activity.start_time, format: :long)
         %dt
-          End
+          = t("activities.end.label_short")
         %dd
           = l(@activity.end_time, format: :long)
       %dt
-        Location
+        = t("activities.location")
       %dd
         = @activity.location
       %dt
-        Required
+        = t("activities.required")
       %dd
         = @activity.requirements
 
