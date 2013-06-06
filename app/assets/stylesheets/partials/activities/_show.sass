@@ -1,0 +1,73 @@
+#activity
+  +clearfix
+
+  header
+    text-align: center
+    margin: 0 0 3em 0
+
+    h2
+      margin: 0
+      +custom-sans(medium)
+
+    p
+      strong
+        +custom-sans(medium)
+
+  section
+    width: percentage(1/3)
+    float: left
+    position: relative
+
+    &.description
+      +custom-serif
+      //text-align: justify
+      font-size: 1.1em
+      line-height: 1.35em
+
+      .wrapper
+        margin-right: 50px
+
+    &.overview
+      text-align: center
+
+      img.progress
+        width: 250px
+        height: 250px
+        border-radius: 125px
+        margin: 12px
+
+      .wrapper
+        width: 274px
+        margin: 0 auto
+
+      p
+        font-size: 1.5em
+
+      a
+        display: inline-block
+
+    &.details
+      dl.wrapper
+        margin-left: 50px
+        +clearfix
+        border-bottom: 1px solid $light-gray
+
+      dt, dd
+        float: left
+        line-height: 3em
+        font-size: 1.1em
+        line-height: 1.35em
+        padding: 1em 0
+        width: 50%
+        border-top: 1px solid $light-gray
+
+      dt
+        +custom-sans(medium)
+        clear: left
+
+      dd
+        +custom-serif
+        margin: 0
+
+
+
