@@ -16,12 +16,23 @@ ready = ->
     format: 'ddd, d.m.'
     formatSubmit: 'dd-mm-yyyy'
     onSet: (e)->
-      date               = new Date(e.select)
-      target             = @$node.data 'target'
-      [day, month, year] = [date.getDate(), date.getMonth() + 1, date.getFullYear()]
+      target              = @$node.data 'target'
+      {year, month, date} = @get 'select'
       $("#activity_#{target}_1i").val(year)
-      $("#activity_#{target}_2i").val(month)
-      $("#activity_#{target}_3i").val(day)
+      $("#activity_#{target}_2i").val(month + 1)
+      $("#activity_#{target}_3i").val(date)
+    onClose: ->
+      otherSelector             = @$node.data('update')
+      other                     = $(otherSelector).pickadate('picker')
+      {year, month, date, pick} = @get 'select'
+      otherPick                 = other.get('select').pick
+
+      if otherSelector.match /end-time/
+        other.set 'min', [year, month, date]
+        other.set 'select', [year, month, date] if otherPick < pick
+      else
+        other.set 'max', [year, month, date]
+        other.set 'select', [year, month, date] if otherPick > pick
 
   $('.time-capture').pickatime
     format: 'HH:i'
@@ -32,6 +43,19 @@ ready = ->
       $("#activity_#{target}_4i").val(if hours < 10 then "0#{hours}" else hours)
       $("#activity_#{target}_5i").val(minutes)
 
+    onClose: ->
+      otherSelector      = @$node.data('update')
+      other              = $(otherSelector).pickatime('picker')
+      console.log $(otherSelector), $(otherSelector).pickatime('picker')
+      {hour, mins, pick} = @get 'select'
+      otherPick          = other.get('select').pick
+
+      if otherSelector.match /end-time/
+        other.set 'min', [hour, mins]
+        other.set 'select', [hour, mins] if otherPick < pick
+      else
+        other.set 'max', [hour, mins]
+        other.set 'select', [hour, mins] if otherPick > pick
 
   # filters
   $filters    = $('form.filters label:not(.search)')

@@ -22,9 +22,13 @@ module ActivityFormHelper
 
       attributes = {
         type:        'text',
-        class:       "#{type}-capture",
+        class:       "#{type}-capture #{field.to_s.dasherize}",
         placeholder: l(current_event.send(field), format: "nice_#{type}".to_sym),
-        data:        { target: field, value: parse_date(model.send(field), format) }
+        data:        {
+          update: ".#{type}-capture.#{field == :start_time ? 'end' : 'start'}-time",
+          target: field,
+          value: parse_date(model.send(field), format)
+        }
       }
 
       if model.errors[field].any?
