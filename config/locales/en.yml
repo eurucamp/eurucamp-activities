@@ -3,7 +3,6 @@ en:
     formats:
       time_only: "%H:%M"
       date_only: "%d-%m-%Y"
-      #date_only: "%a, %-d.%-m"
       long: "%a, %-d.%-m"
   common:
     or: Or
