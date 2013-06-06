@@ -5,36 +5,39 @@ describe ParticipationsController do
   let(:activity) { FactoryGirl.create(:activity) }
 
   describe "#create" do
-    context "format :json" do
-      subject { post :create, {activity_id: activity.id, format: :json} }
+    context "with :js format" do
+      subject { post :create, {activity_id: activity.id, format: :js} }
 
       before do
         sign_in(user)
       end
 
       context "valid parameters" do
-        its(:status) { should == 201 }
+        it { should render_template(:create) }
       end
 
       context "user is already a participant" do
         before do
-          Participation.create(participant: user, activity: activity)
+          Participation.create!(participant: user, activity: activity)
         end
 
-        its(:status) { should == 422 }
+        # TODO: moar specs needed
+        it { should render_template(:create) }
       end
     end
   end
 
   describe "#destroy" do
-    context "format :json" do
-      subject { delete :destroy, {activity_id: activity.id, format: :json} }
+    context "with :js format" do
+      subject { delete :destroy, {activity_id: activity.id, format: :js} }
 
       before do
+        Participation.create!(participant: user, activity: activity)
         sign_in(user)
       end
 
-      its(:status) { should == 204 }
+      # TODO: moar specs needed
+      it { should render_template(:destroy) }
     end
   end
 
