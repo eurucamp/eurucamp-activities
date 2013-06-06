@@ -1,0 +1,14 @@
+.action
+  - case type
+  - when "owner"
+    = link_to edit_activity_path(activity), title: t("activities.edit.title") do
+      %span
+      = t("activities.edit.label")
+  - when "participant"
+    = button_to activity_participation_path(activity), method: :delete, remote: true, title: t("activities.leave.title") do
+      %span
+      = t("activities.leave.label")
+  - else
+    = button_to activity_participation_path(activity), method: :post, remote: true, title: t("activities.join.title") do
+      %span
+      = t("activities.join.label")
