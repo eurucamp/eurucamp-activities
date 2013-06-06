@@ -1,45 +1,48 @@
 = form_for @activity, html: { id: "new-activity" } do |f|
 
   %label.name
-    = f.text_field :name, placeholder: "Give your activity a name", class: "title"
+    = f.text_field :name, placeholder: t("activity_form.name.label"), class: "title"
 
   %hr
 
   - fancy_datime_select f, :start_time, @activity
-
-  %span.divider>
-    &ndash;
-
+  %span.divider> &ndash;
   - fancy_datime_select f, :end_time, @activity
 
   %fieldset.anytime
-    %span.between or
+    %span.between
+      = t("common.or").downcase
     %label.inline
       = f.check_box :anytime
-      Without a specific date/time
+      = t("activity_form.anytime.hint")
 
   %hr
 
   %label.location>
-    = f.text_field :location, placeholder: "Location"
-    %small Where does your activity take place, where to meet, …
+    = f.text_field :location, placeholder: t("activity_form.location.label")
+    %small
+      = t("activity_form.location.hint")
 
   %label.limit-of-participants>
     = f.number_field :limit_of_participants, placeholder: "5"
-    %small Max. participants
+    %small 
+      = t("activity_form.limit_of_participants.hint")
 
   %label.requirements
-    = f.text_area :requirements, placeholder: "Requirements", rows: 6, class: "markdown", title: "You can use markdown here!"
-    %small What to bring, to wear etc.
+    = f.text_area :requirements, placeholder: t("activity_form.requirements.label"), rows: 6, class: "markdown", title: t("activity_form.markdown_hint")
+    %small
+      = t("activity_form.requirements.hint")
 
   %label.description
-    = f.text_area :description, placeholder: "Description", rows: 8, class: "markdown", title: "You can use markdown here!"
-    %small Background information, links, etc.
+    = f.text_area :description, placeholder: t("activity_form.description.label"), rows: 8, class: "markdown", title: t("activity_form.markdown_hint")
+    %small
+      = t("activity_form.description.hint")
 
   %label.image-url
     = f.url_field :image_url, placeholder: "URL for an image"
-    %small Upload an image to e.g. imgur.com and link it here
-
+    %small 
+      = t("activity_form.image_url.hint")
+    
   %button(type="submit")>
     %span>
-    Save
+    = t("common.submit.#{controller.action_name}")
