@@ -15,7 +15,6 @@
       - if @user.no_oauth_connected?
         = f.input :password, :required => true
         = f.input :password_confirmation, :required => true
-        = f.input :current_password, :required => true
 
       - if @user.connected_with_github?
         = github_link(@user)

@@ -35,6 +35,17 @@ class User < ActiveRecord::Base
     end
   end
 
+  def update_without_password(params, *options)
+    if params[:password].blank?
+      params.delete(:password)
+      params.delete(:password_confirmation)
+    end
+
+    result = update_attributes(params, *options)
+    clean_up_passwords
+    result
+  end
+
   def password_required?
     !any_oauth_connected? && super
   end
