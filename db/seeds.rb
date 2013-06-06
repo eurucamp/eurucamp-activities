@@ -1,5 +1,5 @@
 User.transaction do |tx|
-  event = Event.new(Settings.event.name, Settings.event.start_time, Settings.event.end_time)
+  event = Event.instance
   ultra_secure_password = "qweqweqwe"
 
   creator = User.new(
