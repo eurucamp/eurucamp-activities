@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, :with => :rescue_record_not_found
 
   def current_event
-    @current_event ||= Event.instance
+    @current_event ||= Event.new
   end
 
   def not_found

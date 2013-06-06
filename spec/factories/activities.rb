@@ -7,6 +7,6 @@ FactoryGirl.define do
     end_time "2013/12/13 03:00"
     location "Ballroom"
     creator { FactoryGirl.create(:user) }
-    event { Event.instance }
+    event { Event.new }
   end
 end

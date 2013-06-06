@@ -1,6 +1,4 @@
 class Event
-  include Singleton
-
   attr_writer :activity_source # DI
   attr_reader :name, :start_time, :end_time
 

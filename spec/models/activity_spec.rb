@@ -42,7 +42,7 @@ describe Activity do
     subject { Activity.recent }
 
     before do
-      Activity.stub_chain(:where, :limit).and_return(recent_activities)
+      Activity.stub_chain(:where, :limit, :order).and_return(recent_activities)
     end
 
     it { should == recent_activities }
