@@ -36,6 +36,10 @@ class Activity < ActiveRecord::Base
       where(":t between start_time and end_time", t: Date.current)
     end
 
+    def with_name_like(name)
+      where("name LIKE :q", q: "%#{name}%")
+    end
+
     def created_by(user)
       where(creator_id: user)
     end

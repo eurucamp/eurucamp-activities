@@ -6,7 +6,7 @@ class ActivitiesController < ApiController
   authorize_resource only: [:edit, :update, :destroy]
 
   def index
-    @activities = current_event.activities
+    @activities = current_event.search_activities(current_user, query_params[:search], query_params[:filter])
     respond_with(@activities)
   end
 

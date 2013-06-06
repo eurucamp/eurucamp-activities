@@ -35,7 +35,24 @@ class Event
   def all_activities
     fetch_all_activities
   end
-  alias_method :activities, :all_activities
+
+  def search_activities(author, query_string, filter)
+    query = all_activities
+    # TODO: consider using squeel in the future (doesn't work well with rails 4.rc1 ...)
+    query = query.with_name_like(query_string) if query_string.present?
+    if filter.present?
+      query = if filter == "today"
+        query.today
+      elsif filter == "owner"
+        query.created_by(author)
+      elsif filter == "participant"
+        query.participated_by(author)
+      else
+        query
+      end
+    end
+    query
+  end
 
   private
 
