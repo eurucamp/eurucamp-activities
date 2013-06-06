@@ -35,6 +35,10 @@ class RegistrationsController < Devise::RegistrationsController
       end
     end
 
+    def sign_up_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
     def update_resource(params)
       if resource.no_oauth_connected?
         paramz = params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
