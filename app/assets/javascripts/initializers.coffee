@@ -76,5 +76,35 @@ ready = ->
     e.preventDefault()
     $search.val('').trigger 'keyup'
 
+  # form
+  checkImageURL = (url, success, error) ->
+    try
+      img = new Image()
+      img.onload  = -> success(url)
+      img.onerror = -> error(url)
+      img.src     = url
+    catch error
+
+  # form
+  $('#new-activity #activity_image_url')
+    .on 'keyup focus blur', ->
+      $input   = $(@)
+      $preview = $input.next('.preview').addClass('checking')
+
+      error    = ->
+        $input.addClass 'validation-error' if $input.val().length
+        $preview
+          .css('backgroundImage', '')
+          .removeClass 'checking'
+      success  = (url) ->
+        $input.removeClass 'validation-error'
+        $preview
+          .css('backgroundImage', "url(#{url})")
+          .removeClass 'checking'
+      checkImageURL @value, success, error
+
+    .trigger('keyup')
+
+
 $(document).ready(ready)
 $(document).on('page:load', ready)

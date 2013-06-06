@@ -25,7 +25,7 @@
 
   %label.limit-of-participants>
     = f.number_field :limit_of_participants, placeholder: "5"
-    %small 
+    %small
       = t("activity_form.limit_of_participants.hint")
 
   %label.requirements
@@ -40,9 +40,10 @@
 
   %label.image-url
     = f.url_field :image_url, placeholder: "URL for an image"
-    %small 
+    .preview
+    %small
       = t("activity_form.image_url.hint")
-    
+
   %button(type="submit")>
     %span>
     = t("common.submit.#{controller.action_name}")
