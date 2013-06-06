@@ -42,11 +42,9 @@ ready = ->
       [hours, minutes]   = [parseInt((e.select / 60), 10), e.select % 60]
       $("#activity_#{target}_4i").val(if hours < 10 then "0#{hours}" else hours)
       $("#activity_#{target}_5i").val(minutes)
-
     onClose: ->
       otherSelector      = @$node.data('update')
       other              = $(otherSelector).pickatime('picker')
-      console.log $(otherSelector), $(otherSelector).pickatime('picker')
       {hour, mins, pick} = @get 'select'
       otherPick          = other.get('select').pick
 
