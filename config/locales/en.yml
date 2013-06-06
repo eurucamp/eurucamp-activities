@@ -5,12 +5,13 @@ en:
       date_only: "%d-%m-%Y"
       nice_time: "%H:%M"
       nice_date: "%a, %-d.%-m"
+
   common:
     or: Or
     submit:
       new: Save
       edit: Update
-  
+
   user_nav:
     account:
       label: My Account
@@ -62,10 +63,16 @@ en:
     required: Required
     participants: Participants
     organized_by: "Organized by <strong>%{name}</strong>"
-    room_left: 
+    room_left:
       none: Sorry. All places are gone.
       one: "Quick, only one place left."
       many: "Still room for %{left} people"
+    errors:
+      start_time:
+        too_early: "outside range, too early"
+      end_time:
+        before_start: "can't be before start time"
+        too_late: "outside range, too late"
 
   new_activity:
     title: Organize an activity
