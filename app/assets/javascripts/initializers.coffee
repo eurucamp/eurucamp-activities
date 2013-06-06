@@ -1,4 +1,4 @@
-$ ->
+ready = ->
   $(document).ajaxError (e, xhr) ->
     console.error "AJAX ERROR!", arguments if console?.error?
     window.location.replace(App.paths.login) if xhr.status == 401
@@ -75,3 +75,6 @@ $ ->
   $search.next('a.clear').on 'click', (e)->
     e.preventDefault()
     $search.val('').trigger 'keyup'
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
