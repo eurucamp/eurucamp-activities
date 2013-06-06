@@ -83,3 +83,19 @@ $ypos        : 0
         background-position: -96px -96px * $ypos
 
   $ypos: $ypos + 1
+
+// ----------------------------------------------------------------------------
+
+%secondary-button
+  display: inline-block
+  background: $medium-gray
+  color: $white
+  text-shadow: 0 1px 0 $gray
+  @extend %small-text
+  padding: 0.25em 1.5em
+  text-transform: uppercase
+  border-radius: 3px
+  margin: 19em 0 0
+  opacity: 0
+  +transition(all 0.35s ease-in-out)
+  +custom-sans(medium)
