@@ -26,8 +26,12 @@ describe Event do
 
   describe "#activities" do
     let(:activities) { [mock(:activity1), mock(:activity2)] }
-    let(:event) { Event.new("Conf", ->{ activities }) }
+    let(:event) { Event.new }
     subject { event.activities }
+
+    before do
+      event.all_activities_fetcher = ->{ activities }
+    end
 
     it { should == activities }
   end
