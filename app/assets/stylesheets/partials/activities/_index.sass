@@ -75,6 +75,7 @@ a#new-activity
           width: 20px
           height: 1px
           border-bottom: 1px solid $light-gray
+
         &:before
           width: 0
           margin: 0 auto
@@ -113,26 +114,6 @@ a#new-activity
       z-index: 1001
       +transform(scale(0.9))
       +transition(all 0.35s ease-in-out 0)
-
-      a, button
-        border: none
-        background: none
-        +custom-sans(bold)
-        @extend %smaller-text
-        text-transform: uppercase
-        color: $green
-        display: inline-block
-
-        span
-          display: block
-          width: 96px
-          height: 96px
-          margin: 0 auto 0.75em
-          background: transparent image-url("shared/buttons_big.png") no-repeat 0 0
-
-        &:hover
-          span
-            background-position: -96px 0
 
     &:hover
       cursor: pointer
@@ -176,27 +157,19 @@ a#new-activity
         +transform(scale(1))
         +transition(all 0.15s ease-out 0.15s)
 
-    // variations
-    $types: participant $red ok, owner $yellow edit
-    $xpos : 0
+        a, button
+          @extend %large-icon-button-ok
 
+    // variations, map to icon types
+    $types: participant ok remove, owner edit edit
     @each $type in $types
-      $xpos: $xpos + 1
-
       &.#{nth($type, 1)}
         span.icon
-          @extend %icon-#{nth($type, 3)}
+          @extend %icon-#{nth($type, 2)}
 
         .action
           a, button
-            color: nth($type, 2)
-
-            span
-              background-position: 0 -96px * $xpos
-
-            &:hover
-              span
-                background-position: -96px -96px * $xpos
+            @extend %large-icon-button-#{nth($type, 3)}
 
     img.progress
       width: 150px
