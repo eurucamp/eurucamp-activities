@@ -1,6 +1,6 @@
 $ ->
   $(document).ajaxError (e, xhr) ->
-    console.error "AJAX ERROR!", arguments
+    console.error "AJAX ERROR!", arguments if console?.error?
     window.location.replace(App.paths.login) if xhr.status == 401
 
   # show how "full" an activity is
@@ -8,6 +8,7 @@ $ ->
   $('#activities img.progress').each ->
     setTimeout showProgress, Math.random() * 1000 + 500, @
 
+  $('#activity img.progress').progress(strokeWidth: 12)
 
   $('.date-capture').pickadate
     min: new Date(App.event.startTime)
