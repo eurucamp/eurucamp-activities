@@ -1,4 +1,6 @@
 body.activities
+  @import "activities/action"
+  
   &.index
     @import "activities/filters"
     @import "activities/index"
@@ -7,7 +9,4 @@ body.activities
     @import "activities/show"
 
   &.new, &.edit, &.create, &.update
-    @import "activities/new"
-
-    #main
-      margin: 0 150px
+    @import "activities/form"

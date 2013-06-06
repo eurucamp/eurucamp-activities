@@ -7,40 +7,6 @@
 %small-text
   font-size: 0.75em
 
-$icon-types: ok $green, add $green, remove $red, edit $yellow
-$ypos      : 0
-@each $type in $icon-types
-  %icon-button-#{nth($type, 1)}
-    color: nth($type, 2)
-    @extend %smaller-text
-    line-height: 40px
-    text-transform: uppercase
-    border: none
-    display: inline-block
-    height: 40px
-    vertical-align: top
-    +custom-sans(bold)
-
-    span
-      width: 40px
-      height: 40px
-      margin: 0 0 0 15px
-      display: inline-block
-      background: image-url("shared/buttons_small.png") no-repeat
-      background-position: 0 -40px * $ypos
-
-    &:hover
-      span
-        background-position: -40px -40px * $ypos
-
-  %icon-#{nth($type, 1)}
-    width: 40px
-    height: 40px
-    display: inline-block
-    background: image-url("shared/buttons_small.png") no-repeat
-    background-position: -40px -40px * $ypos
-  $ypos: $ypos + 1
-
 =ornamental-divider
   content: "."
   text-indent: -999em

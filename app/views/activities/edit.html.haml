@@ -1,10 +1,12 @@
-%h2
-  = t("edit_activity.title")
+%article
+  %header
+    %h2
+      = t("edit_activity.title")
 
-  %small
-    = link_to t("activities.more_info.label_long"), @activity
-    %strong 
-      = t("common.or").downcase
-    = link_to t("activities.new.label").downcase, new_activity_path
+    %p.meta
+      = link_to t("activities.more_info.label_long"), @activity
+      %strong.divider
+        = t("common.or").downcase
+      = link_to t("activities.new.label").downcase, new_activity_path
 
-= render "form"
+  = render "form"
