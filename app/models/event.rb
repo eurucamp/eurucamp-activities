@@ -1,5 +1,5 @@
 class Event
-  attr_writer :activity_source # DI
+  attr_writer :activity_source, :all_activities_fetcher, :recent_activities_fetcher # DI
   attr_reader :name, :start_time, :end_time
 
   def initialize(
