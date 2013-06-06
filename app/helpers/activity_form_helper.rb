@@ -20,7 +20,7 @@ module ActivityFormHelper
       attributes = {
         type:        'text',
         class:       "#{type}-capture",
-        placeholder: l(current_event.send(field), format: format),
+        placeholder: l(current_event.send(field), format: "nice_#{type}".to_sym),
         data:        { target: field, value: parse_date(model.send(field), format) }
       }
 
