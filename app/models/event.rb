@@ -1,10 +1,15 @@
 class Event
+  include Singleton
+
   attr_writer :activity_source # DI
   attr_reader :name, :start_time, :end_time
 
-  def initialize(name, start_time, end_time,
+  def initialize(
+      name       = Settings.event.name,
+      start_time = Settings.event.start_time,
+      end_time   = Settings.event.end_time,
       recent_activities_fetcher = ->{ Activity.recent },
-      all_activities_fetcher = ->{ Activity.all_activities })
+      all_activities_fetcher    = ->{ Activity.all_activities })
     @name, @start_time, @end_time = name, start_time, end_time
     @recent_activities_fetcher = recent_activities_fetcher
     @all_activities_fetcher = all_activities_fetcher
