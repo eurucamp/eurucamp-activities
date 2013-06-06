@@ -8,6 +8,9 @@ module ActivityFormHelper
       end
       haml_tag :input, capture_attributes(field, model, 'date')
       haml_tag :input, capture_attributes(field, model, 'time')
+      if model.errors[field].any?
+        haml_tag :span, model.errors[field].join(', '), class: 'validation-error-message'
+      end
     end
   end
 
