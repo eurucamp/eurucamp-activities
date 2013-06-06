@@ -10,8 +10,8 @@ class ParticipationsController < ApiController
   def destroy
     @participation = current_activity.participation(current_user)
     authorize!(:destroy, @participation)
-    puts @participation.destroy
-    puts respond_with(current_activity, @participation, location: activities_path)
+    @participation.destroy
+    respond_with(current_activity, @participation, location: activities_path)
   end
 
   private
