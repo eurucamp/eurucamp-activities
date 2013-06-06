@@ -76,9 +76,13 @@ en:
 
   new_activity:
     title: Organize an activity
+    notice: Your activity has been created!
+    error: Activity could not be saved. Please check your input.
 
   edit_activity:
     title: Edit your activity
+    notice: Your activity has been updated!
+    error: Your changes could not be saved. Please check your input.
 
   activity_form:
     markdown_hint: You can use Markdown here

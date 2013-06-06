@@ -30,13 +30,15 @@ class ActivitiesController < ApiController
   end
 
   def create
-    @activity = current_event.new_activity(current_user, sanitized_params)
-    @activity.save
+    @activity   = current_event.new_activity(current_user, sanitized_params)
+    type        = @activity.save ? :notice : :error
+    flash[type] = I18n.t("new_activity.#{type}")
     respond_with(@activity, location: activities_path)
   end
 
   def update
-    @activity.update_attributes(sanitized_params)
+    type        = @activity.update_attributes(sanitized_params) ? :notice : :error
+    flash[type] = I18n.t("edit_activity.#{type}")
     respond_with(@activity, location: edit_activity_path(@activity))
   end
 
