@@ -1,33 +1,85 @@
 $icon-types: ok $green, add $green, remove $red, edit $yellow
 $ypos      : 0
+
+// just the icon without label
+%icon
+  width: 40px
+  height: 40px
+  display: inline-block
+  background: image-url("shared/buttons_small.png") no-repeat
+  background-position: -40px -40px * $ypos
+
+// small buttons with labels aside
+%icon-button
+  color: nth(nth($icon-types, 1), 2)
+  @extend %smaller-text
+  line-height: 40px
+  height: 40px
+  text-transform: uppercase
+  border: none
+  display: inline-block
+  vertical-align: top
+  +custom-sans(bold)
+
+  span
+    width: 40px
+    height: 40px
+    margin: 0 0 0 15px
+    display: inline-block
+    background: image-url("shared/buttons_small.png") no-repeat
+    background-position: 0 -40px * $ypos
+
 @each $type in $icon-types
   %icon-button-#{nth($type, 1)}
     color: nth($type, 2)
-    @extend %smaller-text
-    line-height: 40px
-    text-transform: uppercase
-    border: none
-    display: inline-block
-    height: 40px
-    vertical-align: top
-    +custom-sans(bold)
+    @extend %icon-button
 
     span
-      width: 40px
-      height: 40px
-      margin: 0 0 0 15px
-      display: inline-block
-      background: image-url("shared/buttons_small.png") no-repeat
       background-position: 0 -40px * $ypos
 
     &:hover
       span
         background-position: -40px -40px * $ypos
 
+  // just the icon without label
   %icon-#{nth($type, 1)}
-    width: 40px
-    height: 40px
-    display: inline-block
-    background: image-url("shared/buttons_small.png") no-repeat
+    @extend %icon
     background-position: -40px -40px * $ypos
+
+  $ypos: $ypos + 1
+
+// ----------------------------------------------------------------------------
+
+$button-types: ok $green, remove $red, edit $yellow
+$ypos        : 0
+
+// large buttons with label beneath
+%large-icon-button
+  border: none
+  background: none
+  +custom-sans(bold)
+  @extend %smaller-text
+  text-transform: uppercase
+  display: inline-block
+  color: nth(nth($button-types, 1), 2)
+
+  span
+    display: block
+    width: 96px
+    height: 96px
+    margin: 0 auto 0.75em
+    background: transparent image-url("shared/buttons_big.png") no-repeat 0 -96px * $ypos
+
+@each $type in $button-types
+  %large-icon-button-#{nth($type, 1)}
+    color: nth($type, 2)
+    @extend %large-icon-button
+
+    span
+      background-position: 0 -96px * $ypos
+
+    &:hover
+      span
+        background-position: -96px -96px * $ypos
+
   $ypos: $ypos + 1

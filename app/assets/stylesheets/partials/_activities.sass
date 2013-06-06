@@ -1,6 +1,6 @@
 body.activities
   @import "activities/action"
-  
+
   &.index
     @import "activities/filters"
     @import "activities/index"
@@ -8,5 +8,8 @@ body.activities
   &.show
     @import "activities/show"
 
-  &.new, &.edit, &.create, &.update
+  &.new,
+  &.edit,
+  &.create,
+  &.update
     @import "activities/form"
