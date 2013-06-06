@@ -46,12 +46,12 @@ class ActivityDecorator < Draper::Decorator
     else
       alpha, omega, out = object.start_time, object.end_time, ""
 
-      out << I18n.l(alpha, format: :long)
+      out << I18n.l(alpha, format: :nice_date)
       out << " / "
       out << I18n.l(alpha, format: :time_only)
       out << " &ndash; "
       unless alpha.to_date == omega.to_date
-        out << I18n.l(omega, format: :long)
+        out << I18n.l(omega, format: :nice_date)
         out << " / "
       end
       out << I18n.l(omega, format: :time_only)
