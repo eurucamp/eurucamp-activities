@@ -14,6 +14,7 @@ describe ActivitiesController do
   describe "#show" do
     subject { get :show, {id: activity.id} }
 
+    it { should render_template(:show) }
     its(:status){ should == 200 }
   end
 
@@ -26,12 +27,12 @@ describe ActivitiesController do
 
     context "valid parameters" do
       let(:params) { {activity: {name: "Pool party", start_time: 2.days.from_now.to_s, end_time: 2.days.from_now.to_s, location: "Pool" }} }
-      its(:status) { should == 201 }
+      it { should redirect_to activities_path }
     end
 
     context "invalid parameters" do
       let(:params) { {activity: {x: 10}} }
-      its(:status) { should == 422 }
+      it { should render_template(:new) }
     end
   end
 
@@ -45,12 +46,12 @@ describe ActivitiesController do
 
     context "valid parameters" do
       let(:params) { {id: activity.id, activity: {name: "Pool party", start_time: 2.days.from_now.to_s, end_time: 3.days.from_now.to_s, location: "Pool" }} }
-      its(:status) { should == 204 }
+      it { should redirect_to edit_activity_path(activity) }
     end
 
     context "invalid parameters" do
-      let(:params) { {id: activity.id, activity: {start_time: ""}} }
-      its(:status) { should == 422 }
+      let(:params) { {id: activity.id, activity: {location: ""}} }
+      it { should render_template(:edit) }
     end
   end
 
@@ -62,7 +63,7 @@ describe ActivitiesController do
       sign_in(user)
     end
 
-    its(:status) { should == 204 }
+    it { should redirect_to activities_path }
   end
 
 end
