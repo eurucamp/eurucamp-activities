@@ -10,7 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
-    if update_resource(params)
+    if resource.update_without_password(editable_params)
       if is_navigational_format?
         flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
             :update_needs_confirmation : :updated
@@ -36,17 +36,11 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def sign_up_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      editable_params
     end
 
-    def update_resource(params)
-      if resource.no_oauth_connected?
-        paramz = params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
-        resource.update_with_password(paramz)
-      else
-        paramz = params.require(:user).permit(:name, :email)
-        resource.update_without_password(paramz)
-      end
+    def editable_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
 end
