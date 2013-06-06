@@ -14,6 +14,28 @@ a:hover
   border: none
   +transition(all 0.25s)
 
+#notifications
+  div
+    background: transparentize($green, 0.2)
+    color: $white
+    text-align: center
+    z-index: 9999
+    position: fixed
+    top: 1em
+    left: 1em
+    right: 1em
+    padding: 0.75em 0
+    +custom-sans(bold)
+    border-radius: 3px
+    @extend %animated-bounce-in-down
+    
+    &.error
+      background: transparentize($red, 0.2)
+    
+  &.hide
+    div
+      @extend %animated-bounce-out-up
+
 #main
   position: relative
 

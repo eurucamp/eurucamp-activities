@@ -128,10 +128,11 @@ ready = ->
     .trigger('keyup')
 
 
-  $('#notifications').fadeOut('slow')
+  hideNotification = ->
+    $('#notifications').addClass 'hide'
 
-  $('#notifications').bind 'click', ->
-    $(this).fadeOut('slow')
+  $('#notifications').on 'click', hideNotification
+  setTimeout hideNotification, 3000
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
