@@ -106,5 +106,10 @@ ready = ->
     .trigger('keyup')
 
 
+  $('#notifications').fadeOut('slow')
+
+  $('#notifications').bind 'click', ->
+    $(this).fadeOut('slow')
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
