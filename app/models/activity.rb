@@ -17,9 +17,10 @@ class Activity < ActiveRecord::Base
   validate  :time_frame_order, if: ->{ !anytime && event && start_time.present? && end_time.present? }
   validate  :during_the_event, if: ->{ !anytime && event && start_time.present? && end_time.present? }
   validates :event, presence: true
-
+  
   before_validation :clear_time_frame, if: ->{ anytime }
-
+  after_initialize :set_defaults
+  
   class << self
     def recent(limit = DEFAULT_LIMIT)
       where("start_time >= :t OR anytime = true", t: 1.month.ago)
@@ -82,7 +83,11 @@ class Activity < ActiveRecord::Base
     def clear_time_frame
       self.start_time, self.end_time = nil, nil
     end
-
+    
+    def set_defaults
+      self.limit_of_participants ||= 10
+    end
+    
     def time_frame_order
       errors.add(:end_time, I18n.t("activities.errors.end_time.before_start")) if end_time < start_time
     end
