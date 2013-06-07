@@ -10,10 +10,12 @@
   %section.description
     .wrapper
       = @activity.description_markdown
+      %h4
+        = t("activities.required")
+      = @activity.requirements_markdown
 
   %section.overview
-    %figure
-      = image_tag @activity.image_url, alt: @activity.name, class: "progress", data: { progress: @activity.full_by }
+    .progress(data-progress="#{ @activity.full_by }" style="background-image: url(#{ @activity.image_url })")
     %p
       = @activity.room_left
       %a.participants(href="#" title="")
@@ -40,8 +42,3 @@
         = t("activities.location")
       %dd
         = @activity.location
-      %dt
-        = t("activities.required")
-      %dd
-        = @activity.requirements
-

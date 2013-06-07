@@ -20,12 +20,15 @@ $ypos      : 0
   display: inline-block
   vertical-align: top
   +custom-sans(bold)
+  background: none
+  padding: 0
 
   span
     width: 40px
     height: 40px
     margin: 0 0 0 15px
     display: inline-block
+    float: right
     background: image-url("shared/buttons_small.png") no-repeat
     background-position: 0 -40px * $ypos
 
@@ -94,8 +97,10 @@ $ypos        : 0
   @extend %small-text
   padding: 0.25em 1.5em
   text-transform: uppercase
+  border: none
   border-radius: 3px
-  margin: 19em 0 0
-  opacity: 0
-  +transition(all 0.35s ease-in-out)
   +custom-sans(medium)
+  +transition(all 0.35s ease-in-out)
+
+  &:hover
+    background: $blue

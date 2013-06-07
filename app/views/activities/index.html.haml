@@ -27,8 +27,8 @@
     = t("activities.filters.submit")
 
 %a#new-activity(href="#{ new_activity_path }" title="#{ t("activities.new.title") }")
-  = t("activities.new.label")
   %span
+  = t("activities.new.label")
 
 %ul#activities
   = render @activities.decorate
