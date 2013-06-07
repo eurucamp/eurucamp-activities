@@ -51,7 +51,7 @@ $.fn.extend
       context    = $canvas.get(0).getContext("2d")
 
       # animated call to render
-      $({ progress: 0 }).animate({
+      $(progress: 0).animate({
         progress: progress
       },{
         duration  : settings.duration
@@ -78,6 +78,4 @@ $.fn.extend
       context.lineWidth   = settings.strokeWidth
       context.stroke()
 
-    @each ->
-      # ensure that the image is really loaded
-      if @complete then init.call(@) else $(@).load(=> init.call(@))
+    @each -> init.call(@)

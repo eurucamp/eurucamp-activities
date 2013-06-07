@@ -8,7 +8,7 @@ ready = ->
   $('#activities img.progress').each ->
     setTimeout showProgress, Math.random() * 1000 + 500, @
 
-  $('#activity img.progress').progress(strokeWidth: 12)
+  $('#activity .progress').progress(strokeWidth: 12)
 
   $('.date-capture').pickadate
     min: new Date(App.event.startTime)
