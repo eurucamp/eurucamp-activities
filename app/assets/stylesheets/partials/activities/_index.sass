@@ -63,22 +63,6 @@ a#new-activity
       overflow: hidden
       +transition(box-shadow 0.25s ease-in-out)
 
-    // wrapper around image + canvas
-    .wrapper
-      width: 162px
-      margin: 0 auto
-      @extend %transition-all-15s-ease-out
-
-      canvas
-        z-index: 99 !important
-
-    // big round image
-    img.progress
-      width: 150px
-      height: 150px
-      border-radius: 75px
-      margin: 6px
-
     // all default text: title, organizer, date etc.
     .labels
       margin: 1.5em 0 0 0
@@ -162,7 +146,7 @@ a#new-activity
           opacity: 1
           +transition(all 0.25s ease-in-out)
 
-      .wrapper
+      .progress-wrapper
         @extend %transition-all-15s-ease-out
         +transform(translate(0, -9em))
         opacity: 0

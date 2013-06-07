@@ -34,7 +34,7 @@ $.fn.extend
       color      = settings.strokeColorFull if progress >= 100
 
       # wrap image
-      $wrapper   = $('<div/>', class: 'wrapper').css
+      $wrapper   = $('<div/>', class: 'progress-wrapper').css
         position: 'relative'
         # padding : settings.strokeWidth
       $el.wrap($wrapper)
