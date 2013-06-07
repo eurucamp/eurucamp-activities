@@ -18,6 +18,7 @@ ready = ->
       $("#activity_#{target}_1i").val(year)
       $("#activity_#{target}_2i").val(month + 1)
       $("#activity_#{target}_3i").val(date)
+      $('#activity_anytime').attr('checked', false)
     onClose: ->
       otherSelector             = @$node.data('update')
       other                     = $(otherSelector).pickadate('picker')
@@ -39,6 +40,7 @@ ready = ->
       [hours, minutes]   = [parseInt((e.select / 60), 10), e.select % 60]
       $("#activity_#{target}_4i").val(if hours < 10 then "0#{hours}" else hours)
       $("#activity_#{target}_5i").val(minutes)
+      $('#activity_anytime').attr('checked', false)
     onClose: ->
       otherSelector      = @$node.data('update')
       other              = $(otherSelector).pickatime('picker')
