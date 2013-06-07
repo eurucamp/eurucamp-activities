@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.easing.min
 //= require jquery.progress
 //= require pickadate/picker
