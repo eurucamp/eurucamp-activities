@@ -21,8 +21,6 @@ module Activities
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
-    config.assets.precompile << %w(*.png *.jpg *.jpeg *.gif)
-
     # don't generate any assets
     config.generators.assets = false
 
