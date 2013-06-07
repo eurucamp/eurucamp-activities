@@ -13,6 +13,8 @@ gem 'omniauth-github',    '~> 1.1.0'
 gem 'omniauth-twitter',   '~> 0.0.16'
 gem 'simple_form',        '~> 3.0.0.beta1'
 
+gem 'modernizr-rails'
+gem 'sprockets-rails',     git: 'git://github.com/rails/sprockets-rails.git'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder',           '~> 1.0.1'
