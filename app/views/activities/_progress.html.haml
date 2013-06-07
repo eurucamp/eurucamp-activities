@@ -1,1 +1,1 @@
-.progress(data-progress="#{ activity.full_by }" style="#{ "background-image: url(#{ activity.image_url })" if activity.image_url }")
+.progress(data-progress="#{ activity.full_by }" style="#{ "background-image: url(#{ activity.image_url })" if activity.image_url.present? }")
