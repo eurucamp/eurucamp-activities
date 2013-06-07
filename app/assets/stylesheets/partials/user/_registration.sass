@@ -1,0 +1,87 @@
+article
+  header
+    p.meta
+      strong
+        +custom-sans(medium)
+
+  section
+    margin: 0 150px
+
+    h4
+      +custom-sans(light)
+      font-size: 1.375em
+      padding: 0 0.727272em
+      text-align: center
+
+    &.oauth
+      @extend %clearfix
+
+      a
+        width: 50%
+        display: block
+        border: none
+        float: left
+        color: $extra-dark-gray
+
+        .container
+          text-align: center
+          background: $white no-repeat center top
+          height: 22em
+          padding: 2.5em 1em 1em 1em
+          margin: 0 1px
+          position: relative
+          overflow: hidden
+          +transition(box-shadow 0.25s ease-in-out)
+
+        h4
+          @extend %ornamental-divider-before
+          margin: 10em 0 0 0
+
+          &:before
+            margin: 0.5em auto
+
+
+        &.github
+          .container
+            background-image: image-url('user/github.png')
+
+        &.twitter
+          .container
+            background-image: image-url('user/twitter.png')
+
+        &:hover
+          color: $blue
+
+          .container
+            z-index: 9001
+            +transition(box-shadow 0.25s ease-in-out)
+            box-shadow: 0 0 20px transparentize($black, 0.9)
+
+
+    &.form
+      p
+        text-align: center
+        margin: 2em 0 3em 0
+
+        strong
+          margin: 0 0 1em 0
+          text-transform: uppercase
+          +custom-sans(medium)
+          display: block
+
+      a.reveal
+        @extend %secondary-button
+
+      #sign-up
+        padding: 2em 0 0
+        width: percentage(2/3)
+        margin: 0 auto
+        display: none
+
+      h4
+        @extend %ornamental-divider-after
+
+      button
+        margin: 2em auto 4em
+        display: block
+        @extend %large-icon-button-ok
