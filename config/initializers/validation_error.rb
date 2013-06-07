@@ -6,7 +6,7 @@
 ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
   error_class = "validation-error"
   error_message_class = "validation-error-message"
-  
+
   if html_tag =~ /<(input|textarea|select)[^>]+class=/
     style_attribute = html_tag =~ /class=['"]/
     html_tag.insert(style_attribute + 7, "#{error_class} ")
@@ -18,9 +18,9 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
   if html_tag =~ /<(label)/
     html_tag
   elsif instance.error_message.kind_of?(Array)
-   %(#{html_tag} <span class="#{error_message_class}">#{instance.error_message.join(', ')}</span>).html_safe
+   %(#{html_tag} <span class="#{error_message_class}">#{instance.error_message.first}</span>).html_safe
   else
     %(#{html_tag} <span class="#{error_message_class}">#{instance.error_message}</span>).html_safe
   end
-  
+
 end
