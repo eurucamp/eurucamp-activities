@@ -81,22 +81,6 @@ form#new-activity
           background-image: image-url('shared/checking.gif') !important
 
   button
-    border: none
-    background: none
-    +custom-sans(bold)
-    @extend %smaller-text
-    text-transform: uppercase
-    color: $green
+    @extend %large-icon-button-ok
     display: block
     margin: 1em auto 4em
-
-    span
-      display: block
-      width: 96px
-      height: 96px
-      margin: 0 auto 0.75em
-      background: transparent image-url("shared/buttons_big.png") no-repeat 0 0
-
-    &:hover
-      span
-        background-position: -96px 0

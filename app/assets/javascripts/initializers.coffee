@@ -3,6 +3,16 @@ ready = ->
     console.error "AJAX ERROR!", arguments if console?.error?
     window.location.replace(App.paths.login) if xhr.status == 401
 
+  # section toggles
+  $('.reveal').on 'click', ->
+    $("##{@href.split('#')[1]}").show()
+
+  $("a.reveal[href='#{window.location.hash}']").trigger('click')
+
+  # hide validation errors on focus
+  $('input.validation-error').on 'focus', ->
+    $(@).next('span.validation-error-message').fadeOut()
+
   # show how "full" an activity is
   $('#activities .progress').progress()
   $('#activity .progress').progress(strokeWidth: 12)

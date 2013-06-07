@@ -1,22 +1,55 @@
-.auth
-  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = f.error_notification
+%article
+  %header
+    %h2
+      Register
+    %p.meta
+      %strong Have an account already?
+      &mdash;
+      = link_to 'sign in with password', new_session_path(:user)
 
-    .inputs
-      = f.input :name, :required => true, :autofocus => true
-      = f.input :email, :required => true
+  %section.oauth
+    = link_to "/auth/github", class: "github" do
+      .container
+        %h4
+          Sign in with Github
+
+    = link_to "/auth/twitter", class: "twitter" do
+      .container
+        %h4
+          Sign in with Twitter
+
+  %section.form
+    %p
+      %strong
+        Or
+      %a.reveal(href="#sign-up" title="Create a new account")
+        Create a new account
+
+    - if resource.errors.any?
+      - style = "display: block"
+      :javascript
+        window.location.hash = "sign-up";
+
+    = form_for resource, as: resource_name, url: registration_path(resource_name), html: { id: "sign-up", style: style } do |f|
+      %h4 Register new account
+
+      %label.name
+        %span.label Name
+        = f.text_field :name, autofocus: true, placeholder: "Name"
+
+      %label.email
+        %span.label Email address
+        = f.email_field :email, placeholder: "Email address"
 
       - if @user.password_required?
-        = f.input :password, :required => true
-        = f.input :password_confirmation, :required => true
+        %label.password
+          %span.label Password
+          = f.password_field :password, placeholder: "Password"
 
-    .actions
-      = f.button :submit, "Sign up", :class => 'btn btn-success'
+        %label.password
+          %span.label Password, once more
+          = f.password_field :password_confirmation, placeholder: "Password once more"
 
-  = link_to "Sign in with Github", "/auth/github", class: "btn-auth btn-github  large"
-  = link_to "Sign in with Twitter", "/auth/twitter", class: "btn-auth btn-twitter  large"
-
-%p.hint
-  Have an account already?
-  = link_to 'sign in with password', new_session_path(:user)
-
+        %button(type="submit")>
+          %span>
+          Sign up
