@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130605211503) do
+ActiveRecord::Schema.define(version: 20130607184825) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20130605211503) do
     t.boolean  "anytime",               default: true, null: false
     t.text     "requirements"
     t.datetime "end_time"
-    t.string   "image_url"
+    t.text     "image_url"
   end
 
   add_index "activities", ["name"], name: "index_activities_on_name", unique: true, using: :btree
