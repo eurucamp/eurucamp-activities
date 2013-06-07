@@ -132,6 +132,9 @@ a#new-activity
       +transform(scale(0.9))
       +transition(all 0.35s ease-in-out 0)
 
+      a, button
+        @extend %large-icon-button-ok
+
     // select action type based on card variation
     @each $type in $types
       &.#{nth($type, 1)}
@@ -183,5 +186,4 @@ a#new-activity
         +transform(scale(1))
         +transition(all 0.15s ease-out 0.15s)
 
-        a, button
-          @extend %large-icon-button-ok
+
