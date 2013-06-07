@@ -15,7 +15,7 @@
       = @activity.requirements_markdown
 
   %section.overview
-    .progress(data-progress="#{ @activity.full_by }" style="background-image: url(#{ @activity.image_url })")
+    = render "activities/progress", activity: @activity
     %p
       = @activity.room_left
       %a.participants(href="#" title="")

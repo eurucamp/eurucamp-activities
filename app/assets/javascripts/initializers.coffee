@@ -4,10 +4,7 @@ ready = ->
     window.location.replace(App.paths.login) if xhr.status == 401
 
   # show how "full" an activity is
-  showProgress = (img)-> $(img).progress()
-  $('#activities img.progress').each ->
-    setTimeout showProgress, Math.random() * 1000 + 500, @
-
+  $('#activities .progress').progress()
   $('#activity .progress').progress(strokeWidth: 12)
 
   $('.date-capture').pickadate

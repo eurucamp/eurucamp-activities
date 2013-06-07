@@ -3,7 +3,7 @@
 %li(id="activity-#{activity.id}" class="#{type} #{activity.status}")
   .container
 
-    = image_tag "dummies/activity.jpg", alt: activity.name, class: "progress", data: { progress: activity.full_by }
+    = render "activities/progress", activity: activity
 
     .labels
       %h4
@@ -13,7 +13,7 @@
       %p.time
         = activity.time.html_safe
 
-    = render "activities/action", :activity => activity, :type => type
+    = render "activities/action", activity: activity, type: type
 
     %a.details(href="#{activity_path(activity)}" title="#{ t("activities.more_info.title") }")
       %span

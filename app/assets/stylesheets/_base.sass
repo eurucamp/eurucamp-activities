@@ -29,10 +29,10 @@ a:hover
     border-radius: 3px
     +animation-delay(0.25s)
     @extend %animated-bounce-in-down
-    
+
     &.error
       background: transparentize($red, 0.2)
-    
+
   &.hide
     div
       @extend %animated-bounce-out-up
@@ -50,14 +50,14 @@ article
       font-size: 2em
       margin: 0
       @extend %ornamental-divider-after
-      
+
       &:after
         margin-bottom: 0.25em
 
     .meta
       text-transform: uppercase
       @extend %smaller-text
-      
+
       strong.divider
         +custom-sans(bold)
         margin: 0 0.5em
