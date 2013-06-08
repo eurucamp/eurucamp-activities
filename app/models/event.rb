@@ -38,7 +38,7 @@ class Event
 
   def search_activities(author = nil, query_string = "", filter = "all")
     query = all_activities
-    # TODO: consider using squeel in the future (doesn't work well with rails 4.rc1 ...)
+    # TODO: consider using squeel in the future (doesn't work well with rails 4.beta1 ...)
     query = query.with_name_like(query_string) if query_string.present?
     if filter.present?
       query = if filter == "today"
