@@ -5,6 +5,7 @@ FactoryGirl.define do
     name "Party!"
     start_time "2013/12/12 18:00"
     end_time "2013/12/13 03:00"
+    anytime false
     location "Ballroom"
     creator { FactoryGirl.create(:user) }
     event { Event.new }
