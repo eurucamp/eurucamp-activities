@@ -36,7 +36,7 @@ class Event
     fetch_all_activities
   end
 
-  def search_activities(author, query_string, filter)
+  def search_activities(author = nil, query_string = "", filter = "all")
     query = all_activities
     # TODO: consider using squeel in the future (doesn't work well with rails 4.rc1 ...)
     query = query.with_name_like(query_string) if query_string.present?
@@ -53,6 +53,7 @@ class Event
     end
     query
   end
+  alias_method :activities, :search_activities
 
   private
 
