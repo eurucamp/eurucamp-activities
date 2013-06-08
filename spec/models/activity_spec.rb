@@ -112,6 +112,23 @@ describe Activity do
     it { should     accept_values_for(:limit_of_participants, nil, 12, 100) }
     it { should_not accept_values_for(:limit_of_participants, -1, 0) }
 
+    context "invalid time frame (wrong order)" do
+      subject { FactoryGirl.build(:activity, start_time: 10.days.ago.to_time, anytime: false) }
+
+      it { should_not accept_values_for(:end_time, 15.days.ago.to_time) }
+    end
+
+    context "invalid time frame (out of scope)" do
+      let(:event) { Event.new("A name", 2.days.ago.to_time, 2.days.from_now.to_time ) }
+      subject { FactoryGirl.build(:activity, event: event, start_time: 10.days.ago.to_time, anytime: false) }
+
+      it { should     accept_values_for(:start_time, 1.days.ago.to_time) }
+      it { should_not accept_values_for(:start_time, 15.days.ago.to_time) }
+
+      it { should     accept_values_for(:end_time, 1.days.from_now.to_time) }
+      it { should_not accept_values_for(:end_time, 3.days.from_now.to_time) }
+    end
+
   end
 
 end
