@@ -6,6 +6,10 @@ describe Activity do
   let(:creator) { User.new }
   subject(:activity) { Activity.new }
 
+  describe "#new" do
+    its(:limit_of_participants) { should == 10 }
+  end
+
   describe "#new_participation" do
     let(:user) { mock_model(User) }
     let(:new_participation) { OpenStruct.new }
