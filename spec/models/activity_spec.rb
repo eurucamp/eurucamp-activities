@@ -91,7 +91,7 @@ describe Activity do
 
     it { should     accept_values_for(:name, "Football game" ) }
     it { should_not accept_values_for(:name, "", nil) }
-    specify { expect { FactoryGirl.create(:activity).clone.save! }.to raise_exception(ActiveRecord::RecordInvalid) }
+    specify { expect { FactoryGirl.create(:activity).dup.save! }.to raise_exception(ActiveRecord::RecordInvalid) }
 
     it { should     accept_values_for(:description, nil, "", "Wear some solid boots!")}
 
