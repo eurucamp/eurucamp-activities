@@ -91,6 +91,58 @@ describe Activity do
     end
   end
 
+  describe "#anybody_can_join?" do
+    subject { activity.anybody_can_join? }
+
+    context "no limit set" do
+      before do
+        activity.stub!(:limit_of_participants).and_return(nil)
+      end
+
+      it { should == true }
+    end
+
+    context "limit set" do
+      before do
+        activity.stub!(:limit_of_participants).and_return(10)
+      end
+
+      it { should == false }
+    end
+  end
+
+  describe "#today?" do
+    subject { activity.today? }
+
+    context "anytime set" do
+      before do
+        activity.stub!(:anytime?).and_return(true)
+      end
+
+      it { should == true }
+    end
+
+    context "today" do
+      before do
+        activity.stub!(:start_time).and_return(2.days.ago.to_time)
+        activity.stub!(:end_time).and_return(2.days.from_now.to_time)
+      end
+
+      it { should == true }
+    end
+
+    context "not today" do
+      before do
+        activity.stub!(:anytime?).and_return(false)
+        activity.stub!(:start_time).and_return(2.days.from_now.to_time)
+        activity.stub!(:end_time).and_return(10.days.from_now.to_time)
+      end
+
+      it { should == false }
+    end
+
+  end
+
   describe "validations" do
 
     specify { expect { FactoryGirl.create(:activity).dup.save! }.to raise_exception(ActiveRecord::RecordInvalid) }
