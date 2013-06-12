@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   has_many :participations, :dependent => :destroy
   has_many :activities, through: :participations
 
-  #validates :name, presence: true
   validates :email, presence: true
 
   # TODO: extract to module and then to a gem / engine
