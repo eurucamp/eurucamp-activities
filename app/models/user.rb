@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   def apply_provider_handle(omniauth)
     provider, info = omniauth.values_at('provider', 'info')
 
+    # su*ks - refactor it
     case provider
       when /github/
         self.github_handle  = info['nickname'] if github_handle.blank?
@@ -50,10 +51,6 @@ class User < ActiveRecord::Base
     !any_oauth_connected? && encrypted_password.present?
   end
 
-  def any_oauth_connected?
-    authentications.any?
-  end
-
   def connected_with_twitter?
     authentications.where(provider: 'twitter').any?
   end
@@ -61,5 +58,11 @@ class User < ActiveRecord::Base
   def connected_with_github?
     authentications.where(provider: 'github').any?
   end
+
+  private
+
+    def any_oauth_connected?
+      authentications.any?
+    end
 
 end
