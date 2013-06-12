@@ -10,21 +10,6 @@ describe Activity do
     its(:limit_of_participants) { should == 10 }
   end
 
-  describe "#new_participation" do
-    let(:user) { mock_model(User) }
-    let(:new_participation) { OpenStruct.new }
-    let(:args) { {} }
-    subject { activity.new_participation(user) }
-
-    before do
-      activity.participation_source = ->{ new_participation }
-    end
-
-    its(:participant) { should == user }
-    its(:activity) { should == activity }
-    it { should == new_participation }
-  end
-
   describe "#creator" do
     before do
       activity.creator = creator
@@ -141,6 +126,41 @@ describe Activity do
       it { should == false }
     end
 
+  end
+
+  describe "#upcoming?" do
+    subject { activity.upcoming? }
+
+    context "in the future" do
+      before do
+        activity.stub!(:start_time).and_return(1.days.from_now.to_time)
+      end
+
+      it { should == true }
+    end
+
+    context "not in the future" do
+      before do
+        activity.stub!(:start_time).and_return(Time.now)
+      end
+
+      it { should == false }
+    end
+  end
+
+  describe "#new_participation" do
+    let(:user) { mock_model(User) }
+    let(:new_participation) { OpenStruct.new }
+    let(:args) { {} }
+    subject { activity.new_participation(user) }
+
+    before do
+      activity.participation_source = ->{ new_participation }
+    end
+
+    its(:participant) { should == user }
+    its(:activity) { should == activity }
+    it { should == new_participation }
   end
 
   describe "validations" do
