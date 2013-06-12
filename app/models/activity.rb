@@ -5,7 +5,7 @@ class Activity < ActiveRecord::Base
   attr_writer :participation_source # DI
 
   belongs_to :creator, class_name: "User"
-  has_many :participations, :dependent => :destroy
+  has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, class_name: "User"
 
   validates :start_time, presence: true, allow_blank: false, if: ->{ !anytime? }
