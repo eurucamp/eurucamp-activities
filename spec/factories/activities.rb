@@ -8,6 +8,6 @@ FactoryGirl.define do
     anytime false
     location "Ballroom"
     creator { FactoryGirl.create(:user) }
-    event { Event.new }
+    event { Event.new("Some Conference", Time.parse("2013/12/10 18:00"), Time.parse("2013/12/18 18:00")) }
   end
 end
