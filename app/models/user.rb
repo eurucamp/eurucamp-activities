@@ -2,9 +2,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :authentications
-  has_many :participations, :dependent => :destroy
-  has_many :activities, through: :participations
+  has_many :authentications, dependent: :destroy
+  has_many :participations, dependent: :destroy
+  has_many :created_activities, class_name: "Activity", foreign_key: "creator_id", dependent: :nullify
+  has_many :activities_participated_in, through: :participations
 
   validates :email, presence: true
 
