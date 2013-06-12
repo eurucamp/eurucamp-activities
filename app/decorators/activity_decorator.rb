@@ -2,7 +2,7 @@ class ActivityDecorator < Draper::Decorator
   delegate_all
 
   def creator_name
-    creator.name
+    creator.try(:name)
   end
 
   def relation_ship_with(user)
