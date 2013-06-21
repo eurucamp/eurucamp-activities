@@ -22,30 +22,56 @@ class Activity < ActiveRecord::Base
 
   class << self
     def recent(limit = DEFAULT_LIMIT)
-      where("start_time >= :t OR anytime = true", t: 1.month.ago)
-        .limit(limit)
-        .order("anytime DESC, start_time ASC")
+      find_recent(limit)
     end
 
     def all_activities(limit = DEFAULT_LIMIT)
-      limit(limit)
+      find_all(limit)
     end
 
     def today
-      where(":t between start_time and end_time", t: Date.current)
+      find_today
     end
 
     def with_name_like(name)
-      where("name LIKE :q", q: "%#{name}%")
+      find_with_name_like(name)
     end
 
     def created_by(user)
-      where(creator_id: user)
+      find_created_by(user)
     end
 
     def participated_by(user)
-      includes(:participations).where(participations: { user_id: user })
+      find_participated_by(user)
     end
+
+    private
+
+      def find_all(limit)
+        limit(limit)
+      end
+
+      def find_recent(limit)
+        where("start_time >= :t OR anytime = true", t: 1.month.ago)
+          .limit(limit)
+          .order("anytime DESC, start_time ASC")
+      end
+
+      def find_today
+        where(":t between start_time and end_time", t: Date.current)
+      end
+
+      def find_with_name_like(name)
+        where("name LIKE :q", q: "%#{name}%")
+      end
+
+      def find_created_by(user)
+        where(creator_id: user)
+      end
+
+      def find_participated_by(user)
+        includes(:participations).where(participations: { user_id: user })
+      end
 
   end
 
