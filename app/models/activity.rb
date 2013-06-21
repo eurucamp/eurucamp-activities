@@ -46,6 +46,7 @@ class Activity < ActiveRecord::Base
     def participated_by(user)
       includes(:participations).where(participations: { user_id: user })
     end
+
   end
 
   def full_by

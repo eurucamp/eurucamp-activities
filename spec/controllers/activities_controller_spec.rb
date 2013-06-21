@@ -1,69 +1,186 @@
 require 'spec_helper'
 
 describe ActivitiesController do
-  let(:user) { FactoryGirl.create(:user) }
-  let(:activity) { FactoryGirl.create(:activity) }
+  let(:current_user) { mock_model(User) }
+
+  let(:activity) { mock(:activity) }
+  let(:activity_id) { "1" }
+  let(:invalid_activity) { mock(:invalid_activity, errors: {name: "no way!"}) }
+  let(:current_event) { mock(:current_event) }
+
+  def should_authorize(action, subject)
+    controller.should_receive(:authorize!).with(action, subject).and_return('passed!')
+  end
+
+  def sign_in(user = double('user'))
+    if user.nil?
+      request.env['warden'].stub(:authenticate!).
+          and_throw(:warden, {:scope => :user})
+      controller.stub :current_user => nil
+    else
+      request.env['warden'].stub :authenticate! => user
+      controller.stub :current_user => user
+    end
+  end
+
+  before do
+    controller.stub!(:current_event).and_return(current_event)
+  end
 
   describe "#index" do
     subject { get :index }
 
+    let(:current_user)  { nil }
+    let(:activities)    { mock(:activities) }
+    let(:counters)      { mock(:counters) }
+
+    before do
+      current_event.should_receive(:search_activities).with(current_user, nil, nil).and_return(activities)
+      current_event.should_receive(:counters).with(current_user).and_return(counters)
+    end
+
     it { should render_template(:index) }
-    its(:status){ should == 200 }
+  end
+
+  describe "#new" do
+    subject { get :new }
+
+    before do
+      sign_in(current_user)
+      current_event.should_receive(:new_activity).with(current_user, {}).and_return(activity)
+    end
+
+    it { should render_template(:new) }
+  end
+
+  describe "#edit" do
+    subject { get :edit, id: activity_id }
+
+    before do
+      sign_in(current_user)
+      current_event.should_receive(:activity).with(activity_id).and_return(activity)
+    end
+
+    context "activity doesn't exist" do
+      let(:activity) { nil }
+
+      specify { expect { subject }.to raise_error(ActionController::RoutingError) }
+    end
+
+    context "activity exists" do
+
+      before do
+        activity.should_receive(:decorate).and_return(activity)
+        should_authorize(:edit, activity)
+      end
+
+      it { should render_template(:edit) }
+    end
+
   end
 
   describe "#show" do
-    subject { get :show, {id: activity.id} }
+    subject { get :show, id: activity_id }
 
-    it { should render_template(:show) }
-    its(:status){ should == 200 }
+    before do
+      sign_in(current_user)
+      current_event.should_receive(:activity).with(activity_id).and_return(activity)
+    end
+
+    context "activity doesn't exist" do
+      let(:activity) { nil }
+
+      specify { expect { subject }.to raise_error(ActionController::RoutingError) }
+    end
+
+    context "activity exists" do
+
+      before do
+        activity.should_receive(:decorate).and_return(activity)
+      end
+
+      it { should render_template(:show) }
+    end
   end
 
   describe "#create" do
     subject { post :create, params }
 
     before do
-      sign_in(user)
+      sign_in(current_user)
     end
 
     context "valid parameters" do
-      let(:params) { {activity: {name: "Pool party", start_time: 2.days.from_now.to_s, end_time: 2.days.from_now.to_s, location: "Pool" }} }
+      let(:attributes) { {location: "Location", name: "Name", start_time: 1.day.ago.to_s, end_time: 2.days.ago.to_s} }
+      let(:params) { {activity: attributes} }
+
+      before do
+        current_event.should_receive(:new_activity).with(current_user, attributes.with_indifferent_access).and_return(activity)
+        activity.should_receive(:save).and_return(true)
+      end
+
       it { should redirect_to activities_path }
     end
 
     context "invalid parameters" do
+      let(:activity) { invalid_activity }
       let(:params) { {activity: {x: 10}} }
+
+      before do
+        current_event.should_receive(:new_activity).with(current_user, {}).and_return(activity)
+        activity.should_receive(:save).and_return(false)
+      end
+
       it { should render_template(:new) }
     end
   end
 
   describe "#update" do
     subject { put :update, params }
-    let!(:activity) { FactoryGirl.create(:activity, creator: user) }
+    let(:params) { {id: activity_id, activity: attributes} }
 
     before do
-      sign_in(user)
+      sign_in(current_user)
+      current_event.should_receive(:activity).with(activity_id).and_return(activity)
+      activity.should_receive(:decorate).and_return(activity)
+      should_authorize(:update, activity)
     end
 
     context "valid parameters" do
-      let(:params) { {id: activity.id, activity: {name: "Pool party", start_time: 2.days.from_now.to_s, end_time: 3.days.from_now.to_s, location: "Pool" }} }
+      let(:attributes) { {location: "Location", name: "Name", start_time: 1.day.ago.to_s, end_time: 2.days.ago.to_s} }
+
+      before do
+        activity.should_receive(:update_attributes).with(attributes.with_indifferent_access).and_return(true)
+      end
+
       it { should redirect_to edit_activity_path(activity) }
     end
 
     context "invalid parameters" do
-      let(:params) { {id: activity.id, activity: {location: ""}} }
+      let(:attributes) { {location: ""} }
+      let(:activity) { invalid_activity }
+
+      before do
+        activity.should_receive(:update_attributes).with(attributes.with_indifferent_access).and_return(false)
+      end
+
       it { should render_template(:edit) }
     end
   end
 
   describe "#destroy" do
-    subject { delete :destroy, {id: activity.id} }
-    let!(:activity) { FactoryGirl.create(:activity, creator: user) }
+    subject { delete :destroy, {id: activity_id} }
 
     before do
-      sign_in(user)
+      sign_in(current_user)
+      current_event.should_receive(:activity).with(activity_id).and_return(activity)
+      activity.should_receive(:decorate).and_return(activity)
+      should_authorize(:destroy, activity)
+      activity.should_receive(:destroy).and_return(true)
     end
 
     it { should redirect_to activities_path }
+
   end
 
 end
