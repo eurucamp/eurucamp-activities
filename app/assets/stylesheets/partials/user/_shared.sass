@@ -1,18 +1,24 @@
 article
-  header
-    p.meta
-      strong
-        +custom-sans(medium)
+  margin: 0 150px
+  text-align: center
+  
+  h4                
+    +custom-sans(light)
+    font-size: 1.375em
+    padding: 0 0.727272em
+    text-align: center
+  
+  p
+    text-align: center
+    margin: 2em 0 3em 0
+
+    strong
+      margin: 0 0 1em 0
+      text-transform: uppercase
+      +custom-sans(medium)
+      display: block
 
   section
-    margin: 0 150px
-
-    h4
-      +custom-sans(light)
-      font-size: 1.375em
-      padding: 0 0.727272em
-      text-align: center
-
     &.oauth
       @extend %clearfix
 
@@ -40,7 +46,6 @@ article
           &:before
             margin: 0.5em auto
 
-
         &.github
           .container
             background-image: image-url('user/github.png')
@@ -57,31 +62,12 @@ article
             +transition(box-shadow 0.25s ease-in-out)
             box-shadow: 0 0 20px transparentize($black, 0.9)
 
-
     &.form
-      p
-        text-align: center
-        margin: 2em 0 3em 0
 
-        strong
-          margin: 0 0 1em 0
-          text-transform: uppercase
-          +custom-sans(medium)
-          display: block
-
-      a.reveal
-        @extend %secondary-button
-
-      #sign-up
+      form
         padding: 2em 0 0
         width: percentage(2/3)
         margin: 0 auto
-        display: none
 
       h4
         @extend %ornamental-divider-after
-
-      button
-        margin: 2em auto 4em
-        display: block
-        @extend %large-icon-button-ok
