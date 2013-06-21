@@ -17,7 +17,7 @@ class ParticipationsController < ApiController
   private
 
     def current_activity
-      @current_activity ||= current_event.activity(params[:activity_id]).decorate
+      @current_activity ||= current_event.activity(params[:activity_id]).try(:decorate)
     end
 
 end
