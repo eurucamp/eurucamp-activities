@@ -4,6 +4,8 @@ describe Event do
 
   subject(:event) { Event.new("Eurucamp", Date.parse("2012-10-10"), Date.parse("2012-12-14")) }
 
+  let(:proxy) { mock(:proxy) }
+
   describe "#new" do
     its(:name) { should == "Eurucamp" }
     its(:start_time) { should == Date.parse("2012-10-10") }
@@ -25,8 +27,13 @@ describe Event do
   end
 
   describe "#activity" do
-    let(:activity) { FactoryGirl.create(:activity, event: event, start_time: "2012-10-11", end_time: "2012-10-13")  }
-    subject { event.activity(activity) }
+    let(:activity) { OpenStruct.new  }
+    let(:activity_id) { 1 }
+    subject { event.activity(activity_id) }
+
+    before do
+      event.should_receive(:find_activity).with(activity_id).and_return(activity)
+    end
 
     it { should == activity }
     its(:event) { should == event }
@@ -69,10 +76,10 @@ describe Event do
     end
 
     context "by name" do
-      subject { event.search_activities(nil, "yuppy", "all") }
+      subject { event.search_activities(nil, "yummy", "all") }
 
       before do
-        Activity.should_receive(:with_name_like).with("yuppy").and_return(activities)
+        Activity.should_receive(:with_name_like).with("yummy").and_return(activities)
       end
 
       it { should == activities }
@@ -86,7 +93,8 @@ describe Event do
         let(:filter) { "owner" }
 
         before do
-          Activity.stub_chain(:all_activities, :created_by).and_return(activities)
+          Activity.should_receive(:all_activities).and_return(proxy)
+          proxy.should_receive(:created_by).with(user).and_return(activities)
         end
 
         it { should == activities }
@@ -96,7 +104,8 @@ describe Event do
         let(:filter) { "participant" }
 
         before do
-          Activity.stub_chain(:all_activities, :participated_by).and_return(activities)
+          Activity.should_receive(:all_activities).and_return(proxy)
+          proxy.should_receive(:participated_by).with(user).and_return(activities)
         end
 
         it { should == activities }
@@ -106,7 +115,8 @@ describe Event do
         let(:filter) { "today" }
 
         before do
-          Activity.stub_chain(:all_activities, :today).and_return(activities)
+          Activity.should_receive(:all_activities).and_return(proxy)
+          proxy.should_receive(:today).and_return(activities)
         end
 
         it { should == activities }
@@ -116,7 +126,7 @@ describe Event do
         let(:filter) { "ownerx" }
 
         before do
-          Activity.stub_chain(:all_activities).and_return(activities)
+          Activity.should_receive(:all_activities).and_return(activities)
         end
 
         it { should == activities }

@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Activity do
 
   let(:event) { mock(:event) }
-  let(:creator) { User.new }
+  let(:creator) { mock_model(User) }
+
   subject(:activity) { Activity.new }
 
   describe "#new" do
@@ -27,11 +28,11 @@ describe Activity do
   end
 
   describe ".recent" do
-    let!(:recent_activities) { [mock(:activity1), mock(:activity2)] }
+    let(:recent_activities) { [mock(:activity1), mock(:activity2)] }
     subject { Activity.recent }
 
     before do
-      Activity.stub_chain(:where, :limit, :order).and_return(recent_activities)
+      Activity.should_receive(:find_recent).and_return(recent_activities)
     end
 
     it { should == recent_activities }

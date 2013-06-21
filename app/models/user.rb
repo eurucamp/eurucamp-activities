@@ -55,17 +55,25 @@ class User < ActiveRecord::Base
   end
 
   def connected_with_twitter?
-    authentications.where(provider: 'twitter').any?
+    provider_connected?('twitter')
   end
 
   def connected_with_github?
-    authentications.where(provider: 'github').any?
+    provider_connected?('github')
   end
 
   private
 
     def any_oauth_connected?
       authentications.any?
+    end
+
+    def provider_connected?(provider)
+      authentications.where(provider: provider).any?
+    end
+
+    def paper_exists?(paper)
+      papers.exists?(paper)
     end
 
 end

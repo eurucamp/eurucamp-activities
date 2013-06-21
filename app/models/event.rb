@@ -32,7 +32,7 @@ class Event
   end
 
   def activity(activity_id)
-    all_activities.where(:id => activity_id).first.tap do |activity|
+    find_activity(activity_id).tap do |activity|
       activity.event = self if activity
     end
   end
@@ -72,6 +72,10 @@ class Event
 
     def fetch_all_activities
       @all_activities_fetcher.()
+    end
+
+    def find_activity(activity_id)
+      all_activities.where(:id => activity_id).first
     end
 
     def activity_source

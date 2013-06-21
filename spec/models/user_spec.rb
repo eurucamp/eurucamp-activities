@@ -2,18 +2,21 @@ require 'spec_helper'
 
 describe User do
 
-  let(:user) { FactoryGirl.create(:user) }
-
   describe "#connected_with_twitter?" do
     subject { user.connected_with_twitter? }
+    let(:user) { User.new }
 
     context  "not connected with Twitter account" do
+      before do
+        user.should_receive(:provider_connected?).with("twitter").and_return(false)
+      end
+
       it { should == false}
     end
 
     context "connected with Twitter account" do
       before do
-        FactoryGirl.create(:authentication, user: user, provider: "twitter")
+        user.should_receive(:provider_connected?).with("twitter").and_return(true)
       end
 
       it { should == true }
@@ -23,14 +26,19 @@ describe User do
 
   describe "#connected_with_github?" do
     subject { user.connected_with_github? }
+    let(:user) { User.new }
 
     context  "not connected with Github account" do
+      before do
+        user.should_receive(:provider_connected?).with("github").and_return(false)
+      end
+
       it { should == false}
     end
 
     context "connected with Github account" do
       before do
-        FactoryGirl.create(:authentication, user: user, provider: "github")
+        user.should_receive(:provider_connected?).with("github").and_return(true)
       end
 
       it { should == true }
@@ -39,6 +47,7 @@ describe User do
 
   describe "#apply_provider_handle" do
     subject { user.apply_provider_handle(params) }
+    let(:user) { User.new }
 
     context "no data provided" do
       let(:params) { {} }
@@ -58,10 +67,9 @@ describe User do
 
   describe "#no_oauth_connected?" do
     subject { user.no_oauth_connected? }
+    let(:user) { FactoryGirl.create(:user) }
 
     context "account connected" do
-      let(:authentication) { FactoryGirl.create(:authentication, user: user) }
-
       context "password set" do
         it { should == true }
       end
@@ -81,13 +89,18 @@ describe User do
 
   describe "#password_required?" do
     subject { user.password_required? }
+    let(:user) { FactoryGirl.create(:user) }
 
     context "no account connected" do
       it { should == true }
     end
 
     context "account connected" do
-      let!(:authentication) { FactoryGirl.create(:authentication, user: user) }
+      let(:authentications) { [mock(:authentication)] }
+
+      before do
+        user.should_receive(:authentications).and_return(authentications)
+      end
 
       it { should == false }
     end
@@ -96,6 +109,7 @@ describe User do
 
   describe "#update_without_password" do
     subject { user.update_without_password(params) }
+    let(:user) { FactoryGirl.create(:user) }
 
     context "no password provided" do
       let(:params) { {name: "Zbigniew" } }
@@ -114,8 +128,10 @@ describe User do
     end
   end
 
+
   describe "#apply_omniauth" do
     subject { user.apply_omniauth(params) }
+    let(:user) { FactoryGirl.create(:user) }
 
     context "no data provided" do
       let(:params) { {} }
