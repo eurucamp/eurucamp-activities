@@ -22,6 +22,15 @@ class Event
     end
   end
 
+  def counters(user)
+    {
+      today: Activity.today.count,
+      all: Activity.count,
+      participant: Activity.participated_by(user).count,
+      owner: Activity.created_by(user).count
+    }
+  end
+
   def activity(activity_id)
     all_activities.where(:id => activity_id).first.tap do |activity|
       activity.event = self if activity

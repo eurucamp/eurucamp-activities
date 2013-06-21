@@ -7,12 +7,7 @@ class ActivitiesController < ApiController
 
   def index
     @activities = current_event.search_activities(current_user, query_params[:search], query_params[:filter])
-    @counters = {
-      today: Activity.today.count,
-      all: Activity.count,
-      participant: Activity.participated_by(current_user).count,
-      owner: Activity.created_by(current_user).count
-    }
+    @counters = current_event.counters(current_user)
     respond_with(@activities)
   end
 
@@ -26,7 +21,7 @@ class ActivitiesController < ApiController
   end
 
   def edit
-    respond_with(@activity, status: :not_found)
+    respond_with(@activity)
   end
 
   def create
@@ -37,20 +32,22 @@ class ActivitiesController < ApiController
   end
 
   def update
-    type        = @activity.update_attributes(sanitized_params) ? :notice : :error
-    flash[type] = I18n.t("edit_activity.#{type}")
+    if @activity
+      type        = @activity.update_attributes(sanitized_params) ? :notice : :error
+      flash[type] = I18n.t("edit_activity.#{type}")
+    end
     respond_with(@activity, location: edit_activity_path(@activity))
   end
 
   def destroy
-    @activity.destroy
+    @activity.destroy if @activity
     respond_with(@activity, location: activities_path)
   end
 
   private
 
     def load_resource
-      @activity = current_event.activity(params[:id]).decorate
+      @activity = current_event.activity(params[:id]).try(:decorate)
     end
 
     def sanitized_params
