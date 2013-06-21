@@ -7,23 +7,15 @@
       &mdash;
       = link_to 'Sign in!', new_session_path(:user)
 
-  %section.oauth
-    = link_to "/auth/github", class: "github" do
-      .container
-        %h4
-          Sign in with Github
-
-    = link_to "/auth/twitter", class: "twitter" do
-      .container
-        %h4
-          Sign in with Twitter
+  = render "registrations/oauth"
 
   %section.form
-    %p
+    %p.divider
       %strong
         Or
-      %a.reveal(href="#sign-up" title="Create a new account")
-        Create a new account
+
+    %a.reveal(href="#sign-up" title="Create a new account")
+      Create a new account
 
     - if resource.errors.any?
       - style = "display: block"

@@ -26,4 +26,12 @@ Activities::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => Settings.host }
+
+  # Do not compress assets
+  config.assets.compress = false
+
+  # Enable source maps in the browser
+  config.sass.debug_info = true
+
+  config.sass.line_comments = true
 end

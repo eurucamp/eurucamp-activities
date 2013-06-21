@@ -91,6 +91,7 @@ $ypos        : 0
 
 %secondary-button
   display: inline-block
+  text-align: center
   background: $medium-gray
   color: $white
   text-shadow: 0 1px 0 $gray
@@ -101,6 +102,12 @@ $ypos        : 0
   border-radius: 3px
   +custom-sans(medium)
   +transition(all 0.35s ease-in-out)
+  
+  &:visited
+    color: $white
 
   &:hover
     background: $blue
+
+a.reveal
+  @extend %secondary-button

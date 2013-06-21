@@ -41,9 +41,13 @@ a:hover
   position: relative
 
 article
+  @extend %clearfix
+  margin: 0 0 3em 0
+  
   header
     text-align: center
     margin: 0 0 4em 0
+    position: relative
 
     h2
       +custom-sans(light)
@@ -53,11 +57,14 @@ article
 
       &:after
         margin-bottom: 0.25em
-
+        
     .meta
       text-transform: uppercase
       @extend %smaller-text
-
-      strong.divider
-        +custom-sans(bold)
-        margin: 0 0.5em
+        
+      strong
+        +custom-sans(medium)
+        
+        &.divider
+          +custom-sans(bold)
+          margin: 0 0.5em
