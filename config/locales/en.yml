@@ -13,6 +13,9 @@ en:
       edit: Update
 
   user_nav:
+    back_home:
+      label: Back to eurucamp activities
+      title: Go back to front page
     account:
       label: My Account
       title: Edit your account details
