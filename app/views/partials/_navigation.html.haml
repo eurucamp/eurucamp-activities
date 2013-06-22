@@ -1,0 +1,14 @@
+- if current_user
+  %nav.user-nav
+    %ul
+      %li
+        = link_to t("user_nav.account.label"), edit_user_registration_path, title: t("user_nav.account.title")
+      %li
+        = link_to t("user_nav.logout.label"), destroy_user_session_path, title: t("user_nav.logout.title"), method: "delete"
+- else
+  %nav.user-nav
+    %ul
+      %li
+        = link_to t("user_nav.login.label"), new_user_session_path, title: t("user_nav.login.title")
+      %li
+        = link_to t("user_nav.register.label"), new_user_registration_path, title: t("user_nav.register.title")
