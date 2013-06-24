@@ -131,7 +131,7 @@ describe User do
 
   describe "#apply_omniauth" do
     subject { user.apply_omniauth(params) }
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user, name: nil) }
 
     context "no data provided" do
       let(:params) { {} }
@@ -143,9 +143,11 @@ describe User do
 
     context "data provided" do
       context "with info" do
-        let(:params) { { 'info' => {"email" => "ala@ala.com"} } }
+        let(:params) { { 'info' => {"email" => "ala@ala.com", "name" => "Ala"} } }
 
-        specify { expect{subject}.to change(user, :email).to("ala@ala.com") }
+        specify { expect{subject}.to change(user, :name).to("Ala") }
+
+        specify { expect{subject}.to_not change(user, :email) }
 
         it { should be_a_kind_of(Authentication) }
         its(:user) { should == user }

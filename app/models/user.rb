@@ -25,12 +25,15 @@ class User < ActiveRecord::Base
     provider, info = omniauth.values_at('provider', 'info')
 
     # su*ks - refactor it
-    case provider
-      when /github/
-        self.github_handle  = info['nickname'] if github_handle.blank?
-      when /twitter/
-        self.twitter_handle = info['nickname'] if twitter_handle.blank?
+    unless info.blank?
+      case provider
+        when /github/
+          self.github_handle  = info['nickname'] if github_handle.blank?
+        when /twitter/
+          self.twitter_handle = info['nickname'] if twitter_handle.blank?
+      end
     end
+    self
   end
 
   def update_without_password(params, *options)
