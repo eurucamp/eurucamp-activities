@@ -22,6 +22,8 @@ $ypos      : 0
   +custom-sans(bold)
   background: none
   padding: 0
+  text-shadow: none
+  box-shadow: none
 
   span
     width: 40px
@@ -65,6 +67,8 @@ $ypos        : 0
   text-transform: uppercase
   display: inline-block
   color: nth(nth($button-types, 1), 2)
+  text-shadow: none
+  box-shadow: none
 
   span
     display: block
@@ -92,22 +96,33 @@ $ypos        : 0
 %secondary-button
   display: inline-block
   text-align: center
-  background: $medium-gray
+  background: $blue
   color: $white
-  text-shadow: 0 1px 0 $gray
+  text-shadow: 0 1px 1px transparentize($black, 0.8)
   @extend %small-text
   padding: 0.25em 1.5em
   text-transform: uppercase
   border: none
   border-radius: 3px
   +custom-sans(medium)
-  +transition(all 0.35s ease-in-out)
-  
+  +transition(background 0.25s ease-in-out)
+  box-shadow: 0 2px 3px $light-gray
+
   &:visited
     color: $white
 
   &:hover
-    background: $blue
+    background: darken($blue, 10%)
+
+  &:active
+    +transform(translateY(1px))
+    box-shadow: 0 1px 1px $light-gray
 
 a.reveal
   @extend %secondary-button
+
+%secondary-button-large
+  @extend %secondary-button
+  text-transform: uppercase
+  font-size: 1.15em
+  padding: 0.5em 1.5em

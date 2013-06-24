@@ -1,0 +1,20 @@
+!!!
+- html_tag :lang => 'en', :class => "no-js" do
+  %head
+    
+    = render "partials/layout_head"
+    
+    :javascript
+      try{Typekit.load();}catch(e){}
+
+  %body(class="user #{ body_class(controller.action_name) }")
+    = render "partials/chrome_frame"
+    = render "partials/notifications"
+    #container
+      %header#header
+        = render "partials/navigation"
+        
+      #main(role="main")
+        = yield
+      = render "partials/footer"
+    = javascript_include_tag "application"
