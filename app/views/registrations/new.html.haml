@@ -2,28 +2,16 @@
   %header
     %h2
       Register
-    %p.meta
-      %strong Have an account already?
-      &mdash;
-      = link_to 'Sign in!', new_session_path(:user)
-
-  = render "registrations/oauth"
 
   %section.form
+
+    = render "registrations/oauth", :resource => resource, :domain => "new"
+
     %p.divider
-      %strong
-        Or
+      %span or
 
-    %a.reveal(href="#sign-up" title="Create a new account")
-      Create a new account
-
-    - if resource.errors.any?
-      - style = "display: block"
-      :javascript
-        window.location.hash = "sign-up";
-
-    = form_for resource, as: resource_name, url: registration_path(resource_name), html: { id: "sign-up", style: style } do |f|
-      %h4 Register new account
+    = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
+      %h4 Register a new account
 
       %label.name
         %span.label Name
@@ -42,6 +30,14 @@
           %span.label Password, once more
           = f.password_field :password_confirmation, placeholder: "Password once more"
 
-        %button(type="submit")>
-          %span>
-          Sign up
+      %button(type="submit")>
+        Sign up
+
+      %p.info
+        = succeed '.' do
+          Have an account already?
+          = link_to  new_session_path(:user), title: "Sign in" do
+            Sign in
+          or
+          = link_to new_password_path(:user), title: "Reset your password" do
+            reset your password

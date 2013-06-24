@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_event
+  layout :layout_by_resource
 
   before_filter :authenticate_user!
 
@@ -29,6 +30,10 @@ class ApplicationController < ActionController::Base
 
     def rescue_record_not_found
       not_found
+    end
+
+    def layout_by_resource
+      devise_controller? ? 'user' : 'application'
     end
 
 end

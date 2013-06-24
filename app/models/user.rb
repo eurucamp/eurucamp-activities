@@ -22,8 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def apply_provider_handle(omniauth)
-    provider = omniauth['provider']
-    info     = omniauth['info'] || {}
+    provider, info = omniauth.values_at('provider', 'info')
 
     # su*ks - refactor it
     case provider
@@ -32,7 +31,6 @@ class User < ActiveRecord::Base
       when /twitter/
         self.twitter_handle = info['nickname'] if twitter_handle.blank?
     end
-    self
   end
 
   def update_without_password(params, *options)
