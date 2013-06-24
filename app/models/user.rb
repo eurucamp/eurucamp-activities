@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   def apply_omniauth(omniauth)
     provider, uid, info = omniauth.values_at('provider', 'uid', 'info')
     unless info.blank?
-      self.email = info['email'] unless email.blank?
-      self.name  = info['name']  unless name.blank?
+      self.email = info['email'] if email.blank?
+      self.name  = info['name']  if name.blank?
     end
 
     apply_provider_handle(omniauth)
