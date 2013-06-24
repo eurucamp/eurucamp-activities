@@ -29,6 +29,22 @@ en:
       label: Register
       title: Register new account
 
+  user:
+    edit:
+      oauth:
+        github:
+          connect: "Connect your <strong>Github account</strong>"
+          connected: "You have connected your <strong>Github account</strong>"
+        twitter:
+          connect: "Connect your <strong>Twitter account</strong>"
+          connected: "You have connected your <strong>Twitter account</strong>"
+    new:
+      oauth:
+        github:
+          connect: "Sign in with your <strong>Github account</strong>"
+        twitter:
+          connect: "Sign in with your <strong>Twitter account</strong>"
+
   # index and shared translations
   activities:
     filters:

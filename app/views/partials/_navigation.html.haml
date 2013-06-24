@@ -1,8 +1,7 @@
+- if devise_controller?
+  = link_to t("user_nav.back_home.label"), root_path, title: t("user_nav.back_home.title"), class: "back-home"
 %nav.user-nav
   %ul
-    - if devise_controller?
-      %li.back-home
-        = link_to t("user_nav.back_home.label"), root_path, title: t("user_nav.back_home.title")
     - if current_user
       %li
         = link_to t("user_nav.account.label"), edit_user_registration_path, title: t("user_nav.account.title")
