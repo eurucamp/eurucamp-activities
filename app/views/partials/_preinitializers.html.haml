@@ -1,0 +1,17 @@
+:javascript
+  try {
+    Typekit.load();
+  } catch(e) {
+    //omnomnom
+  }
+
+  var App = {
+    paths: {
+      login: '#{new_user_session_path}'
+    },
+    event: {
+      name: '#{current_event.name}',
+      startTime: #{current_event.start_time.to_i * 1000},
+      endTime: #{current_event.end_time.to_i * 1000}
+    }
+  };

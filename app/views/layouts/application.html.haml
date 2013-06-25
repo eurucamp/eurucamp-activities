@@ -1,22 +1,8 @@
 !!!
 - html_tag :lang => 'en', :class => "no-js" do
   %head
-    
     = render "partials/layout_head"
-    
-    :javascript
-      try{Typekit.load();}catch(e){}
-      // TODO: partial
-      var App = {
-        paths: {
-          login: '#{new_user_session_path}'
-        },
-        event: {
-          name: '#{current_event.name}',
-          startTime: #{current_event.start_time.to_i * 1000},
-          endTime: #{current_event.end_time.to_i * 1000}
-        }
-      };
+    = render "partials/preinitializers"
 
   %body(class="#{ body_class(controller.action_name) }")
     = render "partials/chrome_frame"

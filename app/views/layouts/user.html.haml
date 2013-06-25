@@ -1,11 +1,8 @@
 !!!
 - html_tag :lang => 'en', :class => "no-js" do
   %head
-    
     = render "partials/layout_head"
-    
-    :javascript
-      try{Typekit.load();}catch(e){}
+    = render "partials/preinitializers"
 
   %body(class="user #{ body_class(controller.action_name) }")
     = render "partials/chrome_frame"
