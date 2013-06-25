@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_event
   layout :layout_by_resource
 
+  before_filter :clean_up_session
   before_filter :authenticate_user!
 
   rescue_from CanCan::AccessDenied, :with => :rescue_access_denied
@@ -23,6 +24,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+    def clean_up_session
+      session[:omniauth] = nil
+    end
 
     def rescue_access_denied
       render :nothing => true, :status => 401

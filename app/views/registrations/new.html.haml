@@ -5,13 +5,14 @@
 
   %section.form
 
-    = render "registrations/oauth", :resource => resource, :domain => "new"
+    - unless during_oauth_flow?
+      = render "registrations/oauth", :resource => resource, :domain => "new"
 
-    %p.divider
-      %span or
+      %p.divider
+        %span or
 
     = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
-      %h4 Register a new account
+      %h4= during_oauth_flow? ? "One step more - we need your email address" : "Register a new account"
 
       %label.name
         %span.label Name
