@@ -1,5 +1,8 @@
 class RegistrationsController < Devise::RegistrationsController
   skip_before_filter :authenticate_user!, only: :create
+  skip_before_filter :clean_up_session, only: [:new, :create]
+
+  helper_method :during_oauth_flow?
 
   def create
     super
@@ -25,6 +28,10 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
+    def during_oauth_flow?
+      !current_user && @user.new_record? && session[:omniauth].present?
+    end
 
     def build_resource(*args)
       super.tap do |user|
