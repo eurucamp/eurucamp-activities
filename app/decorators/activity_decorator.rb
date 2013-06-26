@@ -34,8 +34,8 @@ class ActivityDecorator < Draper::Decorator
     else
       left = [[object.limit_of_participants - object.participations_count, object.participations_count].min, 0].max
       if    left == 1 then I18n.t("activities.room_left.one")
-      elsif left >  0 then I18n.t("activities.room_left.none")
-      else                 I18n.t("activities.room_left.one")
+      elsif left >  0 then I18n.t("activities.room_left.many", left: left)
+      else                 I18n.t("activities.room_left.none")
       end
     end
   end
