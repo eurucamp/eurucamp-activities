@@ -25,6 +25,9 @@ gem 'rails_html_helpers'
 gem 'draper'
 gem 'cancan'
 gem 'redcarpet'
+gem 'sass-rails',       '~> 4.0.0.beta1'
+gem 'coffee-rails',     '~> 4.0.0.beta1'
+gem 'uglifier',         '>= 1.0.3'
 
 group :development do
   gem 'debugger',         '~> 1.6'
@@ -45,12 +48,6 @@ group :test do
   gem 'capybara-webkit',  '~> 0.14'
   gem 'accept_values_for'
   gem 'json_spec'
-end
-
-group :assets do
-  gem 'sass-rails',       '~> 4.0.0.beta1'
-  gem 'coffee-rails',     '~> 4.0.0.beta1'
-  gem 'uglifier',         '>= 1.0.3'
 end
 
 group :production, :staging do
