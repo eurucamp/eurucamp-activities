@@ -1,16 +1,17 @@
 defaults: &defaults
   event:
-    name: "Eurucamp 2013"
-    start_time: 2013-08-10 00:00:00
-    end_time: 2013-08-19 00:00:00
-  host: "activities.eurucamp.org"
+    name: "RailsCamp 2013"
+    start_time: 2013-07-27 00:00:00
+    end_time: 2013-07-29 00:00:00
+  host: "sessions.railscamp.de"
   mailers:
-    from: "activities@eurucamp.org"
+    from: "mail@railscamp.de"
   errors:
-    from: "exception@eurucamp.org"
+    from: "mail@railscamp.de"
     to:
-      - "piotr@gega.io"
-      - "florian@polarblau.com"
+      - "felix@plan.io"
+      - "jakob@railslove.com"
+      - "sebastian@kip.pe"
 
 development:
   <<: *defaults
@@ -21,7 +22,6 @@ test:
 
 staging:
   <<: *defaults
-  host: "activities-staging.eurucamp.org"
 
 production:
   <<: *defaults
