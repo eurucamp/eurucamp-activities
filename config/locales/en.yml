@@ -60,7 +60,7 @@ en:
       placeholder: Search for an activity
       clear: Clear
     join:
-      label: Join
+      label: I'm interested
       title: Sign-up as participant
     edit:
       label: Edit
