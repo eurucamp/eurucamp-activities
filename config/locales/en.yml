@@ -14,7 +14,7 @@ en:
 
   user_nav:
     back_home:
-      label: Back to eurucamp activities
+      label: Back to Railscamp activities
       title: Go back to front page
     account:
       label: My Account
@@ -132,5 +132,5 @@ en:
       label: Policy
       title: Policy and Code of Conduct
     eurucamp:
-      label: eurucamp.org
+      label: 2013.railscamp.de
       title: Head over to the main site
