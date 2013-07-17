@@ -1,8 +1,8 @@
 defaults: &defaults
   event:
     name: "RailsCamp 2013"
-    start_time: 2013-07-27 00:00:00
-    end_time: 2013-07-29 00:00:00
+    start_time: 2013-07-26 20:00:00
+    end_time: 2013-07-28 17:00:00
   host: "sessions.railscamp.de"
   mailers:
     from: "mail@railscamp.de"
