@@ -34,12 +34,16 @@ class ActivityDecorator < Draper::Decorator
   def room_left
     if object.anybody_can_join? then ""
     else
-      left = [[object.limit_of_participants - object.participations_count, 0].max, object.limit_of_participants ].min
+      left = open_spots
       if    left == 1 then I18n.t("activities.room_left.one")
       elsif left >  0 then I18n.t("activities.room_left.many", left: left)
       else                 I18n.t("activities.room_left.none")
       end
     end
+  end
+
+  def open_spots
+    [[object.limit_of_participants - object.participations_count, 0].max, object.limit_of_participants ].min
   end
 
   def time
