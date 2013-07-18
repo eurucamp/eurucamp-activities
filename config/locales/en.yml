@@ -14,7 +14,7 @@ en:
 
   user_nav:
     back_home:
-      label: Back to Railscamp activities
+      label: Back to RailsCamp activities
       title: Go back to front page
     account:
       label: My Account
