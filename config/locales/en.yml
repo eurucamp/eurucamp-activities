@@ -50,28 +50,28 @@ en:
     filters:
       today: Today
       all: All
-      owner: Created by me
-      participant: My activities
+      owner: Events created by me
+      participant: Events I'm interested in
       submit: Filter
     new:
-      label: Create an activity
-      title: Create a new activity
+      label: Create an event
+      title: Create a new event
     search:
-      placeholder: Search for an activity
+      placeholder: Search for an event
       clear: Clear
     join:
       label: I'm interested
       title: Indicate your interest
     edit:
       label: Edit
-      title: Edit the activity details
+      title: Edit the event details
     leave:
       label: Cancel
       title: Cancel your participation
     more_info:
       label: More info
-      label_long: View activity details
-      title: Learn more about this activity
+      label_long: View event details
+      title: Learn more about this event
     anytime: Anytime
     time_and_date: "Time & Date"
     start:
@@ -94,19 +94,19 @@ en:
         too_late: "outside range, too late"
 
   new_activity:
-    title: Organize an activity
-    notice: Your activity has been created!
+    title: Organize an event
+    notice: Your event has been created!
     error: Activity could not be saved. Please check your input.
 
   edit_activity:
-    title: Edit your activity
-    notice: Your activity has been updated!
+    title: Edit your event
+    notice: Your event has been updated!
     error: Your changes could not be saved. Please check your input.
 
   activity_form:
     markdown_hint: You can use Markdown here
     name:
-      label: Give your activity a name
+      label: Give your event a name
     description:
       label: Description
       hint: "Background information, links, etc."
