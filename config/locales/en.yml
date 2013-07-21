@@ -111,15 +111,15 @@ en:
       label: Description
       hint: "Background information, links, etc."
     anytime:
-      hint: Without a specific date/time
+      hint: Create without a specific date/time
     location:
       label: Location
-      hint: "Where does your activity take place, where to meet, …"
+      hint: "Outside? In one of the rooms? On the half-pipe?"
     limit_of_participants:
       hint: Max. participants
     requirements:
       label: Requirements
-      hint:  "What to bring, to wear etc."
+      hint:  "What do you need from us? What should the participants bring along?"
     image_url:
       label: URL for an image
       hint: Upload an image to e.g. imgur.com and link it here
