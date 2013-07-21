@@ -1,8 +1,20 @@
 %header#header
 
   = render "partials/navigation"
-  
+
   -# the logo, link home
   %h1
     = link_to "/" do
       = image_tag "header/logo_small.png", :alt => "Eurucamp Activities"
+
+  %p
+    %strong Hello Camper,
+  %p
+    %strong The purpose of this app is to collect session ideas and gauge interest levels in preparation of the Railscamp.
+  %p
+    If you have an idea for a session, please post it here with a detailed description of what you plan to do and what you need.
+  %p
+    In addition, please go through all of the other sessions and indicate your interest in any session you probably want to take part in.
+  %p
+    If you have any other questions about session planning in general, go to the
+    = link_to "corresponding GitHub issue", "https://github.com/railscamp/railscamp-germany-2013/issues/11"
