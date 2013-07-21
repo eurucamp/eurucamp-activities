@@ -136,6 +136,15 @@ ready = ->
 
     .trigger('keyup')
 
+  if $("#activity_anytime").is(":checked")
+    $("#new-activity .start_and_end_time").hide()
+
+  $('#activity_anytime')
+    .on 'change', ->
+      if $(@).is ':checked'
+        $(".start_and_end_time").fadeOut()
+      else
+        $(".start_and_end_time").fadeIn()
 
   hideNotification = ->
     $('#notifications').addClass 'hide'
