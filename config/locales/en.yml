@@ -131,6 +131,7 @@ en:
     policy:
       label: Policy
       title: Policy and Code of Conduct
-    eurucamp:
+    main_site:
       label: 2013.railscamp.de
       title: Head over to the main site
+      link: http://2013.railscamp.de

@@ -1,9 +1,6 @@
 #footer
-
-  -# cross-site navigation, add correct links
   %nav
-    %ul
-      - %w(about policy eurucamp).each do |target|
-        %li
-          %a(href="#" title="#{t("footer_nav.#{target}.title")}")
-            = t("footer_nav.#{target}.label")
+    :markdown
+      * [#{t "footer_nav.about.label"}](# '#{t "footer_nav.about.title"}')
+      * [#{t "footer_nav.policy.label"}](# '#{t "footer_nav.policy.title"}')
+      * [#{t "footer_nav.main_site.label"}](#{t "footer_nav.main_site.link"} '#{t "footer_nav.main_site.title"}')
