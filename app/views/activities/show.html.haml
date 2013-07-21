@@ -18,9 +18,11 @@
     = render "activities/progress", activity: @activity
     %p
       = @activity.room_left
-      %a.participants(href="#" title="")
-        %span
-          = t("activities.participants")
+      /
+        TODO: List all participants
+        %a.participants(href="#" title="")
+          %span
+            = t("activities.participants")
 
   %section.details
     %dl.wrapper
