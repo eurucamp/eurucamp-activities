@@ -10,8 +10,10 @@
         = activity.name
       %p.creator
         = activity.creator_name
-      %p.time
+      %p.time_and_place
         = activity.time.html_safe
+        %br
+        = activity.location.html_safe
 
     = render "activities/action", activity: activity, type: type
 
