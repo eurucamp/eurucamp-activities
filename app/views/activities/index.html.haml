@@ -1,14 +1,14 @@
 %form.filters(action=activities_path method="GET" id="activities-filter")
-  %label>
-    %input(type="radio" name="filter" value="today")
-    = t("activities.filters.today")
-    %strong
-      = @counters[:today]
   %label.all.selected>
     %input(type="radio" name="filter" value="all")
       = t("activities.filters.all")
     %strong
       = @counters[:all]
+  %label.today>
+    %input(type="radio" name="filter" value="today")
+    = t("activities.filters.today")
+    %strong
+      = @counters[:today]
   %label.participant>
     %input(type="radio" name="filter" value="participant")
     = t("activities.filters.participant")
