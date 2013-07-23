@@ -138,7 +138,11 @@ describe User do
 
       it { should be_a_kind_of(Authentication) }
       its(:user) { should == user }
-      it { should be_invalid }
+
+      it do
+        pending "Currently Removed"
+        should be_invalid
+      end
     end
 
     context "data provided" do
