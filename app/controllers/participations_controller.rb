@@ -4,14 +4,14 @@ class ParticipationsController < ApiController
   def create
     @participation = current_activity.new_participation(current_user)
     @participation.save
-    respond_with(current_activity, @participation, location: activities_path)
+    respond_with(current_activity.reload, @participation, location: activities_path)
   end
 
   def destroy
     @participation = current_activity.participation(current_user)
     authorize!(:destroy, @participation)
     @participation.destroy
-    respond_with(current_activity, @participation, location: activities_path)
+    respond_with(current_activity.reload, @participation, location: activities_path)
   end
 
   private
