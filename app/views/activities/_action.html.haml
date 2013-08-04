@@ -1,3 +1,4 @@
+- remote = defined?(remote) ? remote : true
 .action(class=type)
   - case type
   - when "owner"
@@ -5,10 +6,10 @@
       %span
       = t("activities.edit.label")
   - when "participant"
-    = button_to activity_participation_path(activity), method: :delete, remote: true, title: t("activities.leave.title") do
+    = button_to activity_participation_path(activity), method: :delete, remote: remote, title: t("activities.leave.title") do
       %span
       = t("activities.leave.label")
   - else
-    = button_to activity_participation_path(activity), method: :post, remote: true, title: t("activities.join.title") do
+    = button_to activity_participation_path(activity), method: :post, remote: remote, title: t("activities.join.title") do
       %span
       = t("activities.join.label")
