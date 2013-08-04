@@ -19,7 +19,7 @@ class ActivityDecorator < Draper::Decorator
     if object.anytime?      then ""
     elsif object.today?     then "today"
     elsif object.upcoming?  then "upcoming"
-    else                    "archive"
+    else                         "archive"
     end
   end
 
