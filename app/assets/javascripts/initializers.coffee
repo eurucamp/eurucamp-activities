@@ -1,6 +1,5 @@
 ready = ->
   $(document).ajaxError (e, xhr) ->
-    console.error "AJAX ERROR!", arguments if console?.error?
     window.location.replace(App.paths.login) if xhr.status == 401
 
   # section toggles
