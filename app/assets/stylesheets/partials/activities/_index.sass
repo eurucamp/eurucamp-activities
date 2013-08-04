@@ -151,7 +151,8 @@ a#new-activity
           opacity: 1
           +transition(all 0.25s ease-in-out)
 
-      .progress-wrapper
+      .progress-wrapper,
+      .container > .progress
         @extend %transition-all-15s-ease-out
         +transform(translate(0, -9em))
         opacity: 0
