@@ -18,9 +18,10 @@
     = render "activities/progress", activity: @activity
     %p
       = @activity.room_left
-      %a.participants(href="#" title="")
-        %span
-          = t("activities.participants")
+      - if @activity.participants.any?
+        %a.participants(href="#" title="")
+          %span
+            = t("activities.participants")
 
   %section.details
     %dl.wrapper
@@ -42,3 +43,12 @@
         = t("activities.location")
       %dd
         = @activity.location
+
+  - if @activity.participants.any?
+    %section.participants
+      %h3
+        = t("activities.participants")
+      %ul
+        - @activity.participants.each do |participant|
+          %li(title="#{ participant.name }")>
+            = image_tag(avatar_url(participant, 48))
