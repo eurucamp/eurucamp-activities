@@ -1,6 +1,6 @@
 $('#activity-<%= @current_activity.id %>')
   .replaceWith('<%= escape_javascript(render partial: 'activities/activity', locals: { activity: @current_activity }) %>');
 $('#activity-<%= @current_activity.id %>')
-  .find('img.progress')
+  .find('.progress')
   .progress();
 $('#activities-filter .participant strong').text('<%= Activity.participated_by(current_user).count %>')
