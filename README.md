@@ -35,8 +35,5 @@
 * `TWITTER_KEY`
 * `TWITTER_SECRET`
 
-## License
-
-This application is released under [GPL-2.0 license](https://www.gnu.org/licenses/gpl-2.0.txt).
 
 
