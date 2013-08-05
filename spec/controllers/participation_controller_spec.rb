@@ -9,6 +9,7 @@ describe ParticipationsController do
   let(:current_event) { mock(:current_event) }
 
   before do
+    activity.stub!(:reload).and_return(activity)
     controller.stub!(:current_event).and_return(current_event)
   end
 
