@@ -66,7 +66,7 @@ class Activity < ActiveRecord::Base
       end
 
       def find_with_name_like(name)
-        where("name LIKE :q", q: "%#{name}%").order_by_start_time
+        where("name ILIKE :q", q: "%#{name}%").order_by_start_time
       end
 
       def find_created_by(user)
