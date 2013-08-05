@@ -22,7 +22,6 @@
 
 ### **ENV** variables:
 
-* `DISABLE_ROBOTS` - set to `true` if you want to block robots from tracking content (via `robots.txt`)
 * `GITHUB_KEY`
 * `GITHUB_SECRET`
 * `TWITTER_KEY`
