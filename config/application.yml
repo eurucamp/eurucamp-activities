@@ -11,6 +11,10 @@ defaults: &defaults
     to:
       - "piotr@gega.io"
       - "florian@polarblau.com"
+  seo:
+    title: "Eurucamp Activities"
+    author: "Eurucamp team"
+    description: "List of companion events."
 
 development:
   <<: *defaults
