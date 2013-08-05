@@ -45,32 +45,36 @@ class Activity < ActiveRecord::Base
       find_participated_by(user)
     end
 
+    def order_by_start_time
+      order("anytime DESC, start_time ASC")
+    end
+
     private
 
       def find_all(limit)
-        limit(limit)
+        limit(limit).order_by_start_time
       end
 
       def find_recent(limit)
         where("start_time >= :t OR anytime = true", t: 1.month.ago)
           .limit(limit)
-          .order("anytime DESC, start_time ASC")
+          .order_by_start_time
       end
 
       def find_today
-        where(":t between start_time and end_time", t: Date.current)
+        where(":t between start_time and end_time", t: Date.current).order_by_start_time
       end
 
       def find_with_name_like(name)
-        where("name LIKE :q", q: "%#{name}%")
+        where("name LIKE :q", q: "%#{name}%").order_by_start_time
       end
 
       def find_created_by(user)
-        where(creator_id: user)
+        where(creator_id: user).order_by_start_time
       end
 
       def find_participated_by(user)
-        includes(:participations).where(participations: { user_id: user })
+        includes(:participations).where(participations: { user_id: user }).order_by_start_time
       end
 
   end
