@@ -13,6 +13,14 @@
 * `tail -f log/development.log`
 * `open http://activities.dev:3000`
 
+### Customization
+
+*(work in progress)*
+
+* Fork it
+* edit `config/application.yml`
+* edit `app/assets/stylesheets/_settings.sass`
+
 ## Deployment
 
 ### How to deploy app?
