@@ -49,22 +49,24 @@ ready = ->
     clear: ''
     onSet: (e)->
       target             = @$node.data 'target'
-      [hours, minutes]   = [parseInt((e.select / 60), 10), e.select % 60]
-      $("#activity_#{target}_4i").val(if hours < 10 then "0#{hours}" else hours)
-      $("#activity_#{target}_5i").val(minutes)
-      $('#activity_anytime').attr('checked', false)
+      if e.select?
+        [hours, minutes]   = [parseInt((e.select / 60), 10), e.select % 60]
+
+        $("#activity_#{target}_4i").val(if hours < 10 then "0#{hours}" else hours)
+        $("#activity_#{target}_5i").val(if minutes < 10 then "0#{minutes}" else minutes)
+        $('#activity_anytime').attr('checked', false)
     onClose: ->
       otherSelector      = @$node.data('update')
       other              = $(otherSelector).pickatime('picker')
       {hour, mins, pick} = @get 'select'
       otherPick          = other.get('select').pick
-
+      console.log hour, mins
       if otherSelector.match /end-time/
         other.set 'min', [hour, mins]
-        other.set 'select', [hour, mins] if otherPick < pick
+        #other.set 'select', [hour, mins] if otherPick < pick
       else
         other.set 'max', [hour, mins]
-        other.set 'select', [hour, mins] if otherPick > pick
+        #other.set 'select', [hour, mins] if otherPick > pick
 
   # filters
   $filters    = $('form.filters label:not(.search)')
