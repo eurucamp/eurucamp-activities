@@ -59,14 +59,11 @@ ready = ->
       otherSelector      = @$node.data('update')
       other              = $(otherSelector).pickatime('picker')
       {hour, mins, pick} = @get 'select'
-      otherPick          = other.get('select').pick
-      console.log hour, mins
+
       if otherSelector.match /end-time/
         other.set 'min', [hour, mins]
-        #other.set 'select', [hour, mins] if otherPick < pick
       else
         other.set 'max', [hour, mins]
-        #other.set 'select', [hour, mins] if otherPick > pick
 
   # filters
   $filters    = $('form.filters label:not(.search)')
