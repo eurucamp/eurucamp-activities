@@ -12,6 +12,13 @@
     ul
       @extend %inline-nav-list
 
+      a
+        body.user &
+          color: $white
+
+          &:hover
+            color: $blue
+
 
   +media($smartphone-portrait)
     nav.user-nav

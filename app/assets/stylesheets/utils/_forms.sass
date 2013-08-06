@@ -4,9 +4,8 @@ form
   input, textarea
     width: 100%
     padding: 0.75em 15px 0.9em
-    background: $white
-    border: none
-    border-bottom: 1px solid $white
+    background: $extra-light-gray
+    border: 1px solid $extra-light-gray
     margin: 0 0 2px 0
     font-size: 1.25em
     outline: none
@@ -16,7 +15,7 @@ form
     resize: none
 
     +placeholder
-      color: darken($light-gray, 30)
+      color: $gray
 
     &.radio
       +inline-block
@@ -39,6 +38,7 @@ form
 
     &:focus
       z-index: 1000
+      border: 1px solid $white
       box-shadow: 0 0 7px transparentize($black, 0.9)
 
       &.markdown
