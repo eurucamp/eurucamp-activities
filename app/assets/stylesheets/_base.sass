@@ -1,5 +1,5 @@
 html
-  background: $extra-light-gray
+  background: $white
 
 body
   +custom-sans
@@ -30,7 +30,7 @@ a:hover
     +animation-delay(0.25s)
     @extend %animated-bounce-in-down
 
-    &.error
+    &.error, &.alert
       background: transparentize($red, 0.2)
 
   &.hide
@@ -68,3 +68,58 @@ article
         &.divider
           +custom-sans(bold)
           margin: 0 0.5em
+
+// TODO: extract
+// Pickadate overrides
+
+.picker__input.picker__input--active
+  border: none
+
+.picker__box
+  border-radius: 0 !important
+
+.picker__nav--next,
+.picker__nav--prev
+  display: none !important
+
+.picker__day--highlighted:hover,
+.picker__day--infocus:hover,
+.picker__day--outfocus:hover
+  color: $white !important
+  background: $blue !important
+
+.picker--focused .picker__day--highlighted
+  background: $green !important
+  color: $white !important
+  border: none !important
+
+.picker__day--disabled:hover,
+.picker--focused .picker__day--disabled
+  border: none !important
+
+.picker__day--disabled:hover,
+.picker--focused .picker__day--disabled,
+  background: $white !important
+  color: $light-gray !important
+  font-weight: 100 !important
+
+.picker__day
+  color: $black !important
+  font-weight: 500 !important
+  background: $extra-light-gray !important
+
+.picker__list-item
+  border-color: $light-gray !important
+
+.picker__list-item:hover
+  background: $blue !important
+  border-color: $blue !important
+  color: $white !important
+
+.picker__list-item--selected,
+.picker__list-item--selected:hover
+  color: $white !important
+  background: $green !important
+
+.picker__list
+  padding-bottom: 0 !important
