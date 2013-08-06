@@ -18,7 +18,8 @@
     = render "activities/progress", activity: @activity
     %p
       = @activity.room_left
-      - if @activity.participants.any?
+    - if @activity.participants.any?
+      %p
         %a.participants(href="#" title="")
           %span
             = t("activities.participants")
