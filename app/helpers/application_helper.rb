@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def twitter_avatar_url(handle)
-    "https://twitter.com/api/users/profile_image/#{handle}?size=bigger"
+    "https://twitter.com/api/users/profile_image/#{handle}"
   end
 
   def avatar_url(user, size = 64)
