@@ -1,6 +1,6 @@
 
 /*!
- * Date picker for pickadate.js v3.0.4
+ * Date picker for pickadate.js v3.1.4
  * http://amsul.github.io/pickadate.js/date.htm
  */
 
@@ -32,7 +32,10 @@ var DAYS_IN_WEEK = 7,
 function DatePicker( picker, settings ) {
 
     var calendar = this,
-        elementDataValue = picker.$node.data( 'value' )
+        elementValue = picker.$node[ 0 ].value,
+        elementDataValue = picker.$node.data( 'value' ),
+        valueString = elementDataValue || elementValue,
+        formatString = elementDataValue ? settings.formatSubmit : settings.format
 
     calendar.settings = settings
 
@@ -64,12 +67,18 @@ function DatePicker( picker, settings ) {
         // Setting the `select` also sets the `highlight` and `view`.
         set( 'select',
 
-            // If there's a `value` or `data-value`, use that with formatting.
-            // Otherwise default to selecting “today”.
-            elementDataValue || picker.$node[ 0 ].value || calendar.item.now,
+            // Use the value provided or default to selecting “today”.
+            valueString || calendar.item.now,
+            {
+                // Use the appropriate format.
+                format: formatString,
 
-            // Use the relevant format and data property.
-            { format: elementDataValue ? settings.formatSubmit : settings.format, data: !!elementDataValue }
+                // Set user-provided month data as true when there is a
+                // “mm” or “m” used in the relative format string.
+                data: (function( formatArray ) {
+                    return valueString && ( formatArray.indexOf( 'mm' ) > -1 || formatArray.indexOf( 'm' ) > -1 )
+                })( calendar.formats.toArray( formatString ) )
+            }
         )
 
 
@@ -170,9 +179,11 @@ DatePicker.prototype.create = function( type, value, options ) {
         value = value.obj
     }
 
-    // If it’s an array, convert it into a date.
+    // If it’s an array, convert it into a date and make sure
+    // that it’s a valid date – otherwise default to today.
     else if ( Array.isArray( value ) ) {
         value = new Date( value[ 0 ], value[ 1 ], value[ 2 ] )
+        value = Picker._.isDate( value ) ? value : calendar.create().obj
     }
 
     // If it’s a number or date object, make a normalized date.
@@ -216,14 +227,14 @@ DatePicker.prototype.navigate = function( type, value, options ) {
 
     if ( Picker._.isObject( value ) ) {
 
-        var targetDateObject = new Date( value.year, value.month + ( options && options.nav ? options.nav : 0 ), 1 ),
+        var targetDateObject = new Date( value.year, value.month + ( options && options.nav ? options.nav : 0 ), 1 ),
             year = targetDateObject.getFullYear(),
             month = targetDateObject.getMonth(),
             date = value.date
 
-        // If the month we’re going to doesn’t have enough days,
-        // keep decreasing the date until we reach the month’s last date.
-        while ( new Date( year, month, date ).getMonth() !== month ) {
+        // Make sure the date is valid and if the month we’re going to doesn’t have enough
+        // days, keep decreasing the date until we reach the month’s last date.
+        while ( Picker._.isDate( targetDateObject ) && new Date( year, month, date ).getMonth() !== month ) {
             date -= 1
         }
 
@@ -320,11 +331,11 @@ DatePicker.prototype.validate = function( type, dateObject, options ) {
     // [3] Out of range.
     //
     // Cases to **not** validate for:
+    // • Navigating months.
     // • Not inverted and date enabled.
     // • Inverted and all dates disabled.
-    // • Navigating months.
-    // • ..and anything else.
-    if (
+    // • ..and anything else.
+    if ( !options.nav ) if (
         /* 1 */ ( !isInverted && calendar.disabled( dateObject ) ) ||
         /* 2 */ ( isInverted && calendar.disabled( dateObject ) && ( hasEnabledWeekdays || hasEnabledBeforeTarget || hasEnabledAfterTarget ) ) ||
         /* 3 */ ( dateObject.pick <= minLimitObject.pick || dateObject.pick >= maxLimitObject.pick )
@@ -416,7 +427,7 @@ DatePicker.prototype.parse = function( type, value, options ) {
     var calendar = this,
         parsingObject = {}
 
-    if ( !value || Picker._.isInteger( value ) || Array.isArray( value ) || Picker._.isDate( value ) || Picker._.isObject( value ) && Picker._.isInteger( value.pick ) ) {
+    if ( !value || Picker._.isInteger( value ) || Array.isArray( value ) || Picker._.isDate( value ) || Picker._.isObject( value ) && Picker._.isInteger( value.pick ) ) {
         return value
     }
 
@@ -447,7 +458,7 @@ DatePicker.prototype.parse = function( type, value, options ) {
         value = value.substr( formatLength )
     })
 
-    // If it’s parsing a `data-value`, compensate for month 0index.
+    // If it’s parsing a user provided month value, compensate for month 0index.
     return [ parsingObject.yyyy || parsingObject.yy, +( parsingObject.mm || parsingObject.m ) - ( options.data ?  1 : 0 ), parsingObject.dd || parsingObject.d ]
 } //DatePicker.prototype.parse
 
@@ -458,7 +469,7 @@ DatePicker.prototype.parse = function( type, value, options ) {
 DatePicker.prototype.formats = (function() {
 
     // Return the length of the first word in a collection.
-    var getWordLengthFromCollection = function( string, collection, dateObject ) {
+    function getWordLengthFromCollection( string, collection, dateObject ) {
 
         // Grab the first word from the string.
         var word = string.match( /\w+/ )[ 0 ]
@@ -470,6 +481,11 @@ DatePicker.prototype.formats = (function() {
 
         // Return the length of the word.
         return word.length
+    }
+
+    // Get the length of the first word in a string.
+    function getFirstWordLength( string ) {
+        return string.match( /\w+/ )[ 0 ].length
     }
 
     return {
@@ -757,7 +773,7 @@ DatePicker.prototype.nodes = function( isOpen ) {
                     highestYear = maxYear
                 }
 
-                return Picker._.node( 'select', Picker._.group({
+                return Picker._.node( 'select', Picker._.group({
                     min: lowestYear,
                     max: highestYear,
                     i: 1,
