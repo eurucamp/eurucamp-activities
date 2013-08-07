@@ -10,9 +10,11 @@
   %section.description
     .wrapper
       = @activity.description_markdown
-      %h4
-        = t("activities.required")
-      = @activity.requirements_markdown
+
+      - unless @activity.requirements.empty?
+        %h4
+          = t("activities.required")
+        = @activity.requirements_markdown
 
   %section.overview
     = render "activities/progress", activity: @activity
