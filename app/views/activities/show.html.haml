@@ -35,11 +35,11 @@
         %dt
           = t("activities.start.label_short")
         %dd
-          = l(@activity.start_time, format: :nice_date)
+          = l(@activity.start_time, format: :nice_date_and_time)
         %dt
           = t("activities.end.label_short")
         %dd
-          = l(@activity.end_time, format: :nice_date)
+          = l(@activity.end_time, format: :nice_date_and_time)
       %dt
         = t("activities.location")
       %dd
