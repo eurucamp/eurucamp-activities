@@ -31,6 +31,7 @@ ready = ->
       $("#activity_#{target}_3i").val(date)
       $('#activity_anytime').attr('checked', false)
     onClose: ->
+      # TODO: Extract?
       otherSelector             = @$node.data('update')
       other                     = $(otherSelector).pickadate('picker')
       {year, month, date, pick} = @get 'select'
@@ -42,6 +43,8 @@ ready = ->
       else
         other.set 'max', [year, month, date]
         other.set 'select', [year, month, date] if otherPick > pick
+
+      if onSameDay() then setTimePickerLimits() else removeTimePickerLimits()
 
   $('.time-capture').pickatime
     format: 'HH:i'
@@ -56,14 +59,33 @@ ready = ->
         $("#activity_#{target}_5i").val(if minutes < 10 then "0#{minutes}" else minutes)
         $('#activity_anytime').attr('checked', false)
     onClose: ->
-      otherSelector      = @$node.data('update')
-      other              = $(otherSelector).pickatime('picker')
-      {hour, mins, pick} = @get 'select'
+      if onSameDay() then setTimePickerLimits() else removeTimePickerLimits()
+
+  # run through time pickers and
+  # adjust the corresponding picker's limits
+  setTimePickerLimits = ->
+    $('.time-capture').each ->
+      picker        = $(@).pickatime('picker')
+      otherSelector = picker.$node.data('update')
+      other         = $(otherSelector).pickatime('picker')
+      {hour, mins}  = picker.get 'select'
 
       if otherSelector.match /end-time/
         other.set 'min', [hour, mins]
       else
         other.set 'max', [hour, mins]
+
+  # remove min and max values from time pickers
+  removeTimePickerLimits = (picker)->
+    $('.time-capture').each ->
+      $(@).pickatime('picker').set 'min': null, 'max': null
+
+  onSameDay = ->
+    $.unique(
+      $.map($('.date-capture'), (el)->
+        $(el).pickadate('picker').get('select').pick
+      )
+    ).length == 1
 
   # filters
   $filters    = $('form.filters label:not(.search)')
