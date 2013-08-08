@@ -2,6 +2,9 @@ ready = ->
   $(document).ajaxError (e, xhr) ->
     window.location.replace(App.paths.login) if xhr.status == 401
 
+  $('#activities .labels h4').dotdotdot
+    height: 50
+
   # hide validation errors on focus
   $('input.validation-error').on 'focus', ->
     $(@).next('span.validation-error-message').fadeOut()
