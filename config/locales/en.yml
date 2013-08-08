@@ -93,6 +93,9 @@ en:
       end_time:
         before_start: "can't be before start time"
         too_late: "outside range, too late"
+      image_url:
+        invalid: "not valid URL"
+        not_supported_protocol: "protocol not supported ;)"
 
   new_activity:
     title: Organize an activity
