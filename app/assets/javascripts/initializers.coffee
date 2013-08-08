@@ -3,7 +3,7 @@ ready = ->
     window.location.replace(App.paths.login) if xhr.status == 401
 
   $('#activities .labels h4').dotdotdot
-    height: 50
+    height: 55
 
   # hide validation errors on focus
   $('input.validation-error').on 'focus', ->
