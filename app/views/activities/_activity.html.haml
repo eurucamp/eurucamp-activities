@@ -15,7 +15,7 @@
 
     = render "activities/action", activity: activity, type: type, remote: true
 
-    %a.details(href="#{activity_path(activity)}" title="#{ t("activities.more_info.title") }")
+    %a.details(href="#{activity_path(activity)}" title="#{activity.name}")
       %span
         = t("activities.more_info.label")
     - unless type == 'default'
