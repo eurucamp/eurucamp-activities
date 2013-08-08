@@ -21,8 +21,6 @@
       = @counters[:owner]
   %label.search
     %input(type="text" name="search" placeholder="#{ t("activities.search.placeholder") }" value="#{ params[:search] }")
-    %a.clear(href="#" title="Reset")
-      = t("activities.search.clear")
   %button(type="submit")
     = t("activities.filters.submit")
 

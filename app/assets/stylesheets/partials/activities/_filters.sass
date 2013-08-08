@@ -6,7 +6,7 @@ form.filters
   padding: 0 0 4.5em 0
 
   label
-    background: $extra-light-gray
+    background: lighten($extra-light-gray, 5)
     @extend %smaller-text
     color: $gray
     text-transform: uppercase
@@ -44,6 +44,15 @@ form.filters
 
       &:hover
         background: none
+
+      input
+        background: $white image-url('shared/search.png') no-repeat right center
+        border: 1px solid $light-gray
+        border-radius: 3px
+
+        &:focus
+          border-color: $blue
+          background: none
 
       a
         position: absolute
@@ -100,7 +109,7 @@ form.filters
       strong
         float: none
 
-      &:last-of-type
+      &.owner
         border-radius: 0 3px 3px 0
         margin: 0
 
