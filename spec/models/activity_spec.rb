@@ -185,6 +185,9 @@ describe Activity do
     it { should     accept_values_for(:limit_of_participants, nil, 12, 100) }
     it { should_not accept_values_for(:limit_of_participants, -1, 0) }
 
+    it { should     accept_values_for(:image_url, nil, "http://com.com/image.gif", "https://com.com/image.gif")  }
+    it { should_not accept_values_for(:image_url, "http://com.co ge.gif", "ssh://com.com/image.gif", "blah")}
+
     context "invalid time frame (wrong order)" do
       subject { FactoryGirl.build(:activity, start_time: 10.days.ago.to_time, anytime: false) }
 

@@ -17,6 +17,7 @@ class Activity < ActiveRecord::Base
   validate  :time_frame_order, if: ->{ !anytime && event && start_time.present? && end_time.present? }
   validate  :during_the_event, if: ->{ !anytime && event && start_time.present? && end_time.present? }
   validates :event, presence: true
+  validate  :image_url_valid, if: ->{ image_url.present? }
   
   before_validation :clear_time_frame, if: ->{ anytime }
 
@@ -125,6 +126,12 @@ class Activity < ActiveRecord::Base
     def during_the_event
       errors.add(:start_time, I18n.t("activities.errors.end_time.too_early")) if start_time < event.start_time
       errors.add(:end_time, I18n.t("activities.errors.end_time.too_late")) if end_time > event.end_time
+    end
+
+    def image_url_valid
+      errors.add(:image_url, I18n.t("activities.errors.image_url.protocol_not_supported")) unless URI.parse(image_url).kind_of?(URI::HTTP)
+    rescue URI::InvalidURIError
+      errors.add(:image_url, I18n.t("activities.errors.image_url.invalid"))
     end
 
 end
