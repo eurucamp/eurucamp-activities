@@ -12,8 +12,12 @@ a#new-activity
 
   iframe
     margin: 2em 0 0
-    height: 600px
+    height: 400px
     border: none
+
+  +media($tablet-lite)
+    iframe
+      height: 600px
 
 #activities
   clear: both
@@ -26,7 +30,6 @@ a#new-activity
 
   li
     display: block
-    +span-columns(2)
     margin: 0 0 2px 0
     text-align: center
 
@@ -199,3 +202,18 @@ a#new-activity
         opacity: 1
         +transform(scale(1))
         +transition(all 0.15s ease-out 0.15s)
+
+
+  +media($smartphone-portrait)
+    li
+      +span-columns(2)
+
+
+  +media($tablet-lite)
+    li
+      +span-columns(2)
+
+  +media($tablet-portrait-plus)
+    li
+      +span-columns(2)
+

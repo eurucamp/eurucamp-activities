@@ -2,8 +2,7 @@ form.filters
   @extend %clearfix
   border-radius: 3px
   overflow: hidden
-  float: left
-  padding: 0 0 4.5em 0
+  padding: 0 0 2.5em 0
 
   label
     background: lighten($extra-light-gray, 5)
@@ -14,6 +13,8 @@ form.filters
     border: none
     display: block
     padding: 0.75em 1em
+    margin: 0 0 1px 0
+    text-align: left
     +transition(all 0.5s)
 
     &.participant,
@@ -31,15 +32,16 @@ form.filters
     &.participant:before
       color: $green
 
-    &.owner:before
-      color: $yellow
+    &.owner
+      border-radius: 0 0 3px 3px
+
+      &:before
+        color: $yellow
 
     &.search
       background: none
-      position: absolute
-      top: 4em
-      left: 0
       padding: 0
+      margin-top: 1em
       width: 100%
 
       &:hover
@@ -97,23 +99,31 @@ form.filters
       display: none
 
 
-  +media($tablet-lite)
+  +media($tablet-lite-plus)
     border-radius: none
     overflow: visible
+    float: left
+    padding: 0 0 4.5em 0
 
     label
       display: inline-block
-      margin-right: 1px
+      margin: 0 1px 0 0
 
       strong
         float: none
+
+      &:first-child
+        border-radius: 3px 0 0 3px
 
       &.owner
         border-radius: 0 3px 3px 0
         margin: 0
 
-      &:first-child
-        border-radius: 3px 0 0 3px
+      &.search
+        position: absolute
+        top: 4em
+        margin-top: 0
+        left: 0
 
     button
       margin: 0 0 0 0.5em
