@@ -111,7 +111,7 @@ ready = ->
     if query = $search.val()
       $activities
         .filter(':visible')
-        .filter(-> !(new RegExp(query, 'i')).test $(@).find('h4').text())
+        .filter(-> !(new RegExp(query, 'i')).test $(@).find('a.details').attr('title'))
         .hide()
 
   $filters.on 'click', (e)->
