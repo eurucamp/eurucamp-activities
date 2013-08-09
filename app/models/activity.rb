@@ -47,7 +47,7 @@ class Activity < ActiveRecord::Base
     end
 
     def order_by_start_time
-      order("anytime DESC, start_time ASC")
+      order("start_time ASC, name ASC")
     end
 
     private
