@@ -97,6 +97,10 @@ class Activity < ActiveRecord::Base
   def upcoming?
     start_time > Time.now.end_of_day
   end
+  
+  def full?
+    participations_count >= limit_of_participants
+  end
 
   def new_participation(user)
     participation_source.call.tap do |participation|
