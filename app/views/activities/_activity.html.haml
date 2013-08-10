@@ -1,6 +1,6 @@
 - type = activity.relation_ship_with(current_user)
 
-%li(id="activity-#{activity.id}" class="#{type} #{activity.status}")
+%li(id="activity-#{activity.id}" class="#{type} #{activity.status} #{"full" if activity.full?}")
   .container
 
     = render "activities/progress", activity: activity

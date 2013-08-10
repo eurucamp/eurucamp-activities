@@ -128,6 +128,38 @@ describe Activity do
     end
 
   end
+  
+  describe "#full?" do
+    subject { activity.full? }
+
+    context "full" do
+      before do
+        activity.stub!(:limit_of_participants).and_return(10)
+        activity.stub!(:participations_count).and_return(10)
+      end
+
+      it { should == true }
+    end
+    
+    context "too full" do
+      before do
+        activity.stub!(:limit_of_participants).and_return(10)
+        activity.stub!(:participations_count).and_return(11)
+      end
+
+      it { should == true }
+    end
+
+    context "not full" do
+      before do
+        activity.stub!(:limit_of_participants).and_return(10)
+        activity.stub!(:participations_count).and_return(8)
+      end
+
+      it { should == false }
+    end
+
+  end
 
   describe "#upcoming?" do
     subject { activity.upcoming? }
