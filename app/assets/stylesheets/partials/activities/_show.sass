@@ -60,7 +60,28 @@ $types: participant ok remove, owner edit edit
       a
         @extend %secondary-button
         margin: 1em 0
+        
+      .participants
+        width: 100%
+        padding: 2em 0
+        clear: both
 
+        h3
+          +custom-sans(light)
+          text-align: center
+          @extend %ornamental-divider-after
+
+        ul
+          @extend %unlisted
+          text-align: center
+
+        li
+          padding: 0 5px
+          +inline-block
+
+        img
+          border-radius: 24px
+          width: 48px
     &.details
       dl.wrapper
         margin-left: 50px
@@ -83,25 +104,4 @@ $types: participant ok remove, owner edit edit
         +custom-serif
         margin: 0
 
-    &.participants
-      width: 100%
-      padding: 2em 0
-      clear: both
-      display: none
 
-      h3
-        +custom-sans(light)
-        text-align: center
-        @extend %ornamental-divider-after
-
-      ul
-        @extend %unlisted
-        text-align: center
-
-      li
-        padding: 0 5px
-        +inline-block
-
-      img
-        border-radius: 24px
-        width: 48px

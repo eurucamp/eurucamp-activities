@@ -13,12 +13,6 @@ ready = ->
   $('#activities .progress').progress()
   $('#activity .progress').progress(strokeWidth: 12)
 
-  # show participants list
-  $('a.participants').on 'click', (e)->
-    e.preventDefault()
-    $(@).hide()
-    $('section.participants').show()
-
   $('.date-capture').pickadate
     min: new Date(App.event.startTime)
     max: new Date(App.event.endTime)
