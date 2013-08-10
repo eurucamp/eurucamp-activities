@@ -24,7 +24,7 @@ class ActivityDecorator < Draper::Decorator
   end
 
   def description_markdown
-    object.description ? markdown(object.description) : ''
+    object.description ? markdown(object.description) : '<em>No description added.</em>'.html_safe
   end
 
   def requirements_markdown

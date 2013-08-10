@@ -21,7 +21,7 @@
     .wrapper
       = @activity.description_markdown
 
-      - unless @activity.requirements.empty?
+      - unless @activity.requirements_markdown.empty?
         %h4
           = t("activities.required")
         = @activity.requirements_markdown
