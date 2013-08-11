@@ -55,13 +55,13 @@ $.fn.extend
         duration  : settings.duration
         queue     : false
         easing    : settings.easing
-        step      : (percentage) -> render(percentage, context)
+        step      : (percentage) -> render(percentage, context, color)
       })
 
     percentageToRadians = (percentage) ->
       (1.5 - (percentage * 2 / 100)) * Math.PI
 
-    render = (percentage, context) ->
+    render = (percentage, context, color) ->
       canvasSize = context.canvas.width
       context.clearRect(0, 0, canvasSize, canvasSize)
       context.beginPath()
