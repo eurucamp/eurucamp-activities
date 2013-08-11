@@ -19,8 +19,6 @@ $.fn.extend
       easing         : 'easeOutBounce'
 
     settings   = $.extend settings, options
-    # we don't want to pass these around with every call to .render
-    color      = settings.strokeColor
 
     init = ->
       $el        = $(@)
@@ -31,7 +29,7 @@ $.fn.extend
       progress   = settings.progress || parseInt($el.data('progress'))
 
       # when the value > 100 use different color
-      color      = settings.strokeColorFull if progress >= 100
+      color      = if progress >= 100 then settings.strokeColorFull else settings.strokeColor
 
       # wrap image
       $wrapper   = $('<div/>', class: 'progress-wrapper').css
