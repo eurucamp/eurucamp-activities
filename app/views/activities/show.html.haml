@@ -17,15 +17,6 @@
         = succeed "!" do
           %a(href="https://gist.github.com/polarblau/6172669" title="Get the bar") eurucamp week browser bar
 
-  %section.description
-    .wrapper
-      = @activity.description_markdown
-
-      - unless @activity.requirements_markdown.empty?
-        %h4
-          = t("activities.required")
-        = @activity.requirements_markdown
-
   %section.overview
     = render "activities/progress", activity: @activity
     %p
@@ -38,6 +29,15 @@
           - @activity.participants.each do |participant|
             %li(title="#{ participant.name }")>
               = image_tag(avatar_url(participant, 48))
+
+  %section.description
+    .wrapper
+      = @activity.description_markdown
+
+      - unless @activity.requirements_markdown.empty?
+        %h4
+          = t("activities.required")
+        = @activity.requirements_markdown
 
   %section.details
     %dl.wrapper
