@@ -1,6 +1,13 @@
 class ActivityDecorator < Draper::Decorator
   delegate_all
 
+  def css_classes
+    classes =  [relation_ship_with(h.current_user)]
+    classes << "today" if object.today?
+    classes << "full" if object.full?
+    classes.join(" ")
+  end
+
   def creator_name
     if creator
       creator.name.blank? ? creator.email : creator.name
