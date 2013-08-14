@@ -26,8 +26,8 @@ class Event
     {
       today: Activity.today.count,
       all: Activity.count,
-      participant: Activity.participated_by(user).count,
-      owner: Activity.created_by(user).count
+      participant: user.nil? ? 0 : Activity.participated_by(user).count,
+      owner: user.nil? ? 0 : Activity.created_by(user).count
     }
   end
 
