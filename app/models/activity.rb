@@ -86,7 +86,7 @@ eos
       end
 
       def find_participated_by(user)
-        includes(:participations).where(participations: { user_id: user }).order_by_start_time
+        joins(:participations).where(participations: { user_id: user }).order_by_start_time
       end
 
   end
