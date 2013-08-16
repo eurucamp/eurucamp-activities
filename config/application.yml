@@ -9,7 +9,7 @@ defaults: &defaults
   errors:
     from: "exception@eurucamp.org"
     to:
-      - "piotr@gega.io"
+      - "pietia@appgrinder.pl"
       - "florian@polarblau.com"
   seo:
     title: "Eurucamp Activities"
