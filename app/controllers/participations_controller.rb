@@ -4,7 +4,9 @@ class ParticipationsController < ApiController
   def create
     @participation = current_activity.new_participation(current_user)
     @participation.save
-    respond_with(current_activity.reload, @participation, location: request.referer)
+    respond_with(current_activity.reload, @participation) do |format|
+      format.html { redirect_to :back }
+    end
   end
 
   def destroy
