@@ -108,6 +108,11 @@ eos
     start_time > Time.now.end_of_day
   end
 
+  def in_past?
+    return false if anytime?
+    end_time < Date.current.beginning_of_day
+  end
+
   def full?
     participations_count >= limit_of_participants
   end

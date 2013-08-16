@@ -4,7 +4,9 @@ class ActivityDecorator < Draper::Decorator
   def css_classes
     classes =  [relation_ship_with(h.current_user)]
     classes << "today" if object.today?
+    classes << "past" if object.in_past?
     classes << "full" if object.full?
+    classes << "anytime" if object.anytime?
     classes.join(" ")
   end
 
@@ -25,6 +27,7 @@ class ActivityDecorator < Draper::Decorator
   def status
     if object.anytime?      then ""
     elsif object.today?     then "today"
+    elsif object.in_past?   then "past"
     elsif object.upcoming?  then "upcoming"
     else                         "archive"
     end
