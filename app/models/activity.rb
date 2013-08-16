@@ -47,7 +47,18 @@ class Activity < ActiveRecord::Base
     end
 
     def order_by_start_time
-      order("start_time ASC, name ASC")
+      t = Date.current.beginning_of_day
+      custom_order=<<eos
+*,
+(
+  CASE
+    WHEN end_time <= '#{t}' THEN 10
+    WHEN anytime=true       THEN 2
+    ELSE 1
+  END
+) as CUSTOM_ORDER
+eos
+      select(custom_order).order("CUSTOM_ORDER ASC, start_time ASC, name ASC")
     end
 
     private
