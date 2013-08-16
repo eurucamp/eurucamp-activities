@@ -101,10 +101,11 @@ eos
 
   def today?
     return true if anytime?
-    if start_time < Date.current.beginning_of_day && end_time == Date.current.beginning_of_day
+    t1, t2 = Date.current.beginning_of_day, Date.current.end_of_day
+    if start_time <= t1 && end_time == t1
       false
     else
-      start_time <= Date.current.end_of_day && end_time >= Date.current.beginning_of_day
+      start_time <= t2 && end_time >= t1
     end
   end
 
