@@ -17,4 +17,6 @@ pickle-email-*.html
 
 config/database.yml
 .env
+latest.dump
+download_db.sh
 
