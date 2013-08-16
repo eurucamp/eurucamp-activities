@@ -52,7 +52,7 @@ class Activity < ActiveRecord::Base
 *,
 (
   CASE
-    WHEN end_time < '#{t}' THEN 10
+    WHEN end_time <= '#{t}' THEN 10
     WHEN anytime=true THEN 2
     ELSE 1
   END
@@ -74,7 +74,7 @@ eos
       end
 
       def find_today
-        where("start_time <= :t2 AND end_time >= :t1 OR anytime=true", t1: Date.current.beginning_of_day, t2: Date.current.end_of_day).order_by_start_time
+        where("(NOT(start_time <= :t1 AND end_time = :t1 ) AND (start_time <= :t2 AND end_time >= :t1)) OR anytime=true", t1: Date.current.beginning_of_day, t2: Date.current.end_of_day).order_by_start_time
       end
 
       def find_with_name_like(name)
@@ -101,7 +101,11 @@ eos
 
   def today?
     return true if anytime?
-    start_time <= Date.current.end_of_day && end_time >= Date.current.beginning_of_day
+    if start_time < Date.current.beginning_of_day && end_time == Date.current.beginning_of_day
+      false
+    else
+      start_time <= Date.current.end_of_day && end_time >= Date.current.beginning_of_day
+    end
   end
 
   def upcoming?
