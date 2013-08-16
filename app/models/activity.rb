@@ -63,7 +63,7 @@ class Activity < ActiveRecord::Base
       end
 
       def find_today
-        where(":t between start_time and end_time", t: Date.current).order_by_start_time
+        where("start_time <= :t2 AND end_time >= :t1", t1: Date.current.beginning_of_day, t2: Date.current.end_of_day).order_by_start_time
       end
 
       def find_with_name_like(name)
