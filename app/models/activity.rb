@@ -119,7 +119,7 @@ eos
   end
 
   def full?
-    participations_count >= limit_of_participants
+    participations_count >= limit_of_participants rescue false
   end
 
   def new_participation(user)
