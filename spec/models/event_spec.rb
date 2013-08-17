@@ -2,14 +2,16 @@ require 'spec_helper'
 
 describe Event do
 
-  subject(:event) { Event.new("Eurucamp", Date.parse("2012-10-10"), Date.parse("2012-12-14")) }
+  let(:start_time) { Date.parse("2012-10-10") }
+  let(:end_time) { Date.parse("2012-12-14") }
+  subject(:event) { Event.new("Eurucamp", start_time, end_time) }
 
   let(:proxy) { mock(:proxy) }
 
   describe "#new" do
     its(:name) { should == "Eurucamp" }
-    its(:start_time) { should == Date.parse("2012-10-10") }
-    its(:end_time) { should == Date.parse("2012-12-14") }
+    its(:start_time) { should == start_time }
+    its(:end_time) { should == end_time }
   end
 
   describe "#new_activity" do
@@ -24,7 +26,8 @@ describe Event do
 
     its(:event) { should == event }
     it { should == new_activity }
-    its(:start_time) { should ==  }
+    its(:start_time) { should == start_time }
+    its(:end_time) { should == end_time }
   end
 
   describe "#activity" do
