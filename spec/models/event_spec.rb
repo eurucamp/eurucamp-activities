@@ -24,6 +24,7 @@ describe Event do
 
     its(:event) { should == event }
     it { should == new_activity }
+    its(:start_time) { should ==  }
   end
 
   describe "#activity" do
