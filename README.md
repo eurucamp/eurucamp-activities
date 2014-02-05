@@ -1,4 +1,4 @@
-# Eurucamp-activities-2013
+# eurucamp Activities [2013+]
 
 ## Development
 
@@ -34,6 +34,3 @@
 * `GITHUB_SECRET`
 * `TWITTER_KEY`
 * `TWITTER_SECRET`
-
-
-
