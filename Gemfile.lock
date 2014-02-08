@@ -19,14 +19,6 @@ GIT
       activesupport (>= 3.0)
       sprockets (~> 2.8)
 
-GIT
-  remote: git://github.com/smartinez87/exception_notification.git
-  revision: 8a8c6a4c1f48fa49aa98328b3379f5a4a5596b32
-  specs:
-    exception_notification (4.0.1)
-      actionmailer (>= 3.0.4)
-      activesupport (>= 3.0.4)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -110,6 +102,9 @@ GEM
       activesupport (>= 3.0)
       request_store (~> 1.0.3)
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     excon (0.31.0)
     execjs (2.0.2)
     factory_girl (4.3.0)
@@ -301,7 +296,7 @@ DEPENDENCIES
   debugger (~> 1.6)
   devise (~> 3.0.0.rc)
   draper
-  exception_notification!
+  exception_notification (~> 4.0.1)
   factory_girl_rails (~> 4.2)
   foreman
   haml-rails
