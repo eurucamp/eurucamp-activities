@@ -51,7 +51,7 @@ group :test do
 end
 
 group :production, :staging do
-  gem 'exception_notification', require: 'exception_notifier', git: 'git://github.com/smartinez87/exception_notification.git'
+  gem 'exception_notification', '~> 4.0.1'
   gem 'rack-robotz',            '~> 0.0.3'
   gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
