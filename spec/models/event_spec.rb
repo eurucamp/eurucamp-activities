@@ -6,7 +6,7 @@ describe Event do
   let(:end_time) { Date.parse("2012-12-14") }
   subject(:event) { Event.new("Eurucamp", start_time, end_time) }
 
-  let(:proxy) { mock(:proxy) }
+  let(:proxy) { double(:proxy) }
 
   describe "#new" do
     its(:name) { should == "Eurucamp" }
@@ -55,7 +55,7 @@ describe Event do
   end
 
   describe "#all_activities" do
-    let(:activities) { [mock(:activity1), mock(:activity2)] }
+    let(:activities) { [double(:activity1), double(:activity2)] }
     let(:event) { Event.new }
     subject { event.activities }
 
@@ -67,7 +67,7 @@ describe Event do
   end
 
   describe "#search_activities" do
-    let(:activities) { [mock(:activity1), mock(:activity2)] }
+    let(:activities) { [double(:activity1), double(:activity2)] }
 
     context "default args" do
       subject { event.search_activities }

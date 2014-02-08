@@ -3,14 +3,14 @@ require 'spec_helper'
 describe ParticipationsController do
   let(:current_user) { mock_model(User) }
   let(:activity_id) { "1" }
-  let(:activity) { mock(:activity) }
-  let(:participation) { mock(:participation) }
-  let(:invalid_participation) { mock(:participation, errors: {activity_id: "nahhhhh"}) }
-  let(:current_event) { mock(:current_event) }
+  let(:activity) { double(:activity) }
+  let(:participation) { double(:participation) }
+  let(:invalid_participation) { double(:participation, errors: {activity_id: "nahhhhh"}) }
+  let(:current_event) { double(:current_event) }
 
   before do
-    activity.stub!(:reload).and_return(activity)
-    controller.stub!(:current_event).and_return(current_event)
+    activity.stub(:reload).and_return(activity)
+    controller.stub(:current_event).and_return(current_event)
   end
 
   describe "#create" do

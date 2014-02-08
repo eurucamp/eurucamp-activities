@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Activity do
 
-  let(:event) { mock(:event) }
+  let(:event) { double(:event) }
   let(:creator) { mock_model(User) }
 
   subject(:activity) { Activity.new }
@@ -28,7 +28,7 @@ describe Activity do
   end
 
   describe ".recent" do
-    let(:recent_activities) { [mock(:activity1), mock(:activity2)] }
+    let(:recent_activities) { [double(:activity1), double(:activity2)] }
     subject { Activity.recent }
 
     before do
@@ -52,7 +52,7 @@ describe Activity do
 
     context "limit of participants is not set" do
       before do
-        activity.stub!(:limit_of_participants).and_return(nil)
+        activity.stub(:limit_of_participants).and_return(nil)
       end
 
       it { should == 0 }
@@ -60,8 +60,8 @@ describe Activity do
 
     context "limit of participants is set" do
       before do
-        activity.stub!(:limit_of_participants).and_return(10)
-        activity.stub!(:participations_count).and_return(8)
+        activity.stub(:limit_of_participants).and_return(10)
+        activity.stub(:participations_count).and_return(8)
       end
 
       it { should == 80 }
@@ -69,8 +69,8 @@ describe Activity do
 
     context "no participants" do
       before do
-        activity.stub!(:limit_of_participants).and_return(10)
-        activity.stub!(:participations_count).and_return(0)
+        activity.stub(:limit_of_participants).and_return(10)
+        activity.stub(:participations_count).and_return(0)
       end
 
       it { should == 0 }
@@ -82,7 +82,7 @@ describe Activity do
 
     context "no limit set" do
       before do
-        activity.stub!(:limit_of_participants).and_return(nil)
+        activity.stub(:limit_of_participants).and_return(nil)
       end
 
       it { should == true }
@@ -90,7 +90,7 @@ describe Activity do
 
     context "limit set" do
       before do
-        activity.stub!(:limit_of_participants).and_return(10)
+        activity.stub(:limit_of_participants).and_return(10)
       end
 
       it { should == false }
@@ -102,7 +102,7 @@ describe Activity do
 
     context "anytime set" do
       before do
-        activity.stub!(:anytime?).and_return(true)
+        activity.stub(:anytime?).and_return(true)
       end
 
       it { should == true }
@@ -110,8 +110,8 @@ describe Activity do
 
     context "today" do
       before do
-        activity.stub!(:start_time).and_return(2.days.ago.to_time)
-        activity.stub!(:end_time).and_return(2.days.from_now.to_time)
+        activity.stub(:start_time).and_return(2.days.ago.to_time)
+        activity.stub(:end_time).and_return(2.days.from_now.to_time)
       end
 
       it { should == true }
@@ -119,9 +119,9 @@ describe Activity do
 
     context "not today" do
       before do
-        activity.stub!(:anytime?).and_return(false)
-        activity.stub!(:start_time).and_return(2.days.from_now.to_time)
-        activity.stub!(:end_time).and_return(10.days.from_now.to_time)
+        activity.stub(:anytime?).and_return(false)
+        activity.stub(:start_time).and_return(2.days.from_now.to_time)
+        activity.stub(:end_time).and_return(10.days.from_now.to_time)
       end
 
       it { should == false }
@@ -134,8 +134,8 @@ describe Activity do
 
     context "full" do
       before do
-        activity.stub!(:limit_of_participants).and_return(10)
-        activity.stub!(:participations_count).and_return(10)
+        activity.stub(:limit_of_participants).and_return(10)
+        activity.stub(:participations_count).and_return(10)
       end
 
       it { should == true }
@@ -143,8 +143,8 @@ describe Activity do
     
     context "too full" do
       before do
-        activity.stub!(:limit_of_participants).and_return(10)
-        activity.stub!(:participations_count).and_return(11)
+        activity.stub(:limit_of_participants).and_return(10)
+        activity.stub(:participations_count).and_return(11)
       end
 
       it { should == true }
@@ -152,8 +152,8 @@ describe Activity do
 
     context "not full" do
       before do
-        activity.stub!(:limit_of_participants).and_return(10)
-        activity.stub!(:participations_count).and_return(8)
+        activity.stub(:limit_of_participants).and_return(10)
+        activity.stub(:participations_count).and_return(8)
       end
 
       it { should == false }
@@ -166,7 +166,7 @@ describe Activity do
 
     context "in the future" do
       before do
-        activity.stub!(:start_time).and_return(1.days.from_now.to_time)
+        activity.stub(:start_time).and_return(1.days.from_now.to_time)
       end
 
       it { should == true }
@@ -174,7 +174,7 @@ describe Activity do
 
     context "not in the future" do
       before do
-        activity.stub!(:start_time).and_return(Time.now)
+        activity.stub(:start_time).and_return(Time.now)
       end
 
       it { should == false }

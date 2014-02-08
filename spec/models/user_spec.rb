@@ -96,7 +96,7 @@ describe User do
     end
 
     context "account connected" do
-      let(:authentications) { [mock(:authentication)] }
+      let(:authentications) { [double(:authentication)] }
 
       before do
         user.should_receive(:authentications).and_return(authentications)

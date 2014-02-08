@@ -3,21 +3,21 @@ require 'spec_helper'
 describe ActivitiesController do
   let(:current_user) { mock_model(User) }
 
-  let(:activity) { mock(:activity) }
+  let(:activity) { double(:activity) }
   let(:activity_id) { "1" }
-  let(:invalid_activity) { mock(:invalid_activity, errors: {name: "no way!"}) }
-  let(:current_event) { mock(:current_event) }
+  let(:invalid_activity) { double(:invalid_activity, errors: {name: "no way!"}) }
+  let(:current_event) { double(:current_event) }
 
   before do
-    controller.stub!(:current_event).and_return(current_event)
+    controller.stub(:current_event).and_return(current_event)
   end
 
   describe "#index" do
     subject { get :index }
 
     let(:current_user)  { nil }
-    let(:activities)    { mock(:activities) }
-    let(:counters)      { mock(:counters) }
+    let(:activities)    { double(:activities) }
+    let(:counters)      { double(:counters) }
 
     before do
       current_event.should_receive(:search_activities).with(current_user, nil, nil).and_return(activities)

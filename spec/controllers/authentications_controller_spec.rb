@@ -3,13 +3,13 @@ require "spec_helper"
 describe AuthenticationsController do
 
   let(:current_user) { mock_model(User) }
-  let(:authentications) { mock(:authentications) }
-  let(:authentication) { mock(:authentication) }
+  let(:authentications) { double(:authentications) }
+  let(:authentication) { double(:authentication) }
   let(:authentication_id) { "1" }
 
   before do
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    current_user.stub!(:authentications).and_return(authentications)
+    current_user.stub(:authentications).and_return(authentications)
   end
 
   describe '#create' do
