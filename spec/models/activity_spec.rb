@@ -37,16 +37,16 @@ describe Activity do
 
     it { should == recent_activities }
   end
-  
+
   describe "#limit_of_participants" do
     subject { activity.limit_of_participants }
-     
+
     context "limit of participants is not set" do
       it { should == 10 }
     end
   end
-  
-  
+
+
   describe "#full_by" do
     subject { activity.full_by }
 
@@ -128,7 +128,7 @@ describe Activity do
     end
 
   end
-  
+
   describe "#full?" do
     subject { activity.full? }
 
@@ -140,7 +140,7 @@ describe Activity do
 
       it { should == true }
     end
-    
+
     context "too full" do
       before do
         activity.stub(:limit_of_participants).and_return(10)

@@ -18,7 +18,7 @@ class Activity < ActiveRecord::Base
   validate  :during_the_event, if: ->{ !anytime && event && start_time.present? && end_time.present? }
   validates :event, presence: true
   validate  :image_url_valid, if: ->{ image_url.present? }
-  
+
   before_validation :clear_time_frame, if: ->{ anytime }
 
   class << self
