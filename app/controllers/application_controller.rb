@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
   before_filter :clean_up_session
   before_filter :authenticate_user!
 
-  rescue_from CanCan::AccessDenied, :with => :rescue_access_denied
-  rescue_from ActiveRecord::RecordNotFound, :with => :rescue_record_not_found
+  rescue_from CanCan::AccessDenied, with: :rescue_access_denied
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_record_not_found
 
   def current_event
     @current_event ||= Event.new
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def not_found
     if request.xhr?
-      render :nothing => true, :status => 404
+      render nothing: true, status: 404
     else
       raise ActionController::RoutingError.new('Not Found')
     end
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     end
 
     def rescue_access_denied
-      render :nothing => true, :status => 401
+      render nothing: true, status: 401
     end
 
     def rescue_record_not_found

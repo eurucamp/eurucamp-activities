@@ -18,7 +18,7 @@ class ApiResponder < ActionController::Responder
       if get?
         resource.nil? ? display(resource, status: :not_found) : display(resource)
       elsif post?
-        display resource, :status => :created, :location => api_location
+        display resource, status: :created, location: api_location
       else
         head :no_content
       end

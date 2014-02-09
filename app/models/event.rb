@@ -77,7 +77,7 @@ class Event
     end
 
     def find_activity(activity_id)
-      all_activities.where(:id => activity_id).first
+      all_activities.where(id: activity_id).first
     end
 
     def activity_source
