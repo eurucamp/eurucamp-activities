@@ -10,7 +10,7 @@
       = button_to activity_participation_path(activity), method: :delete, remote: remote, title: t("activities.leave.title") do
         %span
         = t("activities.leave.label")
-  - else 
+  - else
     - unless activity.full? || activity.in_past?
       = button_to activity_participation_path(activity), method: :post, remote: remote, title: t("activities.join.title") do
         %span
