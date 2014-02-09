@@ -1,6 +1,6 @@
 defaults: &defaults
   event:
-    name: "Eurucamp 2013"
+    name: "eurucamp 2013"
     start_time: 2013-08-10 00:00:00
     end_time: 2013-08-19 00:00:00
   host: "activities.eurucamp.org"
@@ -12,8 +12,8 @@ defaults: &defaults
       - "pietia@appgrinder.pl"
       - "florian@polarblau.com"
   seo:
-    title: "Eurucamp Activities"
-    author: "Eurucamp team"
+    title: "eurucamp Activities"
+    author: "eurucamp team"
     description: "List of companion events."
 
 development:
