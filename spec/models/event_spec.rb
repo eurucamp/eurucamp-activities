@@ -4,12 +4,12 @@ describe Event do
 
   let(:start_time) { Date.parse("2012-10-10") }
   let(:end_time) { Date.parse("2012-12-14") }
-  subject(:event) { Event.new("Eurucamp", start_time, end_time) }
+  subject(:event) { Event.new("eurucamp", start_time, end_time) }
 
   let(:proxy) { double(:proxy) }
 
   describe "#new" do
-    its(:name) { should == "Eurucamp" }
+    its(:name) { should == "eurucamp" }
     its(:start_time) { should == start_time }
     its(:end_time) { should == end_time }
   end

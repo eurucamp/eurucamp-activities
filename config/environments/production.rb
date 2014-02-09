@@ -81,7 +81,7 @@ Activities::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.middleware.use ExceptionNotification::Rack, email: {
-                          :email_prefix => "[Eurucamp-activities::Exception] ",
+                          :email_prefix => "[eurucamp-activities::Exception] ",
                           :sender_address => %{"Exception Notifier" <#{Settings.errors.from}>},
                           :exception_recipients => Settings.errors.to
                         }
