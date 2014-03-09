@@ -1,6 +1,50 @@
-# eurucamp Activities [2013+]
+# eurucamp Activities
+
+The eurucamp activities app is a small application to allow attendees to organize and plan small event in and around a conference. Users create events or sign up to created ones. Signup works through Github or Twitter.
+
+The app is mobile friendly and easy to run on a free Heroku account.
+
+## Donationware
+
+The app was created by members on the Ruby Berlin e.V. on their free time as a community effort for the eurucamp conference. Ruby Berlin is the body behind RailsGirls Berlin and Hamburg, eurucamp and JRubyConf.eu.
+
+If you end up using the app, please get in [contact](mailto:info@eurucamp.org) so that we know. Also, spread the word about our [projects](http://rubyberlin.org). Also, consider [donating](https://www.betterplace.org/en/organisations/ruby-berlin/), especially, if you run a commercial conference. We are a registered non-profit, donations are tax deducible. Betterplace handles all paperwork - if in doubt, send us a mail.
+
+If you cannot or don't want to donate - use it, it's free.
+
+## Logo
+
+Don't use the eurucamp logo for your instance to avoid confusion.
+
+## Examples
+
+An instance of the app can be seen running at the [eurucamp activities page](http://activities.eurucamp.org).
+
+Screenshot: ![The activities app](screenshot.png)
+
+## Running the app on Heroku
+
+Deploying the app is simple:
+
+* Clone this repository: `https://github.com/eurucamp/eurucamp-activities-2013/`
+
+* An account and a created application at Heroku.
+* A registered twitter application. Go [here](https://apps.twitter.com/).
+* A registered github application. Go [here](https://github.com/settings/applications).
+* Add their keys to your Heroku app as described [here](https://devcenter.heroku.com/articles/config-vars).
+
+* Push the repository to Heroku: `git push  git@heroku.com:<name-of-your-app>.git`
+
+### **ENV** variables used:
+
+* `GITHUB_KEY`: Your github application key.
+* `GITHUB_SECRET`: Your github application secret.
+* `TWITTER_KEY`: Your twitter application key.
+* `TWITTER_SECRET`: Your twitter application secret.
 
 ## Development
+
+An install postgresql instance and a compiler is needed.
 
 ### Basic setup
 
@@ -15,22 +59,19 @@
 
 ### Customization
 
-*(work in progress)*
+Customization is currently work in process, so the way to go is to fork the application.
 
 * Fork it
 * edit `config/application.yml`
 * edit `app/assets/stylesheets/_settings.sass`
 
-## Deployment
+## Authors
 
-### How to deploy app?
+This app was created by:
 
-* `bundle exec rake staging deploy`
-* `bundle exec rake production deploy`
+* [Florian Plank](https://twitter.com/polarblau)
+* [Piotr Gęga](https://twitter.com/piotrgega)
 
-### **ENV** variables:
+## License
 
-* `GITHUB_KEY`
-* `GITHUB_SECRET`
-* `TWITTER_KEY`
-* `TWITTER_SECRET`
+GNU-AGPL-3.0, see COPYRIGHT for details.
