@@ -24,15 +24,17 @@ Screenshot: ![The activities app](screenshot.png)
 
 ## Running the app on Heroku
 
-Deploying the app is simple:
+To deploy the app, you need the following:
 
 * Clone this repository: `https://github.com/eurucamp/eurucamp-activities-2013/`
 
 * An account and a created application at Heroku.
 * A registered twitter application. Go [here](https://apps.twitter.com/).
 * A registered github application. Go [here](https://github.com/settings/applications).
-* Add their keys to your Heroku app as described [here](https://devcenter.heroku.com/articles/config-vars).
 
+Deploying is as easy as:
+
+* Add their keys to your Heroku app as described [here](https://devcenter.heroku.com/articles/config-vars) using the env variables described below.
 * Push the repository to Heroku: `git push  git@heroku.com:<name-of-your-app>.git`
 
 ### **ENV** variables used:
@@ -44,7 +46,7 @@ Deploying the app is simple:
 
 ## Development
 
-An install postgresql instance and a compiler is needed.
+An installed postgresql instance and a compiler is needed.
 
 ### Basic setup
 
