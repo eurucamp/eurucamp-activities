@@ -1,4 +1,4 @@
-# eurucamp Activities [![License](http://img.shields.io/:license-AGPL-c83000.svg)](COPYRIGHT)
+# eurucamp Activities [![License](http://img.shields.io/:license-AGPL-0030c8.svg)](COPYRIGHT)
 
 The eurucamp activities app is a small application to allow attendees to organize and plan small event in and around a conference. Users create events or sign up to created ones. Signup works through Github or Twitter.
 
