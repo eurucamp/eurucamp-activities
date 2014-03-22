@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby "2.0.0"
+ruby "2.1.1"
 
 gem 'rails',              '4.0.2'
 gem 'pg'
@@ -30,7 +30,7 @@ gem 'coffee-rails',     '~> 4.0.0'
 gem 'uglifier',         '>= 1.0.3'
 
 group :development do
-  gem 'debugger',         '~> 1.6'
+  gem 'debugger',         '~> 1.6.6'
   gem 'heroku_san',       '~> 3.0.2'
   gem 'foreman'
   gem 'better_errors'
