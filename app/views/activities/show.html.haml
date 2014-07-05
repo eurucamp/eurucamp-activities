@@ -7,16 +7,6 @@
 
     = render "action", activity: @activity, type: @activity.relation_ship_with(current_user), remote: false
 
-    - if @activity.relation_ship_with(current_user) == 'owner'
-      %p.info
-        Please consider adding this activity to our
-        = succeed "." do
-          %a(href="https://mapsengine.google.com/map/edit?mid=zddEY5tddvgw.kv-7qKkgMPrg" title="Edit the map") eurucamp week map
-        %br
-        If you’re running a website related to this activity show some eurucamp pride with the
-        = succeed "!" do
-          %a(href="https://gist.github.com/polarblau/6172669" title="Get the bar") eurucamp week browser bar
-
   %section.overview
     = render "activities/progress", activity: @activity
     %p
