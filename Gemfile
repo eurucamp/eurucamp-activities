@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby "2.1.1"
 
-gem 'rails',              '4.0.2'
+gem 'rails',              '4.0.8'
 gem 'pg'
 gem 'unicorn'
 gem 'settingslogic'
@@ -14,7 +14,7 @@ gem 'omniauth-twitter',   '~> 0.0.16'
 gem 'simple_form',        '~> 3.0.1'
 
 gem 'modernizr-rails'
-gem 'sprockets-rails',     git: 'git://github.com/rails/sprockets-rails.git'
+gem 'sprockets-rails',    '~> 2.1.3'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder',           '~> 1.0.1'
@@ -25,7 +25,7 @@ gem 'rails_html_helpers'
 gem 'draper'
 gem 'cancan'
 gem 'redcarpet'
-gem 'sass-rails',       '~> 4.0.0'
+gem 'sass-rails',       '~> 4.0.3'
 gem 'coffee-rails',     '~> 4.0.0'
 gem 'uglifier',         '>= 1.0.3'
 
