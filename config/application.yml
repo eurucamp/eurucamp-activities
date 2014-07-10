@@ -1,8 +1,8 @@
 defaults: &defaults
   event:
     name: "eurucamp 2014"
-    start_time: 2014-08-01 00:00:00
-    end_time: 2014-08-03 23:59:59
+    start_time: 2014-07-28 00:00:00
+    end_time: 2014-08-05 23:59:59
   host: "activities.eurucamp.org"
   mailers:
     from: "activities@eurucamp.org"
