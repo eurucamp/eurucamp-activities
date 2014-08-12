@@ -16,8 +16,8 @@ class Event
   def new_activity(author, *args)
     activity_source.call(*args).tap do |activity|
       if activity
-        activity.start_time = @start_time
-        activity.end_time = @end_time
+        activity.start_time = @start_time if activity.start_time.blank?
+        activity.end_time = @end_time if activity.end_time.blank?
         activity.event = self
         activity.creator = author
       end
@@ -80,6 +80,7 @@ class Event
       all_activities.where(id: activity_id).first
     end
 
+    # Allow to replace db engine for tests
     def activity_source
       @activity_source ||= Activity.public_method(:new)
     end
