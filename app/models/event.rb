@@ -16,8 +16,8 @@ class Event
   def new_activity(author, *args)
     activity_source.call(*args).tap do |activity|
       if activity
-        activity.start_time = @start_time
-        activity.end_time = @end_time
+        activity.start_time = @start_time if activity.start_time.blank?
+        activity.end_time = @end_time if activity.end_time.blank?
         activity.event = self
         activity.creator = author
       end

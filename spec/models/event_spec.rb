@@ -16,18 +16,26 @@ describe Event do
 
   describe "#new_activity" do
     let(:user) { mock_model(User) }
-    let(:new_activity) { OpenStruct.new }
     let(:args) { {} }
     subject { event.new_activity(user, args) }
 
     before do
-      event.activity_source = ->(x){ new_activity }
+      event.activity_source = ->(x){ OpenStruct.new(x) }
     end
 
-    its(:event) { should == event }
-    it { should == new_activity }
-    its(:start_time) { should == start_time }
-    its(:end_time) { should == end_time }
+    context 'with activity defaults' do
+      its(:event) { should == event }
+      it { expect(subject).to be_a_kind_of OpenStruct }
+      its(:start_time) { should == start_time }
+      its(:end_time) { should == end_time }
+    end
+
+    context 'with activity params' do
+      let(:args) { {name: 'An activity', start_time: 5.hours.from_now, end_time: 12.hours.from_now} }
+      its(:name) { should == args[:name] }
+      its(:start_time) { should == args[:start_time] }
+      its(:end_time) { should == args[:end_time] }
+    end
   end
 
   describe "#activity" do
