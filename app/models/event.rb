@@ -80,6 +80,7 @@ class Event
       all_activities.where(id: activity_id).first
     end
 
+    # Allow to replace db engine for tests
     def activity_source
       @activity_source ||= Activity.public_method(:new)
     end
