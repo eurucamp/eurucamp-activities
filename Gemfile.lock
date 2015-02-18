@@ -59,8 +59,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    capybara-webkit (0.14.2)
-      capybara (~> 2.0, >= 2.0.2)
+    capybara-webkit (1.4.1)
+      capybara (>= 2.3.0, < 2.5.0)
       json
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -278,7 +278,7 @@ DEPENDENCIES
   bourbon
   cancan
   capybara (~> 2.1)
-  capybara-webkit (~> 0.14)
+  capybara-webkit (~> 1.4)
   coffee-rails (~> 4.0.0)
   devise (~> 3.0.0.rc)
   draper
