@@ -4,7 +4,7 @@ ruby "2.1.5"
 
 gem 'rails',              '4.0.8'
 gem 'pg'
-gem 'unicorn'
+gem 'thin'
 gem 'settingslogic'
 gem 'newrelic_rpm'
 gem 'devise',             '~> 3.0.0.rc'
@@ -30,7 +30,6 @@ gem 'coffee-rails',     '~> 4.0.0'
 gem 'uglifier',         '>= 1.0.3'
 
 group :development do
-  gem 'heroku_san',       '~> 3.0.2'
   gem 'foreman'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -52,6 +51,5 @@ end
 group :production, :staging do
   gem 'exception_notification', '~> 4.0.1'
   gem 'rack-robotz',            '~> 0.0.3'
-  gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
-  gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+  gem 'shelly-dependencies'
 end
