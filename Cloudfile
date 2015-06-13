@@ -3,6 +3,7 @@ eurucamp-activities-staging:
   environment: production # RAILS_ENV
   domains:
     - eurucamp-activities-staging.shellyapp.com
+    - rubyweek-staging.eurucamp.org
   servers:
     app1:
       size: small
@@ -14,6 +15,7 @@ eurucamp-activities-production:
   environment: production # RAILS_ENV
   domains:
     - eurucamp-activities-production.shellyapp.com
+    - rubyweek.eurucamp.org
   servers:
     app1:
       size: small
