@@ -1,6 +1,6 @@
-# eurucamp Activities [![License](http://img.shields.io/:license-AGPL-0030c8.svg)](COPYRIGHT) [![Build Status](https://travis-ci.org/eurucamp/eurucamp-activities-2013.png?branch=master)](https://travis-ci.org/eurucamp/eurucamp-activities-2013)
+# rubyweek [![License](http://img.shields.io/:license-AGPL-0030c8.svg)](COPYRIGHT) [![Build Status](https://travis-ci.org/eurucamp/eurucamp-activities-2013.png?branch=master)](https://travis-ci.org/eurucamp/eurucamp-activities-2013)
 
-The eurucamp activities app is a small application to allow attendees to organize and plan small event in and around a conference. Users create events or sign up to created ones. Signup works through Github or Twitter.
+The rubyweek app is a small application to allow attendees to organize and plan small event in and around a conference. Users create events or sign up to created ones. Signup works through Github or Twitter.
 
 The app is mobile friendly and easy to run on a free Heroku account.
 
@@ -18,7 +18,7 @@ Don't use the eurucamp logo for your instance to avoid confusion.
 
 ## Examples
 
-An instance of the app can be seen running at the [eurucamp activities page](http://activities.eurucamp.org).
+An instance of the app can be seen running at the [rubyweek page](http://rubyweek.eurucamp.org).
 
 Screenshot: ![The activities app](screenshot.png)
 
