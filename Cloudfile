@@ -16,6 +16,7 @@ eurucamp-activities-production:
   domains:
     - eurucamp-activities-production.shellyapp.com
     - rubyweek.eurucamp.org
+    - activities.eurucamp.org
   servers:
     app1:
       size: small
