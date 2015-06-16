@@ -15,7 +15,7 @@ en:
 
   user_nav:
     back_home:
-      label: Back to eurucamp activities
+      label: Back to rubyweek activities
       title: Go back to front page
     account:
       label: My Account
@@ -136,5 +136,8 @@ en:
       label: Policy
       title: Policy and Code of Conduct
     eurucamp:
-      label: euru.camp
-      title: Head over to the main site
+      label: eurucamp
+      title: Head over to the eurucamp site
+    jrubyconf:
+      label: JRubyConf
+      title: Head over to the JRubyConf site
