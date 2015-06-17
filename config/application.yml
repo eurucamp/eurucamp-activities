@@ -1,20 +1,19 @@
 defaults: &defaults
   event:
-    name: "eurucamp 2014"
-    start_time: 2014-07-28 00:00:00
-    end_time: 2014-08-05 23:59:59
-  host: "activities.eurucamp.org"
+    name: "rubyweek"
+    start_time: 2015-07-27 00:00:00
+    end_time: 2015-08-09 23:59:59
+  host: "rubyweek.eurucamp.org"
   mailers:
     from: "activities@eurucamp.org"
   errors:
     from: "exception@eurucamp.org"
     to:
-      - "pietia@appgrinder.pl"
-      - "florian@polarblau.com"
+      - "cfp-errors@eurucamp.or"
   seo:
-    title: "eurucamp Activities"
+    title: "rubyweek"
     author: "eurucamp team"
-    description: "List of companion events."
+    description: "List of events around eurucamp and JRubyConf"
 
 development:
   <<: *defaults
