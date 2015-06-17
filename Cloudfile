@@ -15,8 +15,7 @@ eurucamp-activities-production:
   environment: production # RAILS_ENV
   domains:
     - eurucamp-activities-production.shellyapp.com
-    - rubyweek.eurucamp.org
-    - activities.eurucamp.org
+    - rubyweek.org
   servers:
     app1:
       size: small
