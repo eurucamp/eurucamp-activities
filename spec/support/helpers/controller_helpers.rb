@@ -1,16 +1,16 @@
 module ControllerHelpers
   def should_authorize(action, subject)
-    controller.should_receive(:authorize!).with(action, subject).and_return(true)
+    expect(controller).to receive(:authorize!).with(action, subject).and_return(true)
   end
 
   def sign_in(user = double('user'))
     if user.nil?
-      request.env['warden'].stub(:authenticate!).
+      allow(request.env['warden']).to receive(:authenticate!).
           and_throw(:warden, {scope: :user})
-      controller.stub current_user: nil
+      allow(controller).to receive_messages current_user: nil
     else
-      request.env['warden'].stub authenticate!: user
-      controller.stub current_user: user
+      allow(request.env['warden']).to receive_messages authenticate!: user
+      allow(controller).to receive_messages current_user: user
     end
   end
 end

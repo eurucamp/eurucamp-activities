@@ -9,8 +9,8 @@ describe ParticipationsController do
   let(:current_event) { double(:current_event) }
 
   before do
-    activity.stub(:reload).and_return(activity)
-    controller.stub(:current_event).and_return(current_event)
+    allow(activity).to receive(:reload).and_return(activity)
+    allow(controller).to receive(:current_event).and_return(current_event)
   end
 
   describe "#create" do
@@ -20,29 +20,29 @@ describe ParticipationsController do
       before do
         sign_in(current_user)
 
-        current_event.should_receive(:activity).with(activity_id).and_return(activity)
-        activity.should_receive(:decorate).and_return(activity)
-        activity.should_receive(:new_participation).with(current_user).and_return(participation)
+        expect(current_event).to receive(:activity).with(activity_id).and_return(activity)
+        expect(activity).to receive(:decorate).and_return(activity)
+        expect(activity).to receive(:new_participation).with(current_user).and_return(participation)
       end
 
       context "valid parameters" do
 
         before do
-          participation.should_receive(:save).and_return(true)
+          expect(participation).to receive(:save).and_return(true)
         end
 
-        it { should render_template(:create) }
+        it { is_expected.to render_template(:create) }
       end
 
       context "user is already a participant" do
         let(:participation) { invalid_participation }
 
         before do
-          participation.should_receive(:save).and_return(false)
+          expect(participation).to receive(:save).and_return(false)
         end
 
         # TODO: moar specs needed
-        it { should render_template(:create) }
+        it { is_expected.to render_template(:create) }
       end
     end
   end
@@ -54,17 +54,17 @@ describe ParticipationsController do
       before do
         sign_in(current_user)
 
-        current_event.should_receive(:activity).with(activity_id).and_return(activity)
-        activity.should_receive(:decorate).and_return(activity)
+        expect(current_event).to receive(:activity).with(activity_id).and_return(activity)
+        expect(activity).to receive(:decorate).and_return(activity)
 
-        activity.should_receive(:participation).with(current_user).and_return(participation)
+        expect(activity).to receive(:participation).with(current_user).and_return(participation)
         should_authorize(:destroy, participation)
 
-        participation.should_receive(:destroy).and_return(true)
+        expect(participation).to receive(:destroy).and_return(true)
       end
 
       # TODO: moar specs needed
-      it { should render_template(:destroy) }
+      it { is_expected.to render_template(:destroy) }
     end
   end
 
