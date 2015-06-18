@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Authentication do
+RSpec.describe Authentication do
   subject { Authentication.new }
 
   specify { expect { FactoryGirl.create(:activity).dup.save! }.to raise_exception(ActiveRecord::RecordInvalid) }

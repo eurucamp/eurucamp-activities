@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ActivityDecorator do
+RSpec.describe ActivityDecorator do
   let (:activity) { FactoryGirl.build_stubbed(:activity, limit_of_participants: 20) }
   let (:decorator) { ActivityDecorator.new(activity) }
 

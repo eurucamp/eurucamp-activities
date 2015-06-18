@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe AuthenticationsController do
+RSpec.describe AuthenticationsController do
 
   let(:current_user) { mock_model(User) }
   let(:authentications) { double(:authentications) }

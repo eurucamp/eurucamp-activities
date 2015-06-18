@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User do
+RSpec.describe User do
 
   describe "#connected_with_twitter?" do
     subject { user.connected_with_twitter? }

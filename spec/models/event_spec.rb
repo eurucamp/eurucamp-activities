@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Event do
+RSpec.describe Event do
 
   let(:start_time) { Date.parse("2012-10-10") }
   let(:end_time) { Date.parse("2012-12-14") }

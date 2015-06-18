@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ActivitiesController do
+RSpec.describe ActivitiesController do
   let(:current_user) { mock_model(User) }
 
   let(:activity) { double(:activity) }
