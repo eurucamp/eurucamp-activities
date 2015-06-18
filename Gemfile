@@ -42,6 +42,8 @@ group :test, :development do
 end
 
 group :test do
+  gem 'rspec-its'
+  gem 'rspec-activemodel-mocks'
   gem 'simplecov',        require: false
   gem 'capybara',         '~> 2.1'
   gem 'capybara-webkit',  '~> 1.4'
