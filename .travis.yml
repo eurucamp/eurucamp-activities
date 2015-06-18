@@ -2,6 +2,7 @@ sudo: false
 branches:
   only:
     - master
+cache: bundler
 before_script: cp config/database.yml.sample config/database.yml
 language: ruby
 rvm:
