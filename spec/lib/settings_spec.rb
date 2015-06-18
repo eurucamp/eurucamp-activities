@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "Settings" do
+RSpec.describe "Settings" do
 
   subject { Settings }
 

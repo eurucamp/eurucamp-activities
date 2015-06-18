@@ -37,11 +37,13 @@ group :development do
 end
 
 group :test, :development do
-  gem "rspec-rails",       '~> 2.0'
+  gem 'rspec-rails',       '~> 3.3'
   gem 'factory_girl_rails','~> 4.2'
 end
 
 group :test do
+  gem 'rspec-its'
+  gem 'rspec-activemodel-mocks'
   gem 'simplecov',        require: false
   gem 'capybara',         '~> 2.1'
   gem 'capybara-webkit',  '~> 1.4'
