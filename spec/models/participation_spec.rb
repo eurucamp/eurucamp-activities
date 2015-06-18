@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Participation do
+RSpec.describe Participation do
 
   describe "validations" do
 

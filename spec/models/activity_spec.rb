@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Activity do
+RSpec.describe Activity do
 
   let(:event) { double(:event) }
   let(:creator) { mock_model(User) }

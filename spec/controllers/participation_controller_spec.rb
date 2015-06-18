@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ParticipationsController do
+RSpec.describe ParticipationsController do
   let(:current_user) { mock_model(User) }
   let(:activity_id) { "1" }
   let(:activity) { double(:activity) }
