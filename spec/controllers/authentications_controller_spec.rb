@@ -9,7 +9,7 @@ describe AuthenticationsController do
 
   before do
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    current_user.stub(:authentications).and_return(authentications)
+    allow(current_user).to receive(:authentications).and_return(authentications)
   end
 
   describe '#create' do
@@ -21,12 +21,12 @@ describe AuthenticationsController do
 
     context "no authentication" do
       let(:omniauth_data) { { provider: 'none',  uuid: 'none', info: { email: 'test@john.com', name: 'test'} } }
-      it { should redirect_to new_user_registration_url }
+      it { is_expected.to redirect_to new_user_registration_url }
     end
 
     context "no authentication or incorrect details" do
       let(:omniauth_data) { { provider: 'none',  uuid: 'none', info: {} } }
-      it { should redirect_to new_user_registration_url }
+      it { is_expected.to redirect_to new_user_registration_url }
     end
 
     context "user already logged in" do
@@ -34,9 +34,9 @@ describe AuthenticationsController do
 
       before do
         sign_in(current_user)
-        authentications.should_receive(:find_or_create_by).with({provider: nil, uid: nil})
-        current_user.should_receive(:apply_provider_handle).with(omniauth_data)
-        current_user.should_receive(:save).and_return(true)
+        expect(authentications).to receive(:find_or_create_by).with({provider: nil, uid: nil})
+        expect(current_user).to receive(:apply_provider_handle).with(omniauth_data)
+        expect(current_user).to receive(:save).and_return(true)
       end
 
       context "when HTTP_REFERER set" do
@@ -44,12 +44,12 @@ describe AuthenticationsController do
           request.env['HTTP_REFERER'] = 'http://backtoreality/'
         end
 
-        it { should redirect_to 'http://backtoreality/' }
+        it { is_expected.to redirect_to 'http://backtoreality/' }
       end
 
       context "when HTTP_REFERER not set" do
 
-        it { should redirect_to edit_user_registration_path }
+        it { is_expected.to redirect_to edit_user_registration_path }
       end
     end
 
@@ -60,12 +60,12 @@ describe AuthenticationsController do
 
     before do
       sign_in(current_user)
-      authentications.should_receive(:find).with(authentication_id).and_return(authentication)
+      expect(authentications).to receive(:find).with(authentication_id).and_return(authentication)
       should_authorize(:destroy, authentication)
-      authentication.should_receive(:destroy).and_return(true)
+      expect(authentication).to receive(:destroy).and_return(true)
     end
 
-    it { should redirect_to authentications_path }
+    it { is_expected.to redirect_to authentications_path }
   end
 
 end
