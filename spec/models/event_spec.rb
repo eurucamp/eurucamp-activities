@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe Event do
+RSpec.describe Event do
 
   let(:start_time) { Date.parse("2012-10-10") }
   let(:end_time) { Date.parse("2012-12-14") }
@@ -44,10 +44,10 @@ describe Event do
     subject { event.activity(activity_id) }
 
     before do
-      event.should_receive(:find_activity).with(activity_id).and_return(activity)
+      expect(event).to receive(:find_activity).with(activity_id).and_return(activity)
     end
 
-    it { should == activity }
+    it { is_expected.to eq(activity) }
     its(:event) { should == event }
   end
 
@@ -59,7 +59,7 @@ describe Event do
       event.recent_activities_fetcher = ->{ recent_activities }
     end
 
-    it { should == recent_activities }
+    it { is_expected.to eq(recent_activities) }
   end
 
   describe "#all_activities" do
@@ -71,7 +71,7 @@ describe Event do
       event.all_activities_fetcher = ->{ activities }
     end
 
-    it { should == activities }
+    it { is_expected.to eq(activities) }
   end
 
   describe "#search_activities" do
@@ -84,17 +84,17 @@ describe Event do
         event.all_activities_fetcher = ->{ activities }
       end
 
-      it { should == activities }
+      it { is_expected.to eq(activities) }
     end
 
     context "by name" do
       subject { event.search_activities(nil, "yummy", "all") }
 
       before do
-        Activity.should_receive(:with_name_like).with("yummy").and_return(activities)
+        expect(Activity).to receive(:with_name_like).with("yummy").and_return(activities)
       end
 
-      it { should == activities }
+      it { is_expected.to eq(activities) }
     end
 
     context "with filter" do
@@ -105,43 +105,43 @@ describe Event do
         let(:filter) { "owner" }
 
         before do
-          Activity.should_receive(:all_activities).and_return(proxy)
-          proxy.should_receive(:created_by).with(user).and_return(activities)
+          expect(Activity).to receive(:all_activities).and_return(proxy)
+          expect(proxy).to receive(:created_by).with(user).and_return(activities)
         end
 
-        it { should == activities }
+        it { is_expected.to eq(activities) }
       end
 
       context "participant" do
         let(:filter) { "participant" }
 
         before do
-          Activity.should_receive(:all_activities).and_return(proxy)
-          proxy.should_receive(:participated_by).with(user).and_return(activities)
+          expect(Activity).to receive(:all_activities).and_return(proxy)
+          expect(proxy).to receive(:participated_by).with(user).and_return(activities)
         end
 
-        it { should == activities }
+        it { is_expected.to eq(activities) }
       end
 
       context "today" do
         let(:filter) { "today" }
 
         before do
-          Activity.should_receive(:all_activities).and_return(proxy)
-          proxy.should_receive(:today).and_return(activities)
+          expect(Activity).to receive(:all_activities).and_return(proxy)
+          expect(proxy).to receive(:today).and_return(activities)
         end
 
-        it { should == activities }
+        it { is_expected.to eq(activities) }
       end
 
       context "wrong filter" do
         let(:filter) { "ownerx" }
 
         before do
-          Activity.should_receive(:all_activities).and_return(activities)
+          expect(Activity).to receive(:all_activities).and_return(activities)
         end
 
-        it { should == activities }
+        it { is_expected.to eq(activities) }
       end
 
     end

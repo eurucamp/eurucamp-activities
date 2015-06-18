@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe ActivitiesController do
+RSpec.describe ActivitiesController do
   let(:current_user) { mock_model(User) }
 
   let(:activity) { double(:activity) }
@@ -9,7 +9,7 @@ describe ActivitiesController do
   let(:current_event) { double(:current_event) }
 
   before do
-    controller.stub(:current_event).and_return(current_event)
+    allow(controller).to receive(:current_event).and_return(current_event)
   end
 
   describe "#index" do
@@ -20,11 +20,11 @@ describe ActivitiesController do
     let(:counters)      { double(:counters) }
 
     before do
-      current_event.should_receive(:search_activities).with(current_user, nil, nil).and_return(activities)
-      current_event.should_receive(:counters).with(current_user).and_return(counters)
+      expect(current_event).to receive(:search_activities).with(current_user, nil, nil).and_return(activities)
+      expect(current_event).to receive(:counters).with(current_user).and_return(counters)
     end
 
-    it { should render_template(:index) }
+    it { is_expected.to render_template(:index) }
   end
 
   describe "#new" do
@@ -32,10 +32,10 @@ describe ActivitiesController do
 
     before do
       sign_in(current_user)
-      current_event.should_receive(:new_activity).with(current_user, {}).and_return(activity)
+      expect(current_event).to receive(:new_activity).with(current_user, {}).and_return(activity)
     end
 
-    it { should render_template(:new) }
+    it { is_expected.to render_template(:new) }
   end
 
   describe "#edit" do
@@ -43,7 +43,7 @@ describe ActivitiesController do
 
     before do
       sign_in(current_user)
-      current_event.should_receive(:activity).with(activity_id).and_return(activity)
+      expect(current_event).to receive(:activity).with(activity_id).and_return(activity)
     end
 
     context "activity doesn't exist" do
@@ -55,11 +55,11 @@ describe ActivitiesController do
     context "activity exists" do
 
       before do
-        activity.should_receive(:decorate).and_return(activity)
+        expect(activity).to receive(:decorate).and_return(activity)
         should_authorize(:edit, activity)
       end
 
-      it { should render_template(:edit) }
+      it { is_expected.to render_template(:edit) }
     end
 
   end
@@ -69,7 +69,7 @@ describe ActivitiesController do
 
     before do
       sign_in(current_user)
-      current_event.should_receive(:activity).with(activity_id).and_return(activity)
+      expect(current_event).to receive(:activity).with(activity_id).and_return(activity)
     end
 
     context "activity doesn't exist" do
@@ -81,10 +81,10 @@ describe ActivitiesController do
     context "activity exists" do
 
       before do
-        activity.should_receive(:decorate).and_return(activity)
+        expect(activity).to receive(:decorate).and_return(activity)
       end
 
-      it { should render_template(:show) }
+      it { is_expected.to render_template(:show) }
     end
   end
 
@@ -100,11 +100,11 @@ describe ActivitiesController do
       let(:params) { {activity: attributes} }
 
       before do
-        current_event.should_receive(:new_activity).with(current_user, attributes.with_indifferent_access).and_return(activity)
-        activity.should_receive(:save).and_return(true)
+        expect(current_event).to receive(:new_activity).with(current_user, attributes.with_indifferent_access).and_return(activity)
+        expect(activity).to receive(:save).and_return(true)
       end
 
-      it { should redirect_to activities_path }
+      it { is_expected.to redirect_to activities_path }
     end
 
     context "invalid parameters" do
@@ -112,11 +112,11 @@ describe ActivitiesController do
       let(:params) { {activity: {x: 10}} }
 
       before do
-        current_event.should_receive(:new_activity).with(current_user, {}).and_return(activity)
-        activity.should_receive(:save).and_return(false)
+        expect(current_event).to receive(:new_activity).with(current_user, {}).and_return(activity)
+        expect(activity).to receive(:save).and_return(false)
       end
 
-      it { should render_template(:new) }
+      it { is_expected.to render_template(:new) }
     end
   end
 
@@ -126,8 +126,8 @@ describe ActivitiesController do
 
     before do
       sign_in(current_user)
-      current_event.should_receive(:activity).with(activity_id).and_return(activity)
-      activity.should_receive(:decorate).and_return(activity)
+      expect(current_event).to receive(:activity).with(activity_id).and_return(activity)
+      expect(activity).to receive(:decorate).and_return(activity)
       should_authorize(:update, activity)
     end
 
@@ -135,10 +135,10 @@ describe ActivitiesController do
       let(:attributes) { {location: "Location", name: "Name", start_time: 1.day.ago.to_s, end_time: 2.days.ago.to_s} }
 
       before do
-        activity.should_receive(:update_attributes).with(attributes.with_indifferent_access).and_return(true)
+        expect(activity).to receive(:update_attributes).with(attributes.with_indifferent_access).and_return(true)
       end
 
-      it { should redirect_to edit_activity_path(activity) }
+      it { is_expected.to redirect_to edit_activity_path(activity) }
     end
 
     context "invalid parameters" do
@@ -146,10 +146,10 @@ describe ActivitiesController do
       let(:activity) { invalid_activity }
 
       before do
-        activity.should_receive(:update_attributes).with(attributes.with_indifferent_access).and_return(false)
+        expect(activity).to receive(:update_attributes).with(attributes.with_indifferent_access).and_return(false)
       end
 
-      it { should render_template(:edit) }
+      it { is_expected.to render_template(:edit) }
     end
   end
 
@@ -158,13 +158,13 @@ describe ActivitiesController do
 
     before do
       sign_in(current_user)
-      current_event.should_receive(:activity).with(activity_id).and_return(activity)
-      activity.should_receive(:decorate).and_return(activity)
+      expect(current_event).to receive(:activity).with(activity_id).and_return(activity)
+      expect(activity).to receive(:decorate).and_return(activity)
       should_authorize(:destroy, activity)
-      activity.should_receive(:destroy).and_return(true)
+      expect(activity).to receive(:destroy).and_return(true)
     end
 
-    it { should redirect_to activities_path }
+    it { is_expected.to redirect_to activities_path }
 
   end
 
