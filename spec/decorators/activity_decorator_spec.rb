@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ActivityDecorator do
   let (:activity) { FactoryGirl.build_stubbed(:activity, limit_of_participants: 20) }

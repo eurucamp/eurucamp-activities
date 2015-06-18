@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe ActivitiesController do
   let(:current_user) { mock_model(User) }
