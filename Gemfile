@@ -12,6 +12,7 @@ gem 'omniauth',           '~> 1.1.4'
 gem 'omniauth-github',    '~> 1.1.0'
 gem 'omniauth-twitter',   '~> 0.0.16'
 gem 'simple_form',        '~> 3.0.1'
+gem 'dotenv-rails'
 
 gem 'modernizr-rails'
 gem 'sprockets-rails',    '~> 2.1.3'
