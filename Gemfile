@@ -14,6 +14,8 @@ gem 'omniauth-twitter',   '~> 0.0.16'
 gem 'simple_form',        '~> 3.0.1'
 gem 'dotenv-rails'
 
+gem 'yaks',               '~> 0.10.0'
+
 gem 'modernizr-rails'
 gem 'sprockets-rails',    '~> 2.1.3'
 gem 'jquery-rails'
