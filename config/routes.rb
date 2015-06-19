@@ -8,7 +8,7 @@ Activities::Application.routes.draw do
     passwords: 'passwords'
   }
 
-  resources :activities do
+  resources :activities, only: [:index, :show, :create, :update, :destroy] do
     resource :participation, only: [:create, :destroy]
   end
   root to: 'activities#index'

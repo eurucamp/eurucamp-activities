@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ActivitiesController do
   let(:current_user) { mock_model(User) }
 
-  let(:activity) { double(:activity) }
+  let(:activity) { stub_model(Activity, creator: current_user) }
   let(:activity_id) { "1" }
   let(:invalid_activity) { double(:invalid_activity, errors: {name: "no way!"}) }
   let(:current_event) { double(:current_event) }
@@ -16,7 +16,7 @@ RSpec.describe ActivitiesController do
     subject { get :index }
 
     let(:current_user)  { nil }
-    let(:activities)    { double(:activities) }
+    let(:activities)    { [ activity ] }
     let(:counters)      { double(:counters) }
 
     before do
@@ -24,44 +24,7 @@ RSpec.describe ActivitiesController do
       expect(current_event).to receive(:counters).with(current_user).and_return(counters)
     end
 
-    it { is_expected.to render_template(:index) }
-  end
-
-  describe "#new" do
-    subject { get :new }
-
-    before do
-      sign_in(current_user)
-      expect(current_event).to receive(:new_activity).with(current_user, {}).and_return(activity)
-    end
-
-    it { is_expected.to render_template(:new) }
-  end
-
-  describe "#edit" do
-    subject { get :edit, id: activity_id }
-
-    before do
-      sign_in(current_user)
-      expect(current_event).to receive(:activity).with(activity_id).and_return(activity)
-    end
-
-    context "activity doesn't exist" do
-      let(:activity) { nil }
-
-      specify { expect { subject }.to raise_error(ActionController::RoutingError) }
-    end
-
-    context "activity exists" do
-
-      before do
-        expect(activity).to receive(:decorate).and_return(activity)
-        should_authorize(:edit, activity)
-      end
-
-      it { is_expected.to render_template(:edit) }
-    end
-
+    it { is_expected.to be_success }
   end
 
   describe "#show" do
@@ -75,16 +38,15 @@ RSpec.describe ActivitiesController do
     context "activity doesn't exist" do
       let(:activity) { nil }
 
-      specify { expect { subject }.to raise_error(ActionController::RoutingError) }
+      it { is_expected.to have_http_status(404) }
     end
 
     context "activity exists" do
-
       before do
         expect(activity).to receive(:decorate).and_return(activity)
       end
 
-      it { is_expected.to render_template(:show) }
+      it { is_expected.to be_success }
     end
   end
 
@@ -102,9 +64,10 @@ RSpec.describe ActivitiesController do
       before do
         expect(current_event).to receive(:new_activity).with(current_user, attributes.with_indifferent_access).and_return(activity)
         expect(activity).to receive(:save).and_return(true)
+        expect(activity).to receive(:decorate).and_return(activity)
       end
 
-      it { is_expected.to redirect_to activities_path }
+      it { is_expected.to have_http_status(201) }
     end
 
     context "invalid parameters" do
@@ -116,7 +79,7 @@ RSpec.describe ActivitiesController do
         expect(activity).to receive(:save).and_return(false)
       end
 
-      it { is_expected.to render_template(:new) }
+      it { is_expected.to have_http_status(400) }
     end
   end
 
@@ -138,7 +101,7 @@ RSpec.describe ActivitiesController do
         expect(activity).to receive(:update_attributes).with(attributes.with_indifferent_access).and_return(true)
       end
 
-      it { is_expected.to redirect_to edit_activity_path(activity) }
+      it { is_expected.to have_http_status(200) }
     end
 
     context "invalid parameters" do
@@ -149,7 +112,7 @@ RSpec.describe ActivitiesController do
         expect(activity).to receive(:update_attributes).with(attributes.with_indifferent_access).and_return(false)
       end
 
-      it { is_expected.to render_template(:edit) }
+      it { is_expected.to have_http_status(400) }
     end
   end
 
@@ -164,8 +127,7 @@ RSpec.describe ActivitiesController do
       expect(activity).to receive(:destroy).and_return(true)
     end
 
-    it { is_expected.to redirect_to activities_path }
-
+    it { is_expected.to have_http_status(204) }
   end
 
 end
