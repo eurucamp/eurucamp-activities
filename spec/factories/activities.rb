@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :activity do
-    name "Party!"
+    sequence(:name) { |x| "Party! #{x}" }
     start_time "2013/12/12 18:00"
     end_time "2013/12/13 03:00"
     anytime false
