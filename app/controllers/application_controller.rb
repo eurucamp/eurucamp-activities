@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
 
   before_filter :clean_up_session
+  before_filter :authenticate_user_from_token!
   before_filter :authenticate_user!
 
   rescue_from CanCan::AccessDenied, with: :rescue_access_denied
@@ -24,6 +25,17 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+    def authenticate_user_from_token!
+      authenticate_with_http_token do |token, options|
+        user_email = options[:email].presence
+        user = user_email && User.find_by_email(user_email)
+
+        if user && Devise.secure_compare(user.authentication_token, token)
+          sign_in user, store: false
+        end
+      end
+    end
 
     def clean_up_session
       session[:omniauth] = nil
