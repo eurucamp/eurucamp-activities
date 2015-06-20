@@ -1,3 +1,16 @@
+<header id="header">
+  <nav class="user-nav">
+    <ul>
+      {{#if session.isAuthenticated}}
+        <li>Account (TODO)</li>
+        <li><a {{ action 'invalidateSession' }}>Logout</a></li>
+      {{else}}
+        <li>{{#link-to 'login' title="Login into app!"}}Login{{/link-to}}</li>
+        <li><a title="Register new account">Register</a></li>
+      {{/if}}
+    </ul>
+  </nav>
+</header>
 <div id="container">
   <div id="main" role="main">
     {{outlet}}
