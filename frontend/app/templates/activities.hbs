@@ -1,0 +1,33 @@
+<ul id="activities">
+  {{#each model as |activity|}}
+    <li id="activity-{{activity.id}}" class="default">
+      <div class='container'>
+        <div class='progress'
+          data-progress='1.0'
+          style='background-image: url({{activity.imageUrl}})'>
+        </div>
+
+        <div class='labels'>
+          <h4>{{activity.name}}</h4>
+          <p class='creator'>
+            {{activity.creator.name}}
+          </p>
+          <p class='time'>
+            TODO
+          </p>
+        </div>
+        <div class='action default'>
+          <div>
+            <button title="Sign-up as participant" type="submit"><span></span>
+            Join
+            </button>
+          </div>
+        </div>
+
+        {{#link-to 'activity' activity title=activity.name class="details"}}
+          <span>More info</span>
+        {{/link-to}}
+      </div>
+    </li>
+  {{/each}}
+</ul>

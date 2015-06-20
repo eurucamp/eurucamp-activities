@@ -1,0 +1,51 @@
+<article id="activity">
+  <header>
+    <h2>{{model.name}}</h2>
+    <p class="meta">Organized by {{model.creator.name}}</p>
+  </header>
+
+  <section class="overview">
+    <div class='progress'
+      data-progress='1.0'
+      style='background-image: url({{model.imageUrl}})'>
+    </div>
+
+    <p>{{{roomLeft}}}</p>
+
+    <div class="participants">
+      <h3>Participants</h3>
+      <ul>
+        {{#each model.participants as |participant|}}
+          <li title={{participant.name}}>
+            <img src={{participant.avatar}}>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </section>
+
+  <section class="description">
+    <div class="wrapper">
+      {{model.description}}
+
+      <h4>Requirements</h4>
+      {{model.requirements}}
+    </div>
+  </section>
+
+  <section class="details">
+    <dl class="wrapper">
+      {{#if model.anytime}}
+        <dt>Time and Date</dt>
+        <dd>Anytime</dd>
+      {{else}}
+        <dt>Start time</dt>
+        <dd>{{model.startTime}}</dd>
+        <dt>End time</dt>
+        <dd>{{model.endTime}}</dd>
+      {{/if}}
+      <dt>Location</dt>
+      <dd>{{model.location}}</dd>
+    </dl>
+  </section>
+</article>
