@@ -7,7 +7,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
-  this.resource('activities');
+  this.resource('activities', { path: '/' });
   this.resource('activity', { path: '/activities/:activity_id' });
 });
 
