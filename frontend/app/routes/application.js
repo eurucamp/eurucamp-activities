@@ -6,7 +6,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     invalidateSession: function() {
       this.get('session').invalidate();
     },
-    authorizationFailed: function(error) {
+    authorizationFailed: function() {
       alert('You could not be signed in.');
     }
   }
