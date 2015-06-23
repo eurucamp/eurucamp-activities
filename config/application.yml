@@ -9,7 +9,7 @@ defaults: &defaults
   errors:
     from: "exception@eurucamp.org"
     to:
-      - "cfp-errors@eurucamp.or"
+      - "cfp-errors@eurucamp.org"
   seo:
     title: "rubyweek"
     author: "eurucamp team"

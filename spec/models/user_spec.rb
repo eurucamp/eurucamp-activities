@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe User do
+RSpec.describe User do
 
   describe "#connected_with_twitter?" do
     subject { user.connected_with_twitter? }
@@ -8,18 +8,18 @@ describe User do
 
     context  "not connected with Twitter account" do
       before do
-        user.should_receive(:provider_connected?).with("twitter").and_return(false)
+        expect(user).to receive(:provider_connected?).with("twitter").and_return(false)
       end
 
-      it { should == false}
+      it { is_expected.to eq(false)}
     end
 
     context "connected with Twitter account" do
       before do
-        user.should_receive(:provider_connected?).with("twitter").and_return(true)
+        expect(user).to receive(:provider_connected?).with("twitter").and_return(true)
       end
 
-      it { should == true }
+      it { is_expected.to eq(true) }
     end
 
   end
@@ -30,18 +30,18 @@ describe User do
 
     context  "not connected with Github account" do
       before do
-        user.should_receive(:provider_connected?).with("github").and_return(false)
+        expect(user).to receive(:provider_connected?).with("github").and_return(false)
       end
 
-      it { should == false}
+      it { is_expected.to eq(false)}
     end
 
     context "connected with Github account" do
       before do
-        user.should_receive(:provider_connected?).with("github").and_return(true)
+        expect(user).to receive(:provider_connected?).with("github").and_return(true)
       end
 
-      it { should == true }
+      it { is_expected.to eq(true) }
     end
   end
 
@@ -52,7 +52,7 @@ describe User do
     context "no data provided" do
       let(:params) { {} }
 
-      it { should == user }
+      it { is_expected.to eq(user) }
     end
 
     context "data provided" do
@@ -60,7 +60,7 @@ describe User do
 
       specify { expect{subject}.to change(user, :github_handle).to("johnny") }
 
-      it { should == user }
+      it { is_expected.to eq(user) }
     end
 
   end
@@ -71,18 +71,18 @@ describe User do
 
     context "account connected" do
       context "password set" do
-        it { should == true }
+        it { is_expected.to eq(true) }
       end
     end
 
     context "no account connected" do
       context "password set" do
-        it { should == true }
+        it { is_expected.to eq(true) }
       end
 
       context "password not set" do
         let(:user) { User.new  }
-        it { should == false }
+        it { is_expected.to eq(false) }
       end
     end
   end
@@ -92,17 +92,17 @@ describe User do
     let(:user) { FactoryGirl.create(:user) }
 
     context "no account connected" do
-      it { should == true }
+      it { is_expected.to eq(true) }
     end
 
     context "account connected" do
       let(:authentications) { [double(:authentication)] }
 
       before do
-        user.should_receive(:authentications).and_return(authentications)
+        expect(user).to receive(:authentications).and_return(authentications)
       end
 
-      it { should == false }
+      it { is_expected.to eq(false) }
     end
 
   end
@@ -136,12 +136,12 @@ describe User do
     context "no data provided" do
       let(:params) { {} }
 
-      it { should be_a_kind_of(Authentication) }
+      it { is_expected.to be_a_kind_of(Authentication) }
       its(:user) { should == user }
 
       it do
         pending "Currently Removed"
-        should be_invalid
+        is_expected.to be_invalid
       end
     end
 
@@ -153,7 +153,7 @@ describe User do
 
         specify { expect{subject}.to_not change(user, :email) }
 
-        it { should be_a_kind_of(Authentication) }
+        it { is_expected.to be_a_kind_of(Authentication) }
         its(:user) { should == user }
       end
 
@@ -162,7 +162,7 @@ describe User do
 
         specify { expect{subject}.to_not change(user, :email) }
 
-        it { should be_a_kind_of(Authentication) }
+        it { is_expected.to be_a_kind_of(Authentication) }
         its(:user) { should == user }
       end
     end
@@ -172,13 +172,13 @@ describe User do
 
     subject { User.new }
 
-    it { should     accept_values_for(:email, "xx@xx.com" ) }
-    it { should_not accept_values_for(:email, "", nil, " x @ x.com", "123", "login@server." ) }
+    it { is_expected.to     accept_values_for(:email, "xx@xx.com" ) }
+    it { is_expected.not_to accept_values_for(:email, "", nil, " x @ x.com", "123", "login@server." ) }
 
-    it { should     accept_values_for(:password, "qweqweqwe" ) }
-    it { should_not accept_values_for(:password, "qweqwe", nil, "") }
+    it { is_expected.to     accept_values_for(:password, "qweqweqwe" ) }
+    it { is_expected.not_to accept_values_for(:password, "qweqwe", nil, "") }
 
-    it { should     accept_values_for(:name, nil, "", "Florian Gęga") }
+    it { is_expected.to     accept_values_for(:name, nil, "", "Florian Gęga") }
 
   end
 

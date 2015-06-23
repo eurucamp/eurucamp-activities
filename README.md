@@ -1,4 +1,4 @@
-# rubyweek [![License](http://img.shields.io/:license-AGPL-0030c8.svg)](COPYRIGHT) [![Build Status](https://travis-ci.org/eurucamp/eurucamp-activities-2013.png?branch=master)](https://travis-ci.org/eurucamp/eurucamp-activities-2013)
+# rubyweek [![License](http://img.shields.io/:license-AGPL-0030c8.svg)](COPYRIGHT) [![Build Status](https://travis-ci.org/eurucamp/eurucamp-activities.png?branch=master)](https://travis-ci.org/eurucamp/eurucamp-activities)
 
 The rubyweek app is a small application to allow attendees to organize and plan small event in and around a conference. Users create events or sign up to created ones. Signup works through Github or Twitter.
 
