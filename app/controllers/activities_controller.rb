@@ -1,7 +1,5 @@
 class ActivitiesController < ApiController
-  respond_to :html
-
-  include Yaks::Rails::ControllerAdditions
+  respond_to :json_api
 
   skip_before_filter :authenticate_user!, only: [:index, :show]
   before_filter :load_resource, only: [:show, :edit, :update, :destroy]
@@ -10,41 +8,35 @@ class ActivitiesController < ApiController
   def index
     @activities = current_event.search_activities(current_user, query_params[:search], query_params[:filter])
     @counters = current_event.counters(current_user)
-    yaks @activities, item_mapper: ActivityMapper
+    respond_with @activities
   end
 
   def show
-    yaks @activity, mapper: ActivityMapper
+    respond_with @activity
   end
 
   def create
     @activity = current_event.new_activity(current_user, sanitized_params)
-    if @activity.save
-      yaks @activity.decorate, mapper: ActivityMapper, status: :created
-    else
-      render nothing: true, status: :bad_request
-    end
+    @activity.save
+    respond_with @activity
   end
 
   def update
     if @activity
-      if @activity.update_attributes(sanitized_params)
-        yaks @activity, mapper: ActivityMapper
-      else
-        render nothing: true, status: :bad_request
-      end
+      @activity.update_attributes(sanitized_params)
+      respond_with @activity
     end
   end
 
   def destroy
     @activity.destroy if @activity
-    render nothing: true, status: :no_content
+    respond_with @activity
   end
 
   private
 
     def load_resource
-      @activity = current_event.activity(params[:id]).try(:decorate)
+      @activity = current_event.activity(params[:id])
       render_404 unless @activity
     end
 

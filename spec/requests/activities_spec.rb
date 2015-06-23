@@ -4,7 +4,7 @@ RSpec.describe 'Activities API (read-only, unauthenticated)', type: :request do
   describe 'GET /activities' do
     context 'with no activities' do
       it 'provides a response with no activities' do
-        get '/activities'
+        get '/activities', {}, { 'Accept' => 'application/vnd.api+json' }
 
         expect(response.body).to have_json_type(Array).at_path('data')
         expect(response.body).to have_json_size(0).at_path('data')
@@ -15,7 +15,7 @@ RSpec.describe 'Activities API (read-only, unauthenticated)', type: :request do
       let!(:activities) {  FactoryGirl.create_list(:activity, 2) }
 
       it 'provides a response with activities' do
-        get '/activities'
+        get '/activities', {}, { 'Accept' => 'application/vnd.api+json' }
 
         expect(response.body).to have_json_type(Array).at_path('data')
         expect(response.body).to have_json_size(2).at_path('data')
@@ -40,7 +40,7 @@ RSpec.describe 'Activities API (read-only, unauthenticated)', type: :request do
     let!(:activity) { FactoryGirl.create(:activity) }
 
     it 'provides a response with the activity' do
-      get "/activities/#{activity.id}"
+      get "/activities/#{activity.id}", {}, { 'Accept' => 'application/vnd.api+json' }
 
       expect(response.body).to have_json_type(Object).at_path('data')
       expect(response.body).to be_json_eql(%{{

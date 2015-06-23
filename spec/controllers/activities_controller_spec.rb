@@ -9,6 +9,7 @@ RSpec.describe ActivitiesController do
   let(:current_event) { double(:current_event) }
 
   before do
+    request.env['HTTP_ACCEPT'] = 'application/vnd.api+json'
     allow(controller).to receive(:current_event).and_return(current_event)
   end
 
@@ -42,10 +43,6 @@ RSpec.describe ActivitiesController do
     end
 
     context "activity exists" do
-      before do
-        expect(activity).to receive(:decorate).and_return(activity)
-      end
-
       it { is_expected.to be_success }
     end
   end
@@ -64,7 +61,6 @@ RSpec.describe ActivitiesController do
       before do
         expect(current_event).to receive(:new_activity).with(current_user, attributes.with_indifferent_access).and_return(activity)
         expect(activity).to receive(:save).and_return(true)
-        expect(activity).to receive(:decorate).and_return(activity)
       end
 
       it { is_expected.to have_http_status(201) }
@@ -79,7 +75,7 @@ RSpec.describe ActivitiesController do
         expect(activity).to receive(:save).and_return(false)
       end
 
-      it { is_expected.to have_http_status(400) }
+      it { is_expected.to have_http_status(422) }
     end
   end
 
@@ -90,7 +86,6 @@ RSpec.describe ActivitiesController do
     before do
       sign_in(current_user)
       expect(current_event).to receive(:activity).with(activity_id).and_return(activity)
-      expect(activity).to receive(:decorate).and_return(activity)
       should_authorize(:update, activity)
     end
 
@@ -112,7 +107,7 @@ RSpec.describe ActivitiesController do
         expect(activity).to receive(:update_attributes).with(attributes.with_indifferent_access).and_return(false)
       end
 
-      it { is_expected.to have_http_status(400) }
+      it { is_expected.to have_http_status(422) }
     end
   end
 
@@ -122,7 +117,6 @@ RSpec.describe ActivitiesController do
     before do
       sign_in(current_user)
       expect(current_event).to receive(:activity).with(activity_id).and_return(activity)
-      expect(activity).to receive(:decorate).and_return(activity)
       should_authorize(:destroy, activity)
       expect(activity).to receive(:destroy).and_return(true)
     end
