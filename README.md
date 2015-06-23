@@ -18,7 +18,7 @@ Don't use the eurucamp logo for your instance to avoid confusion.
 
 ## Examples
 
-An instance of the app can be seen running at the [rubyweek page](http://rubyweek.eurucamp.org).
+An instance of the app can be seen running at the [rubyweek page](http://rubyweek.org).
 
 Screenshot: ![The activities app](screenshot.png)
 
