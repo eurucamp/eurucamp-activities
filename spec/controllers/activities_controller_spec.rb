@@ -66,7 +66,14 @@ RSpec.describe ActivitiesController do
       it { is_expected.to have_http_status(201) }
     end
 
-    context "invalid parameters" do
+    context 'missing parameters' do
+      let(:activity) { invalid_activity }
+      let(:params) { { } }
+
+      it { is_expected.to have_http_status(400) }
+    end
+
+    context 'invalid parameters' do
       let(:activity) { invalid_activity }
       let(:params) { {activity: {x: 10}} }
 
@@ -99,7 +106,14 @@ RSpec.describe ActivitiesController do
       it { is_expected.to have_http_status(200) }
     end
 
-    context "invalid parameters" do
+    context 'missing parameters' do
+      let(:attributes) { { } }
+      let(:activity) { invalid_activity }
+
+      it { is_expected.to have_http_status(400) }
+    end
+
+    context 'invalid parameters' do
       let(:attributes) { {location: ""} }
       let(:activity) { invalid_activity }
 
