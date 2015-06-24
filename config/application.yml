@@ -24,7 +24,7 @@ test:
 
 staging:
   <<: *defaults
-  host: "activities-staging.eurucamp.org"
+  host: "eurucamp-activities-staging.shellyapp.com"
 
 production:
   <<: *defaults
