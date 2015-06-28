@@ -81,6 +81,7 @@ en:
       label_short: End
     location: Location
     required: Required
+    requires_eurucamp_ticket: "During the eurucamp, participants need a ticket"
     participants: Participants
     organized_by: "Organized by <strong>%{name}</strong>"
     room_left:
@@ -124,6 +125,8 @@ en:
     requirements:
       label: Requirements
       hint:  "What to bring, to wear etc."
+    requires_eurucamp_ticket:
+      hint: "During the eurucamp, participants need a ticket"
     image_url:
       label: URL for an image
       hint: Upload an image to e.g. imgur.com and link it here
