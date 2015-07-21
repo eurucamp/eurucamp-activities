@@ -1,6 +1,6 @@
 eurucamp-activities-staging:
   ruby_version: 2.1.5
-  environment: production # RAILS_ENV
+  environment: staging # RAILS_ENV
   domains:
     - eurucamp-activities-staging.shellyapp.com
   servers:

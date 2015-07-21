@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130608105751) do
+ActiveRecord::Schema.define(version: 20150628112434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20130608105751) do
     t.text     "requirements"
     t.datetime "end_time"
     t.text     "image_url"
+    t.boolean  "requires_eurucamp_ticket", default: false, null: false
   end
 
   add_index "activities", ["name"], name: "index_activities_on_name", unique: true, using: :btree
