@@ -196,6 +196,36 @@ RSpec.describe Activity do
     it { is_expected.to eq(new_participation) }
   end
 
+  describe '#dates' do
+    context 'for an activity happening on a single day' do
+      before do
+        activity.start_time = Time.zone.local(2015, 7, 30, 10)
+        activity.end_time = Time.zone.local(2015, 7, 30, 17)
+      end
+
+      it 'is the day of the activity' do
+        expect(activity.dates).to eq([Date.new(2015, 7, 30)])
+      end
+    end
+
+    context 'for an activity spanning multiple days' do
+      before do
+        activity.start_time = Time.zone.local(2015, 7, 30, 10)
+        activity.end_time = Time.zone.local(2015, 8, 3, 9)
+      end
+
+      it 'is all the days the activity spans' do
+        expect(activity.dates).to eq([
+                                       Date.new(2015, 7, 30),
+                                       Date.new(2015, 7, 31),
+                                       Date.new(2015, 8, 1),
+                                       Date.new(2015, 8, 2),
+                                       Date.new(2015, 8, 3)
+                                     ])
+      end
+    end
+  end
+
   describe "validations" do
 
     specify { expect { FactoryGirl.create(:activity).dup.save! }.to raise_exception(ActiveRecord::RecordInvalid) }
