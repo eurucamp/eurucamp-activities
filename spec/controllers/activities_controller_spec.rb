@@ -16,11 +16,11 @@ RSpec.describe ActivitiesController do
     subject { get :index }
 
     let(:current_user)  { nil }
-    let(:activities)    { double(:activities) }
+    let(:activities_per_day)    { double(:activities_per_day) }
     let(:counters)      { double(:counters) }
 
     before do
-      expect(current_event).to receive(:search_activities).with(current_user, nil, nil).and_return(activities)
+      expect(current_event).to receive(:activities_per_day).with(current_user, nil, nil).and_return(activities_per_day)
       expect(current_event).to receive(:counters).with(current_user).and_return(counters)
     end
 

@@ -29,4 +29,5 @@
   = t("activities.new.label")
 
 %ul#activities
-  = render @activities.decorate
+  - @activities_per_day.each do |day, activities|
+    = render 'activity_day', day: day, activities: activities
