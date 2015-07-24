@@ -11,22 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150628112434) do
+ActiveRecord::Schema.define(version: 20150724211941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: true do |t|
-    t.string   "name",                  default: "",   null: false
+    t.string   "name",                     default: "",    null: false
     t.text     "description"
     t.string   "location"
     t.datetime "start_time"
-    t.integer  "limit_of_participants", default: 10
+    t.integer  "limit_of_participants",    default: 10
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
-    t.integer  "participations_count",  default: 0,    null: false
-    t.boolean  "anytime",               default: true, null: false
+    t.integer  "participations_count",     default: 0,     null: false
+    t.boolean  "anytime",                  default: false, null: false
     t.text     "requirements"
     t.datetime "end_time"
     t.text     "image_url"
