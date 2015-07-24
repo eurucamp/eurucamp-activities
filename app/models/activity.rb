@@ -133,6 +133,10 @@ eos
     participations.find_by(user_id: user)
   end
 
+  def dates
+    (start_time.to_date..end_time.to_date).to_a
+  end
+
   private
 
     def participation_source
