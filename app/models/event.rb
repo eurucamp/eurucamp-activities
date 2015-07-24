@@ -66,17 +66,6 @@ class Event
   end
   alias_method :activities, :search_activities
 
-  def activities_per_day(author = nil, query_string = "", filter = "all")
-    activities = search_activities(author, query_string, filter)
-    activities.sort_by! { |activity| activity.dates.first }
-
-    activities.each_with_object(Hash.new { [] }) do |activity, grouped_by_day|
-      activity.dates.each do |date|
-        grouped_by_day[date] += [activity]
-      end
-    end
-  end
-
   private
 
     def fetch_recent

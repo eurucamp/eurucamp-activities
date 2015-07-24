@@ -74,48 +74,6 @@ RSpec.describe Event do
     it { is_expected.to eq(activities) }
   end
 
-  describe '#activities_per_day' do
-    let(:activity1) {
-      double(:activity1,
-             dates: [Date.new(2015, 7, 30)])
-    }
-    let(:activity2) {
-      double(:activity2,
-             dates: [Date.new(2015, 7, 31)])
-    }
-    let(:activities) { [activity2, activity1] }
-
-    before do
-      event.all_activities_fetcher = ->{ activities }
-    end
-
-    it 'groups the activities per day' do
-      expect(event).to receive(:search_activities).with('author', 'query string', 'filter').and_return(activities)
-      expect(event.activities_per_day 'author', 'query string', 'filter')
-        .to eq({
-                          Date.new(2015, 7, 30) => [activity1],
-                          Date.new(2015, 7, 31) => [activity2]
-                        })
-    end
-
-    it 'is ordered by day' do
-      allow(event).to receive(:search_activities).and_return(activities)
-      per_day = event.activities_per_day
-      expect(per_day.to_a.first.first).to eq(Date.new(2015, 7, 30))
-      expect(per_day.to_a.second.first).to eq(Date.new(2015, 7, 31))
-    end
-
-    it 'lists activities spanning multiple days for each day' do
-      activity = double(:activity, dates: [Date.new(2015, 7, 30), Date.new(2015, 7, 31), Date.new(2015, 8, 1)])
-      allow(event).to receive(:search_activities).and_return([activity])
-      expect(event.activities_per_day).to eq({
-                                               Date.new(2015, 7, 30) => [activity],
-                                               Date.new(2015, 7, 31) => [activity],
-                                               Date.new(2015, 8, 1) => [activity]
-                                             })
-    end
-  end
-
   describe "#search_activities" do
     let(:activities) { [double(:activity1), double(:activity2)] }
 

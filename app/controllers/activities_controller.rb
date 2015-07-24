@@ -6,9 +6,9 @@ class ActivitiesController < ApiController
   authorize_resource only: [:edit, :update, :destroy]
 
   def index
-    @activities_per_day = current_event.activities_per_day(current_user, query_params[:search], query_params[:filter])
+    @activities = current_event.search_activities(current_user, query_params[:search], query_params[:filter])
     @counters = current_event.counters(current_user)
-    respond_with(@activities_per_day)
+    respond_with(@activities)
   end
 
   def show
