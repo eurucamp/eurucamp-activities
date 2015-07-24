@@ -240,9 +240,9 @@ RSpec.describe Activity do
     it { is_expected.to     accept_values_for(:location, "football pitch" ) }
     it { is_expected.not_to accept_values_for(:location, "", nil) }
 
-    it { is_expected.to     accept_values_for(:start_time, Time.now, nil) }
+    it { is_expected.to     accept_values_for(:start_time, Time.now) }
 
-    it { is_expected.to     accept_values_for(:end_time, Time.now, nil) }
+    it { is_expected.to     accept_values_for(:end_time, Time.now) }
 
     it { is_expected.to     accept_values_for(:limit_of_participants, nil, 12, 100) }
     it { is_expected.not_to accept_values_for(:limit_of_participants, -1, 0) }
