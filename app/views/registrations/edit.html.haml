@@ -17,6 +17,10 @@
         %span.label Your email address
         = f.email_field :email, placeholder: "Your email address"
 
+      %label.inline.show_participation
+        = f.check_box :show_participation
+        Show participations publicly?
+
       - if resource.no_oauth_connected?
         %label.password
           %span.label Your password
