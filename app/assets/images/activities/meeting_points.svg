@@ -227,7 +227,7 @@
             <tspan x="202" y="241">2</tspan>
         </text>
         <text id="Leasure-area" sketch:type="MSTextLayer" font-family="Sonar" font-size="9" font-weight="normal" fill="#979797">
-            <tspan x="247" y="100">Leasure area</tspan>
+            <tspan x="247" y="100">Leisure area</tspan>
         </text>
         <polygon id="Triangle-7" stroke="#979797" fill="#D8D8D8" sketch:type="MSShapeGroup" points="218.5 219 222 233 215 233 "></polygon>
         <polygon id="Triangle-7-Copy" stroke="#979797" fill="#D8D8D8" sketch:type="MSShapeGroup" transform="translate(395.500000, 223.000000) scale(1, -1) translate(-395.500000, -223.000000) " points="395.5 216 399 230 392 230 "></polygon>
