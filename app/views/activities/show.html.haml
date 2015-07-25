@@ -22,9 +22,9 @@
         %h3
           = t("activities.participants")
         %ul
-          - @activity.participants.each do |participant|
+          - @activity.participants.decorate.each do |participant|
             %li(title="#{ participant.name }")>
-              = image_tag(avatar_url(participant, 48))
+              = image_tag(participant.avatar_url(48))
 
   %section.description
     .wrapper
