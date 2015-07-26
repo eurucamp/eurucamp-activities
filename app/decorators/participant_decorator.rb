@@ -1,4 +1,4 @@
-class UserDecorator < Draper::Decorator
+class ParticipantDecorator < Draper::Decorator
   def name
     return 'Anonymous' unless object.show_participation
     object.name
