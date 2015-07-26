@@ -77,11 +77,13 @@ RSpec.describe Event do
   describe '#activities_per_day' do
     let(:activity1) {
       double(:activity1,
-             dates: [Date.new(2015, 7, 30)])
+             dates: [Date.new(2015, 7, 30)],
+             start_time: Time.local(2015, 7, 30, 10))
     }
     let(:activity2) {
       double(:activity2,
-             dates: [Date.new(2015, 7, 31)])
+             dates: [Date.new(2015, 7, 31)],
+             start_time: Time.local(2015, 7, 31, 11))
     }
     let(:activities) { [activity2, activity1] }
 
@@ -106,12 +108,24 @@ RSpec.describe Event do
     end
 
     it 'lists activities spanning multiple days for each day' do
-      activity = double(:activity, dates: [Date.new(2015, 7, 30), Date.new(2015, 7, 31), Date.new(2015, 8, 1)])
+      activity = double(:activity, dates: [Date.new(2015, 7, 30), Date.new(2015, 7, 31), Date.new(2015, 8, 1)], start_time: Time.local(2015, 7, 30, 10))
       allow(event).to receive(:search_activities).and_return([activity])
       expect(event.activities_per_day).to eq({
                                                Date.new(2015, 7, 30) => [activity],
                                                Date.new(2015, 7, 31) => [activity],
                                                Date.new(2015, 8, 1) => [activity]
+                                             })
+    end
+
+    it 'orders activities by start time' do
+      activity1 = double(:activity1, dates: [Date.new(2015, 7, 30), Date.new(2015, 7, 31)], start_time: Time.local(2015, 7, 30, 11))
+      activity2 = double(:activity2, dates: [Date.new(2015, 7, 30)], start_time: Time.local(2015, 7, 30, 10))
+      activity3 = double(:activity3, dates: [Date.new(2015, 7, 31)], start_time: Time.local(2015, 7, 31, 9))
+      allow(event).to receive(:search_activities).and_return([activity1, activity2, activity3])
+
+      expect(event.activities_per_day).to eq({
+                                               Date.new(2015, 7, 30) => [activity2, activity1],
+                                               Date.new(2015, 7, 31) => [activity1, activity3]
                                              })
     end
   end
