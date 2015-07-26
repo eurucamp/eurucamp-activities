@@ -55,3 +55,10 @@
         = t("activities.location")
       %dd
         = @activity.location
+        %br
+        %br
+        %a#show-map= t("activity_form.location.show-map")
+
+    #meeting-point-map.meeting-point-map
+      = image_tag 'activities/meeting_points.svg'
+
