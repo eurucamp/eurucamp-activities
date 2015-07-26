@@ -15,11 +15,14 @@
     = f.text_field :location, placeholder: t("activity_form.location.label")
     %small
       = t("activity_form.location.hint")
+      %a#show-map= t("activity_form.location.show-map")
 
   %label.limit-of-participants>
     = f.number_field :limit_of_participants, placeholder: "5"
     %small
       = t("activity_form.limit_of_participants.hint")
+
+  = image_tag 'activities/meeting_points.svg', class: 'meeting-point-map', id: 'meeting-point-map'
 
   %label.requirements
     = f.text_area :requirements, placeholder: t("activity_form.requirements.label"), rows: 6, class: "markdown", title: t("activity_form.markdown_hint")
