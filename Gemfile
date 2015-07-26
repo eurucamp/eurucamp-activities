@@ -46,7 +46,6 @@ group :test do
   gem 'rspec-activemodel-mocks'
   gem 'simplecov',        require: false
   gem 'capybara',         '~> 2.1'
-  gem 'capybara-webkit',  '~> 1.4'
   gem 'accept_values_for'
   gem 'json_spec'
 end

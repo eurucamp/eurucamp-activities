@@ -7,7 +7,6 @@ require 'rspec/rails'
 require 'capybara/rails'
 
 Capybara.configure do |config|
-  config.default_driver    = :webkit
   config.default_wait_time = 5
   # config.match = :one
   # config.exact_options = true
