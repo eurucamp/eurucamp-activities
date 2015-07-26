@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe UserDecorator do
+RSpec.describe ParticipantDecorator do
   let(:user) { User.new }
 
   subject do
-    UserDecorator.new(user)
+    ParticipantDecorator.new(user)
   end
 
   describe '#name' do
