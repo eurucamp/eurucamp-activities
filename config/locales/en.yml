@@ -120,6 +120,7 @@ en:
     location:
       label: Location
       hint: "Where does your activity take place, where to meet, …"
+      show-map: 'Show meeting point map'
     limit_of_participants:
       hint: Max. participants
     requirements:

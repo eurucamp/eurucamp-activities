@@ -163,5 +163,9 @@ ready = ->
   $('#notifications').on 'click', hideNotification
   setTimeout hideNotification, 3000
 
+  toggleMap = ->
+          $('#meeting-point-map').toggle()
+  $('#show-map').on 'click', toggleMap
+
 $(document).ready(ready)
 $(document).on('page:load', ready)
