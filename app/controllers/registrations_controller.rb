@@ -51,7 +51,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     def editable_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :show_participation)
     end
 
 end
