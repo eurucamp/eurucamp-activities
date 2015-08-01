@@ -50,11 +50,12 @@ An installed postgresql instance and a compiler is needed.
 
 ### Basic setup
 
-* `echo 'activities.dev localhost' > /etc/hosts`
+* `echo 'activities.dev localhost' >> /etc/hosts`
 * `cp .env.sample .env`
 * `cp config/database.yml.sample config/database.yml`
-* update config files: `config/application.yml`, `.env` (see ENV variables listed below)
-* run migration scripts
+* update config files: `config/application.yml`, `.env` (see ENV variables listed above)
+* `bundle exec rake db:create`
+* `bundle exec rake db:migrate`
 * `bundle exec foreman start`
 * `tail -f log/development.log`
 * `open http://activities.dev:3000`
