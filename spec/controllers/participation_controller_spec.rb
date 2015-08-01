@@ -22,12 +22,13 @@ RSpec.describe ParticipationsController do
 
         expect(current_event).to receive(:activity).with(activity_id).and_return(activity)
         expect(activity).to receive(:decorate).and_return(activity)
-        expect(activity).to receive(:new_participation).with(current_user).and_return(participation)
+        allow(activity).to receive(:new_participation).with(current_user).and_return(participation)
       end
 
       context "valid parameters" do
 
         before do
+          expect(activity).to receive(:full?).and_return(false)
           expect(participation).to receive(:save).and_return(true)
         end
 
@@ -38,10 +39,20 @@ RSpec.describe ParticipationsController do
         let(:participation) { invalid_participation }
 
         before do
+          expect(activity).to receive(:full?).and_return(false)
           expect(participation).to receive(:save).and_return(false)
         end
 
         # TODO: moar specs needed
+        it { is_expected.to render_template(:create) }
+      end
+
+      context "activity is already full" do
+        before do
+          expect(activity).to receive(:full?).and_return(true)
+          expect(participation).not_to receive(:save)
+        end
+
         it { is_expected.to render_template(:create) }
       end
     end

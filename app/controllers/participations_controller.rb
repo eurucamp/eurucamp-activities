@@ -2,8 +2,11 @@ class ParticipationsController < ApiController
   respond_to :js, :html
 
   def create
-    @participation = current_activity.new_participation(current_user)
-    @participation.save
+    unless current_activity.full?
+      @participation = current_activity.new_participation(current_user)
+      @participation.save
+    end
+
     respond_with(current_activity.reload, @participation) do |format|
       format.html { redirect_to :back }
     end
