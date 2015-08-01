@@ -111,13 +111,10 @@ ready = ->
   $filters.on 'click', (e)->
     e.preventDefault()
     $filter = $(@)
-    if $filter.hasClass('selected')
-      $filters.filter('.all').trigger('click')
-    else
-      if !e.shiftKey || (e.shiftKey && $filter.find('input').val() == 'all')
-        $filters.removeClass 'selected'
-      $filter.addClass('selected')
-      filterActivities()
+    if !e.shiftKey || (e.shiftKey && $filter.find('input').val() == 'all')
+      $filters.removeClass 'selected'
+    $filter.addClass('selected')
+    filterActivities()
 
   # search
   # TODO: debounce
