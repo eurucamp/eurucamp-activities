@@ -59,6 +59,7 @@ An installed postgresql instance and a compiler is needed.
 * `bundle exec foreman start`
 * `tail -f log/development.log`
 * `open http://activities.dev:3000`
+* run the specs: `bundle exec rake`
 
 ### Customization
 
