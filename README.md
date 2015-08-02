@@ -1,6 +1,6 @@
 # rubyweek [![License](http://img.shields.io/:license-AGPL-0030c8.svg)](COPYRIGHT) [![Build Status](https://travis-ci.org/eurucamp/eurucamp-activities.png?branch=master)](https://travis-ci.org/eurucamp/eurucamp-activities)
 
-The rubyweek app is a small application to allow attendees to organize and plan small event in and around a conference. Users create events or sign up to created ones. Signup works through Github or Twitter.
+The rubyweek app is a small application to allow attendees to organize and plan small event in and around a conference. Users create events or sign up to created ones. Signup works through GitHub or Twitter.
 
 The app is mobile friendly and easy to run on a free Heroku account.
 
@@ -29,8 +29,8 @@ To deploy the app, you need the following:
 * Clone this repository: `https://github.com/eurucamp/eurucamp-activities-2013/`
 
 * An account and a created application at Heroku.
-* A registered twitter application. Go [here](https://apps.twitter.com/).
-* A registered github application. Go [here](https://github.com/settings/applications).
+* A registered Twitter application. Go [here](https://apps.twitter.com/).
+* A registered GitHub application. Go [here](https://github.com/settings/applications).
 
 Deploying is as easy as:
 
@@ -39,10 +39,10 @@ Deploying is as easy as:
 
 ### **ENV** variables used:
 
-* `GITHUB_KEY`: Your github application key.
-* `GITHUB_SECRET`: Your github application secret.
-* `TWITTER_KEY`: Your twitter application key.
-* `TWITTER_SECRET`: Your twitter application secret.
+* `GITHUB_KEY`: Your GitHub application key.
+* `GITHUB_SECRET`: Your GitHub application secret.
+* `TWITTER_KEY`: Your Twitter application key.
+* `TWITTER_SECRET`: Your Twitter application secret.
 
 ## Development
 
@@ -50,14 +50,16 @@ An installed postgresql instance and a compiler is needed.
 
 ### Basic setup
 
-* `echo 'activities.dev localhost' > /etc/hosts`
+* `echo 'activities.dev localhost' >> /etc/hosts`
 * `cp .env.sample .env`
 * `cp config/database.yml.sample config/database.yml`
-* update config files: `config/application.yml`, `.env` (see ENV variables listed below)
-* run migration scripts
+* update config files: `config/application.yml`, `.env` (see ENV variables listed above)
+* `bundle exec rake db:create`
+* `bundle exec rake db:migrate`
 * `bundle exec foreman start`
 * `tail -f log/development.log`
 * `open http://activities.dev:3000`
+* run the specs: `bundle exec rake`
 
 ### Customization
 
