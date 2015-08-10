@@ -1,0 +1,8 @@
+= form_tag activity_path(@activity), method: :delete do
+
+  %fieldset
+    %label.inline
+      = check_box_tag :confirm_delete
+      = t("delete_activity_form.confirmation", count: @activity.participants.count)
+
+  = button_tag t("delete_activity_form.submit")
