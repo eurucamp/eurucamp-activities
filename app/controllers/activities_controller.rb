@@ -40,8 +40,12 @@ class ActivitiesController < ApiController
   end
 
   def destroy
-    @activity.destroy if @activity
-    respond_with(@activity, location: activities_path)
+    if @activity && params[:confirm_delete] && @activity.destroy
+      redirect_to root_path, notice: I18n.t("destroy_activity.notice")
+    else
+      flash[:error] = I18n.t("destroy_activity.error")
+      render :edit
+    end
   end
 
   private

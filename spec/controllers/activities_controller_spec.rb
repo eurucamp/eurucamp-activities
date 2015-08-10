@@ -154,7 +154,7 @@ RSpec.describe ActivitiesController do
   end
 
   describe "#destroy" do
-    subject { delete :destroy, {id: activity_id} }
+    subject { delete :destroy, {id: activity_id, confirm_delete: true} }
 
     before do
       sign_in(current_user)
@@ -164,7 +164,7 @@ RSpec.describe ActivitiesController do
       expect(activity).to receive(:destroy).and_return(true)
     end
 
-    it { is_expected.to redirect_to activities_path }
+    it { is_expected.to redirect_to root_path }
 
   end
 
