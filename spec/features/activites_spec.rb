@@ -52,4 +52,41 @@ RSpec.describe "Activities", :type => :feature do
       expect(page).to have_xpath('//li[@title="Anonymous"]')
     end
   end
+
+  context 'deleting an activity' do
+    it 'deletes activity when checkbox is checked' do
+      login_as(creator)
+      visit "/activities/#{activity.id}"
+      click_link 'Edit'
+      check 'Really delete this activity (with currently 2 participants)'
+      click_button 'Delete activity'
+
+      get_redirected_to_homepage
+      activity_is_deleted
+    end
+
+    it 'does not delete activity when checkbox is not checked' do
+      login_as(creator)
+      visit "/activities/#{activity.id}"
+      click_link 'Edit'
+
+      click_button 'Delete activity'
+
+      activity_is_not_deleted
+    end
+  end
+
+  def activity_is_not_deleted
+    expect(page).to have_content('Your activity could not be deleted.')
+    expect(Activity.exists?(activity.id)).to be_truthy
+  end
+
+  def get_redirected_to_homepage
+    expect(current_path).to eq(root_path)
+  end
+
+  def activity_is_deleted
+    expect(page).to have_content('Your activity has been deleted!')
+    expect(Activity.exists?(activity.id)).to be_falsy
+  end
 end

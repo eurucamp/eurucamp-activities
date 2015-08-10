@@ -66,11 +66,11 @@ GEM
     dotenv (0.9.0)
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
-    draper (1.3.0)
+    draper (2.1.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
-      request_store (~> 1.0.3)
+      request_store (~> 1.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
     exception_notification (4.0.1)
@@ -109,6 +109,7 @@ GEM
       rspec (>= 2.0, < 4.0)
     jwt (0.1.11)
       multi_json (>= 1.5)
+    kgio (2.9.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -116,7 +117,7 @@ GEM
     mini_portile (0.6.2)
     minitest (4.7.5)
     modernizr-rails (2.7.1)
-    multi_json (1.11.1)
+    multi_json (1.11.2)
     multipart-post (2.0.0)
     neat (1.5.0)
       bourbon (>= 2.1)
@@ -149,7 +150,7 @@ GEM
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.5)
-    rack (1.5.2)
+    rack (1.5.5)
     rack-robotz (0.0.4)
       rack
     rack-test (0.6.3)
@@ -169,9 +170,10 @@ GEM
       activesupport (= 4.0.8)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
+    raindrops (0.13.0)
     rake (10.3.2)
     redcarpet (3.0.0)
-    request_store (1.0.5)
+    request_store (1.2.0)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -243,6 +245,10 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicorn (4.8.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     warden (1.2.3)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -289,9 +295,9 @@ DEPENDENCIES
   simple_form (~> 3.0.1)
   simplecov
   sprockets-rails (~> 2.1.3)
-  thin
   turbolinks
   uglifier (>= 1.0.3)
+  unicorn
 
 BUNDLED WITH
    1.10.5

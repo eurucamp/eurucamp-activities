@@ -1,10 +1,8 @@
 source 'https://rubygems.org'
 
-ruby "2.1.5"
-
 gem 'rails',              '4.0.8'
 gem 'pg'
-gem 'thin'
+gem 'unicorn'
 gem 'settingslogic'
 gem 'newrelic_rpm'
 gem 'devise',             '~> 3.0.0.rc'
