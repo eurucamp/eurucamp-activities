@@ -33,7 +33,9 @@ body.user
 
   section.form
     +span-columns(6)
-    padding: 70px
+    padding: 10px
+    +media($smartphone-landscape)
+      padding: 70px
     margin: 0 auto
     background: $white
     box-shadow: 0 0 7px transparentize($black, 0.9)
