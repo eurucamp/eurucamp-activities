@@ -18,7 +18,7 @@
       %a#show-map= t("activity_form.location.show-map")
 
   %label.limit-of-participants>
-    = f.number_field :limit_of_participants, placeholder: "5"
+    = f.number_field :limit_of_participants, placeholder: 10, min: 1
     %small
       = t("activity_form.limit_of_participants.hint")
 
