@@ -32,8 +32,10 @@ body.user
     font-size: 1.5em
 
   section.form
-    width: 640px
-    padding: 70px
+    +span-columns(6)
+    padding: 10px
+    +media($smartphone-landscape)
+      padding: 70px
     margin: 0 auto
     background: $white
     box-shadow: 0 0 7px transparentize($black, 0.9)
