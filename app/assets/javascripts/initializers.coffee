@@ -88,6 +88,7 @@ ready = ->
   $filters    = $('form.filters label:not(.search)')
   $search     = $('form.filters label.search input')
   $activities = $('#activities li')
+  $days       = $('.activity-day')
 
   $filters.attr('unselectable', 'on')
           .css('user-select', 'none')
@@ -95,6 +96,7 @@ ready = ->
 
   filterActivities = ->
     $activities.show()
+    $days.show()
     # the filter tabs
     values = $filters.filter('.selected')
                      .find('input[type=radio]')
@@ -107,6 +109,12 @@ ready = ->
         .filter(':visible')
         .filter(-> !(new RegExp(query, 'i')).test $(@).find('a.details').attr('title'))
         .hide()
+      hideEmptyDays()
+
+  hideEmptyDays = ->
+    $days
+      .filter(-> $(@).find('li:visible').length == 0)
+      .hide()
 
   $filters.on 'click', (e)->
     e.preventDefault()
