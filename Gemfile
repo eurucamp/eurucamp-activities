@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'rails',              '4.2.8'
+gem 'rails',              '5.0.1'
 gem 'pg'
 gem 'unicorn'
 gem 'settingslogic'
 gem 'newrelic_rpm'
 gem 'devise',             '~> 4.2.0'
-gem 'omniauth',           '~> 1.1.4'
-gem 'omniauth-github',    '~> 1.1.0'
-gem 'omniauth-twitter',   '~> 0.0.16'
-gem 'simple_form',        '~> 3.0.1'
+gem 'omniauth',           '~> 1.6.1'
+gem 'omniauth-github'
+gem 'omniauth-twitter'
+gem 'simple_form',        '~> 3.4.0'
 gem 'dotenv-rails'
 
 gem 'modernizr-rails'
-gem 'sprockets-rails',    '~> 2.1.3'
+gem 'sprockets-rails',    '~> 3.2.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder',           '~> 1.0.1'
@@ -21,12 +21,14 @@ gem 'bourbon'
 gem 'neat'
 gem 'haml-rails'
 gem 'rails_html_helpers'
-gem 'draper'
+gem 'draper',           '~> 3.0.0.pre1'
 gem 'cancan'
 gem 'redcarpet'
-gem 'sass-rails',       '~> 4.0.3'
-gem 'coffee-rails',     '~> 4.0.0'
+gem 'sass-rails',       '~> 5.0.6'
+gem 'coffee-rails',     '~> 4.2.1'
 gem 'uglifier',         '>= 1.0.3'
+
+gem 'activemodel-serializers-xml'
 
 group :development do
   gem 'foreman'
@@ -40,6 +42,7 @@ group :test, :development do
 end
 
 group :test do
+  gem 'rails-controller-testing'
   gem 'rspec-its'
   gem 'rspec-activemodel-mocks'
   gem 'simplecov',        require: false
