@@ -51,5 +51,4 @@ end
 group :production, :staging do
   gem 'exception_notification', '~> 4.0.1'
   gem 'rack-robotz',            '~> 0.0.3'
-  gem 'shelly-dependencies'
 end
