@@ -68,7 +68,7 @@ class Event
 
   def activities_per_day(author = nil, query_string = "", filter = "all")
     activities = search_activities(author, query_string, filter)
-    activities.sort_by! { |activity| activity.start_time }
+    activities = activities.to_a.sort_by { |activity| activity.start_time }
 
     activities.each_with_object(Hash.new { [] }) do |activity, grouped_by_day|
       activity.dates.each do |date|
