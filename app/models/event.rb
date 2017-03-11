@@ -26,10 +26,10 @@ class Event
 
   def counters(user)
     {
-      today: Activity.today.count,
+      today: Activity.today.count(:all),
       all: Activity.count,
-      participant: user.nil? ? 0 : Activity.participated_by(user).count,
-      owner: user.nil? ? 0 : Activity.created_by(user).count
+      participant: user.nil? ? 0 : Activity.participated_by(user).count(:all),
+      owner: user.nil? ? 0 : Activity.created_by(user).count(:all)
     }
   end
 
