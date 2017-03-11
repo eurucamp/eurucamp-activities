@@ -2,8 +2,9 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-# Assets should be precompiled for production (so we don't need the gems loaded then)
-Bundler.require(*Rails.groups(assets: %w(development test)))
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
 
 module Activities
   class Application < Rails::Application
@@ -19,13 +20,7 @@ module Activities
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
-
-    # don't generate any assets
-    config.generators.assets = false
-
-    config.assets.initialize_on_precompile = false
-
-    config.i18n.enforce_available_locales = true
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

@@ -1,4 +1,4 @@
-Activities::Application.routes.draw do
+Rails.application.routes.draw do
   resources  :authentications, only: [:create, :destroy]
   get '/auth/:provider/callback' => 'authentications#create'
 
