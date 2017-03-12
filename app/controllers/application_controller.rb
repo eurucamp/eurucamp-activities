@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_event
   layout :layout_by_resource
 
-  before_filter :clean_up_session
-  before_filter :authenticate_user!
+  before_action :clean_up_session
+  before_action :authenticate_user!
 
   rescue_from CanCan::AccessDenied, with: :rescue_access_denied
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_record_not_found
