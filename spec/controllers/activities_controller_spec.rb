@@ -100,7 +100,7 @@ RSpec.describe ActivitiesController do
       let(:params) { {activity: attributes} }
 
       before do
-        expect(current_event).to receive(:new_activity).with(current_user, attributes.with_indifferent_access).and_return(activity)
+        expect(current_event).to receive(:new_activity).with(current_user, ActionController::Parameters.new(attributes).permit!).and_return(activity)
         expect(activity).to receive(:save).and_return(true)
       end
 
@@ -112,7 +112,7 @@ RSpec.describe ActivitiesController do
       let(:params) { {activity: {x: 10}} }
 
       before do
-        expect(current_event).to receive(:new_activity).with(current_user, {}).and_return(activity)
+        expect(current_event).to receive(:new_activity).with(current_user, ActionController::Parameters.new({}).permit!).and_return(activity)
         expect(activity).to receive(:save).and_return(false)
       end
 
@@ -135,7 +135,7 @@ RSpec.describe ActivitiesController do
       let(:attributes) { {location: "Location", name: "Name", start_time: 1.day.ago.to_s, end_time: 2.days.ago.to_s} }
 
       before do
-        expect(activity).to receive(:update_attributes).with(attributes.with_indifferent_access).and_return(true)
+        expect(activity).to receive(:update_attributes).with(ActionController::Parameters.new(attributes).permit!).and_return(true)
       end
 
       it { is_expected.to redirect_to edit_activity_path(activity) }
@@ -146,7 +146,7 @@ RSpec.describe ActivitiesController do
       let(:activity) { invalid_activity }
 
       before do
-        expect(activity).to receive(:update_attributes).with(attributes.with_indifferent_access).and_return(false)
+        expect(activity).to receive(:update_attributes).with(ActionController::Parameters.new(attributes).permit!).and_return(false)
       end
 
       it { is_expected.to render_template(:edit) }
