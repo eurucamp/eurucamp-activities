@@ -18,7 +18,7 @@ class AuthenticationsController < ApplicationController
       current_user.apply_provider_handle(omniauth)
       current_user.save
       flash[:notice] = 'Connected successfully'
-      redirect_to :back
+      redirect_back(fallback_location: edit_user_registration_url)
     else
       user = User.new
       user.apply_omniauth(omniauth)
