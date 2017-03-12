@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
-  skip_before_filter :authenticate_user!, only: :create
-  skip_before_filter :clean_up_session, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: :create
+  skip_before_action :clean_up_session, only: [:new, :create]
 
   helper_method :during_oauth_flow?
 
