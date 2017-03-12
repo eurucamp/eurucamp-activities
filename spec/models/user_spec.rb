@@ -173,7 +173,7 @@ RSpec.describe User do
     subject { User.new }
 
     it { is_expected.to     accept_values_for(:email, "xx@xx.com" ) }
-    it { is_expected.not_to accept_values_for(:email, "", nil, " x @ x.com", "123", "login@server." ) }
+    it { is_expected.not_to accept_values_for(:email, "", nil, " x @ x.com", "123") }
 
     it { is_expected.to     accept_values_for(:password, "qweqweqwe" ) }
     it { is_expected.not_to accept_values_for(:password, "qweqwe", nil, "") }

@@ -56,7 +56,7 @@ RSpec.describe AuthenticationsController do
   end
 
   describe "#delete" do
-    subject(:logout_action) { delete :destroy, id: authentication_id }
+    subject(:logout_action) { delete :destroy, params: { id: authentication_id } }
 
     before do
       sign_in(current_user)
