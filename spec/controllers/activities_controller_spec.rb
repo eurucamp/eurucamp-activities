@@ -39,7 +39,7 @@ RSpec.describe ActivitiesController do
   end
 
   describe "#edit" do
-    subject { get :edit, id: activity_id }
+    subject { get :edit, params: { id: activity_id } }
 
     before do
       sign_in(current_user)
@@ -65,7 +65,7 @@ RSpec.describe ActivitiesController do
   end
 
   describe "#show" do
-    subject { get :show, id: activity_id }
+    subject { get :show, params: { id: activity_id } }
 
     before do
       sign_in(current_user)
@@ -89,7 +89,7 @@ RSpec.describe ActivitiesController do
   end
 
   describe "#create" do
-    subject { post :create, params }
+    subject { post :create, params: params }
 
     before do
       sign_in(current_user)
@@ -121,7 +121,7 @@ RSpec.describe ActivitiesController do
   end
 
   describe "#update" do
-    subject { put :update, params }
+    subject { put :update, params: params }
     let(:params) { {id: activity_id, activity: attributes} }
 
     before do
@@ -154,7 +154,7 @@ RSpec.describe ActivitiesController do
   end
 
   describe "#destroy" do
-    subject { delete :destroy, {id: activity_id, confirm_delete: true} }
+    subject { delete :destroy, params: {id: activity_id, confirm_delete: true} }
 
     before do
       sign_in(current_user)
