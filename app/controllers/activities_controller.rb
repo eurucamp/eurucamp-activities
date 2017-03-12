@@ -1,8 +1,8 @@
 class ActivitiesController < ApiController
   respond_to :html
 
-  skip_before_filter :authenticate_user!, only: [:index, :show]
-  before_filter :load_resource, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :load_resource, only: [:show, :edit, :update, :destroy]
   authorize_resource only: [:edit, :update, :destroy]
 
   def index

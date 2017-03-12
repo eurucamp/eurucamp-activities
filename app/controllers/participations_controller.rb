@@ -8,7 +8,7 @@ class ParticipationsController < ApiController
     end
 
     respond_with(current_activity.reload, @participation) do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_back(fallback_location: activity_url(current_activity)) }
     end
   end
 

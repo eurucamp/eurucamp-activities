@@ -7,7 +7,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 
 Capybara.configure do |config|
-  config.default_wait_time = 5
+  config.default_max_wait_time = 5
   # config.match = :one
   # config.exact_options = true
   # config.ignore_hidden_elements = true
@@ -61,7 +61,7 @@ RSpec.configure do |config|
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
 
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Warden::Test::Helpers
   config.before :suite do
     Warden.test_mode!

@@ -15,7 +15,7 @@ RSpec.describe ParticipationsController do
 
   describe "#create" do
     context "with :js format" do
-      subject { post :create, {activity_id: activity_id, format: :js} }
+      subject { post :create, params: {activity_id: activity_id, format: :js} }
 
       before do
         sign_in(current_user)
@@ -60,7 +60,7 @@ RSpec.describe ParticipationsController do
 
   describe "#destroy" do
     context "with :js format" do
-      subject { delete :destroy, {activity_id: activity_id, format: :js} }
+      subject { delete :destroy, params: { activity_id: activity_id }, format: :js }
 
       before do
         sign_in(current_user)
