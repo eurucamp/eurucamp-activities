@@ -1,19 +1,19 @@
 defaults: &defaults
   event:
-    name: "rubyweek"
+    name: "Isle of Ruby"
     start_time: 2015-07-27 00:00:00
     end_time: 2015-08-09 23:59:59
-  host: "rubyweek.org"
+  host: "activities.isleofruby.org"
   mailers:
-    from: "activities@eurucamp.org"
+    from: "activities@isleofruby.org"
   errors:
-    from: "exception@eurucamp.org"
+    from: "exception@isleofruby.org"
     to:
-      - "cfp-errors@eurucamp.org"
+      - "cfp-errors@isleofruby.org"
   seo:
-    title: "rubyweek"
-    author: "eurucamp team"
-    description: "List of events around eurucamp and JRubyConf"
+    title: "Isle of Ruby"
+    author: "Isle of Ruby team"
+    description: "List of events at and around Isle of Ruby"
 
 development:
   <<: *defaults
@@ -24,7 +24,7 @@ test:
 
 staging:
   <<: *defaults
-  host: "eurucamp-activities-staging.shellyapp.com"
+  host: "TBD"
 
 production:
   <<: *defaults
