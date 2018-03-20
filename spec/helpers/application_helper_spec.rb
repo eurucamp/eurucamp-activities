@@ -6,7 +6,7 @@ RSpec.describe ApplicationHelper do
     let(:size) { 64 }
 
     context 'with a Twitter account' do
-      let(:user) { User.new(twitter_handle: 'eurucamp') }
+      let(:user) { User.new(twitter_handle: 'isleofruby') }
       it { is_expected.to match %r{//twitter.com/#{user.twitter_handle}/profile_image} }
     end
 
