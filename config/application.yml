@@ -1,8 +1,8 @@
 defaults: &defaults
   event:
     name: "Isle of Ruby"
-    start_time: 2015-07-27 00:00:00
-    end_time: 2015-08-09 23:59:59
+    start_time: 2017-04-11 00:00:00
+    end_time: 2017-04-16 23:59:59
   host: "activities.isleofruby.org"
   mailers:
     from: "activities@isleofruby.org"
