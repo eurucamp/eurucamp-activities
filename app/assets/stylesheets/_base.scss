@@ -1,0 +1,75 @@
+body {
+  background-image:   image-url('layout/bg.png');
+  background-size:    20vh;
+}
+
+
+.page-section {
+  &__wrapper {
+    width:              100vw;
+    min-height:         calc(100vh - 50px);
+    display:            flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: stretch;
+    @media (min-width: $mobile-tablet-landscape){
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    @media (min-width: $desktop-medium) {
+      max-width: $desktop-medium;
+      margin: 0 auto;
+    }
+  }
+
+  &__image {
+    text-align: center;
+    padding: 2rem 0;
+    @media (min-width: $mobile-tablet-landscape){
+      display:            flex;
+      align-content: center;
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 10vw;
+      align-items: stretch;
+    }
+    .page-section__image--horizontal {
+      max-width: 90%;
+      @media (min-width: $mobile-tablet-portrait) {
+        max-width: 60%;
+      }
+      @media (min-width: $mobile-tablet-landscape){
+        display: none;
+      }
+    }
+    .page-section__image--vertical {
+      width: 70%;
+      display: none;
+      align-self: flex-start;
+      padding: 8rem 0 4rem; // same as inner
+      @media (min-width: $mobile-tablet-landscape){
+        display: block;
+      }
+    }
+  }
+
+  &__inner {
+    width: 100vw;
+    padding: 2rem;
+    @media (min-width: $mobile-tablet-landscape){
+      width: 90vw;
+      max-width: 1000px;
+      padding: 8rem 2rem 5rem;
+    }
+  }
+}
+
+.page-section--sub-page {
+  .page-section__image {
+    @media (max-width: $mobile-tablet-landscape){
+      margin-top: 140px; //page-header-mobile-sky height
+    }
+  }
+}

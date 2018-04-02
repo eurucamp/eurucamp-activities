@@ -1,0 +1,95 @@
+.page-header-mobile {
+  .page-header-mobile-sky {
+    position:         fixed;
+    top:              0;
+    width:            100vw;
+    height:           60px;
+    background:       #ACE2F7;
+    background-image: linear-gradient(to bottom, #71C4EC 0%, #ACE2F7 100%);
+    opacity: .9;
+  }
+  .page-header-mobile-logo {
+    position: fixed;
+    top:      -32px;
+    left:     calc(50vw - 100px); //25vw;
+    width:    200px; //50vw;
+    height:   200px; //50vw;
+    background-image:     image-url('hero/IoR_illustration.svg');
+    background-repeat:    no-repeat;
+    background-position:  center;
+    z-index:              100;
+  }
+  .page-header-mobile-text {
+    padding-top: 150px;
+    text-align: center;
+    img {
+      width: 80%;
+      max-width: 500px;
+    }
+  }
+}
+.page-header {
+  display: none;
+}
+
+@media (min-width: 700px) and (min-height: 650px) {
+  .page-header-mobile {
+    display: none;
+  }
+  .page-header {
+    display: block;
+    min-height:         25vh;
+
+    &--hero {
+      position:         fixed;
+      min-height:       90vh;
+    }
+
+    &__sky {
+      position:         absolute;
+      top:              0;
+      width:            100vw;
+      height:           8vw;
+      background:       #ACE2F7;
+      background-image: linear-gradient(to bottom, #71C4EC 0%, #ACE2F7 100%);
+      opacity: .9;
+
+      .page-header--hero & {
+        height:         200px; // 20vw;
+      }
+    }
+
+    &__logo {
+      position: absolute;
+      top:      -0.5vw;
+      left:     40vw;
+      width:    20vw;
+      height:   20vw;
+
+      background-image:     image-url('hero/IoR_illustration.svg');
+      background-repeat:    no-repeat;
+      background-position:  center;
+      z-index:              100;
+
+      .page-header--hero & {
+        top:      -120px;
+        left:     calc(50vw - 350px); //25vw;
+        width:    700px; //50vw;
+        height:   700px; //50vw;
+      }
+    }
+
+    &__logo-text {
+      display: none;
+
+      .page-header--hero & {
+        display: block;
+      }
+
+      img {
+        width:    700px;
+        margin:   550px 0; //vw 0;
+      }
+    }
+  }
+}

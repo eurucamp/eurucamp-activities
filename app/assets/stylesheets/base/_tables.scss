@@ -1,0 +1,45 @@
+table {
+  border-collapse: collapse;
+  margin: $small-spacing 0;
+  table-layout: fixed;
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+th {
+  border-bottom: $base-border;
+  font-weight: 600;
+  padding: $small-spacing 0;
+  text-align: left;
+  &.-center {
+    text-align: center;
+  }
+}
+
+td {
+  border-bottom: $base-border;
+  padding: $small-spacing 0;
+  text-align: center;
+  &.-left {
+    text-align: left;
+  }
+  &.-crossed_out {
+    text-decoration: line-through;
+    color: $medium-gray;
+  }
+  &.-grayed_out {
+    color: $medium-gray;
+  }
+}
+
+tr,
+td,
+th {
+  vertical-align: middle;
+}
+
+@media (max-width: 700px) {
+  table {
+    font-size: .6rem;
+  }
+}

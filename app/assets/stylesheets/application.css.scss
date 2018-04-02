@@ -1,18 +1,24 @@
-@import "normalize";
+@import url("https://use.typekit.net/saw4kew.css");
+
+@import "vendor/normalize.css";
+@import "vendor/animate-custom";
 @import "bourbon";
+
+@import "base/base";
+
 @import "settings";
-@import "neat";
+
+@import "fonts";
 @import "utils";
 @import "base";
-@import "pickadate_overrides";
 
 @import "pickadate/default";
 @import "pickadate/default.date";
 @import "pickadate/default.time";
 
-@import "partials/layout";
-@import "partials/header";
+@import "partials/hero";
 @import "partials/footer";
 
+@import "partials/home";
 @import "partials/activities";
-@import "partials/user";
+@import "partials/schedule";
