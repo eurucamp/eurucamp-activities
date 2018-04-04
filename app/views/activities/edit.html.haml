@@ -1,21 +1,28 @@
-%article
-  %header
-    %h2
-      = t("edit_activity.title")
+%article.page-section.page-section--sub-page
+  .page-section__wrapper
+    .page-section__image
+      = image_tag "activities/edit.svg", class: "page-section__image--vertical"
+      -#= image_tag "activities/edit_mobile.svg", class: "page-section__image--horizontal"
+    .page-section__inner
+      %h2
+        = t("edit_activity.title")
 
-    %p.meta
-      = link_to t("activities.more_info.label_long"), @activity
-      %strong.divider
-        = t("common.or").downcase
-      = link_to t("activities.new.label").downcase, new_activity_path
+      %p.meta
+        = link_to t("activities.more_info.label_long"), @activity
+        %strong.divider
+          = t("common.or").downcase
+        = link_to t("activities.new.label").downcase, new_activity_path
 
-  = render "form"
+      = render "form"
 
+%article.page-section.page-section--sub-page
+  .page-section__wrapper
+    .page-section__image
+      = image_tag "activities/activities.svg", class: "page-section__image--vertical"
+      -#= image_tag "activities/activities_mobile.svg", class: "page-section__image--horizontal"
+    .page-section__inner
+      %h2= t("activities.danger_zone")
+      %p.meta
+        %strong= t("delete_activity_form.title")
 
-%article.delete-activity
-  %header
-    %h2= t("activities.danger_zone")
-    %p.meta
-      %strong= t("delete_activity_form.title")
-
-  = render "delete_form"
+    = render "delete_form"

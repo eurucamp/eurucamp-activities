@@ -1,6 +1,10 @@
-%article
-  %header
-    %h2
-      = t("new_activity.title")
+%article.page-section.page-section--sub-page
+  .page-section__wrapper
+    .page-section__image
+      = image_tag "speakers/speakers.svg", class: "page-section__image--vertical"
+      = image_tag "speakers/speakers_mobile.svg", class: "page-section__image--horizontal"
+    .page-section__inner
+      %h2
+        = t("new_activity.title")
 
-  = render "form"
+      = render "form"

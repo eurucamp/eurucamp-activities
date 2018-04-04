@@ -1,0 +1,43 @@
+#{$all-buttons}, .button {
+  appearance: none;
+  // background-color: $action-color;
+  border: 5px solid $action-color;
+  // border-radius: $base-border-radius;
+  color: $action-color;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $base-font-family;
+  font-size: 1em;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 600;
+  line-height: 1;
+  padding: $small-spacing $base-spacing;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color $base-duration $base-timing;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background-color: shade($action-color, 20%);
+    color: white;
+    opacity: .8;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: $action-color;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  #{$all-buttons}, .button {
+    font-size: .8em;
+  }
+}

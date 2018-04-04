@@ -1,0 +1,96 @@
+.footer {
+  background-color: darken(rgba(79, 113, 154, .8), 40%);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
+  color: #999;
+  text-align:  center;
+  font-size: 1rem;
+  .footer-signature, .footer-social, .footer-newsletter {
+    flex-grow: 1;
+    flex-basis: 250px;
+    padding: 2rem;
+  }
+  .footer-signature {
+    img {
+      filter: grayscale(100%);
+      max-width: 125px;
+      display: block;
+      margin: 0 auto;
+    }
+    .colophon {
+      padding-top: 1rem;
+    }
+  }
+}
+
+.footer-social {
+  &__list {
+    @include unlisted;
+  }
+
+  &__list-item {
+    display: inline;
+  }
+
+  &__list-link {
+    width:        40px;
+    height:       40px;
+    display:      inline-block;
+    text-indent:  -999em;
+    background:   transparent url(/images/footer/social_sprite.png) no-repeat;
+
+    $x: 0px;
+    @each $item in twitter, facebook, github, instagram, medium {
+      &.-#{$item} {
+        background-position: $x 0;
+        $x: $x - 40px;
+      }
+    }
+
+    &:hover {
+      background-position-y: -40px;
+    }
+  }
+  .footer-navigation {
+    padding-top: 1rem;
+    &__list {
+      @include unlisted;
+    }
+
+    &__list-item {
+      // display: inline;
+    }
+
+    &__list-link {
+      // color:  white;
+    }
+  }
+}
+
+.footer-newsletter {
+  p, input, label {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  input {
+    max-width: 250px;
+    margin: .5rem auto;
+  }
+  .button {
+    background: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: 'Adonis-web';
+    font-weight: 700;
+    &:hover,
+    &:focus {
+      background-color: shade($action-color, 20%);
+      color: white;
+      opacity: .8;
+    }
+  }
+}

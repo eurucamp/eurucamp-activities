@@ -7,9 +7,8 @@
   %body(class="#{ body_class(controller.action_name) }")
     = render "partials/chrome_frame"
     = render "partials/notifications"
-    #container
-      = render "partials/header"
-      #main(role="main")
-        = yield
-      = render "partials/footer"
+    = render "partials/header"
+    #main(role="main")
+      = yield
+    = render "partials/footer"
     = javascript_include_tag "application"

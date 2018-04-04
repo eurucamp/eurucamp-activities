@@ -1,4 +1,4 @@
-# eurucamp Activities [![License](http://img.shields.io/:license-AGPL-0030c8.svg)](COPYRIGHT) [![Build Status](https://travis-ci.org/eurucamp/eurucamp-activities.png?branch=master)](https://travis-ci.org/eurucamp/eurucamp-activities)
+# eurucamp Activities [![License](http://img.shields.io/:license-AGPL-0030c8.svg)](COPYRIGHT) [![Build Status](https://travis-ci.org/isleofruby/isleofruby-activities.png?branch=master)](https://travis-ci.org/isleofruby/isleofruby-activities)
 
 The Activities app is a small application to allow attendees to organize and plan small event in and around a conference. Users create events or sign up to created ones. Signup works through GitHub or Twitter.
 
@@ -6,19 +6,17 @@ The app is mobile friendly and easy to run on a free Heroku account.
 
 ## Donationware
 
-The app was created by members on the Ruby Berlin e.V. on their free time as a community effort for the eurucamp conference. Ruby Berlin is the body behind RailsGirls Berlin and Hamburg, eurucamp and JRubyConf.eu.
+The app was created by members on the Ruby Berlin e.V. on their free time as a community effort initially for the eurucamp conference. Ruby Berlin is the body behind RailsGirls Berlin and Hamburg, eurucamp and JRubyConf.eu.
 
-If you end up using the app, please get in [contact](mailto:info@eurucamp.org) so that we know. Also, spread the word about our [projects](http://rubyberlin.org). Also, consider [donating](https://www.betterplace.org/en/organisations/ruby-berlin/), especially, if you run a commercial conference. We are a registered non-profit, donations are tax deducible. Betterplace handles all paperwork - if in doubt, send us a mail.
+If you end up using the app, please get in [contact](mailto:info@isleofruby.org) so that we know. Also, spread the word about our [projects](http://rubyberlin.org). Also, consider [donating](https://www.betterplace.org/en/organisations/ruby-berlin/), especially, if you run a commercial conference. We are a registered non-profit, donations are tax deducible. Betterplace handles all paperwork - if in doubt, send us a mail.
 
 If you cannot or don't want to donate - use it, it's free.
 
 ## Logo
 
-Don't use the eurucamp logo for your instance to avoid confusion.
+Don't use the Isle of Ruby logo for your instance to avoid confusion.
 
 ## Examples
-
-An instance of the app can be seen running at the [rubyweek page](http://rubyweek.org).
 
 Screenshot: ![The activities app](screenshot.png)
 
@@ -26,7 +24,7 @@ Screenshot: ![The activities app](screenshot.png)
 
 To deploy the app, you need the following:
 
-* Clone this repository: `https://github.com/eurucamp/eurucamp-activities-2013/`
+* Clone this repository: `https://github.com/isleofruby/isleofruby-activities/`
 
 * An account and a created application at Heroku.
 * A registered Twitter application. Go [here](https://apps.twitter.com/).

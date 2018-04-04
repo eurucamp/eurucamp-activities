@@ -1,64 +1,67 @@
-%article#activity
-  %header
-    %h2
-      = @activity.name
-      - if @activity.requires_eurucamp_ticket
-        %br
-        = image_tag 'shared/eurucamp-2015.svg',
-          class: 'requires_eurucamp_ticket',
-          alt: t('activities.requires_eurucamp_ticket'),
-          title: t('activities.requires_eurucamp_ticket')
-    %p.meta
-      = t("activities.organized_by", name: @activity.creator_name).html_safe
+%article.page-section.page-section--sub-page
+  .page-section__wrapper
+    .page-section__image
+      = image_tag "activities/activities.svg", class: "page-section__image--vertical"
+      -#= image_tag "activities/activities_mobile.svg", class: "page-section__image--horizontal"
+    .page-section__inner
+      %h2
+        = @activity.name
+        - if @activity.requires_eurucamp_ticket
+          %br
+          = image_tag 'shared/IoR_illustration.svg',
+            class: 'requires_eurucamp_ticket',
+            alt: t('activities.requires_eurucamp_ticket'),
+            title: t('activities.requires_eurucamp_ticket')
+      %p.meta
+        = t("activities.organized_by", name: @activity.creator_name).html_safe
 
-    = render "action", activity: @activity, type: @activity.relation_ship_with(current_user), remote: false
+      = render "action", activity: @activity, type: @activity.relation_ship_with(current_user), remote: false
 
-  %section.overview
-    = render "activities/progress", activity: @activity
-    %p
-      = @activity.room_left
-    - if @activity.participants.any?
-      .participants
-        %h3
-          = t("activities.participants")
-        %ul
-          - ParticipantDecorator.decorate_collection(@activity.participants).each do |participant|
-            %li(title="#{ participant.name }")>
-              = image_tag(participant.avatar_url(48))
+    %section.overview
+      = render "activities/progress", activity: @activity
+      %p
+        = @activity.room_left
+      - if @activity.participants.any?
+        .participants
+          %h3
+            = t("activities.participants")
+          %ul
+            - ParticipantDecorator.decorate_collection(@activity.participants).each do |participant|
+              %li(title="#{ participant.name }")>
+                = image_tag(participant.avatar_url(48))
 
-  %section.description
-    .wrapper
-      = @activity.description_markdown
+    %section.description
+      .wrapper
+        = @activity.description_markdown
 
-      - unless @activity.requirements_markdown.empty?
-        %h4
-          = t("activities.required")
-        = @activity.requirements_markdown
+        - unless @activity.requirements_markdown.empty?
+          %h4
+            = t("activities.required")
+          = @activity.requirements_markdown
 
-  %section.details
-    %dl.wrapper
-      - if @activity.anytime?
+    %section.details
+      %dl.wrapper
+        - if @activity.anytime?
+          %dt
+            = t("activities.time_and_date")
+          %dd
+            = t("activities.anytime")
+        - else
+          %dt
+            = t("activities.start.label_short")
+          %dd
+            = l(@activity.start_time, format: :nice_date_and_time)
+          %dt
+            = t("activities.end.label_short")
+          %dd
+            = l(@activity.end_time, format: :nice_date_and_time)
         %dt
-          = t("activities.time_and_date")
+          = t("activities.location")
         %dd
-          = t("activities.anytime")
-      - else
-        %dt
-          = t("activities.start.label_short")
-        %dd
-          = l(@activity.start_time, format: :nice_date_and_time)
-        %dt
-          = t("activities.end.label_short")
-        %dd
-          = l(@activity.end_time, format: :nice_date_and_time)
-      %dt
-        = t("activities.location")
-      %dd
-        = @activity.location
-        %br
-        %br
-        %a#show-map= t("activity_form.location.show-map")
+          = @activity.location
+          %br
+          %br
+          %a#show-map= t("activity_form.location.show-map")
 
-    #meeting-point-map.meeting-point-map
-      = image_tag 'activities/meeting_points.svg'
-
+      #meeting-point-map.meeting-point-map
+        = image_tag 'activities/meeting_points.svg'
