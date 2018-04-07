@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,7 +15,7 @@ ActiveRecord::Schema.define(version: 20150725210346) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "activities", force: true do |t|
+  create_table "activities", force: :cascade do |t|
     t.string   "name",                     default: "",    null: false
     t.text     "description"
     t.string   "location"
@@ -31,11 +30,10 @@ ActiveRecord::Schema.define(version: 20150725210346) do
     t.datetime "end_time"
     t.text     "image_url"
     t.boolean  "requires_eurucamp_ticket", default: false, null: false
+    t.index ["name"], name: "index_activities_on_name", unique: true, using: :btree
   end
 
-  add_index "activities", ["name"], name: "index_activities_on_name", unique: true, using: :btree
-
-  create_table "authentications", force: true do |t|
+  create_table "authentications", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
@@ -43,14 +41,14 @@ ActiveRecord::Schema.define(version: 20150725210346) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "participations", force: true do |t|
+  create_table "participations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
     t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
@@ -67,9 +65,8 @@ ActiveRecord::Schema.define(version: 20150725210346) do
     t.string   "twitter_handle"
     t.string   "github_handle"
     t.boolean  "show_participation",     default: true, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
