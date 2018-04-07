@@ -3,6 +3,7 @@ class Activity < ActiveRecord::Base
 
   attr_accessor :event
   attr_writer :participation_source # DI
+  serialize :additional_information, JSON
 
   belongs_to :creator, class_name: "User"
   has_many :participations, dependent: :destroy

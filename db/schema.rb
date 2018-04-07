@@ -10,28 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407000527) do
+ActiveRecord::Schema.define(version: 20180407125848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
-    t.string   "name",                  default: "",    null: false
+    t.string   "name",                   default: "",    null: false
     t.text     "description"
     t.string   "location"
     t.datetime "start_time"
-    t.integer  "limit_of_participants", default: 10
+    t.integer  "limit_of_participants",  default: 10
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
-    t.integer  "participations_count",  default: 0,     null: false
-    t.boolean  "anytime",               default: false, null: false
+    t.integer  "participations_count",   default: 0,     null: false
+    t.boolean  "anytime",                default: false, null: false
     t.text     "requirements"
     t.datetime "end_time"
     t.text     "image_url"
-    t.boolean  "requires_event_ticket", default: false, null: false
-    t.boolean  "official",              default: false, null: false
-    t.index ["name"], name: "index_activities_on_name", unique: true, using: :btree
+    t.boolean  "requires_event_ticket",  default: false, null: false
+    t.boolean  "official",               default: false, null: false
+    t.jsonb    "additional_information", default: {},    null: false
+    t.index ["name"], name: "index_activities_on_name", using: :btree
   end
 
   create_table "authentications", force: :cascade do |t|
