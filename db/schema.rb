@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406233916) do
+ActiveRecord::Schema.define(version: 20180407000527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20180406233916) do
     t.datetime "end_time"
     t.text     "image_url"
     t.boolean  "requires_event_ticket", default: false, null: false
+    t.boolean  "official",              default: false, null: false
     t.index ["name"], name: "index_activities_on_name", unique: true, using: :btree
   end
 
