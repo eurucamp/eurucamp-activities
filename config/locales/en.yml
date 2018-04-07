@@ -81,7 +81,7 @@ en:
       label_short: End
     location: Location
     required: Required
-    requires_eurucamp_ticket: "During the Isle of Ruby participants need a ticket"
+    requires_event_ticket: "During the Isle of Ruby participants need a ticket"
     participants: Participants
     organized_by: "Organized by <strong>%{name}</strong>"
     room_left:
@@ -131,7 +131,7 @@ en:
     requirements:
       label: Requirements
       hint:  "What to bring, to wear etc."
-    requires_eurucamp_ticket:
+    requires_event_ticket:
       hint: "During the Isle of Ruby participants need a ticket"
     image_url:
       label: URL for an image

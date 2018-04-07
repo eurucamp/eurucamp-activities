@@ -61,7 +61,7 @@ class ActivitiesController < ApiController
                     :name,
                     :location,
                     :requirements,
-                    :requires_eurucamp_ticket,
+                    :requires_event_ticket,
                     :description,
                     :limit_of_participants,
                     :anytime,

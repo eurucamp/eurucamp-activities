@@ -10,11 +10,11 @@
         = activity.name
       %p.creator
         = activity.creator_name
-      - if activity.requires_eurucamp_ticket
+      - if activity.requires_event_ticket
         = image_tag 'shared/isleofruby-2015.svg',
-          class: 'requires_eurucamp_ticket',
-          alt: t('activities.requires_eurucamp_ticket'),
-          title: t('activities.requires_eurucamp_ticket')
+          class: 'requires_event_ticket',
+          alt: t('activities.requires_event_ticket'),
+          title: t('activities.requires_event_ticket')
       %p.time
         = activity.time.html_safe
 
