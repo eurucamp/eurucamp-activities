@@ -7,4 +7,6 @@ before_script: cp config/database.yml.sample config/database.yml
 language: ruby
 rvm:
   - 2.3.3
+addons:
+  postgresql: "9.6"
 script: bundle exec rake db:create db:migrate spec
