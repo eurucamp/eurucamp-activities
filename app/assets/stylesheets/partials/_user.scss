@@ -25,7 +25,7 @@ body.user {
   }
 
   h2 {
-    @include custom-sans(bold);
+    @include custom-serif(bold);
 
     font-size: 1.8em;
     color: $white;
@@ -36,7 +36,7 @@ body.user {
   }
 
   h3, h4 {
-    @include custom-sans(medium);
+    @include custom-serif(medium);
 
     text-transform: uppercase;
     font-size: 1.5em;

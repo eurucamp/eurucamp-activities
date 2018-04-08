@@ -7,7 +7,7 @@ $types: participant ok remove, owner edit edit;
       border: 1px solid $light-gray;
       padding: 1em;
 
-      @include custom-sans(medium);
+      @include custom-serif(medium);
     }
   }
 
@@ -40,7 +40,7 @@ $types: participant ok remove, owner edit edit;
       margin-bottom: 2em;
 
       h1, h2, h3, h4, h5, h6 {
-        @include custom-sans(bold);
+        @include custom-serif(bold);
 
         text-transform: uppercase;
         margin: 1.5em 0 0;
@@ -116,8 +116,7 @@ $types: participant ok remove, owner edit edit;
       }
 
       dt {
-        @include custom-sans(medium);
-
+        font-style: italic;
         clear: left;
       }
 

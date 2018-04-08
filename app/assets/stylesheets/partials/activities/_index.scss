@@ -118,7 +118,7 @@ a#new-activity {
 
       // title
       h4 {
-        @include custom-sans(light);
+        @include custom-serif(light);
 
         font-size: 1.375em;
         margin: 0;

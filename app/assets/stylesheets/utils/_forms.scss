@@ -10,7 +10,7 @@ form {
     font-size: 1.25em;
     outline: none;
 
-    @include custom-sans(light);
+    @include custom-serif(light);
 
     z-index: 1;
     position: relative;
@@ -33,8 +33,6 @@ form {
 
     &.title {
       font-size: 1.35em;
-
-      @include custom-sans(medium);
     }
 
     &.validation-error {
