@@ -1,0 +1,29 @@
+// grid set-up
+$neat-grid: (columns: 6, gutter: 0px);
+
+// breakpoints
+$low-end: (media: "only screen and (min-width: 160px)", columns: 1);
+$mid-range: (media: "only screen and (min-width: 240px)", columns: 1);
+$smartphone-portrait: (media: "only screen and (min-width: 320px)", columns: 2);
+$smartphone-landscape: (media: "only screen and (min-width: 480px)", columns: 2);
+$tablet-lite: (media: "only screen and (min-width: 640px)", columns: 4);
+$tablet-lite-plus: (media: "only screen and (min-width: 750px)", columns: 4);
+$tablet-portrait: (media: "only screen and (min-width: 768px)", columns: 6);
+$tablet-portrait-plus: (media: "only screen and (min-width: 860px)", columns: 6);
+
+// colors
+$red: #e55924;
+$blue: #0ca9c4;
+$gray: #5b5e61;
+$purple: #671990;
+
+$green: #15d701;
+$yellow: #ffce00;
+
+$black: #222222;
+$extra-dark-gray: #2c2c2c;
+$darker-gray: #797979;
+$medium-gray: #8a8a8a;
+$light-gray: darken(#e2e2e2, 10);
+$extra-light-gray: darken(#f1f1f1, 5);
+$white: #ffffff;
