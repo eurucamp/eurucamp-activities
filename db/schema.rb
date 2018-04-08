@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407125848) do
+ActiveRecord::Schema.define(version: 20180408094505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20180407125848) do
     t.boolean  "requires_event_ticket",  default: false, null: false
     t.boolean  "official",               default: false, null: false
     t.jsonb    "additional_information", default: {},    null: false
+    t.text     "tags",                                                array: true
     t.index ["name"], name: "index_activities_on_name", using: :btree
   end
 
