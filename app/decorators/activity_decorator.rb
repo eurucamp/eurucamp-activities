@@ -11,7 +11,9 @@ class ActivityDecorator < Draper::Decorator
   end
 
   def creator_name
-    if creator
+    if official
+      "Isle of Ruby"
+    elsif creator
       creator.name.blank? ? creator.email : creator.name
     end
   end

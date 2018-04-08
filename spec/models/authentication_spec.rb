@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe Authentication do
   subject { Authentication.new }
 
-  specify { expect { FactoryGirl.create(:activity).dup.save! }.to raise_exception(ActiveRecord::RecordInvalid) }
-
   it { is_expected.to     accept_values_for(:user_id, 10) }
   it do
     skip "Currently Removed"
