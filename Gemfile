@@ -28,6 +28,8 @@ gem 'sass-rails',       '~> 5.0.6'
 gem 'coffee-rails',     '~> 4.2.1'
 gem 'uglifier',         '>= 1.0.3'
 
+gem 'autoprefixer-rails', '~> 8.2'
+
 gem 'activemodel-serializers-xml'
 
 group :development do
