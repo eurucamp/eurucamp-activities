@@ -1,0 +1,129 @@
+form {
+  text-align: center;
+
+  input, textarea {
+    width: 100%;
+    padding: 0.75em 15px 0.9em;
+    background: $extra-light-gray;
+    border: 1px solid $extra-light-gray;
+    margin: 0 0 2px 0;
+    font-size: 1.25em;
+    outline: none;
+
+    @include custom-sans(light);
+
+    z-index: 1;
+    position: relative;
+    resize: none;
+
+    &::placeholder {
+      color: $gray;
+    }
+
+    &.radio {
+      display: inline-block;
+      width: auto;
+    }
+
+    &.markdown {
+      background-image: image-url("shared/markdown.png");
+      background-repeat: no-repeat;
+      background-position: top right;
+    }
+
+    &.title {
+      font-size: 1.35em;
+
+      @include custom-sans(medium);
+    }
+
+    &.validation-error {
+      border-bottom: 1px solid $red;
+
+      &::placeholder {
+        color: lighten($red, 30);
+      }
+    }
+
+    &:focus {
+      z-index: 1000;
+      border: 1px solid $blue;
+      box-shadow: 0 0 10px transparentize($black, 0.85);
+      background: $white;
+
+      &.markdown {
+        background-image: none;
+      }
+    }
+  }
+
+  button {
+    display: block;
+    margin: 1em auto;
+
+    @extend %secondary-button-large;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+  }
+
+  label {
+    span.label {
+      html.js & {
+        display: none;
+      }
+    }
+  }
+
+  fieldset,
+  label {
+    display: block;
+    margin: 0 0 1.25em;
+    position: relative;
+
+    span.validation-error-message {
+      position: absolute;
+      right: 15px;
+      top: 0;
+      color: $red;
+      z-index: 1000;
+      line-height: 4em;
+    }
+  }
+
+  hr {
+    background-color: $light-gray;
+    border-width: 0;
+    color: $light-gray;
+    height: 1px;
+    line-height: 1em;
+    margin: 1.25em auto;
+    text-align: center;
+    width: 50%;
+  }
+
+  span.divider {
+    display: inline-block;
+  }
+
+  label.inline {
+    display: inline;
+
+    input {
+      display: inline;
+      width: auto;
+      margin: 0 0.25em 0 0;
+      vertical-align: baseline;
+    }
+  }
+
+  small {
+    font-size: 0.85em;
+    text-align: right;
+    display: block;
+    color: $medium-gray;
+    padding: 0.5em 15px;
+  }
+}

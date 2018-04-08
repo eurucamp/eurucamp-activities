@@ -1,0 +1,295 @@
+a#new-activity {
+  float: right;
+
+  @extend %icon-button-add;
+}
+
+.map {
+  margin: 6em 0 0;
+
+  h3 {
+    @include custom-sans(light);
+
+    text-align: center;
+
+    @extend %ornamental-divider-after;
+  }
+
+  iframe {
+    margin: 2em 0 0;
+    height: 400px;
+    border: none;
+  }
+
+  @include grid-media($tablet-lite) {
+    iframe {
+      height: 600px;
+    }
+  }
+}
+
+#activities {
+  clear: both;
+
+  @extend %clearfix;
+
+  @extend %unlisted;
+
+  padding: 1em 0 0 0;
+
+  // card variations
+  $types: participant ok remove, owner edit edit;
+
+  .activity-day {
+    clear: both;
+
+    h1 {
+      padding-top: 0.67em;
+      margin-top: 0;
+    }
+  }
+
+  li {
+    display: block;
+    margin: 0 0 2px 0;
+    text-align: center;
+
+    // icon in the upper right,
+    // shows up only if owner or participant
+    span.icon {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      opacity: 1;
+      transition: opacity 0.25s;
+    }
+
+    // select icon based on card variation
+    @each $type in $types {
+      &.#{nth($type, 1)} {
+        span.icon {
+          @extend %icon-#{nth($type, 2)};
+        }
+      }
+    }
+
+    // links are actually stacked in this case
+    // as one card has to support many purposes
+    a {
+      border: none;
+
+      // link to show action, usually covers whole card
+      // on hover appears as secondary button above title
+      &.details {
+        display: block;
+        position: absolute;
+        z-index: 100;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+
+        span {
+          @extend %secondary-button;
+
+          background: $medium-gray;
+          opacity: 0;
+          margin: 20em 0 0;
+        }
+      }
+    }
+
+    // card background and wrapper
+    .container {
+      background: lighten($extra-light-gray, 5);
+      border: 1px solid lighten($extra-light-gray, 5);
+      height: 25em;
+      padding: 2.5em 1em 1em 1em;
+      margin: 0 1px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease-in-out;
+    }
+
+    // all default text: title, organizer, date etc.
+    .labels {
+      margin: 1.5em 0 0 0;
+      color: $extra-dark-gray;
+
+      // title
+      h4 {
+        @include custom-sans(light);
+
+        font-size: 1.375em;
+        margin: 0;
+        padding: 0 0.727272em;
+
+        @extend %transition-all-15s-ease-out;
+
+        @extend %ornamental-divider-before;
+
+        @extend %ornamental-divider-after;
+
+        &:before,
+        &:after {
+          margin: 0.2em auto;
+          width: 20px;
+        }
+
+        &:before {
+          width: 0;
+          margin: 0 auto;
+        }
+      }
+
+      // creator and date/time rows
+      p {
+        opacity: 1;
+        transition: opacity 0.1s;
+
+        &.creator {
+          text-transform: uppercase;
+
+          @include custom-sans(medium);
+
+          @extend %smaller-text;
+
+          margin: 0.5em 0;
+        }
+
+        &.time {
+          position: absolute;
+          right: 1em;
+          bottom: 0;
+          left: 1em;
+
+          @include custom-serif(bold);
+
+          border-top: 1px solid $light-gray;
+          padding: 0.75em 0 0;
+        }
+      }
+    }
+
+    //
+    .progress {
+      display: inline-block;
+    }
+
+    // the big button appearing on hover
+    .action {
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 5em;
+      z-index: 1001;
+      transform: scale(0.9);
+      transition: all 0.35s ease-in-out 0;
+
+      a, button {
+        @extend %large-icon-button-ok;
+      }
+    }
+
+    // select action type based on card variation
+    @each $type in $types {
+      &.#{nth($type, 1)} {
+        .action {
+          a, button {
+            @extend %large-icon-button-#{nth($type, 3)};
+          }
+        }
+      }
+    }
+
+    // HOVER state
+    &:hover {
+      cursor: pointer;
+
+      .container {
+        z-index: 9001;
+        box-shadow: 0 0 25px transparentize($black, 0.85);
+        border-color: $extra-light-gray;
+        background: $white;
+      }
+
+      span.icon {
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+
+      a.details {
+        span {
+          opacity: 1;
+          transition: all 0.25s ease-in-out;
+        }
+      }
+
+      .progress-wrapper,
+      .container > .progress {
+        @extend %transition-all-15s-ease-out;
+
+        transform: translate(0, -9em);
+        opacity: 0;
+      }
+
+      &.full.default,
+      &.past {
+        .progress-wrapper,
+        .container > .progress {
+          @extend %transition-all-15s-ease-out;
+
+          transform: translate(0, 0);
+          opacity: 0.5;
+        }
+      }
+
+      .labels {
+        h4 {
+          @extend %transition-all-15s-ease-out;
+
+          transform: translate(0, 2.5em);
+
+          &:before {
+            width: 50%;
+            margin: 0 auto 0.5em;
+          }
+
+          &:after {
+            width: 0;
+          }
+        }
+
+        p {
+          transition: opacity 0.1s;
+          opacity: 0;
+        }
+
+        .requires_event_ticket {
+          transition: opacity 0.1s;
+          opacity: 0;
+        }
+      }
+
+      .action {
+        opacity: 1;
+        transform: scale(1);
+        transition: all 0.15s ease-out 0.15s;
+      }
+    }
+  }
+
+  @include grid-media($tablet-lite) {
+    li {
+      @include grid-column(2);
+    }
+  }
+
+
+  @include grid-media($tablet-portrait-plus) {
+    li {
+      @include grid-column(2);
+    }
+  }
+}

@@ -1,0 +1,101 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  background: $white;
+}
+
+body {
+  @include custom-sans;
+}
+
+a, a:visited {
+  color: $blue;
+  text-decoration: none;
+  border-bottom: 1px dotted $blue;
+  transition: all 0.25s;
+}
+
+a:hover {
+  border: none;
+  transition: all 0.25s;
+}
+
+#notifications {
+  div {
+    background: transparentize($green, 0.2);
+    color: $white;
+    text-align: center;
+    z-index: 9999;
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    right: 1em;
+    padding: 0.75em 0;
+
+    @include custom-sans(bold);
+
+    border-radius: 3px;
+    animation-delay: 0.25s;
+
+    @extend %animated-bounce-in-down;
+
+    &.error, &.alert {
+      background: transparentize($red, 0.2);
+    }
+  }
+
+  &.hide {
+    div {
+      @extend %animated-bounce-out-up;
+    }
+  }
+}
+
+#main {
+  position: relative;
+}
+
+article {
+  @extend %clearfix;
+
+  header {
+    text-align: center;
+    margin: 0 0 4em 0;
+    position: relative;
+
+    h2 {
+      @include custom-sans(light);
+
+      font-size: 2em;
+      margin: 0;
+
+      @extend %ornamental-divider-after;
+
+      &:after {
+        margin-bottom: 0.25em;
+      }
+    }
+
+    .meta {
+      text-transform: uppercase;
+
+      @extend %smaller-text;
+
+      strong {
+        @include custom-sans(medium);
+
+        &.divider {
+          @include custom-sans(bold);
+
+          margin: 0 0.5em;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+#footer {
+  padding: 2em 0;
+  text-align: center;
+
+  @extend %ornamental-divider-before;
+
+  nav {
+    ul {
+      @extend %inline-nav-list;
+    }
+  }
+}
