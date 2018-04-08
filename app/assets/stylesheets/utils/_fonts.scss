@@ -1,7 +1,7 @@
 $weights: bold bold, medium normal, normal normal;
 
 @mixin custom-sans($weight: normal) {
-  font-family: "omnes-pro", Helvetica, Arial, sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
   @if $weight == thin {
     font-weight: 100;
@@ -24,7 +24,7 @@ $weights: bold bold, medium normal, normal normal;
 }
 
 @mixin custom-serif($weight: normal, $style: normal) {
-  font-family: "freight-text-pro", Georgia, serif;
+  font-family: "abril-text", Georgia, serif;
 
   @if $weight == bold {
     font-weight: 700;
