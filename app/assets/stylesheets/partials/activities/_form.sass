@@ -54,17 +54,17 @@ form#new-activity
   label
     &.location
       display: inline-block
-      +span-columns(6)
-      +media($tablet-lite)
-        +span-columns(3)
+      +grid-column(6)
+      +grid-media($tablet-lite)
+        +grid-column(3)
 
     &.limit-of-participants
       display: inline-block
       text-align: right
-      +span-columns(6)
+      +grid-column(6)
 
-      +media($tablet-lite)
-        +span-columns(1)
+      +grid-media($tablet-lite)
+        +grid-column(1)
         input
           width: 85%
 

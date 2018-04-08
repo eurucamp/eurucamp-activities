@@ -1,27 +1,15 @@
-@import "neat-helpers"
-
-// DEV
-$visual-grid:          false
-$visual-grid-opacity:  0.2
-$visual-grid-index:    front
-$visual-grid-color:    blue
-
 // grid set-up
-$column:               225px
-$gutter:               0px
-$padding:              20px
-$grid-columns:         6
-$min-width:            em(900)
+$neat-grid:            ( columns: 6, gutter: 0px )
 
 // breakpoints
-$low-end:              min-width 160px 1
-$mid-range:            min-width 240px 1
-$smartphone-portrait:  min-width 320px 2
-$smartphone-landscape: min-width 480px 2
-$tablet-lite:          min-width 640px 4
-$tablet-lite-plus:     min-width 750px 4
-$tablet-portrait:      min-width 768px 6
-$tablet-portrait-plus: min-width 860px 6
+$low-end:              ( media: 'only screen and (min-width: 160px)', columns: 1 )
+$mid-range:            ( media: 'only screen and (min-width: 240px)', columns: 1 )
+$smartphone-portrait:  ( media: 'only screen and (min-width: 320px)', columns: 2 )
+$smartphone-landscape: ( media: 'only screen and (min-width: 480px)', columns: 2 )
+$tablet-lite:          ( media: 'only screen and (min-width: 640px)', columns: 4 )
+$tablet-lite-plus:     ( media: 'only screen and (min-width: 750px)', columns: 4 )
+$tablet-portrait:      ( media: 'only screen and (min-width: 768px)', columns: 6 )
+$tablet-portrait-plus: ( media: 'only screen and (min-width: 860px)', columns: 6 )
 
 // colors
 $red:                  #e55924

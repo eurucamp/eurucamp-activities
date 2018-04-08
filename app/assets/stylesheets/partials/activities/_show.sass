@@ -68,7 +68,7 @@ $types: participant ok remove, owner edit edit
 
         li
           padding: 0 5px
-          +inline-block
+          display: inline-block
 
         img
           border-radius: 24px
@@ -95,7 +95,7 @@ $types: participant ok remove, owner edit edit
         +custom-serif
         margin: 0
 
-  +media($smartphone-portrait)
+  +grid-media($smartphone-portrait)
     section
       &.overview
         .progress-wrapper
@@ -110,7 +110,7 @@ $types: participant ok remove, owner edit edit
           display: block
           border-radius: 125px
 
-  +media($tablet-portrait)
+  +grid-media($tablet-portrait)
     section
       width: percentage(1/3)
 

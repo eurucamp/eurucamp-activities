@@ -15,7 +15,7 @@ a#new-activity
     height: 400px
     border: none
 
-  +media($tablet-lite)
+  +grid-media($tablet-lite)
     iframe
       height: 600px
 
@@ -47,7 +47,7 @@ a#new-activity
       top: 15px
       right: 15px
       opacity: 1
-      +transition(opacity 0.25s)
+      transition: opacity 0.25s
 
     // select icon based on card variation
     @each $type in $types
@@ -86,7 +86,7 @@ a#new-activity
       margin: 0 1px
       position: relative
       overflow: hidden
-      +transition(all 0.35s ease-in-out)
+      transition: all 0.35s ease-in-out
 
     // all default text: title, organizer, date etc.
     .labels
@@ -115,7 +115,7 @@ a#new-activity
       // creator and date/time rows
       p
         opacity: 1
-        +transition(opacity 0.1s)
+        transition: opacity 0.1s
 
         &.creator
           text-transform: uppercase
@@ -134,7 +134,7 @@ a#new-activity
 
     //
     .progress
-      +inline-block
+      display: inline-block
 
     // the big button appearing on hover
     .action
@@ -144,8 +144,8 @@ a#new-activity
       right: 0
       top: 5em
       z-index: 1001
-      +transform(scale(0.9))
-      +transition(all 0.35s ease-in-out 0)
+      transform: scale(0.9)
+      transition: all 0.35s ease-in-out 0
 
       a, button
         @extend %large-icon-button-ok
@@ -169,17 +169,17 @@ a#new-activity
 
       span.icon
         opacity: 0
-        +transition(opacity 0.25s)
+        transition: opacity 0.25s
 
       a.details
         span
           opacity: 1
-          +transition(all 0.25s ease-in-out)
+          transition: all 0.25s ease-in-out
 
       .progress-wrapper,
       .container > .progress
         @extend %transition-all-15s-ease-out
-        +transform(translate(0, -9em))
+        transform: translate(0, -9em)
         opacity: 0
 
       &.full.default,
@@ -187,13 +187,13 @@ a#new-activity
         .progress-wrapper,
         .container > .progress
           @extend %transition-all-15s-ease-out
-          +transform(translate(0, 0))
+          transform: translate(0, 0)
           opacity: 0.5
 
       .labels
         h4
           @extend %transition-all-15s-ease-out
-          +transform(translate(0, 2.5em))
+          transform: translate(0, 2.5em)
 
           &:before
             width: 50%
@@ -203,23 +203,23 @@ a#new-activity
             width: 0
 
         p
-          +transition(opacity 0.1s)
+          transition: opacity 0.1s
           opacity: 0
 
         .requires_event_ticket
-          +transition(opacity 0.1s)
+          transition: opacity 0.1s
           opacity: 0
 
       .action
         opacity: 1
-        +transform(scale(1))
-        +transition(all 0.15s ease-out 0.15s)
+        transform: scale(1)
+        transition: all 0.15s ease-out 0.15s
 
 
-  +media($tablet-lite)
+  +grid-media($tablet-lite)
     li
-      +span-columns(2)
+      +grid-column(2)
 
-  +media($tablet-portrait-plus)
+  +grid-media($tablet-portrait-plus)
     li
-      +span-columns(2)
+      +grid-column(2)

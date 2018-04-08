@@ -1,35 +1,35 @@
 %animated
-  +animation-fill-mode(both)
-  +animation-duration(1s)
+  animation-fill-mode: both
+  animation-duration: 1s
 
 
-+keyframes(bounceInDown)
+@keyframes bounceInDown
   0%
     opacity: 0
-    +transform(translateY(-2000px))
+    transform: translateY(-2000px)
   60%
     opacity: 1
-    +transform(translateY(30px))
+    transform: translateY(30px)
   80%
-    +transform(translateY(-10px))
+    transform: translateY(-10px)
   100%
-    +transform(translateY(0))
+    transform: translateY(0)
 
 %animated-bounce-in-down
   @extend %animated
-  +animation-name(bounceInDown)
+  animation-name: bounceInDown
 
 
-+keyframes(bounceOutUp)
+@keyframes bounceOutUp
   0%
-    +transform(translateY(0))
+    transform: translateY(0)
   20%
     opacity: 1
-    +transform(translateY(20px))
+    transform: translateY(20px)
   100%
     opacity: 0
-    +transform(translateY(-2000px))
+    transform: translateY(-2000px)
 
 %animated-bounce-out-up
   @extend %animated
-  +animation-name(bounceOutUp)
+  animation-name: bounceOutUp

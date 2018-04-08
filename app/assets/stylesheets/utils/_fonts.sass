@@ -1,8 +1,5 @@
 $weights: bold bold, medium normal, normal normal
 
-@each $weight in $weights
-  +font-face(sonar-#{nth($weight, 1)}, '/fonts/sonar-#{nth($weight, 1)}-webfont', nth($weight, 2))
-
 =custom-sans($weight: normal)
   font-family: "omnes-pro", Helvetica, Arial, sans-serif
   @if $weight == thin
