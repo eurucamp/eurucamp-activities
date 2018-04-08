@@ -44,7 +44,7 @@ class ActivityDecorator < Draper::Decorator
   end
 
   def room_left
-    if object.anybody_can_join? then ""
+    if object.anybody_can_join? || object.official then ""
     else
       left = open_spots
       if    left == 1 then I18n.t("activities.room_left.one")
