@@ -4,8 +4,8 @@ en:
       time_only: "%H:%M"
       date_only: "%d/%m/%Y"
       nice_time: "%H:%M"
-      nice_date: "%a, %-d.%-m"
-      nice_date_and_time: "%a, %-d.%-m — %H:%M"
+      nice_date: "%a %d %b"
+      nice_date_and_time: "%a %d %b — %H:%M"
 
   common:
     or: Or
