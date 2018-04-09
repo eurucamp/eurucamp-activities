@@ -34,15 +34,15 @@ en:
     edit:
       oauth:
         github:
-          connect: "Connect your <strong>Github account</strong>"
-          connected: "You have connected your <strong>Github account</strong>"
+          connect: "Connect your <strong>GitHub account</strong>"
+          connected: "You have connected your <strong>GitHub account</strong>"
         twitter:
           connect: "Connect your <strong>Twitter account</strong>"
           connected: "You have connected your <strong>Twitter account</strong>"
     new:
       oauth:
         github:
-          connect: "Sign in with your <strong>Github account</strong>"
+          connect: "Sign in with your <strong>GitHub account</strong>"
         twitter:
           connect: "Sign in with your <strong>Twitter account</strong>"
 
