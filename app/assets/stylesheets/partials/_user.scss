@@ -150,3 +150,80 @@ body.user {
     }
   }
 }
+
+body, body.user {
+  background-image: url("https://isleofruby.org/images/layout/bg.png");
+  background-size: 20vh;
+}
+
+body.activities.index form.filters label.participant::before, body.activities.index form.filters label.owner::before {
+  position: relative;
+  top: 0.22em;
+}
+
+body.activities.index #activities li .container, body.activities.index form.filters label.selected {
+  background-color: darken(#8CCEE6, 40%);
+}
+
+.page-header nav.user-nav ul li a, #footer nav ul li a {
+  color: #8CCEE6; 
+}
+
+body.activities.index form.filters label.search {
+  top: 5em;
+}
+
+body.activities.index form.filters label.selected {
+  //color: #5b5e61;
+}
+
+body.activities.index form.filters label {
+  background: lighten(#8CCEE6, 10%);
+}
+
+body.activities.index form.filters label.search input {
+  border: 1px solid #8CCEE6;
+}
+
+body.activities.index #activities li .labels p.time {
+  color: white;
+  border-top: 1px solid white;
+}
+
+body.activities.index #activities li .labels p.creator {
+  color: white;
+}
+
+article header h2::after, body.activities.index .map h3::after, body.activities.index #activities li .labels h4::after, body.activities.show #activity section.overview .participants h3::after, body.user p.divider::after {
+  border-bottom: 1px solid white;
+}
+
+#footer::before, body.activities.index #activities li .labels h4::before {
+  border-bottom: 1px solid #8CCEE6;
+}
+
+body.user h2, body.user .page-header nav.user-nav ul a {
+  color: #000;
+}
+
+body.activities.index #activities li .labels {
+  color: #8CCEE6;
+}
+
+form input, form textarea {
+  background: white;
+  border: none;
+}
+
+.page-header .page-header-text img {
+  max-width: 400px;
+  margin-top: -40px;
+}
+
+.page-header h2 {
+  padding: 1em;
+}
+
+form hr {
+  background-color: white;
+}
