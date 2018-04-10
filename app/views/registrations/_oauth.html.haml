@@ -4,7 +4,7 @@
   %ul
     %li
       - if resource.connected_with_github?
-        = link_to "http://github.com/#{resource.github_handle}", class: "github connected" do
+        = link_to "https://github.com/#{resource.github_handle}", class: "github connected" do
           = image_tag "user/connected.png"
           %h4
             = t("user.#{domain}.oauth.github.connected").html_safe
@@ -16,7 +16,7 @@
 
     %li
       - if resource.connected_with_twitter?
-        = link_to "http://twitter.com/#{resource.twitter_handle}", class: "twitter connected" do
+        = link_to "https://twitter.com/#{resource.twitter_handle}", class: "twitter connected" do
           = image_tag "user/connected.png"
           %h4
             = t("user.#{domain}.oauth.twitter.connected").html_safe
