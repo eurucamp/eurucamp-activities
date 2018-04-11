@@ -1,8 +1,6 @@
 @import "partials/user/edit";
 
 body.user {
-  background: $gray;
-
   // the "back home" link only shown on the
   // user pages within the header
   .page-header {
@@ -149,11 +147,6 @@ body.user {
       }
     }
   }
-}
-
-body, body.user {
-  background-image: url("https://isleofruby.org/images/layout/bg.png");
-  background-size: 20vh;
 }
 
 body.activities.index form.filters label.participant::before, body.activities.index form.filters label.owner::before {

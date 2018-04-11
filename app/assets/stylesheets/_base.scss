@@ -6,11 +6,10 @@ html {
   box-sizing: inherit;
 }
 
-html {
-  background: $white;
-}
-
 body {
+  background: image-url('layout/bg.png') #8CCEE6;
+  background-size: 20vh;
+
   @include custom-serif;
 }
 
