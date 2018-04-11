@@ -1,13 +1,13 @@
 .page-header {
-  text-align:         center;
   padding:            0.5em 0;
+  text-align:         center;
 
   .page-header-text {
     padding-top: 50px;
     text-align: center;
     img {
-      width: 80%;
       max-width: 500px;
+      width: 80%;
     }
   }
 
@@ -22,8 +22,8 @@
     margin-bottom: 0;
 
     a {
-      border: none;
-      /*color: $purple;*/
+      border: 0;
+      
       font-size: 180%;
     }
   }

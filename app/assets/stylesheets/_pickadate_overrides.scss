@@ -13,19 +13,19 @@
 .picker__day--highlighted:hover,
 .picker__day--infocus:hover,
 .picker__day--outfocus:hover {
-  color: $white !important;
   background: $blue !important;
+  color: $white !important;
 }
 
 .picker--focused .picker__day--highlighted {
   background: $green !important;
+  border: 0 !important;
   color: $white !important;
-  border: none !important;
 }
 
 .picker__day--disabled:hover,
 .picker--focused .picker__day--disabled {
-  border: none !important;
+  border: 0 !important;
 }
 
 .picker__day--disabled:hover,
@@ -36,9 +36,9 @@
 }
 
 .picker__day {
+  background: $extra-light-gray !important;
   color: $black !important;
   font-weight: 500 !important;
-  background: $extra-light-gray !important;
 }
 
 .picker__list-item {
@@ -53,8 +53,8 @@
 
 .picker__list-item--selected,
 .picker__list-item--selected:hover {
-  color: $white !important;
   background: $green !important;
+  color: $white !important;
 }
 
 .picker__list {

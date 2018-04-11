@@ -25,8 +25,8 @@ body.user {
   h2 {
     @include custom-serif(bold);
 
-    font-size: 1.8em;
     color: $white;
+    font-size: 1.8em;
 
     &:after {
       content: none;
@@ -36,23 +36,23 @@ body.user {
   h3, h4 {
     @include custom-serif(medium);
 
-    text-transform: uppercase;
     font-size: 1.5em;
+    text-transform: uppercase;
   }
 
   section.form {
     @include grid-column(6);
 
-    padding: 10px;
+    background: $white;
 
     @include grid-media($smartphone-landscape) {
       padding: 70px;
     }
 
 
-    margin: 0 auto;
-    background: $white;
     box-shadow: 0 0 7px transparentize($black, 0.9);
+    margin: 0 auto;
+    padding: 10px;
   }
 
   .avatar {
@@ -64,19 +64,19 @@ body.user {
   }
 
   p.divider {
-    text-align: center;
+    margin: 5em 0 5em;
 
     @extend %ornamental-divider-after;
 
-    text-transform: uppercase;
+    text-align: center;
 
     @include custom-sans(bold);
 
-    margin: 5em 0 5em;
+    text-transform: uppercase;
 
     span {
-      display: inline-block;
       background: $white;
+      display: inline-block;
       padding: 0 10px;
       position: relative;
       z-index: 2;
@@ -89,11 +89,11 @@ body.user {
   }
 
   p.info {
-    text-align: center;
     border-top: 1px solid $extra-light-gray;
+    color: $gray;
     margin: 2em 0 0 0;
     padding: 1em 0 0 0;
-    color: $gray;
+    text-align: center;
   }
 
   .oauth {
@@ -104,13 +104,13 @@ body.user {
     }
 
     li {
-      width: percentage(1 / 2);
       float: left;
+      width: percentage(1 / 2);
 
       &:first-child {
         a {
-          margin-right: 1px;
           border-radius: 3px 0 0 3px;
+          margin-right: 1px;
         }
       }
     }
@@ -118,8 +118,8 @@ body.user {
     a {
       @extend %secondary-button;
 
-      display: block;
       border-radius: 0 3px 3px 0;
+      display: block;
       padding: 2em 0;
 
       &.connected {
@@ -135,15 +135,15 @@ body.user {
       @include custom-serif;
 
       font-size: 1.25em;
-      margin: 0;
       line-height: 1.25em;
+      margin: 0;
 
       strong {
         @include custom-sans(medium);
 
-        text-transform: none;
         display: block;
         font-size: 1.5em;
+        text-transform: none;
       }
     }
   }
@@ -179,16 +179,16 @@ body.activities.index form.filters label.search input {
 }
 
 body.activities.index #activities li .labels p.time {
-  color: white;
-  border-top: 1px solid white;
+  border-top: 1px solid #fff;
+  color: #fff;
 }
 
 body.activities.index #activities li .labels p.creator {
-  color: white;
+  color: #fff;
 }
 
 article header h2::after, body.activities.index .map h3::after, body.activities.index #activities li .labels h4::after, body.activities.show #activity section.overview .participants h3::after, body.user p.divider::after {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #fff;
 }
 
 #footer::before, body.activities.index #activities li .labels h4::before {
@@ -204,8 +204,8 @@ body.activities.index #activities li .labels {
 }
 
 .page-header .page-header-text img {
-  max-width: 400px;
   margin-top: -40px;
+  max-width: 400px;
 }
 
 .page-header h2 {
@@ -213,5 +213,5 @@ body.activities.index #activities li .labels {
 }
 
 form hr {
-  background-color: white;
+  background-color: #fff;
 }

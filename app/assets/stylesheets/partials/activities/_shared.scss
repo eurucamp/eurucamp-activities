@@ -1,9 +1,9 @@
 // wrapper around image + canvas
 .progress-wrapper {
+  margin: 0 auto;
   padding: 6px;
   width: 162px;
   width: 162px;
-  margin: 0 auto;
 
   @extend %transition-all-15s-ease-out;
 
@@ -14,15 +14,15 @@
 
 // big round image
 .progress {
-  width: 150px;
-  height: 150px;
-  border-radius: 75px;
-  background-size: cover;
-  background-position: center;
   background-image: image-url("shared/activity_placeholder.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 75px;
+  height: 150px;
+  width: 150px;
 }
 
 img.requires_event_ticket {
-  width: 40px;
   height: 40px;
+  width: 40px;
 }

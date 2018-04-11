@@ -42,15 +42,15 @@ $types: participant ok remove, owner edit edit;
       h1, h2, h3, h4, h5, h6 {
         @include custom-serif(bold);
 
-        text-transform: uppercase;
-        margin: 1.5em 0 0;
         font-size: 1em;
+        margin: 1.5em 0 0;
+        text-transform: uppercase;
       }
     }
 
     &.overview {
-      text-align: center;
       margin-bottom: 2em;
+      text-align: center;
 
       .progress-wrapper,
       .progress {
@@ -58,8 +58,8 @@ $types: participant ok remove, owner edit edit;
       }
 
       p {
-        margin: 1em 0 0;
         font-size: 1.25em;
+        margin: 1em 0 0;
       }
 
       a {
@@ -69,9 +69,9 @@ $types: participant ok remove, owner edit edit;
       }
 
       .participants {
-        width: 100%;
-        padding: 2em 0;
         clear: both;
+        padding: 2em 0;
+        width: 100%;
 
         h3 {
           @include custom-sans(light);
@@ -88,8 +88,8 @@ $types: participant ok remove, owner edit edit;
         }
 
         li {
-          padding: 0 5px;
           display: inline-block;
+          padding: 0 5px;
         }
 
         img {
@@ -107,17 +107,17 @@ $types: participant ok remove, owner edit edit;
       }
 
       dt, dd {
+        border-top: 1px solid $light-gray;
         float: left;
         line-height: 3em;
         line-height: 1.35em;
         padding: 1em 0;
         width: 50%;
-        border-top: 1px solid $light-gray;
       }
 
       dt {
-        font-style: italic;
         clear: left;
+        font-style: italic;
       }
 
       dd {
@@ -132,17 +132,17 @@ $types: participant ok remove, owner edit edit;
     section {
       &.overview {
         .progress-wrapper {
-          width: 274px;
+          display: block;
           height: 274px;
           padding: 12px;
-          display: block;
+          width: 274px;
         }
 
         .progress {
-          width: 250px;
-          height: 250px;
-          display: block;
           border-radius: 125px;
+          display: block;
+          height: 250px;
+          width: 250px;
         }
       }
     }
@@ -179,8 +179,8 @@ $types: participant ok remove, owner edit edit;
 
 
   .meeting-point-map {
-    margin-left: 50px;
     display: none;
+    margin-left: 50px;
 
     img {
       width: 100%;

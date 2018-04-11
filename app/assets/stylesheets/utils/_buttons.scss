@@ -3,41 +3,41 @@ $ypos: 0;
 
 // just the icon without label
 %icon {
-  width: 40px;
-  height: 40px;
-  display: inline-block;
   background: image-url("shared/buttons_small.png") no-repeat;
   background-position: (-40px) (-40px * $ypos);
+  display: inline-block;
+  height: 40px;
+  width: 40px;
 }
 
 // small buttons with labels aside
 %icon-button {
-  color: nth(nth($icon-types, 1), 2);
+  background: none;
 
   @extend %smaller-text;
 
-  line-height: 40px;
-  height: 40px;
-  text-transform: uppercase;
-  border: none;
+  border: 0;
+  box-shadow: none;
+  color: nth(nth($icon-types, 1), 2);
   display: inline-block;
-  vertical-align: top;
+  height: 40px;
+  line-height: 40px;
 
   @include custom-sans(bold);
 
-  background: none;
   padding: 0;
   text-shadow: none;
-  box-shadow: none;
+  text-transform: uppercase;
+  vertical-align: top;
 
   span {
-    width: 40px;
-    height: 40px;
-    margin: 0 0 0 15px;
-    display: inline-block;
-    float: right;
     background: image-url("shared/buttons_small.png") no-repeat;
     background-position: 0 (-40px * $ypos);
+    display: inline-block;
+    float: right;
+    height: 40px;
+    margin: 0 0 0 15px;
+    width: 40px;
   }
 }
 
@@ -75,25 +75,25 @@ $ypos: 0;
 
 // large buttons with label beneath
 %large-icon-button {
-  border: none;
   background: none;
+  border: 0;
 
   @include custom-sans(bold);
 
   @extend %smaller-text;
 
-  text-transform: uppercase;
-  display: inline-block;
-  color: nth(nth($button-types, 1), 2);
-  text-shadow: none;
   box-shadow: none;
+  color: nth(nth($button-types, 1), 2);
+  display: inline-block;
+  text-shadow: none;
+  text-transform: uppercase;
 
   span {
+    background: transparent image-url("shared/buttons_big.png") no-repeat 0 (-96px * $ypos);
     display: block;
-    width: 96px;
     height: 96px;
     margin: 0 auto 0.75em;
-    background: transparent image-url("shared/buttons_big.png") no-repeat 0 (-96px * $ypos);
+    width: 96px;
   }
 }
 
@@ -120,23 +120,23 @@ $ypos: 0;
 // ----------------------------------------------------------------------------
 
 %secondary-button {
-  display: inline-block;
-  text-align: center;
   background: $blue;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px $light-gray;
   color: $white;
-  text-shadow: 0 1px 1px transparentize($black, 0.8);
 
   @extend %small-text;
 
+  display: inline-block;
   padding: 0.25em 1.5em;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 3px;
+  text-align: center;
+  text-shadow: 0 1px 1px transparentize($black, 0.8);
 
   @include custom-sans(medium);
 
+  text-transform: uppercase;
   transition: background 0.25s ease-in-out;
-  box-shadow: 0 2px 3px $light-gray;
 
   &:visited {
     color: $white;
@@ -147,8 +147,8 @@ $ypos: 0;
   }
 
   &:active {
-    transform: translateY(1px);
     box-shadow: 0 1px 1px $light-gray;
+    transform: translateY(1px);
   }
 }
 
@@ -159,7 +159,7 @@ a.reveal {
 %secondary-button-large {
   @extend %secondary-button;
 
-  text-transform: uppercase;
   font-size: 1.15em;
   padding: 0.5em 1.5em;
+  text-transform: uppercase;
 }

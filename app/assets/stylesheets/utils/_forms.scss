@@ -2,19 +2,19 @@ form {
   text-align: center;
 
   input, textarea {
-    width: 100%;
-    padding: 0.75em 15px 0.9em;
     background: $white;
     border: 1px solid $white;
-    margin: 0 0 2px 0;
     font-size: 1.25em;
+    margin: 0 0 2px 0;
     outline: none;
+    padding: 0.75em 15px 0.9em;
+    position: relative;
 
     @include custom-serif(light);
 
-    z-index: 1;
-    position: relative;
     resize: none;
+    width: 100%;
+    z-index: 1;
 
     &::placeholder {
       color: $gray;
@@ -27,8 +27,8 @@ form {
 
     &.markdown {
       background-image: image-url("shared/markdown.png");
-      background-repeat: no-repeat;
       background-position: top right;
+      background-repeat: no-repeat;
     }
 
     &.title {
@@ -44,10 +44,10 @@ form {
     }
 
     &:focus {
-      z-index: 1000;
+      background: $white;
       border: 1px solid $blue;
       box-shadow: 0 0 10px transparentize($black, 0.85);
-      background: $white;
+      z-index: 1000;
 
       &.markdown {
         background-image: none;
@@ -63,7 +63,7 @@ form {
   }
 
   fieldset {
-    border: none;
+    border: 0;
     padding: 0;
   }
 
@@ -82,12 +82,12 @@ form {
     position: relative;
 
     span.validation-error-message {
+      color: $red;
+      line-height: 4em;
       position: absolute;
       right: 15px;
       top: 0;
-      color: $red;
       z-index: 1000;
-      line-height: 4em;
     }
   }
 
@@ -111,17 +111,17 @@ form {
 
     input {
       display: inline;
-      width: auto;
       margin: 0 0.25em 0 0;
       vertical-align: baseline;
+      width: auto;
     }
   }
 
   small {
-    font-size: 0.85em;
-    text-align: right;
-    display: block;
     color: $medium-gray;
+    display: block;
+    font-size: 0.85em;
     padding: 0.5em 15px;
+    text-align: right;
   }
 }
