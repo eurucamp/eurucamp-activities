@@ -1,6 +1,23 @@
-#header {
-  text-align: center;
-  padding: 0.5em 0;
+.page-header {
+  background-image:   image-url('layout/bg.png');
+  background-size:    20vh;
+  text-align:         center;
+  padding:            0.5em 0;
+
+  .page-header-text {
+    padding-top: 50px;
+    text-align: center;
+    img {
+      width: 80%;
+      max-width: 500px;
+    }
+  }
+
+  .page-header-sky {
+    background:       #ACE2F7;
+    background-image: linear-gradient(to bottom, #71C4EC 0%, #ACE2F7 100%);
+    opacity:          .9;
+  }
 
   h1 {
     clear: both;
@@ -8,7 +25,7 @@
 
     a {
       border: none;
-      color: $purple;
+      /*color: $purple;*/
       font-size: 180%;
     }
   }
