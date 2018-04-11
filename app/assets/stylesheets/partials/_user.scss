@@ -7,7 +7,7 @@ body.user {
     .back-home {
       float: left;
 
-      &:after {
+      &::after {
         content: none;
       }
     }
@@ -28,7 +28,7 @@ body.user {
     color: $white;
     font-size: 1.8em;
 
-    &:after {
+    &::after {
       content: none;
     }
   }
@@ -82,7 +82,7 @@ body.user {
       z-index: 2;
     }
 
-    &:after {
+    &::after {
       margin: (-0.75em) auto 0;
       z-index: 1;
     }

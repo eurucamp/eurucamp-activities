@@ -24,7 +24,7 @@ form.filters {
 
     &.participant,
     &.owner {
-      &:before {
+      &::before {
         content: "•";
         display: inline-block;
         font-size: 2.5em;
@@ -37,14 +37,14 @@ form.filters {
       }
     }
 
-    &.participant:before {
+    &.participant::before {
       color: $green;
     }
 
     &.owner {
       border-radius: 0 0 3px 3px;
 
-      &:before {
+      &::before {
         color: $yellow;
       }
     }

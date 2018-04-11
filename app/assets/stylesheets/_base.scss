@@ -2,7 +2,7 @@ html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*, *::before, *::after {
   box-sizing: inherit;
 }
 
@@ -76,7 +76,7 @@ article {
 
       @extend %ornamental-divider-after;
 
-      &:after {
+      &::after {
         margin-bottom: 0.25em;
       }
     }

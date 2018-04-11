@@ -130,13 +130,13 @@ a#new-activity {
 
         @extend %ornamental-divider-after;
 
-        &:before,
-        &:after {
+        &::before,
+        &::after {
           margin: 0.2em auto;
           width: 20px;
         }
 
-        &:before {
+        &::before {
           margin: 0 auto;
           width: 0;
         }
@@ -251,12 +251,12 @@ a#new-activity {
 
           transform: translate(0, 2.5em);
 
-          &:before {
+          &::before {
             margin: 0 auto 0.5em;
             width: 50%;
           }
 
-          &:after {
+          &::after {
             width: 0;
           }
         }

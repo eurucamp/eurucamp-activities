@@ -30,13 +30,13 @@
 }
 
 %ornamental-divider-after {
-  &:after {
+  &::after {
     @include ornamental-divider;
   }
 }
 
 %ornamental-divider-before {
-  &:before {
+  &::before {
     @include ornamental-divider;
   }
 }
@@ -55,13 +55,13 @@
 
     @extend %smaller-text;
 
-    &:after {
+    &::after {
       color: $light-gray;
       content: "•";
       padding: 0 1em;
     }
 
-    &:last-child:after {
+    &:last-child::after {
       content: none;
     }
 
