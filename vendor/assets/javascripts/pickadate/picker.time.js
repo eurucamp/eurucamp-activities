@@ -887,6 +887,10 @@ TimePicker.prototype.nodes = function( isOpen ) {
         viewsetObject = clock.item.view,
         disabledCollection = clock.item.disable
 
+
+    if (clock.item.min === null) { clock.item.min = {"hour":0,"mins":0,"time":0,"pick":0} }
+    if (clock.item.max === null) { clock.item.max = {"hour":23,"mins":30,"time":1410,"pick":1410} }
+
     return _.node(
         'ul',
         _.group({
