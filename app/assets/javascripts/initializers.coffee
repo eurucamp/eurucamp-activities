@@ -103,6 +103,8 @@ ready = ->
                      .map(-> $(@).val()).get()
     unless 'all' in values
       $activities.not(".#{values.join(',.')}").hide()
+      hideEmptyDays()
+
     # use search input to filter further
     if query = $search.val()
       $activities
