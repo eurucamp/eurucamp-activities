@@ -11,7 +11,9 @@ class ActivityDecorator < Draper::Decorator
   end
 
   def creator_name
-    if creator
+    if official
+      "Isle of Ruby"
+    elsif creator
       creator.name.blank? ? creator.email : creator.name
     end
   end
@@ -42,7 +44,7 @@ class ActivityDecorator < Draper::Decorator
   end
 
   def room_left
-    if object.anybody_can_join? then ""
+    if object.anybody_can_join? || object.official then ""
     else
       left = open_spots
       if    left == 1 then I18n.t("activities.room_left.one")

@@ -1,0 +1,189 @@
+$types: participant ok remove, owner edit edit;
+
+#activity {
+  header {
+    p.info {
+      background: $extra-light-gray;
+      border: 1px solid $light-gray;
+      padding: 1em;
+
+      @include custom-serif(medium);
+    }
+  }
+
+  .action {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    a, button {
+      @extend %icon-button-ok;
+    }
+
+    // select action type based on card variation
+    @each $type in $types {
+      &.#{nth($type, 1)} {
+        a, button {
+          @extend %icon-button-#{nth($type, 3)};
+        }
+      }
+    }
+  }
+
+  section {
+    position: relative;
+
+    &.description {
+      @include custom-serif;
+
+      line-height: 1.35em;
+      margin-bottom: 2em;
+
+      h1, h2, h3, h4, h5, h6 {
+        @include custom-serif(bold);
+
+        font-size: 1em;
+        margin: 1.5em 0 0;
+        text-transform: uppercase;
+      }
+    }
+
+    &.overview {
+      margin-bottom: 2em;
+      text-align: center;
+
+      .progress-wrapper,
+      .progress {
+        display: none;
+      }
+
+      p {
+        font-size: 1.25em;
+        margin: 1em 0 0;
+      }
+
+      a {
+        @extend %secondary-button;
+
+        margin: 1em 0;
+      }
+
+      .participants {
+        clear: both;
+        padding: 2em 0;
+        width: 100%;
+
+        h3 {
+          @include custom-sans(light);
+
+          text-align: center;
+
+          @extend %ornamental-divider-after;
+        }
+
+        ul {
+          @extend %unlisted;
+
+          text-align: center;
+        }
+
+        li {
+          display: inline-block;
+          padding: 0 5px;
+        }
+
+        img {
+          border-radius: 24px;
+          width: 48px;
+        }
+      }
+    }
+
+    &.details {
+      dl.wrapper {
+        @extend %clearfix;
+
+        border-bottom: 1px solid $light-gray;
+      }
+
+      dt, dd {
+        border-top: 1px solid $light-gray;
+        float: left;
+        line-height: 3em;
+        line-height: 1.35em;
+        padding: 1em 0;
+        width: 50%;
+      }
+
+      dt {
+        clear: left;
+        font-style: italic;
+      }
+
+      dd {
+        @include custom-serif;
+
+        margin: 0;
+      }
+    }
+  }
+
+  @include grid-media($smartphone-portrait) {
+    section {
+      &.overview {
+        .progress-wrapper {
+          display: block;
+          height: 274px;
+          padding: 12px;
+          width: 274px;
+        }
+
+        .progress {
+          border-radius: 125px;
+          display: block;
+          height: 250px;
+          width: 250px;
+        }
+      }
+    }
+  }
+
+
+  @include grid-media($tablet-portrait) {
+    section {
+      width: percentage(1 / 3);
+
+      &.overview {
+        float: left;
+        left: percentage(1 / 3);
+      }
+
+      &.description {
+        float: left;
+        left: -(percentage(1 / 3));
+
+        .wrapper {
+          margin-right: 50px;
+        }
+      }
+
+      &.details {
+        float: right;
+
+        dl.wrapper {
+          margin-left: 50px;
+        }
+      }
+    }
+  }
+
+
+  .meeting-point-map {
+    display: none;
+    margin-left: 50px;
+
+    img {
+      width: 100%;
+    }
+  }
+}

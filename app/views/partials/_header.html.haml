@@ -1,9 +1,9 @@
-%header#header
-
+%header#header.page-header
   = render "partials/navigation"
 
   -# the logo, link home
-  %h1
-    = link_to "/" do
-      rubyweek
-  %h2 Events around eurucamp and JRubyConf
+  .page-header-text
+    %h1
+      = link_to "/" do
+        = image_tag "hero/IoR_logo_text.svg", alt: "Isle of Ruby 2018"
+  %h2 Events at and around Isle of Ruby

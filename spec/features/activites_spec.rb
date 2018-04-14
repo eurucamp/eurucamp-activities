@@ -26,8 +26,8 @@ RSpec.describe "Activities", :type => :feature do
   end
   let!(:activity) do
     Activity.create!(
-      start_time: Time.zone.local(2015, 7, 30, 10),
-      end_time: Time.zone.local(2015, 7, 30, 11),
+      start_time: Time.zone.local(2018, 4, 15, 10),
+      end_time: Time.zone.local(2018, 4, 15, 11),
       name: 'Test Activity',
       location: 'There',
       creator_id: creator.id,

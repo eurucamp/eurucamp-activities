@@ -1,0 +1,227 @@
+@import "partials/user/edit";
+
+body.user {
+  // the "back home" link only shown on the
+  // user pages within the header
+  .page-header {
+    .back-home {
+      float: left;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  article {
+    clear: both;
+    padding: 3em 0;
+  }
+
+  header {
+    margin: 0 0 2em 0;
+  }
+
+  h2 {
+    @include custom-serif(bold);
+
+    color: $white;
+    font-size: 1.8em;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  h3, h4 {
+    @include custom-serif(medium);
+
+    font-size: 1.5em;
+    text-transform: uppercase;
+  }
+
+  section.form {
+    @include grid-column(6);
+
+    background: $white;
+
+    @include grid-media($smartphone-landscape) {
+      padding: 70px;
+    }
+
+
+    box-shadow: 0 0 7px transparentize($black, 0.9);
+    margin: 0 auto;
+    padding: 10px;
+  }
+
+  .avatar {
+    margin: 0 0 2em 0;
+
+    img {
+      border-radius: 64px;
+    }
+  }
+
+  p.divider {
+    margin: 5em 0 5em;
+
+    @extend %ornamental-divider-after;
+
+    text-align: center;
+
+    @include custom-sans(bold);
+
+    text-transform: uppercase;
+
+    span {
+      background: $white;
+      display: inline-block;
+      padding: 0 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    &::after {
+      margin: (-0.75em) auto 0;
+      z-index: 1;
+    }
+  }
+
+  p.info {
+    border-top: 1px solid $extra-light-gray;
+    color: $gray;
+    margin: 2em 0 0 0;
+    padding: 1em 0 0 0;
+    text-align: center;
+  }
+
+  .oauth {
+    ul {
+      @extend %unlisted;
+
+      @extend %clearfix;
+    }
+
+    li {
+      float: left;
+      width: percentage(1 / 2);
+
+      &:first-child {
+        a {
+          border-radius: 3px 0 0 3px;
+          margin-right: 1px;
+        }
+      }
+    }
+
+    a {
+      @extend %secondary-button;
+
+      border-radius: 0 3px 3px 0;
+      display: block;
+      padding: 2em 0;
+
+      &.connected {
+        background: $medium-gray;
+      }
+    }
+
+    img {
+      margin: 0 0 0.5em 0;
+    }
+
+    h4 {
+      @include custom-serif;
+
+      font-size: 1.25em;
+      line-height: 1.25em;
+      margin: 0;
+
+      strong {
+        @include custom-sans(medium);
+
+        display: block;
+        font-size: 1.5em;
+        text-transform: none;
+      }
+    }
+  }
+}
+
+body.activities.index form.filters label.participant::before, body.activities.index form.filters label.owner::before {
+  position: relative;
+  top: 0.22em;
+}
+
+body.activities.index #activities li .container, body.activities.index form.filters label.selected {
+  background-color: darken(#8CCEE6, 40%);
+}
+
+.page-header nav.user-nav ul li a, #footer nav ul li a {
+  color: #8CCEE6; 
+}
+
+body.activities.index form.filters label.search {
+  top: 5em;
+}
+
+body.activities.index form.filters label.selected {
+  //color: #5b5e61;
+}
+
+body.activities.index form.filters label {
+  background: lighten(#8CCEE6, 10%);
+}
+
+body.activities.index form.filters label.search input {
+  border: 1px solid #8CCEE6;
+}
+
+body.activities.index #activities li .labels p.time {
+  border-top: 1px solid #fff;
+  color: #fff;
+}
+
+body.activities.index #activities li .labels p.creator {
+  color: #fff;
+}
+
+article header h2::after, body.activities.index .map h3::after, body.activities.index #activities li .labels h4::after, body.activities.show #activity section.overview .participants h3::after, body.user p.divider::after {
+  border-bottom: 1px solid #fff;
+}
+
+#footer::before, body.activities.index #activities li .labels h4::before {
+  border-bottom: 1px solid #8CCEE6;
+}
+
+body.user h2, body.user .page-header nav.user-nav ul a {
+  color: #000;
+}
+
+body.activities.index #activities li .labels {
+  color: #8CCEE6;
+}
+
+.page-header .page-header-text img {
+  margin-top: -40px;
+  max-width: 400px;
+}
+
+.page-header h2 {
+  padding: 1em;
+}
+
+form hr {
+  background-color: #fff;
+}
+
+@media(max-width: 1000px) {
+  article header h2 {
+    max-width: 70%;
+  }
+}
+
+body.activities.index form.filters label.search {
+  height: 100px;
+}

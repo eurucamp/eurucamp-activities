@@ -1,0 +1,101 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: image-url('layout/bg.png') #8CCEE6;
+  background-size: 20vh;
+
+  @include custom-serif;
+}
+
+a, a:visited {
+  border-bottom: 1px dotted $blue;
+  color: $blue;
+  text-decoration: none;
+  transition: all 0.25s;
+}
+
+a:hover {
+  border: 0;
+  transition: all 0.25s;
+}
+
+#notifications {
+  div {
+    animation-delay: 0.25s;
+    background: transparentize($green, 0.2);
+    border-radius: 3px;
+    color: $white;
+    left: 1em;
+    padding: 0.75em 0;
+    position: fixed;
+    right: 1em;
+    text-align: center;
+
+    @include custom-sans(bold);
+
+    top: 1em;
+    z-index: 9999;
+
+    @extend %animated-bounce-in-down;
+
+    &.error, &.alert {
+      background: transparentize($red, 0.2);
+    }
+  }
+
+  &.hide {
+    div {
+      @extend %animated-bounce-out-up;
+    }
+  }
+}
+
+#main {
+  position: relative;
+}
+
+article {
+  @extend %clearfix;
+
+  header {
+    margin: 0 0 4em 0;
+    position: relative;
+    text-align: center;
+
+    h2 {
+      @include custom-serif(light);
+
+      font-size: 2em;
+      margin: 0;
+
+      @extend %ornamental-divider-after;
+
+      &::after {
+        margin-bottom: 0.25em;
+      }
+    }
+
+    .meta {
+      text-transform: uppercase;
+      @include custom-sans;
+
+      @extend %smaller-text;
+
+      strong {
+        @include custom-sans(bold);
+
+        &.divider {
+          @include custom-sans(bold);
+
+          margin: 0 0.5em;
+        }
+      }
+    }
+  }
+}

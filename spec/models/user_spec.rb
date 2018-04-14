@@ -28,7 +28,7 @@ RSpec.describe User do
     subject { user.connected_with_github? }
     let(:user) { User.new }
 
-    context  "not connected with Github account" do
+    context  "not connected with GitHub account" do
       before do
         expect(user).to receive(:provider_connected?).with("github").and_return(false)
       end
@@ -36,7 +36,7 @@ RSpec.describe User do
       it { is_expected.to eq(false)}
     end
 
-    context "connected with Github account" do
+    context "connected with GitHub account" do
       before do
         expect(user).to receive(:provider_connected?).with("github").and_return(true)
       end

@@ -227,9 +227,6 @@ RSpec.describe Activity do
   end
 
   describe "validations" do
-
-    specify { expect { FactoryGirl.create(:activity).dup.save! }.to raise_exception(ActiveRecord::RecordInvalid) }
-
     it { is_expected.to     accept_values_for(:name, "Football game" ) }
     it { is_expected.not_to accept_values_for(:name, "", nil) }
 

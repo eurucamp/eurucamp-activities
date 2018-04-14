@@ -15,7 +15,7 @@ en:
 
   user_nav:
     back_home:
-      label: Back to rubyweek activities
+      label: Back to Isle of Ruby activities
       title: Go back to front page
     account:
       label: My Account
@@ -34,15 +34,15 @@ en:
     edit:
       oauth:
         github:
-          connect: "Connect your <strong>Github account</strong>"
-          connected: "You have connected your <strong>Github account</strong>"
+          connect: "Connect your <strong>GitHub account</strong>"
+          connected: "You have connected your <strong>GitHub account</strong>"
         twitter:
           connect: "Connect your <strong>Twitter account</strong>"
           connected: "You have connected your <strong>Twitter account</strong>"
     new:
       oauth:
         github:
-          connect: "Sign in with your <strong>Github account</strong>"
+          connect: "Sign in with your <strong>GitHub account</strong>"
         twitter:
           connect: "Sign in with your <strong>Twitter account</strong>"
 
@@ -81,7 +81,7 @@ en:
       label_short: End
     location: Location
     required: Required
-    requires_eurucamp_ticket: "During the eurucamp, participants need a ticket"
+    requires_event_ticket: "During the Isle of Ruby participants need a ticket"
     participants: Participants
     organized_by: "Organized by <strong>%{name}</strong>"
     room_left:
@@ -94,6 +94,7 @@ en:
       end_time:
         before_start: "can't be before start time"
         too_late: "outside range, too late"
+        too_early: "outside range, too early"
       image_url:
         invalid: "not valid URL"
         not_supported_protocol: "protocol not supported ;)"
@@ -131,8 +132,8 @@ en:
     requirements:
       label: Requirements
       hint:  "What to bring, to wear etc."
-    requires_eurucamp_ticket:
-      hint: "During the eurucamp, participants need a ticket"
+    requires_event_ticket:
+      hint: "During the Isle of Ruby participants need a ticket"
     image_url:
       label: URL for an image
       hint: Upload an image to e.g. imgur.com and link it here
@@ -153,9 +154,6 @@ en:
     policy:
       label: Policy
       title: Policy and Code of Conduct
-    eurucamp:
-      label: eurucamp
-      title: Head over to the eurucamp site
-    jrubyconf:
-      label: JRubyConf
-      title: Head over to the JRubyConf site
+    isleofruby:
+      label: Isle of Ruby
+      title: Head over to Isle of Ruby site

@@ -30,7 +30,7 @@ RSpec.describe ParticipantDecorator do
 
     context 'when the user does not want to be shown in activities' do
       it 'is the default Gravatar image' do
-        default = 'http://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=48'
+        default = 'https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=48'
         user.twitter_handle = 'foobar'
         user.show_participation = false
         expect(subject.avatar_url(48)).to eq(default)

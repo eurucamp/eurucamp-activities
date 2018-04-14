@@ -1,0 +1,165 @@
+form.filters {
+  @extend %clearfix;
+
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 0 0 2.5em 0;
+
+  label {
+    background: lighten($extra-light-gray, 5);
+
+    @extend %smaller-text;
+
+    border: 0;
+    color: $gray;
+
+    @include custom-sans(medium);
+
+    display: block;
+    margin: 0 0 1px 0;
+    padding: 0.75em 1em;
+    text-align: left;
+    text-transform: uppercase;
+    transition: all 0.5s;
+
+    &.participant,
+    &.owner {
+      &::before {
+        content: "•";
+        display: inline-block;
+        font-size: 2.5em;
+        line-height: 1px;
+        margin: 0 0.25em 0.25em 0;
+
+        html.no-js & {
+          margin: 0 0.25em 0.1em 0;
+        }
+      }
+    }
+
+    &.participant::before {
+      color: $green;
+    }
+
+    &.owner {
+      border-radius: 0 0 3px 3px;
+
+      &::before {
+        color: $yellow;
+      }
+    }
+
+    &.search {
+      background: none;
+      margin-top: 1em;
+      padding: 0;
+      width: 100%;
+
+      &:hover {
+        background: none;
+      }
+
+      input {
+        background: $white image-url("shared/search.png") no-repeat right center;
+        border: 1px solid $light-gray;
+
+        &:focus {
+          background: none;
+          border-color: $blue;
+        }
+      }
+
+      a {
+        position: absolute;
+        right: 0;
+        top: 1em;
+      }
+    }
+
+    strong {
+      @include custom-sans(light);
+
+      float: right;
+      margin: 0 0 0 0.75em;
+    }
+
+    &:hover {
+      background: $blue;
+      color: $white;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    &.selected {
+      background: $medium-gray;
+      color: $white;
+    }
+  }
+
+  input {
+    &[type="radio"] {
+      margin: 0 0.75em 0 0;
+    }
+  }
+
+  button {
+    background: $medium-gray;
+    border: 0;
+    border-radius: 3px;
+    color: $white;
+    display: block;
+    margin: 1em auto;
+    padding: 0.4em 2em;
+    transition: all 0.15s;
+
+    &:hover {
+      background: $blue;
+      color: $white;
+      transition: all 0.15s;
+    }
+  }
+
+  button, input[type="radio"] {
+    html.js & {
+      display: none;
+    }
+  }
+
+  @include grid-media($tablet-lite-plus) {
+    border-radius: none;
+    float: left;
+    overflow: visible;
+    padding: 0 0 4.5em 0;
+
+    label {
+      display: inline-block;
+      margin: 0 1px 0 0;
+
+      strong {
+        float: none;
+      }
+
+      &:first-child {
+        border-radius: 3px 0 0 3px;
+      }
+
+      &.owner {
+        border-radius: 0 3px 3px 0;
+        margin: 0;
+      }
+
+      &.search {
+        left: 0;
+        margin-top: 0;
+        position: absolute;
+        top: 4em;
+      }
+    }
+
+    button {
+      display: inline-block;
+      margin: 0 0 0 0.5em;
+      padding: 0.45em 0.75em;
+    }
+  }
+}

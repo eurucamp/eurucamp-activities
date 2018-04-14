@@ -1,0 +1,165 @@
+$icon-types: ok $green, add $green, remove $red, edit $yellow;
+$ypos: 0;
+
+// just the icon without label
+%icon {
+  background: image-url("shared/buttons_small.png") no-repeat;
+  background-position: (-40px) (-40px * $ypos);
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+}
+
+// small buttons with labels aside
+%icon-button {
+  background: none;
+
+  @extend %smaller-text;
+
+  border: 0;
+  box-shadow: none;
+  color: nth(nth($icon-types, 1), 2);
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+
+  @include custom-sans(bold);
+
+  padding: 0;
+  text-shadow: none;
+  text-transform: uppercase;
+  vertical-align: top;
+
+  span {
+    background: image-url("shared/buttons_small.png") no-repeat;
+    background-position: 0 (-40px * $ypos);
+    display: inline-block;
+    float: right;
+    height: 40px;
+    margin: 0 0 0 15px;
+    width: 40px;
+  }
+}
+
+@each $type in $icon-types {
+  %icon-button-#{nth($type, 1)} {
+    color: nth($type, 2);
+
+    @extend %icon-button;
+
+    span {
+      background-position: 0 (-40px * $ypos);
+    }
+
+    &:hover {
+      span {
+        background-position: (-40px) (-40px * $ypos);
+      }
+    }
+  }
+
+  // just the icon without label
+  %icon-#{nth($type, 1)} {
+    @extend %icon;
+
+    background-position: (-40px) (-40px * $ypos);
+  }
+
+  $ypos: $ypos + 1;
+}
+
+// ----------------------------------------------------------------------------
+
+$button-types: ok $green, remove $red, edit $yellow;
+$ypos: 0;
+
+// large buttons with label beneath
+%large-icon-button {
+  background: none;
+  border: 0;
+
+  @include custom-sans(bold);
+
+  @extend %smaller-text;
+
+  box-shadow: none;
+  color: nth(nth($button-types, 1), 2);
+  display: inline-block;
+  text-shadow: none;
+  text-transform: uppercase;
+
+  span {
+    background: transparent image-url("shared/buttons_big.png") no-repeat 0 (-96px * $ypos);
+    display: block;
+    height: 96px;
+    margin: 0 auto 0.75em;
+    width: 96px;
+  }
+}
+
+@each $type in $button-types {
+  %large-icon-button-#{nth($type, 1)} {
+    color: nth($type, 2);
+
+    @extend %large-icon-button;
+
+    span {
+      background-position: 0 (-96px * $ypos);
+    }
+
+    &:hover {
+      span {
+        background-position: (-96px) (-96px * $ypos);
+      }
+    }
+  }
+
+  $ypos: $ypos + 1;
+}
+
+// ----------------------------------------------------------------------------
+
+%secondary-button {
+  background: $blue;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 2px 3px $light-gray;
+  color: $white;
+
+  @extend %small-text;
+
+  display: inline-block;
+  padding: 0.25em 1.5em;
+  text-align: center;
+  text-shadow: 0 1px 1px transparentize($black, 0.8);
+
+  @include custom-sans(medium);
+
+  text-transform: uppercase;
+  transition: background 0.25s ease-in-out;
+
+  &:visited {
+    color: $white;
+  }
+
+  &:hover {
+    background: darken($blue, 10%);
+  }
+
+  &:active {
+    box-shadow: 0 1px 1px $light-gray;
+    transform: translateY(1px);
+  }
+}
+
+a.reveal {
+  @extend %secondary-button;
+}
+
+%secondary-button-large {
+  @extend %secondary-button;
+
+  font-size: 1.15em;
+  padding: 0.5em 1.5em;
+  text-transform: uppercase;
+}

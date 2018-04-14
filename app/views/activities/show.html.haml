@@ -2,12 +2,12 @@
   %header
     %h2
       = @activity.name
-      - if @activity.requires_eurucamp_ticket
+      - if @activity.requires_event_ticket
         %br
-        = image_tag 'shared/eurucamp-2015.svg',
-          class: 'requires_eurucamp_ticket',
-          alt: t('activities.requires_eurucamp_ticket'),
-          title: t('activities.requires_eurucamp_ticket')
+        = image_tag 'shared/IoR_illustration.svg',
+          class: 'requires_event_ticket',
+          alt: t('activities.requires_event_ticket'),
+          title: t('activities.requires_event_ticket')
     %p.meta
       = t("activities.organized_by", name: @activity.creator_name).html_safe
 
@@ -60,5 +60,5 @@
         %a#show-map= t("activity_form.location.show-map")
 
     #meeting-point-map.meeting-point-map
-      = image_tag 'activities/meeting_points.svg'
+      = image_tag 'activities/meeting_points.jpg'
 

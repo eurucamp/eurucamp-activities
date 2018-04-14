@@ -3,6 +3,7 @@ class Activity < ActiveRecord::Base
 
   attr_accessor :event
   attr_writer :participation_source # DI
+  serialize :additional_information, JSON
 
   belongs_to :creator, class_name: "User"
   has_many :participations, dependent: :destroy
@@ -11,7 +12,7 @@ class Activity < ActiveRecord::Base
   validates :start_time, presence: true, allow_blank: false, if: ->{ !anytime? }
   validates :end_time, presence: true, allow_blank: false, if: ->{ !anytime? }
   validates :anytime, presence: true, allow_blank: false, allow_nil: false, if: ->{ start_time.blank? && end_time.blank? }
-  validates :name, presence: true, allow_blank: false, uniqueness: true
+  validates :name, presence: true, allow_blank: false
   validates :location, presence: true, allow_blank: false
   validates :limit_of_participants, numericality: {greater_than: 0}, allow_nil: true
   validate  :time_frame_order, if: ->{ !anytime && event && start_time.present? && end_time.present? }

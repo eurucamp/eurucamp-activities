@@ -1,0 +1,28 @@
+// wrapper around image + canvas
+.progress-wrapper {
+  margin: 0 auto;
+  padding: 6px;
+  width: 162px;
+  width: 162px;
+
+  @extend %transition-all-15s-ease-out;
+
+  canvas {
+    z-index: 99 !important;
+  }
+}
+
+// big round image
+.progress {
+  background-image: image-url("shared/activity_placeholder.jpg");
+  background-position: center;
+  background-size: cover;
+  border-radius: 75px;
+  height: 150px;
+  width: 150px;
+}
+
+img.requires_event_ticket {
+  height: 40px;
+  width: 40px;
+}

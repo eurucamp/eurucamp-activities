@@ -7,4 +7,9 @@ before_script: cp config/database.yml.sample config/database.yml
 language: ruby
 rvm:
   - 2.3.3
+addons:
+  postgresql: "9.6"
 script: bundle exec rake db:create db:migrate spec
+notifications:
+  slack:
+    secure: c+9K1YyGPnoVYrGm5L47ojKu8cCBROSRnsB2O3FY3xfuD0CDtCTXrWQa1bOz02jnMbDmUe0BmP2dNM1m+I2Ppps3xDYIRMBIPYAJN30/ot4yCiJFKGbz2rjhzEun70yqV0h/ej+LC4Mx2/5FwACvLhw/EE0GRx64rT7Kju5LrLGmjpJYxvfvWQfKiJ4ggQSKAPe4CnKHtHTUkDlAjTi+dIFw1VYcd11IxKOizQsyQPU7ZNA3kb/dKcwcbhcm0EUrLXpJesxPVSC0v0NcYkaQACUVje9Sxo8wck/CTFDi8oZSE2aI+CiH6ekaSxNKuduk0mW7zEQzOfc7dhu9BGc4/5zCSAMJEkCsgZQAiSqvXy1K6rWy5XgphyBUCpoyFu+5umu7wniGA7kWojl5XwsIDap+rjhO3rIrfP2Jnvg8T2QHGY6TP1SLK9PHbwvDd+JeWoxllPu4xbhjuADzZH0ui3MODtjNpcRhBtUjDHl8OGLuVsxKQrn3GBNbCgS2+jKyo+R2JkxyOAAEGWIgyA6Sbpa2IxjjOLDxaNaDQeoY0YJaFbL4QHjC/Ppqs2FkR8LiEisy/l4w0HcaaRlehWgbnvL11PKSVOxWtUEUp2gLOFA9HnZe+fwUWxhuy5WJU+ilHOHwo/taWWy0sngesH8jj0ub9DfQEPWJ4FCzClZJ9z0=
