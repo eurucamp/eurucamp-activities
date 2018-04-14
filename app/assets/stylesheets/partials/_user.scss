@@ -215,3 +215,13 @@ body.activities.index #activities li .labels {
 form hr {
   background-color: #fff;
 }
+
+@media(max-width: 1000px) {
+  article header h2 {
+    max-width: 70%;
+  }
+}
+
+body.activities.index form.filters label.search {
+  height: 100px;
+}
