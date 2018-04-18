@@ -34,7 +34,7 @@ class AuthenticationsController < ApplicationController
 
   def destroy
     @authentication = current_user.authentications.find(params[:id])
-    authorize!(:destroy, @authentication)
+    authorize @authentication
     @authentication.destroy
 
     flash[:notice] = 'Successfully disconnected provider'
