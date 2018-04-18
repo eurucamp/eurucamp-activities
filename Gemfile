@@ -7,7 +7,7 @@ gem 'puma',               '~> 3.11.4'
 
 gem 'settingslogic'
 gem 'newrelic_rpm'
-gem 'devise',             '~> 4.2.0'
+gem 'devise',             '~> 4.4.3'
 gem 'omniauth',           '~> 1.6.1'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
