@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails',              '5.0.1'
 gem 'pg'
-gem 'unicorn'
+
+gem 'puma',               '~> 3.11.4'
+
 gem 'settingslogic'
 gem 'newrelic_rpm'
 gem 'devise',             '~> 4.2.0'
