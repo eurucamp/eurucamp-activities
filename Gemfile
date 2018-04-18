@@ -9,7 +9,7 @@ gem 'devise',             '~> 4.2.0'
 gem 'omniauth',           '~> 1.6.1'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
-gem 'simple_form',        '~> 3.4.0'
+gem 'simple_form',        '~> 3.5.1'
 gem 'dotenv-rails'
 
 gem 'modernizr-rails'
