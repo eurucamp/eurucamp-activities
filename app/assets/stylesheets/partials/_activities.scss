@@ -13,7 +13,8 @@ body.activities {
   &.new,
   &.edit,
   &.create,
-  &.update {
+  &.update,
+  &.destroy {
     @import "activities/form";
   }
 }
