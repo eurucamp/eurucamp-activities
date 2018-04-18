@@ -1,6 +1,6 @@
 module ControllerHelpers
   def should_authorize(action, subject)
-    expect(controller).to receive(:authorize!).with(action, subject).and_return(true)
+    expect(controller).to receive(:authorize).with(subject).and_return(true)
   end
 
   def sign_in(user = double('user'))

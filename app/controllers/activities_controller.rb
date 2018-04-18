@@ -2,8 +2,7 @@ class ActivitiesController < ApiController
   respond_to :html
 
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :load_resource, only: [:show, :edit, :update, :destroy]
-  authorize_resource only: [:edit, :update, :destroy]
+  before_action :load_and_authorize_activity, only: %i[show edit update destroy]
 
   def index
     @activities_per_day = current_event.activities_per_day(current_user, query_params[:search], query_params[:filter])
@@ -17,6 +16,7 @@ class ActivitiesController < ApiController
 
   def new
     @activity = current_event.new_activity(current_user, {})
+    authorize @activity
     respond_with(@activity)
   end
 
@@ -25,7 +25,8 @@ class ActivitiesController < ApiController
   end
 
   def create
-    @activity   = current_event.new_activity(current_user, sanitized_params)
+    @activity = current_event.new_activity(current_user, sanitized_params)
+    authorize @activity
     type        = @activity.save ? :notice : :error
     flash[type] = I18n.t("new_activity.#{type}")
     respond_with(@activity, location: activities_path)
@@ -50,8 +51,11 @@ class ActivitiesController < ApiController
 
   private
 
-    def load_resource
-      @activity = current_event.activity(params[:id]).try(:decorate)
+    def load_and_authorize_activity
+      @activity = current_event.activity(params[:id]) or
+        raise(ActiveRecord::RecordNotFound)
+      authorize @activity
+      @activity = @activity.decorate
     end
 
     def sanitized_params

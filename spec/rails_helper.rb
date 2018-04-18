@@ -5,6 +5,7 @@ SimpleCov.start 'rails'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
+require 'pundit/rspec'
 
 Capybara.configure do |config|
   config.default_max_wait_time = 5

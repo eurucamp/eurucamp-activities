@@ -14,7 +14,7 @@ class ParticipationsController < ApiController
 
   def destroy
     @participation = current_activity.participation(current_user)
-    authorize!(:destroy, @participation)
+    authorize @participation
     @participation.destroy
     respond_with(current_activity.reload, @participation, location: request.referer)
   end

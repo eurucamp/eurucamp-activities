@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe ActivitiesController do
   let(:current_user) { mock_model(User) }
 
-  let(:activity) { double(:activity) }
+  let(:activity) { mock_model(Activity) }
   let(:activity_id) { "1" }
-  let(:invalid_activity) { double(:invalid_activity, errors: {name: "no way!"}) }
+  let(:invalid_activity) { mock_model(Activity, errors: {name: "no way!"}) }
   let(:current_event) { double(:current_event) }
 
   before do
