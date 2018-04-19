@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe ActivityPolicy do
-  let(:activity)          { FactoryBot.build(:activity) }
+  let(:activity)          { build(:activity) }
   let(:activity_creator)  { activity.creator }
-  let(:other_user)        { FactoryBot.build(:user) }
+  let(:other_user)        { build(:user) }
 
   subject { described_class }
 
