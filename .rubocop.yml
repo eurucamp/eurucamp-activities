@@ -1,0 +1,32 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/BlockDelimiters:
+  Enabled: true
+  EnforcedStyle: semantic
+  Exclude:
+    - 'spec/**/*_spec.rb'
+    - 'spec/factories/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/FormatString:
+  EnforcedStyle: percent
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+  EnforcedStyle: literal
+
+Style/LambdaCall:
+  EnforcedStyle: braces
