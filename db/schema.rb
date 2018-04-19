@@ -15,61 +15,61 @@ ActiveRecord::Schema.define(version: 20180408094505) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "activities", force: :cascade do |t|
-    t.string   "name",                   default: "",    null: false
-    t.text     "description"
-    t.string   "location"
+  create_table "activities", id: :serial, force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.text "description"
+    t.string "location"
     t.datetime "start_time"
-    t.integer  "limit_of_participants",  default: 10
+    t.integer "limit_of_participants", default: 10
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "creator_id"
-    t.integer  "participations_count",   default: 0,     null: false
-    t.boolean  "anytime",                default: false, null: false
-    t.text     "requirements"
+    t.integer "creator_id"
+    t.integer "participations_count", default: 0, null: false
+    t.boolean "anytime", default: false, null: false
+    t.text "requirements"
     t.datetime "end_time"
-    t.text     "image_url"
-    t.boolean  "requires_event_ticket",  default: false, null: false
-    t.boolean  "official",               default: false, null: false
-    t.jsonb    "additional_information", default: {},    null: false
-    t.text     "tags",                                                array: true
-    t.index ["name"], name: "index_activities_on_name", using: :btree
+    t.text "image_url"
+    t.boolean "requires_event_ticket", default: false, null: false
+    t.boolean "official", default: false, null: false
+    t.jsonb "additional_information", default: {}, null: false
+    t.text "tags", array: true
+    t.index ["name"], name: "index_activities_on_name"
   end
 
-  create_table "authentications", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
+  create_table "authentications", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.string "provider"
+    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "participations", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "activity_id"
+  create_table "participations", id: :serial, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "activity_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",   null: false
-    t.string   "encrypted_password",     default: "",   null: false
-    t.string   "reset_password_token"
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer "sign_in_count", default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.string   "twitter_handle"
-    t.string   "github_handle"
-    t.boolean  "show_participation",     default: true, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.string "name"
+    t.string "twitter_handle"
+    t.string "github_handle"
+    t.boolean "show_participation", default: true, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

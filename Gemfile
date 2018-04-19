@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails',              '5.0.1'
+gem 'rails',              '5.1.6'
 gem 'pg'
 
 gem 'puma',               '~> 3.11.4'
@@ -18,7 +18,7 @@ gem 'modernizr-rails'
 gem 'sprockets-rails',    '~> 3.2.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder',           '~> 1.0.1'
+gem 'jbuilder',           '~> 2.5'
 gem 'bourbon',            '~> 5.0.0'
 gem 'neat',               '~> 2.1.0'
 gem 'haml-rails'
@@ -38,6 +38,10 @@ group :development do
   gem 'foreman'
   gem 'better_errors'
   gem 'binding_of_caller'
+
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test, :development do
