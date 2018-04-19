@@ -67,7 +67,7 @@ RSpec.describe User do
 
   describe "#no_oauth_connected?" do
     subject { user.no_oauth_connected? }
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
 
     context "account connected" do
       context "password set" do
@@ -89,7 +89,7 @@ RSpec.describe User do
 
   describe "#password_required?" do
     subject { user.password_required? }
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
 
     context "no account connected" do
       it { is_expected.to eq(true) }
@@ -109,7 +109,7 @@ RSpec.describe User do
 
   describe "#update_without_password" do
     subject { user.update_without_password(params) }
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
 
     context "no password provided" do
       let(:params) { {name: "Zbigniew" } }
@@ -131,7 +131,7 @@ RSpec.describe User do
 
   describe "#apply_omniauth" do
     subject { user.apply_omniauth(params) }
-    let(:user) { FactoryGirl.create(:user, name: nil) }
+    let(:user) { create(:user, name: nil) }
 
     context "no data provided" do
       let(:params) { {} }

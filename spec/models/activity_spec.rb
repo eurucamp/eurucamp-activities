@@ -248,14 +248,14 @@ RSpec.describe Activity do
     it { is_expected.not_to accept_values_for(:image_url, "http://com.co ge.gif", "ssh://com.com/image.gif", "blah")}
 
     context "invalid time frame (wrong order)" do
-      subject { FactoryGirl.build(:activity, start_time: 10.days.ago.to_time, anytime: false) }
+      subject { build(:activity, start_time: 10.days.ago.to_time, anytime: false) }
 
       it { is_expected.not_to accept_values_for(:end_time, 15.days.ago.to_time) }
     end
 
     context "invalid time frame (out of scope)" do
       let(:event) { Event.new("A name", 2.days.ago.to_time, 2.days.from_now.to_time ) }
-      subject { FactoryGirl.build(:activity, event: event, start_time: 10.days.ago.to_time, anytime: false) }
+      subject { build(:activity, event: event, start_time: 10.days.ago.to_time, anytime: false) }
 
       it { is_expected.to     accept_values_for(:start_time, 1.days.ago.to_time) }
       it { is_expected.not_to accept_values_for(:start_time, 15.days.ago.to_time) }

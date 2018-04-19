@@ -103,10 +103,10 @@ GEM
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
     execjs (2.7.0)
-    factory_girl (4.9.0)
+    factory_bot (4.8.2)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.9.0)
-      factory_girl (~> 4.9.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
@@ -337,7 +337,7 @@ DEPENDENCIES
   dotenv-rails
   draper (~> 3.0.0.pre1)
   exception_notification (~> 4.0.1)
-  factory_girl_rails (~> 4.2)
+  factory_bot_rails (~> 4.8)
   foreman
   haml-rails
   jbuilder (~> 2.5)

@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe ParticipationPolicy do
-  let(:participation) { FactoryGirl.build(:participation) }
+  let(:participation) { build(:participation) }
   let(:participant)   { participation.participant }
-  let(:other_user)    { FactoryGirl.build(:user) }
+  let(:other_user)    { build(:user) }
 
   subject { described_class }
 

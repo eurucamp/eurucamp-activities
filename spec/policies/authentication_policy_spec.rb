@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe AuthenticationPolicy do
-  let(:authentication)      { FactoryGirl.build(:authentication) }
+  let(:authentication)      { build(:authentication) }
   let(:authentication_user) { authentication.user }
-  let(:other_user)          { FactoryGirl.build(:user) }
+  let(:other_user)          { build(:user) }
 
   subject { described_class }
 
