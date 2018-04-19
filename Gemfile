@@ -36,7 +36,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'activemodel-serializers-xml'
 
 group :development do
-  gem 'foreman'
+  gem 'foreman', '~> 0.84', require: false
   gem 'rubocop', '~> 0.55', require: false
 
   gem 'better_errors'
