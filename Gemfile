@@ -54,6 +54,7 @@ end
 
 group :test do
   gem 'capybara', '~> 3.0'
+  gem 'selenium-webdriver'
 
   gem 'accept_values_for'
   gem 'json_spec'

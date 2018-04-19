@@ -7,14 +7,6 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'pundit/rspec'
 
-Capybara.configure do |config|
-  config.default_max_wait_time = 5
-  # config.match = :one
-  # config.exact_options = true
-  # config.ignore_hidden_elements = true
-  # config.visible_text_only = true
-end
-
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join('spec/support/**/*.rb')].each do |f| require f end
