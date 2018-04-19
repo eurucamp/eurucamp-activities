@@ -1,10 +1,10 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :authentications, dependent: :destroy
   has_many :participations, dependent: :destroy
-  has_many :created_activities, class_name: "Activity", foreign_key: "creator_id", dependent: :nullify
+  has_many :created_activities, class_name: 'Activity', foreign_key: 'creator_id', dependent: :nullify
   has_many :activities_participated_in, through: :participations
 
   validates :email, presence: true
@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # TODO: extract to module and then to a gem / engine
   def apply_omniauth(omniauth)
     provider, uid, info = omniauth.values_at('provider', 'uid', 'info')
-    unless info.blank?
+    if info.present?
       self.email = info['email'] if email.blank?
       self.name  = info['name']  if name.blank?
     end
@@ -25,12 +25,12 @@ class User < ActiveRecord::Base
     provider, info = omniauth.values_at('provider', 'info')
 
     # su*ks - refactor it
-    unless info.blank?
+    if info.present?
       case provider
-        when /github/
-          self.github_handle  = info['nickname'] if github_handle.blank?
-        when /twitter/
-          self.twitter_handle = info['nickname'] if twitter_handle.blank?
+      when /github/
+        self.github_handle  = info['nickname'] if github_handle.blank?
+      when /twitter/
+        self.twitter_handle = info['nickname'] if twitter_handle.blank?
       end
     end
     self
@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
       params.delete(:password_confirmation)
     end
 
-    result = update_attributes(params, *options)
+    result = update(params, *options)
     clean_up_passwords
     result
   end
@@ -65,16 +65,15 @@ class User < ActiveRecord::Base
 
   private
 
-    def any_oauth_connected?
-      authentications.any?
-    end
+  def any_oauth_connected?
+    authentications.any?
+  end
 
-    def provider_connected?(provider)
-      authentications.where(provider: provider).any?
-    end
+  def provider_connected?(provider)
+    authentications.where(provider: provider).any?
+  end
 
-    def paper_exists?(paper)
-      papers.exists?(paper)
-    end
-
+  def paper_exists?(paper)
+    papers.exists?(paper)
+  end
 end

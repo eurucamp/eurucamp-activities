@@ -1,7 +1,7 @@
 class ActivitiesController < ApiController
   respond_to :html
 
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: %i[index show]
   before_action :load_and_authorize_activity, only: %i[show edit update destroy]
 
   def index
@@ -34,7 +34,7 @@ class ActivitiesController < ApiController
 
   def update
     if @activity
-      type        = @activity.update_attributes(sanitized_params) ? :notice : :error
+      type        = @activity.update(sanitized_params) ? :notice : :error
       flash[type] = I18n.t("edit_activity.#{type}")
     end
     respond_with(@activity, location: edit_activity_path(@activity))
@@ -42,38 +42,37 @@ class ActivitiesController < ApiController
 
   def destroy
     if @activity && params[:confirm_delete] && @activity.destroy
-      redirect_to root_path, notice: I18n.t("destroy_activity.notice")
+      redirect_to root_path, notice: I18n.t('destroy_activity.notice')
     else
-      flash[:error] = I18n.t("destroy_activity.error")
+      flash[:error] = I18n.t('destroy_activity.error')
       render :edit
     end
   end
 
   private
 
-    def load_and_authorize_activity
-      @activity = current_event.activity(params[:id]) or
-        raise(ActiveRecord::RecordNotFound)
-      authorize @activity
-      @activity = @activity.decorate
-    end
+  def load_and_authorize_activity
+    @activity = current_event.activity(params[:id]) or
+      raise(ActiveRecord::RecordNotFound)
+    authorize @activity
+    @activity = @activity.decorate
+  end
 
-    def sanitized_params
-      params.require(:activity)
-            .permit(:start_time,
-                    :end_time,
-                    :name,
-                    :location,
-                    :requirements,
-                    :requires_event_ticket,
-                    :description,
-                    :limit_of_participants,
-                    :anytime,
-                    :image_url)
-    end
+  def sanitized_params
+    params.require(:activity)
+          .permit(:start_time,
+                  :end_time,
+                  :name,
+                  :location,
+                  :requirements,
+                  :requires_event_ticket,
+                  :description,
+                  :limit_of_participants,
+                  :anytime,
+                  :image_url)
+  end
 
-    def query_params
-      params.permit(:search, :filter)
-    end
-
+  def query_params
+    params.permit(:search, :filter)
+  end
 end

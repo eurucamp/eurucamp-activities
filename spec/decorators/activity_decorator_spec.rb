@@ -4,26 +4,26 @@ RSpec.describe ActivityDecorator do
   let (:activity) { build_stubbed(:activity, limit_of_participants: 20) }
   let (:decorator) { ActivityDecorator.new(activity) }
 
-  describe "#spots_left" do
+  describe '#spots_left' do
     subject { decorator.open_spots }
 
     before do
       allow(activity).to receive(:participations_count).and_return(count)
     end
 
-    context "no participants" do
+    context 'no participants' do
       let(:count) { 0 }
 
       it { is_expected.to eq(20) }
     end
 
-    context "some participants" do
+    context 'some participants' do
       let(:count) { 5 }
 
       it { is_expected.to eq(15) }
     end
 
-    context "too many participants" do
+    context 'too many participants' do
       let(:count) { 25 }
 
       it { is_expected.to eq(0) }
