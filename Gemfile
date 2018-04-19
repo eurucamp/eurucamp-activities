@@ -46,7 +46,7 @@ end
 
 group :test, :development do
   gem 'rspec-rails',       '~> 3.3'
-  gem 'factory_girl_rails','~> 4.2'
+  gem 'factory_bot_rails', '~> 4.8'
 end
 
 group :test do

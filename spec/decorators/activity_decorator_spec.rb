@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ActivityDecorator do
-  let (:activity) { FactoryGirl.build_stubbed(:activity, limit_of_participants: 20) }
+  let (:activity) { FactoryBot.build_stubbed(:activity, limit_of_participants: 20) }
   let (:decorator) { ActivityDecorator.new(activity) }
 
   describe "#spots_left" do

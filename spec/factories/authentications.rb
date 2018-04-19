@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :authentication do
     uid { generate(:uid) }
     provider "Provider"
