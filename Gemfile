@@ -37,6 +37,7 @@ gem 'activemodel-serializers-xml'
 
 group :development do
   gem 'foreman'
+  gem 'rubocop', '~> 0.55', require: false
 
   gem 'better_errors'
   gem 'binding_of_caller'
