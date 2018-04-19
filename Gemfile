@@ -56,6 +56,8 @@ group :test do
   gem 'capybara', '~> 3.0'
   gem 'selenium-webdriver'
 
+  gem 'database_cleaner', '~> 1.6'
+
   gem 'accept_values_for'
   gem 'json_spec'
   gem 'rails-controller-testing'
