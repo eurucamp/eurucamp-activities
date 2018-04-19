@@ -3,9 +3,9 @@
 require 'json'
 require 'pp'
 
-schedule_json = File.read(File.expand_path('../../../2018.isleofruby.org/data/schedule.json', __FILE__))
-program_json  = File.read(File.expand_path('../../../2018.isleofruby.org/data/program.json', __FILE__))
-speakers_yaml = File.read(File.expand_path('../../../2018.isleofruby.org/data/speakers.yml', __FILE__))
+schedule_json = File.read(File.expand_path('../../2018.isleofruby.org/data/schedule.json', __dir__))
+program_json  = File.read(File.expand_path('../../2018.isleofruby.org/data/program.json', __dir__))
+speakers_yaml = File.read(File.expand_path('../../2018.isleofruby.org/data/speakers.yml', __dir__))
 
 schedule_data = JSON.parse(schedule_json)
 program_data  = JSON.parse(program_json)

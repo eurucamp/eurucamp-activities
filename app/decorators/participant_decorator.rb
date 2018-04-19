@@ -4,7 +4,7 @@ class ParticipantDecorator < Draper::Decorator
     object.name
   end
 
-  DEFAULT_AVATAR = 'https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=%{size}'
+  DEFAULT_AVATAR = 'https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=%{size}'.freeze
 
   def avatar_url(size)
     return DEFAULT_AVATAR % { size: size } unless object.show_participation

@@ -19,28 +19,27 @@ class ApplicationController < ActionController::Base
 
   def not_found
     if request.xhr?
-      render nothing: true, status: 404
+      render nothing: true, status: :not_found
     else
-      raise ActionController::RoutingError.new('Not Found')
+      raise ActionController::RoutingError, 'Not Found'
     end
   end
 
   private
 
-    def clean_up_session
-      session[:omniauth] = nil
-    end
+  def clean_up_session
+    session[:omniauth] = nil
+  end
 
-    def rescue_access_denied
-      render nothing: true, status: 401
-    end
+  def rescue_access_denied
+    render nothing: true, status: :unauthorized
+  end
 
-    def rescue_record_not_found
-      not_found
-    end
+  def rescue_record_not_found
+    not_found
+  end
 
-    def layout_by_resource
-      devise_controller? ? 'user' : 'application'
-    end
-
+  def layout_by_resource
+    devise_controller? ? 'user' : 'application'
+  end
 end

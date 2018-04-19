@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :participation do
-    participant{ FactoryBot.create(:user) }
+    participant { FactoryBot.create(:user) }
     activity
   end
 end

@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe ParticipationsController do
   let(:current_user) { mock_model(User) }
-  let(:activity_id) { "1" }
+  let(:activity_id) { '1' }
   let(:activity) { double(:activity) }
   let(:participation) { double(:participation) }
-  let(:invalid_participation) { double(:participation, errors: {activity_id: "nahhhhh"}) }
+  let(:invalid_participation) { double(:participation, errors: { activity_id: 'nahhhhh' }) }
   let(:current_event) { double(:current_event) }
 
   before do
@@ -13,9 +13,9 @@ RSpec.describe ParticipationsController do
     allow(controller).to receive(:current_event).and_return(current_event)
   end
 
-  describe "#create" do
-    context "with :js format" do
-      subject { post :create, params: {activity_id: activity_id, format: :js} }
+  describe '#create' do
+    context 'with :js format' do
+      subject { post :create, params: { activity_id: activity_id, format: :js } }
 
       before do
         sign_in(current_user)
@@ -25,8 +25,7 @@ RSpec.describe ParticipationsController do
         allow(activity).to receive(:new_participation).with(current_user).and_return(participation)
       end
 
-      context "valid parameters" do
-
+      context 'valid parameters' do
         before do
           expect(activity).to receive(:full?).and_return(false)
           expect(participation).to receive(:save).and_return(true)
@@ -35,7 +34,7 @@ RSpec.describe ParticipationsController do
         it { is_expected.to render_template(:create) }
       end
 
-      context "user is already a participant" do
+      context 'user is already a participant' do
         let(:participation) { invalid_participation }
 
         before do
@@ -47,7 +46,7 @@ RSpec.describe ParticipationsController do
         it { is_expected.to render_template(:create) }
       end
 
-      context "activity is already full" do
+      context 'activity is already full' do
         before do
           expect(activity).to receive(:full?).and_return(true)
           expect(participation).not_to receive(:save)
@@ -58,8 +57,8 @@ RSpec.describe ParticipationsController do
     end
   end
 
-  describe "#destroy" do
-    context "with :js format" do
+  describe '#destroy' do
+    context 'with :js format' do
       subject { delete :destroy, params: { activity_id: activity_id }, format: :js }
 
       before do
@@ -78,5 +77,4 @@ RSpec.describe ParticipationsController do
       it { is_expected.to render_template(:destroy) }
     end
   end
-
 end

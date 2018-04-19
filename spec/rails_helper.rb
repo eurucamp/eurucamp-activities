@@ -1,8 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 require 'simplecov'
 SimpleCov.start 'rails'
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'capybara/rails'
 require 'pundit/rspec'
@@ -17,20 +17,18 @@ end
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each do |f| require f end
 
 OmniAuth.config.test_mode = true
 
-OmniAuth.config.add_mock(:github, {
-    uid:      'xc8b12448990eaef0b420f7153ec8d58',
-    nickname: 'rockstar',
-    email:    'user@99cookies.com',
-    image:    'rockstar.jpg'
-})
-OmniAuth.config.add_mock(:twitter,  {
-    uid:      'xc8b12448990eaef0b420f7153ec8d58',
-    nickname: 'rockstar'
-})
+OmniAuth.config.add_mock(:github,
+                         uid:      'xc8b12448990eaef0b420f7153ec8d58',
+                         nickname: 'rockstar',
+                         email:    'user@99cookies.com',
+                         image:    'rockstar.jpg')
+OmniAuth.config.add_mock(:twitter,
+                         uid:      'xc8b12448990eaef0b420f7153ec8d58',
+                         nickname: 'rockstar')
 
 Devise.stretches   = 1
 Rails.logger.level = 4

@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   skip_before_action :authenticate_user!, only: :create
-  skip_before_action :clean_up_session, only: [:new, :create]
+  skip_before_action :clean_up_session, only: %i[new create]
 
   helper_method :during_oauth_flow?
 
@@ -29,29 +29,28 @@ class RegistrationsController < Devise::RegistrationsController
 
   private
 
-    def during_oauth_flow?
-      !current_user && @user.new_record? && session[:omniauth].present?
-    end
+  def during_oauth_flow?
+    !current_user && @user.new_record? && session[:omniauth].present?
+  end
 
-    def build_resource(*args)
-      super.tap do |user|
-        if user && session[:omniauth]
-          user.apply_omniauth(session[:omniauth])
-          user.valid?
-        end
+  def build_resource(*args)
+    super.tap do |user|
+      if user && session[:omniauth]
+        user.apply_omniauth(session[:omniauth])
+        user.valid?
       end
     end
+  end
 
-    def after_update_path_for(resource)
-      edit_user_registration_path
-    end
+  def after_update_path_for(_resource)
+    edit_user_registration_path
+  end
 
-    def sign_up_params
-      editable_params
-    end
+  def sign_up_params
+    editable_params
+  end
 
-    def editable_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :show_participation)
-    end
-
+  def editable_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :show_participation)
+  end
 end

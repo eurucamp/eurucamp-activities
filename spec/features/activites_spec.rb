@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Activities", :type => :feature do
+RSpec.describe 'Activities', type: :feature do
   let!(:event) { Event.new }
   let!(:creator) do
     User.create!(
@@ -40,9 +40,8 @@ RSpec.describe "Activities", :type => :feature do
     activity.participants << anonymous_participant
   end
 
-
   context 'viewing an activity' do
-    it "view activity" do
+    it 'view activity' do
       login_as(participant)
       visit "/activities/#{activity.id}"
 

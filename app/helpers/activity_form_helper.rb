@@ -1,5 +1,4 @@
 module ActivityFormHelper
-
   def fancy_datime_select(form, field, model)
     field = field.to_s
     haml_tag :fieldset, class: field.dasherize do
@@ -16,30 +15,29 @@ module ActivityFormHelper
 
   private
 
-    def capture_attributes(field, model, type = 'date')
-      field = field.to_sym
-      format = "#{type}_only".to_sym
+  def capture_attributes(field, model, type = 'date')
+    field = field.to_sym
+    format = "#{type}_only".to_sym
 
-      attributes = {
-        type:        'text',
-        class:       "#{type}-capture #{field.to_s.dasherize}",
-        placeholder: l(current_event.send(field), format: "nice_#{type}".to_sym),
-        data:        {
-          update: ".#{type}-capture.#{field == :start_time ? 'end' : 'start'}-time",
-          target: field,
-          value: parse_date(model.send(field), format)
-        }
+    attributes = {
+      type:        'text',
+      class:       "#{type}-capture #{field.to_s.dasherize}",
+      placeholder: l(current_event.send(field), format: "nice_#{type}".to_sym),
+      data:        {
+        update: ".#{type}-capture.#{field == :start_time ? 'end' : 'start'}-time",
+        target: field,
+        value: parse_date(model.send(field), format)
       }
+    }
 
-      if model.errors[field].any?
-        attributes[:class] << ' validation-error'
-      end
+    attributes[:class] << ' validation-error' if model.errors[field].any?
 
-      attributes
-    end
+    attributes
+  end
 
-    def parse_date(d, format)
-      l(d, format: format) rescue nil
-    end
-
+  def parse_date(d, format)
+    l(d, format: format)
+  rescue StandardError
+    nil
+  end
 end

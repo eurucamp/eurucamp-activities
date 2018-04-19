@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources  :authentications, only: [:create, :destroy]
+  resources  :authentications, only: %i[create destroy]
   get '/auth/:provider/callback' => 'authentications#create'
 
   devise_for :users, controllers: {
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
 
   resources :activities do
-    resource :participation, only: [:create, :destroy]
+    resource :participation, only: %i[create destroy]
   end
   root to: 'activities#index'
 end
