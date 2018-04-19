@@ -41,37 +41,75 @@ RSpec.describe 'Activities', type: :feature do
   end
 
   context 'viewing an activity' do
-    it 'view activity' do
-      login_as(participant)
-      visit "/activities/#{activity.id}"
+    context 'with JavaScript disabled' do
+      it 'view activity' do
+        login_as(participant)
+        visit "/activities/#{activity.id}"
 
-      expect(page.status_code).to eq(200)
-      expect(page).to have_xpath('//li[@title="Participanto"]')
-      expect(page).not_to have_xpath('//li[@title="AnonUser"]')
-      expect(page).to have_xpath('//li[@title="Anonymous"]')
+        expect(page.status_code).to eq(200)
+        expect(page).to have_xpath('//li[@title="Participanto"]')
+        expect(page).not_to have_xpath('//li[@title="AnonUser"]')
+        expect(page).to have_xpath('//li[@title="Anonymous"]')
+      end
+    end
+
+    context 'with JavaScript enabled', :js do
+      it 'view activity' do
+        login_as(participant)
+        visit "/activities/#{activity.id}"
+
+        expect(page).to have_xpath('//li[@title="Participanto"]')
+        expect(page).not_to have_xpath('//li[@title="AnonUser"]')
+        expect(page).to have_xpath('//li[@title="Anonymous"]')
+      end
     end
   end
 
   context 'deleting an activity' do
-    it 'deletes activity when checkbox is checked' do
-      login_as(creator)
-      visit "/activities/#{activity.id}"
-      click_link 'Edit'
-      check 'Really delete this activity (with currently 2 participants)'
-      click_button 'Delete activity'
+    context 'with JavaScript disabled' do
+      it 'deletes activity when checkbox is checked' do
+        login_as(creator)
+        visit "/activities/#{activity.id}"
+        click_link 'Edit'
+        check 'Really delete this activity (with currently 2 participants)'
+        click_button 'Delete activity'
 
-      get_redirected_to_homepage
-      activity_is_deleted
+        get_redirected_to_homepage
+        activity_is_deleted
+      end
+
+      it 'does not delete activity when checkbox is not checked' do
+        login_as(creator)
+        visit "/activities/#{activity.id}"
+        click_link 'Edit'
+
+        click_button 'Delete activity'
+
+        activity_is_not_deleted
+      end
     end
 
-    it 'does not delete activity when checkbox is not checked' do
-      login_as(creator)
-      visit "/activities/#{activity.id}"
-      click_link 'Edit'
+    context 'with JavaScript enabled', :js do
+      it 'deletes activity when checkbox is checked' do
+        login_as(creator)
+        visit "/activities/#{activity.id}"
+        click_link 'Edit'
+        check 'Really delete this activity (with currently 2 participants)'
+        click_button 'Delete activity'
 
-      click_button 'Delete activity'
+        get_redirected_to_homepage
+        activity_is_deleted
+      end
 
-      activity_is_not_deleted
+      it 'does not delete activity when checkbox is not checked' do
+        login_as(creator)
+        visit "/activities/#{activity.id}"
+        click_link 'Edit'
+
+        click_button 'Delete activity'
+
+        activity_is_not_deleted
+      end
     end
   end
 
