@@ -132,7 +132,7 @@ RSpec.describe ActivitiesController do
       let(:attributes) { { location: 'Location', name: 'Name', start_time: 1.day.ago.to_s, end_time: 2.days.ago.to_s } }
 
       before do
-        expect(activity).to receive(:update_attributes).with(ActionController::Parameters.new(attributes).permit!).and_return(true)
+        expect(activity).to receive(:update).with(ActionController::Parameters.new(attributes).permit!).and_return(true)
       end
 
       it { is_expected.to redirect_to edit_activity_path(activity) }
@@ -143,7 +143,7 @@ RSpec.describe ActivitiesController do
       let(:activity) { invalid_activity }
 
       before do
-        expect(activity).to receive(:update_attributes).with(ActionController::Parameters.new(attributes).permit!).and_return(false)
+        expect(activity).to receive(:update).with(ActionController::Parameters.new(attributes).permit!).and_return(false)
       end
 
       it { is_expected.to render_template(:edit) }
