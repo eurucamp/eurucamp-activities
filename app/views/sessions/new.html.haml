@@ -14,13 +14,13 @@
         %span.label Your password
         = f.password_field :password, placeholder: "Your password"
 
-      %button(type="submit")>
+      %button{ type: "submit" }>
         Sign in
 
     %p.divider
       %span or
 
-    = render "registrations/oauth", :resource => resource
+    = render "registrations/oauth", resource: resource
 
     %p.info
       = succeed '.' do

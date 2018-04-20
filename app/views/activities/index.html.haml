@@ -1,4 +1,4 @@
-%form.filters(action=activities_path method="GET" id="activities-filter")
+%form.filters{ action: activities_path, method: "GET", id: "activities-filter" }
   %label>
     = radio_button_tag "filter", "today", params[:filter] == "today", class: "radio"
     = t("activities.filters.today")
@@ -20,11 +20,11 @@
     %strong
       = @counters[:owner]
   %label.search
-    %input(type="text" name="search" placeholder="#{ t("activities.search.placeholder") }" value="#{ params[:search] }")
-  %button(type="submit")
+    %input{ type: "text", name: "search", placeholder: t("activities.search.placeholder"), value: params[:search] }
+  %button{ type: "submit" }
     = t("activities.filters.submit")
 
-%a#new-activity(href="#{ new_activity_path }" title="#{ t("activities.new.title") }")
+%a#new-activity{ href: new_activity_path, title: t("activities.new.title") }
   %span
   = t("activities.new.label")
 

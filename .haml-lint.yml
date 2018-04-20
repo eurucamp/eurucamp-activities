@@ -3,3 +3,27 @@ inherit_from: .haml-lint_todo.yml
 linters:
   HtmlAttributes:
     enabled: false
+
+  RuboCop:
+    enabled: true
+    ignored_cops:
+      # haml-lint does not provide a way to merge with defaults
+      - Lint/BlockAlignment
+      - Lint/EndAlignment
+      - Lint/Void
+      - Layout/AlignParameters
+      - Layout/ElseAlignment
+      - Layout/EndOfLine
+      - Layout/IndentationWidth
+      - Layout/TrailingBlankLines
+      - Layout/TrailingWhitespace
+      - Metrics/BlockLength
+      - Metrics/BlockNesting
+      - Metrics/LineLength
+      - Naming/FileName
+      - Style/FrozenStringLiteralComment
+      - Style/IfUnlessModifier
+      - Style/Next
+      - Style/WhileUntilModifier
+
+      - Style/StringLiterals

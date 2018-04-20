@@ -23,7 +23,7 @@
           = t("activities.participants")
         %ul
           - ParticipantDecorator.decorate_collection(@activity.participants).each do |participant|
-            %li(title="#{ participant.name }")>
+            %li{ title: participant.name }>
               = image_tag(participant.avatar_url(48))
 
   %section.description
@@ -59,6 +59,6 @@
         %br
         %a#show-map= t("activity_form.location.show-map")
 
-    #meeting-point-map.meeting-point-map
+    .meeting-point-map#meeting-point-map
       = image_tag 'activities/meeting_points.jpg'
 

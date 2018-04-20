@@ -9,7 +9,7 @@
         = t("common.or").downcase
       = link_to t("activities.new.label").downcase, new_activity_path
 
-  = render "form"
+  = render 'form', activity: @activity
 
 
 %article.delete-activity
@@ -18,4 +18,4 @@
     %p.meta
       %strong= t("delete_activity_form.title")
 
-  = render "delete_form"
+  = render 'delete_form', activity: @activity

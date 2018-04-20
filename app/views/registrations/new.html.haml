@@ -6,7 +6,7 @@
   %section.form
 
     - unless during_oauth_flow?
-      = render "registrations/oauth", :resource => resource, :domain => "new"
+      = render "registrations/oauth", resource: resource, domain: "new"
 
       %p.divider
         %span or
@@ -31,13 +31,13 @@
           %span.label Password, once more
           = f.password_field :password_confirmation, placeholder: "Password once more"
 
-      %button(type="submit")>
+      %button{ type: "submit" }>
         Sign up
 
       %p.info
         = succeed '.' do
           Have an account already?
-          = link_to  new_session_path(:user), title: "Sign in" do
+          = link_to new_session_path(:user), title: "Sign in" do
             Sign in
           or
           = link_to new_password_path(:user), title: "Reset your password" do

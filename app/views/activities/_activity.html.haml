@@ -1,6 +1,6 @@
 - type = activity.relation_ship_with(current_user)
 
-%li(id="activity-#{activity.id}" class="#{activity.css_classes}")
+%li{ id: "activity-#{activity.id}", class: activity.css_classes }
   .container
 
     = render "activities/progress", activity: activity
@@ -20,7 +20,7 @@
 
     = render "activities/action", activity: activity, type: type, remote: true
 
-    %a.details(href="#{activity_path(activity)}" title="#{activity.name}")
+    %a.details{ href: activity_path(activity), title: activity.name }
       %span
         = t("activities.more_info.label")
     - unless type == 'default'

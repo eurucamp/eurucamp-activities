@@ -30,10 +30,10 @@
           %span.label Your password once more
           = f.password_field :password_confirmation, placeholder: "Your password once more"
 
-      %button(type="submit")>
+      %button{ type: "submit" }>
         Update
 
       %p.divider
         %span Connect!
 
-      = render "oauth", :resource => resource, :domain => "edit"
+      = render "oauth", resource: resource, domain: "edit"

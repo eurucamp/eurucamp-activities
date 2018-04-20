@@ -1,13 +1,13 @@
-= form_for @activity, html: { id: "new-activity" } do |f|
+= form_for activity, html: { id: "new-activity" } do |f|
 
   %label.name
     = f.text_field :name, placeholder: t("activity_form.name.label"), class: "title"
 
   %hr
 
-  - fancy_datime_select f, :start_time, @activity
+  - fancy_datime_select f, :start_time, activity
   %span.divider> &ndash;
-  - fancy_datime_select f, :end_time, @activity
+  - fancy_datime_select f, :end_time, activity
 
   %hr
 
@@ -45,6 +45,6 @@
     %small
       = t("activity_form.image_url.hint")
 
-  %button(type="submit")>
+  %button{ type: "submit" }>
     %span>
-    = t("common.submit.#{ @activity.new_record? ? "new" : "edit" }")
+    = t("common.submit.#{activity.new_record? ? 'new' : 'edit'}")
