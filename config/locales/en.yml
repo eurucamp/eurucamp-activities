@@ -34,17 +34,17 @@ en:
     edit:
       oauth:
         github:
-          connect: "Connect your <strong>GitHub account</strong>"
-          connected: "You have connected your <strong>GitHub account</strong>"
+          connect_html: "Connect your <strong>GitHub account</strong>"
+          connected_html: "You have connected your <strong>GitHub account</strong>"
         twitter:
-          connect: "Connect your <strong>Twitter account</strong>"
-          connected: "You have connected your <strong>Twitter account</strong>"
+          connect_html: "Connect your <strong>Twitter account</strong>"
+          connected_html: "You have connected your <strong>Twitter account</strong>"
     new:
       oauth:
         github:
-          connect: "Sign in with your <strong>GitHub account</strong>"
+          connect_html: "Sign in with your <strong>GitHub account</strong>"
         twitter:
-          connect: "Sign in with your <strong>Twitter account</strong>"
+          connect_html: "Sign in with your <strong>Twitter account</strong>"
 
   # index and shared translations
   activities:
@@ -83,7 +83,7 @@ en:
     required: Required
     requires_event_ticket: "During the Isle of Ruby participants need a ticket"
     participants: Participants
-    organized_by: "Organised by <strong>%{name}</strong>"
+    organized_by_html: "Organised by <strong>%{name}</strong>"
     room_left:
       none: Sorry. All places are gone.
       one: "Quick, only one place left."

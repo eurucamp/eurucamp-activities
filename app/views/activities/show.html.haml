@@ -9,7 +9,7 @@
           alt: t('activities.requires_event_ticket'),
           title: t('activities.requires_event_ticket')
     %p.meta
-      = t('activities.organized_by', name: @activity.creator_name).html_safe
+      = t('activities.organized_by_html', name: @activity.creator_name)
 
     = render 'action', activity: @activity, type: @activity.relation_ship_with(current_user), remote: false
 
