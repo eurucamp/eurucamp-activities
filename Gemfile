@@ -39,6 +39,8 @@ group :development do
   gem 'foreman', '~> 0.84', require: false
   gem 'rubocop', '~> 0.55', require: false
 
+  gem 'haml-lint',          require: false
+
   gem 'better_errors'
   gem 'binding_of_caller'
 
