@@ -48,7 +48,7 @@ class Activity < ApplicationRecord
     end
 
     def order_by_start_time
-      t = Date.current.beginning_of_day
+      t = Time.zone.now.beginning_of_day
       custom_order = <<~SQL
         *,
         (
@@ -75,7 +75,9 @@ SQL
     end
 
     def find_today
-      where('(NOT(start_time <= :t1 AND end_time = :t1 ) AND (start_time <= :t2 AND end_time >= :t1)) OR anytime=true', t1: Date.current.beginning_of_day, t2: Date.current.end_of_day).order_by_start_time
+      where('(NOT(start_time <= :t1 AND end_time = :t1 ) AND (start_time <= :t2 AND end_time >= :t1)) OR anytime=true',
+            t1: Time.zone.now.beginning_of_day,
+            t2: Time.zone.now.end_of_day).order_by_start_time
     end
 
     def find_with_name_like(name)
@@ -101,8 +103,8 @@ SQL
 
   def today?
     return true if anytime?
-    t1 = Date.current.beginning_of_day
-    t2 = Date.current.end_of_day
+    t1 = Time.zone.now.beginning_of_day
+    t2 = Time.zone.now.end_of_day
     if start_time <= t1 && end_time == t1
       false
     else
@@ -111,12 +113,12 @@ SQL
   end
 
   def upcoming?
-    start_time > Date.current.end_of_day
+    start_time > Time.zone.now.end_of_day
   end
 
   def in_past?
     return false if anytime?
-    end_time < Date.current.beginning_of_day
+    end_time < Time.zone.now.beginning_of_day
   end
 
   def full?
