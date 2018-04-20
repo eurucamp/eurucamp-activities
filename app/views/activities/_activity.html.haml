@@ -16,7 +16,7 @@
           alt: t('activities.requires_event_ticket'),
           title: t('activities.requires_event_ticket')
       %p.time
-        = activity.time.html_safe
+        = activity.formatted_time
 
     = render 'activities/action', activity: activity, type: type, remote: true
 
