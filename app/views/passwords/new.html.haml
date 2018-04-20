@@ -9,14 +9,14 @@
 
       %label.email
         %span.label Email address
-        = f.email_field :email, placeholder: "You email address"
+        = f.email_field :email, placeholder: 'You email address'
 
-      %button{ type: "submit" }>
+      %button{ type: 'submit' }>
         Send me instructions
 
       %p.info
         = succeed '.' do
           You can also
-          = link_to new_registration_path(:user), title: "Sign up" do
+          = link_to new_registration_path(:user), title: 'Sign up' do
             sign up
           if you don't have account yet.

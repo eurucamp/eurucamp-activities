@@ -1,14 +1,14 @@
 !!!
 - html_tag lang: 'en' do
   %head
-    = render "partials/layout_head"
-    = render "partials/preinitializers"
+    = render 'partials/layout_head'
+    = render 'partials/preinitializers'
 
   %body{ class: body_class(controller.action_name) }
-    = render "partials/notifications"
+    = render 'partials/notifications'
     #container
-      = render "partials/header"
-      #main{ role: "main" }
+      = render 'partials/header'
+      #main{ role: 'main' }
         = yield
-      = render "partials/footer"
-    = javascript_include_tag "application"
+      = render 'partials/footer'
+    = javascript_include_tag 'application'

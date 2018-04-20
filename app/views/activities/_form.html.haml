@@ -1,7 +1,7 @@
-= form_for activity, html: { id: "new-activity" } do |f|
+= form_for activity, html: { id: 'new-activity' } do |f|
 
   %label.name
-    = f.text_field :name, placeholder: t("activity_form.name.label"), class: "title"
+    = f.text_field :name, placeholder: t('activity_form.name.label'), class: 'title'
 
   %hr
 
@@ -12,39 +12,39 @@
   %hr
 
   %label.location>
-    = f.text_field :location, placeholder: t("activity_form.location.label")
+    = f.text_field :location, placeholder: t('activity_form.location.label')
     %small
-      = t("activity_form.location.hint")
-      %a#show-map= t("activity_form.location.show-map")
+      = t('activity_form.location.hint')
+      %a#show-map= t('activity_form.location.show-map')
 
   %label.limit-of-participants>
     = f.number_field :limit_of_participants, placeholder: 10, min: 1
     %small
-      = t("activity_form.limit_of_participants.hint")
+      = t('activity_form.limit_of_participants.hint')
 
   = image_tag 'activities/meeting_points.svg', class: 'meeting-point-map', id: 'meeting-point-map'
 
   %label.requirements
-    = f.text_area :requirements, placeholder: t("activity_form.requirements.label"), rows: 6, class: "markdown", title: t("activity_form.markdown_hint")
+    = f.text_area :requirements, placeholder: t('activity_form.requirements.label'), rows: 6, class: 'markdown', title: t('activity_form.markdown_hint')
     %small
-      = t("activity_form.requirements.hint")
+      = t('activity_form.requirements.hint')
 
   %fieldset.requires_event_ticket
     %label.inline
       = f.check_box :requires_event_ticket
-      = t("activity_form.requires_event_ticket.hint")
+      = t('activity_form.requires_event_ticket.hint')
 
   %label.description
-    = f.text_area :description, placeholder: t("activity_form.description.label"), rows: 8, class: "markdown", title: t("activity_form.markdown_hint")
+    = f.text_area :description, placeholder: t('activity_form.description.label'), rows: 8, class: 'markdown', title: t('activity_form.markdown_hint')
     %small
-      = t("activity_form.description.hint")
+      = t('activity_form.description.hint')
 
   %label.image-url
-    = f.url_field :image_url, placeholder: t("activity_form.image_url.label")
+    = f.url_field :image_url, placeholder: t('activity_form.image_url.label')
     .preview
     %small
-      = t("activity_form.image_url.hint")
+      = t('activity_form.image_url.hint')
 
-  %button{ type: "submit" }>
+  %button{ type: 'submit' }>
     %span>
     = t("common.submit.#{activity.new_record? ? 'new' : 'edit'}")

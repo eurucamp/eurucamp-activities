@@ -8,25 +8,25 @@
 
       %label.email
         %span.label Your email address
-        = f.email_field :email, autofocus: true, placeholder: "Your email address"
+        = f.email_field :email, autofocus: true, placeholder: 'Your email address'
 
       %label.password
         %span.label Your password
-        = f.password_field :password, placeholder: "Your password"
+        = f.password_field :password, placeholder: 'Your password'
 
-      %button{ type: "submit" }>
+      %button{ type: 'submit' }>
         Sign in
 
     %p.divider
       %span or
 
-    = render "registrations/oauth", resource: resource
+    = render 'registrations/oauth', resource: resource
 
     %p.info
       = succeed '.' do
         Otherwise
-        = link_to new_registration_path(:user), title: "Create a new account" do
+        = link_to new_registration_path(:user), title: 'Create a new account' do
           create a new account
         or
-        = link_to new_password_path(:user), title: "Reset your password" do
+        = link_to new_password_path(:user), title: 'Reset your password' do
           reset your password

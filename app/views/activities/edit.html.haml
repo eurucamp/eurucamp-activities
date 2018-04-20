@@ -1,21 +1,21 @@
 %article
   %header
     %h2
-      = t("edit_activity.title")
+      = t('edit_activity.title')
 
     %p.meta
-      = link_to t("activities.more_info.label_long"), @activity
+      = link_to t('activities.more_info.label_long'), @activity
       %strong.divider
-        = t("common.or").downcase
-      = link_to t("activities.new.label").downcase, new_activity_path
+        = t('common.or').downcase
+      = link_to t('activities.new.label').downcase, new_activity_path
 
   = render 'form', activity: @activity
 
 
 %article.delete-activity
   %header
-    %h2= t("activities.danger_zone")
+    %h2= t('activities.danger_zone')
     %p.meta
-      %strong= t("delete_activity_form.title")
+      %strong= t('delete_activity_form.title')
 
   = render 'delete_form', activity: @activity
