@@ -7,6 +7,9 @@ AllCops:
     - 'node_modules/**/*'
     - 'vendor/**/*'
 
+Rails/Date:
+  EnforcedStyle: strict
+
 Style/AndOr:
   EnforcedStyle: conditionals
 
