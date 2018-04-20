@@ -58,18 +58,18 @@ class ActivityDecorator < Draper::Decorator
     [[object.limit_of_participants - object.participations_count, 0].max, object.limit_of_participants].min
   end
 
-  def time
+  def formatted_time
     if object.anytime?
       I18n.t('activities.anytime')
     else
       alpha = object.start_time
       omega = object.end_time
-      out = ''
+      out = ''.html_safe
 
       out << I18n.l(alpha, format: :nice_date)
       out << ' / '
       out << I18n.l(alpha, format: :time_only)
-      out << ' &ndash; '
+      out << ' &ndash; '.html_safe
       unless alpha.to_date == omega.to_date
         out << I18n.l(omega, format: :nice_date)
         out << ' / '

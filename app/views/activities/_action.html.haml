@@ -1,17 +1,17 @@
 - remote = defined?(remote) ? remote : true
-.action(class=type)
+.action{ class: type }
   - case type
-  - when "owner"
-    = link_to edit_activity_path(activity), title: t("activities.edit.title") do
+  - when 'owner'
+    = link_to edit_activity_path(activity), title: t('activities.edit.title') do
       %span
-      = t("activities.edit.label")
-  - when "participant"
+      = t('activities.edit.label')
+  - when 'participant'
     - unless activity.in_past? || activity.official
-      = button_to activity_participation_path(activity), method: :delete, remote: remote, title: t("activities.leave.title") do
+      = button_to activity_participation_path(activity), method: :delete, remote: remote, title: t('activities.leave.title') do
         %span
-        = t("activities.leave.label")
+        = t('activities.leave.label')
   - else
     - unless activity.full? || activity.in_past? || activity.official
-      = button_to activity_participation_path(activity), method: :post, remote: remote, title: t("activities.join.title") do
+      = button_to activity_participation_path(activity), method: :post, remote: remote, title: t('activities.join.title') do
         %span
-        = t("activities.join.label")
+        = t('activities.join.label')

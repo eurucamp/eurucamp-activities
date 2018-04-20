@@ -6,39 +6,39 @@
   %section.form
 
     - unless during_oauth_flow?
-      = render "registrations/oauth", :resource => resource, :domain => "new"
+      = render 'registrations/oauth', resource: resource, domain: 'new'
 
       %p.divider
         %span or
 
     = form_for resource, as: resource_name, url: registration_path(resource_name) do |f|
-      %h4= during_oauth_flow? ? "One step more - we need your email address" : "Register a new account"
+      %h4= during_oauth_flow? ? 'One step more - we need your email address' : 'Register a new account'
 
       %label.name
         %span.label Name
-        = f.text_field :name, autofocus: true, placeholder: "Name"
+        = f.text_field :name, autofocus: true, placeholder: 'Name'
 
       %label.email
         %span.label Email address
-        = f.email_field :email, placeholder: "Email address"
+        = f.email_field :email, placeholder: 'Email address'
 
       - if @user.password_required?
         %label.password
           %span.label Password
-          = f.password_field :password, placeholder: "Password"
+          = f.password_field :password, placeholder: 'Password'
 
         %label.password
           %span.label Password, once more
-          = f.password_field :password_confirmation, placeholder: "Password once more"
+          = f.password_field :password_confirmation, placeholder: 'Password once more'
 
-      %button(type="submit")>
+      %button{ type: 'submit' }>
         Sign up
 
       %p.info
         = succeed '.' do
           Have an account already?
-          = link_to  new_session_path(:user), title: "Sign in" do
+          = link_to new_session_path(:user), title: 'Sign in' do
             Sign in
           or
-          = link_to new_password_path(:user), title: "Reset your password" do
+          = link_to new_password_path(:user), title: 'Reset your password' do
             reset your password

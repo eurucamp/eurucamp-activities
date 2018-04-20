@@ -36,4 +36,26 @@ RSpec.describe ActivityDecorator do
       it { is_expected.to eq(20) }
     end
   end
+
+  describe '#formatted_time' do
+    subject { decorator.formatted_time }
+
+    before do
+      allow(activity).to receive(:anytime?).and_return(anytime)
+    end
+
+    context 'with anytime set' do
+      let(:anytime) { true }
+
+      it { is_expected.to eq('Anytime') }
+      it { is_expected.not_to be_html_safe }
+    end
+
+    context 'without anytime set' do
+      let(:anytime) { false }
+
+      it { is_expected.to eq('Thu 12 Dec / 18:00 &ndash; Fri 13 Dec / 03:00') }
+      it { is_expected.to be_html_safe }
+    end
+  end
 end

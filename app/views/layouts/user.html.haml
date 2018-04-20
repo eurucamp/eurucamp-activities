@@ -1,16 +1,16 @@
 !!!
-- html_tag :lang => 'en', :class => "no-js" do
+- html_tag lang: 'en', class: 'no-js' do
   %head
-    = render "partials/layout_head"
-    = render "partials/preinitializers"
+    = render 'partials/layout_head'
+    = render 'partials/preinitializers'
 
-  %body(class="user #{ body_class(controller.action_name) }")
-    = render "partials/notifications"
+  %body{ class: "user #{body_class(controller.action_name)}" }
+    = render 'partials/notifications'
     #container
-      %header#header.page-header
-        = render "partials/navigation"
+      %header.page-header#header
+        = render 'partials/navigation'
 
-      #main(role="main")
+      #main{ role: 'main' }
         = yield
-      = render "partials/footer"
-    = javascript_include_tag "application"
+      = render 'partials/footer'
+    = javascript_include_tag 'application'

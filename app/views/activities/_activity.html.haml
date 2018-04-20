@@ -1,9 +1,9 @@
 - type = activity.relation_ship_with(current_user)
 
-%li(id="activity-#{activity.id}" class="#{activity.css_classes}")
+%li{ id: "activity-#{activity.id}", class: activity.css_classes }
   .container
 
-    = render "activities/progress", activity: activity
+    = render 'activities/progress', activity: activity
 
     .labels
       %h4
@@ -16,12 +16,12 @@
           alt: t('activities.requires_event_ticket'),
           title: t('activities.requires_event_ticket')
       %p.time
-        = activity.time.html_safe
+        = activity.formatted_time
 
-    = render "activities/action", activity: activity, type: type, remote: true
+    = render 'activities/action', activity: activity, type: type, remote: true
 
-    %a.details(href="#{activity_path(activity)}" title="#{activity.name}")
+    %a.details{ href: activity_path(activity), title: activity.name }
       %span
-        = t("activities.more_info.label")
+        = t('activities.more_info.label')
     - unless type == 'default'
       %span.icon

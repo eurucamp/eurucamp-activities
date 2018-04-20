@@ -1,14 +1,14 @@
 - if devise_controller?
-  = link_to t("user_nav.back_home.label"), root_path, title: t("user_nav.back_home.title"), class: "back-home"
+  = link_to t('user_nav.back_home.label'), root_path, title: t('user_nav.back_home.title'), class: 'back-home'
 %nav.user-nav
   %ul
     - if current_user
       %li
-        = link_to t("user_nav.account.label"), edit_user_registration_path, title: t("user_nav.account.title")
+        = link_to t('user_nav.account.label'), edit_user_registration_path, title: t('user_nav.account.title')
       %li
-        = link_to t("user_nav.logout.label"), destroy_user_session_path, title: t("user_nav.logout.title"), method: "delete"
+        = link_to t('user_nav.logout.label'), destroy_user_session_path, title: t('user_nav.logout.title'), method: 'delete'
     - else
       %li
-        = link_to t("user_nav.login.label"), new_user_session_path, title: t("user_nav.login.title")
+        = link_to t('user_nav.login.label'), new_user_session_path, title: t('user_nav.login.title')
       %li
-        = link_to t("user_nav.register.label"), new_user_registration_path, title: t("user_nav.register.title")
+        = link_to t('user_nav.register.label'), new_user_registration_path, title: t('user_nav.register.title')

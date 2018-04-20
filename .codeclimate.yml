@@ -1,0 +1,19 @@
+---
+version: 2
+plugins:
+  brakeman:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  haml-lint:
+    enabled: true
+    channel: beta
+  git-legal:
+    enabled: true
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: true
+    channel: rubocop-0-54
+  scss-lint:
+    enabled: true
