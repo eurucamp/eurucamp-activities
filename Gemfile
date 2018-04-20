@@ -53,12 +53,17 @@ group :test, :development do
 end
 
 group :test do
+  gem 'capybara', '~> 3.0'
+  gem 'selenium-webdriver'
+
+  gem 'database_cleaner', '~> 1.6'
+
   gem 'accept_values_for'
-  gem 'capybara', '~> 2.1'
   gem 'json_spec'
   gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks'
   gem 'rspec-its'
+
   gem 'simplecov', require: false
 end
 

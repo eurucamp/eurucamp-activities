@@ -7,14 +7,6 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'pundit/rspec'
 
-Capybara.configure do |config|
-  config.default_max_wait_time = 5
-  # config.match = :one
-  # config.exact_options = true
-  # config.ignore_hidden_elements = true
-  # config.visible_text_only = true
-end
-
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join('spec/support/**/*.rb')].each do |f| require f end
@@ -33,15 +25,6 @@ OmniAuth.config.add_mock(:twitter,
 Devise.stretches   = 1
 Rails.logger.level = 4
 
-class ActiveRecord::Base
-  mattr_accessor :shared_connection
-  @@shared_connection = nil
-
-  def self.connection
-    @@shared_connection || retrieve_connection
-  end
-end
-
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
@@ -53,7 +36,7 @@ RSpec.configure do |config|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
-  config.use_transactional_fixtures = true
+  config.use_transactional_fixtures = false
 
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
@@ -63,14 +46,44 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Warden::Test::Helpers
-  config.before :suite do
-    Warden.test_mode!
-  end
-  config.after :each do
-    Warden.test_reset!
-  end
+
   config.include ControllerHelpers, type: :controller
   config.include JsonSpec::Helpers, type: :controller
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+
+    Warden.test_mode!
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, type: :feature) do
+    # :rack_test driver's Rack app under test shares database connection
+    # with the specs, so continue to use transaction strategy for speed.
+    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
+
+    unless driver_shares_db_connection_with_specs
+      # Driver is probably for an external browser with an app
+      # under test that does *not* share a database connection with the
+      # specs, so use truncation strategy.
+      DatabaseCleaner.strategy = :truncation
+    end
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    Warden.test_reset!
+  end
+
+  config.append_after(:each) do
+    DatabaseCleaner.clean
+  end
 
   # rspec-rails 3 will no longer automatically infer an example group's spec type
   # from the file location. You can explicitly opt-in to the feature using this
