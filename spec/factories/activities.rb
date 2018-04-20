@@ -8,6 +8,6 @@ FactoryBot.define do
     anytime false
     location 'Ballroom'
     creator { FactoryBot.create(:user) }
-    event { Event.new('Some Conference', Time.parse('2013/12/10 18:00'), Time.parse('2013/12/18 18:00')) }
+    event { Event.new('Some Conference', Time.zone.parse('2013/12/10 18:00'), Time.zone.parse('2013/12/18 18:00')) }
   end
 end

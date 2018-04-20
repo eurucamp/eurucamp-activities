@@ -108,8 +108,8 @@ RSpec.describe Activity do
 
     context 'today' do
       before do
-        allow(activity).to receive(:start_time).and_return(2.days.ago.to_time)
-        allow(activity).to receive(:end_time).and_return(2.days.from_now.to_time)
+        allow(activity).to receive(:start_time).and_return(2.days.ago)
+        allow(activity).to receive(:end_time).and_return(2.days.from_now)
       end
 
       it { is_expected.to eq(true) }
@@ -118,8 +118,8 @@ RSpec.describe Activity do
     context 'not today' do
       before do
         allow(activity).to receive(:anytime?).and_return(false)
-        allow(activity).to receive(:start_time).and_return(2.days.from_now.to_time)
-        allow(activity).to receive(:end_time).and_return(10.days.from_now.to_time)
+        allow(activity).to receive(:start_time).and_return(2.days.from_now)
+        allow(activity).to receive(:end_time).and_return(10.days.from_now)
       end
 
       it { is_expected.to eq(false) }
@@ -162,7 +162,7 @@ RSpec.describe Activity do
 
     context 'in the future' do
       before do
-        allow(activity).to receive(:start_time).and_return(1.day.from_now.to_time)
+        allow(activity).to receive(:start_time).and_return(1.day.from_now)
       end
 
       it { is_expected.to eq(true) }
@@ -170,7 +170,7 @@ RSpec.describe Activity do
 
     context 'not in the future' do
       before do
-        allow(activity).to receive(:start_time).and_return(Time.now)
+        allow(activity).to receive(:start_time).and_return(Time.zone.now)
       end
 
       it { is_expected.to eq(false) }
@@ -233,9 +233,9 @@ RSpec.describe Activity do
     it { is_expected.to     accept_values_for(:location, 'football pitch') }
     it { is_expected.not_to accept_values_for(:location, '', nil) }
 
-    it { is_expected.to     accept_values_for(:start_time, Time.now) }
+    it { is_expected.to     accept_values_for(:start_time, Time.zone.now) }
 
-    it { is_expected.to     accept_values_for(:end_time, Time.now) }
+    it { is_expected.to     accept_values_for(:end_time, Time.zone.now) }
 
     it { is_expected.to     accept_values_for(:limit_of_participants, nil, 12, 100) }
     it { is_expected.not_to accept_values_for(:limit_of_participants, -1, 0) }
@@ -244,20 +244,20 @@ RSpec.describe Activity do
     it { is_expected.not_to accept_values_for(:image_url, 'http://com.co ge.gif', 'ssh://com.com/image.gif', 'blah') }
 
     context 'invalid time frame (wrong order)' do
-      subject { build(:activity, start_time: 10.days.ago.to_time, anytime: false) }
+      subject { build(:activity, start_time: 10.days.ago, anytime: false) }
 
-      it { is_expected.not_to accept_values_for(:end_time, 15.days.ago.to_time) }
+      it { is_expected.not_to accept_values_for(:end_time, 15.days.ago) }
     end
 
     context 'invalid time frame (out of scope)' do
-      let(:event) { Event.new('A name', 2.days.ago.to_time, 2.days.from_now.to_time) }
-      subject { build(:activity, event: event, start_time: 10.days.ago.to_time, anytime: false) }
+      let(:event) { Event.new('A name', 2.days.ago, 2.days.from_now) }
+      subject { build(:activity, event: event, start_time: 10.days.ago, anytime: false) }
 
-      it { is_expected.to     accept_values_for(:start_time, 1.day.ago.to_time) }
-      it { is_expected.not_to accept_values_for(:start_time, 15.days.ago.to_time) }
+      it { is_expected.to     accept_values_for(:start_time, 1.day.ago) }
+      it { is_expected.not_to accept_values_for(:start_time, 15.days.ago) }
 
-      it { is_expected.to     accept_values_for(:end_time, 1.day.from_now.to_time) }
-      it { is_expected.not_to accept_values_for(:end_time, 3.days.from_now.to_time) }
+      it { is_expected.to     accept_values_for(:end_time, 1.day.from_now) }
+      it { is_expected.not_to accept_values_for(:end_time, 3.days.from_now) }
     end
   end
 end

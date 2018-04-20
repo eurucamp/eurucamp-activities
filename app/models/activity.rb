@@ -111,7 +111,7 @@ SQL
   end
 
   def upcoming?
-    start_time > Time.now.end_of_day
+    start_time > Date.current.end_of_day
   end
 
   def in_past?
