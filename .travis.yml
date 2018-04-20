@@ -14,6 +14,8 @@ addons:
 
 cache: bundler
 
+bundler_args: --jobs=3 --retry=3 --deployment --without development production
+
 branches:
   only:
     - master
