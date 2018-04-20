@@ -1,0 +1,17 @@
+---
+version: 2
+plugins:
+  brakeman:
+    enabled: true
+  bundler-audit:
+    enabled: true
+  haml-lint:
+    enabled: true
+  git-legal:
+    enabled: true
+  fixme:
+    enabled: true
+  rubocop:
+    enabled: true
+  scss-lint:
+    enabled: true
