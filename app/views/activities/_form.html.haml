@@ -9,6 +9,13 @@
   %span.divider> &ndash;
   - fancy_datime_select f, :end_time, activity
 
+  %fieldset.anytime
+    %span.between
+      = t('common.or').downcase
+    %label.inline
+      = f.check_box :anytime
+      = t('activity_form.anytime.hint')
+
   %hr
 
   %label.location>
