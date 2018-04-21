@@ -313,9 +313,6 @@ GEM
       rubyzip (~> 1.2)
     settingslogic (2.0.9)
     sexp_processor (4.11.0)
-    simple_form (3.5.1)
-      actionpack (> 4, < 5.2)
-      activemodel (> 4, < 5.2)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -400,7 +397,6 @@ DEPENDENCIES
   sass-rails (~> 5.0.6)
   selenium-webdriver
   settingslogic
-  simple_form (~> 3.5.1)
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)

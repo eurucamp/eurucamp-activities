@@ -14,7 +14,6 @@ gem 'devise',             '~> 4.4.3'
 gem 'omniauth',           '~> 1.6.1'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
-gem 'simple_form',        '~> 3.5.1'
 
 gem 'autoprefixer-rails', '~> 8.2'
 gem 'bourbon',            '~> 5.0.0'
