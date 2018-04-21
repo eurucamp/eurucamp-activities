@@ -7,7 +7,6 @@ gem 'pg'
 gem 'puma', '~> 3.11.4'
 
 gem 'dotenv-rails'
-gem 'newrelic_rpm'
 gem 'settingslogic'
 
 gem 'devise',             '~> 4.4.3'
