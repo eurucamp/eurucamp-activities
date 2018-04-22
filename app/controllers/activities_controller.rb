@@ -1,4 +1,4 @@
-class ActivitiesController < ApiController
+class ActivitiesController < ApplicationController
   respond_to :html
 
   skip_before_action :authenticate_user!, only: %i[index show]
