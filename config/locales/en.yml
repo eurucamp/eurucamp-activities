@@ -13,6 +13,18 @@ en:
       new: Save
       edit: Update
 
+  flash:
+    activities:
+      create:
+        notice: Your activity has been created!
+        alert: Activity could not be saved. Please check your input.
+      edit:
+        notice: Your activity has been updated!
+        alert: Your changes could not be saved. Please check your input.
+      destroy:
+        notice: Your activity has been deleted!
+        alert: Your activity could not be deleted. Did you check the confirmation?
+
   user_nav:
     back_home:
       label: Back to Isle of Ruby activities
@@ -102,17 +114,9 @@ en:
 
   new_activity:
     title: Organise an activity
-    notice: Your activity has been created!
-    error: Activity could not be saved. Please check your input.
 
   edit_activity:
     title: Edit your activity
-    notice: Your activity has been updated!
-    error: Your changes could not be saved. Please check your input.
-
-  destroy_activity:
-    notice: Your activity has been deleted!
-    error: Your activity could not be deleted. Did you check the confirmation?
 
   activity_form:
     markdown_hint: You can use Markdown here
