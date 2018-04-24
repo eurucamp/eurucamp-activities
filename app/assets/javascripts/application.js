@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require jquery.easing.min
 //= require jquery.progress
-//= require jquery.dotdotdot.min
 //= require pickadate/picker
 //= require pickadate/picker.date
 //= require pickadate/picker.time
