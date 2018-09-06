@@ -1,4 +1,4 @@
-class ActivitiesController < ApiController
+class ActivitiesController < ApplicationController
   respond_to :html
 
   skip_before_action :authenticate_user!, only: %i[index show]
@@ -27,26 +27,22 @@ class ActivitiesController < ApiController
   def create
     @activity = current_event.new_activity(current_user, sanitized_params)
     authorize @activity
-    type        = @activity.save ? :notice : :error
-    flash[type] = I18n.t("new_activity.#{type}")
+    @activity.save
     respond_with(@activity, location: activities_path)
   end
 
   def update
-    if @activity
-      type        = @activity.update(sanitized_params) ? :notice : :error
-      flash[type] = I18n.t("edit_activity.#{type}")
-    end
+    @activity.update(sanitized_params)
     respond_with(@activity, location: edit_activity_path(@activity))
   end
 
   def destroy
-    if @activity && params[:confirm_delete] && @activity.destroy
-      redirect_to root_path, notice: I18n.t('destroy_activity.notice')
+    if params[:confirm_delete]
+      @activity.destroy
     else
-      flash[:error] = I18n.t('destroy_activity.error')
-      render :edit
+      @activity.errors.add(:base, :invalid)
     end
+    respond_with(@activity, location: root_path, action: :edit)
   end
 
   private

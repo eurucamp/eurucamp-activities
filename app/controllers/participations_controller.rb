@@ -1,4 +1,4 @@
-class ParticipationsController < ApiController
+class ParticipationsController < ApplicationController
   respond_to :js, :html
 
   def create

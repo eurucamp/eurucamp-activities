@@ -390,6 +390,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_html_helpers
   redcarpet
+  responders (~> 2.4.0)
   rspec-activemodel-mocks
   rspec-its
   rspec-rails (~> 3.3)
