@@ -124,6 +124,10 @@ a#new-activity {
         margin: 0;
         padding: 0 0.727272em;
 
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
         @extend %transition-all-15s-ease-out;
 
         @extend %ornamental-divider-before;
