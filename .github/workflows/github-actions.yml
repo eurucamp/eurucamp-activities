@@ -1,0 +1,38 @@
+name: Converted Workflow
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: '${{ matrix.os }}'
+    strategy:
+      matrix:
+        os:
+          - ubuntu-18.04
+    steps:
+      - name: Install dependencies (Ubuntu)
+        if: runner.os == 'Linux'
+        run: |-
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+      - uses: actions/checkout@v2
+      - run: gem update --system
+      - run: gem install bundler
+      - run: >-
+          curl -O
+          https://chromedriver.storage.googleapis.com/2.37/chromedriver_linux64.zip
+      - run: unzip chromedriver_linux64.zip -d chromedriver
+      - run: 'export PATH=$PATH:`pwd`/chromedriver'
+      - run: >-
+          curl -L
+          https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+          -o ./cc-test-reporter
+      - run: chmod +x ./cc-test-reporter
+      - run: ./cc-test-reporter before-build
+      - run: cp config/database.yml.sample config/database.yml
+      - run: 'bundle exec rake db:create db:migrate spec'
+      - run: ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
