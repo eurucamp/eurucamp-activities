@@ -1,4 +1,4 @@
-FROM ruby:2.4.4
+FROM ruby:2.7.7
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
 RUN mkdir /activities-app
 WORKDIR /activities-app
